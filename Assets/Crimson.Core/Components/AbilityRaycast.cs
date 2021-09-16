@@ -23,8 +23,12 @@ namespace Crimson.Core.Components
             return EditorUtils.GetEditorTags();
         }
 
-        public float RayDistance = 1;
-        public float RayHeight = 1;
+        public Transform ParentTransform => Actor == null ? gameObject.transform : Actor.Spawner.GameObject.transform;
+        public Vector3 RaySource => ParentTransform.position + Vector3.up * Height;
+        public Vector3 RayDirection => ParentTransform.forward * Distance;
+
+        public float Distance = 1;
+        public float Height = 1;
         public void AddComponentData(ref Entity entity, IActor actor)
         {
             var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
@@ -32,10 +36,10 @@ namespace Crimson.Core.Components
             dstManager.AddComponentData(entity, new ActorColliderData
             {
                 ColliderType = ColliderType.Raycast,
-                Ray = new Ray(transform.position + Vector3.up * RayHeight, transform.forward),
-                RayDistance = RayDistance,
+                RayDistance = Distance,
+                RayHeight = Height,
                 initialTakeOff = false
-            });
+            }); ;
 
             Actor = actor;
         }
@@ -46,7 +50,7 @@ namespace Crimson.Core.Components
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawRay(transform.position + Vector3.up * RayHeight, transform.forward * RayDistance);
+            Gizmos.DrawRay(RaySource, RayDirection);
         }
     }
 }

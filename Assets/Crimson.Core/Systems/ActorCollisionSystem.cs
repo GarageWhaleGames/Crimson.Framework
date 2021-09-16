@@ -72,11 +72,13 @@ namespace Crimson.Core.Systems
                 (Entity entity, AbilityRaycast abilityRaycast, ref ActorColliderData colliderData) =>
                 {
                     var gameObject = abilityRaycast.gameObject;
-                    float3 position = gameObject.transform.position;
-                    Quaternion rotation = gameObject.transform.rotation;
                     bool destroyAfterActions = false;
 
-                    var hits = Physics.RaycastNonAlloc(colliderData.Ray, _raycastResults, colliderData.RayDistance);
+                    Debug.DrawRay(abilityRaycast.RaySource, abilityRaycast.RayDirection, Color.green);
+                    var hits = Physics.RaycastNonAlloc(abilityRaycast.RaySource,
+                                                       abilityRaycast.RayDirection,
+                                                       _raycastResults,
+                                                       colliderData.RayDistance);
 
                     if (hits == 0 && !_networkCollisions.ContainsKey(abilityRaycast.Actor.ActorStateId))
                     {
@@ -86,12 +88,12 @@ namespace Crimson.Core.Systems
                     _networkCollisions.TryGetValue(abilityRaycast.Actor.ActorStateId, out var receivedCollisions);
                     var networkCollisionActors = new List<IActor>();
                     if (receivedCollisions != null)
-                        foreach (var col in receivedCollisions)
+                        for (var i = 0; i < receivedCollisions.Count; i++)
                         {
+                            var col = receivedCollisions[i];
                             _localColliders.TryGetValue(col, out var hitActor);
                             if (hitActor != null) networkCollisionActors.Add(hitActor);
                         }
-
                     for (var i = 0; i <= hits; i++)
                     {
                         Collider hit;
@@ -110,8 +112,9 @@ namespace Crimson.Core.Systems
                         }
                         else continue;
 
-                        foreach (var action in abilityRaycast.collisionActions)
+                        for (var actionIndex = 0; actionIndex < abilityRaycast.collisionActions.Count; actionIndex++)
                         {
+                            var action = abilityRaycast.collisionActions[actionIndex];
                             if (!action.collisionLayerMask.Contains(hit.gameObject.layer)) continue;
                             if (action.useTagFilter)
                             {
@@ -127,10 +130,10 @@ namespace Crimson.Core.Systems
                                         throw new ArgumentOutOfRangeException();
                                 }
                             }
-                            Debug.Log("Raycast: Execute Actions");
-                            foreach (var a in action.actions)
+                            for (var itemIndex = 0; itemIndex < action.actions.Count; itemIndex++)
                             {
-                                switch (a)
+                                var item = action.actions[itemIndex];
+                                switch (item)
                                 {
                                     case IActorAbilityTarget exchange:
                                         exchange.TargetActor = hitActor;

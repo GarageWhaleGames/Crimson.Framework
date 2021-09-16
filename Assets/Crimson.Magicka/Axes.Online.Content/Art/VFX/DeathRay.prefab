@@ -4907,7 +4907,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkLevel: 1
-  damageValue: 20
+  damageValue: 1
   levelablePropertiesList: []
 --- !u!114 &6200437381617937406
 MonoBehaviour:
@@ -4977,14 +4977,13 @@ MonoBehaviour:
     - DestructibleObject
     - CollisionObjects
     - Enemy
-    - Ally
     executeOnCollisionWithSpawner: 0
     destroyAfterAction: 0
     actions:
     - {fileID: 8267625626124722838}
   debugCollisions: 0
-  RayDistance: 20
-  RayHeight: 1
+  Distance: 10
+  Height: 1
 --- !u!1 &6219323386875512987
 GameObject:
   m_ObjectHideFlags: 0

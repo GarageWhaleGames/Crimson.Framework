@@ -125,8 +125,8 @@ namespace Crimson.Core.Components
         public float3 BoxHalfExtents;
         public quaternion BoxOrientation;
         public bool initialTakeOff;
-        public Ray Ray;
         public float RayDistance;
+        public float RayHeight;
     }
 
     public struct CollisionSendData : IComponentData
