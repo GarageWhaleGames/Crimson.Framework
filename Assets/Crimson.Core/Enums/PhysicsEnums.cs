@@ -4,6 +4,7 @@ namespace Crimson.Core.Enums
     {
         Sphere = 0,
         Capsule = 1,
-        Box = 2
+        Box = 2,
+        Raycast = 3
     }
 }

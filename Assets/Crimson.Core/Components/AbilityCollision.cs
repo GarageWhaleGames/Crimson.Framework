@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using Crimson.Core.Common;
 using Crimson.Core.Enums;
 using Crimson.Core.Utils;
 using Sirenix.OdinInspector;
+using System.Collections;
+using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -15,16 +15,17 @@ namespace Crimson.Core.Components
     public class AbilityCollision : MonoBehaviour, IActorAbility
     {
         public IActor Actor { get; set; }
-        
+
         [InfoBox("Only one Collider per Actor is supported! If no collider provided here, will use first")]
         public Collider useCollider;
-        
+
         public List<CollisionAction> collisionActions = new List<CollisionAction>();
 
         public bool debugCollisions = false;
-        [NetworkSimData][HideInInspector]
+        [NetworkSimData]
+        [HideInInspector]
         public List<Collider> ExistentCollisions = new List<Collider>();
-        
+
         public List<Collider> OwnColliders
         {
             get => _ownCollidersSet ? _ownColliders : null;
@@ -58,7 +59,7 @@ namespace Crimson.Core.Components
 
         public void AddComponentData(ref Entity entity, IActor actor)
         {
-            if (useCollider == null && (useCollider = this.gameObject.GetComponent<Collider>()) == null && (useCollider = this.gameObject.GetComponentInChildren<Collider>()) == null)
+            if (useCollider == null && (useCollider = gameObject.GetComponent<Collider>()) == null && (useCollider = this.gameObject.GetComponentInChildren<Collider>()) == null)
             {
                 Debug.LogError("[ABILITY COLLISION] Neither Collider is specified, nor it could be found!");
                 return;
@@ -104,7 +105,7 @@ namespace Crimson.Core.Components
             }
 
             Actor = actor;
-            
+
             OwnColliders = this.gameObject.GetAllColliders();
         }
 
@@ -112,9 +113,6 @@ namespace Crimson.Core.Components
         {
         }
     }
-
-    
-
     public struct ActorColliderData : IComponentData
     {
         public ColliderType ColliderType;
@@ -127,6 +125,8 @@ namespace Crimson.Core.Components
         public float3 BoxHalfExtents;
         public quaternion BoxOrientation;
         public bool initialTakeOff;
+        public Ray Ray;
+        public float RayDistance;
     }
 
     public struct CollisionSendData : IComponentData
@@ -134,7 +134,7 @@ namespace Crimson.Core.Components
         public int ActorStateId;
         public int HitStateId;
     }
-    
+
     public struct CollisionReceiveData : IComponentData
     {
         public int ActorStateId;

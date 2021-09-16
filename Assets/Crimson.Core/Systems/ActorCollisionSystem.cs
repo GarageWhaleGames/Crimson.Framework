@@ -1,11 +1,11 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Crimson.Core.Enums;
 using Crimson.Core.Utils;
 using Crimson.Core.Utils.LowLevel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -16,16 +16,23 @@ namespace Crimson.Core.Systems
     public class ActorCollisionSystem : ComponentSystem
     {
         private EntityQuery _collisionQuery;
+        private EntityQuery _raycastQuery;
         private EntityQuery _networkQuery;
         private EntityQuery _actorsQuery;
 
         private Collider[] _results = new Collider[Constants.COLLISION_BUFFER_CAPACITY];
         private Dictionary<int, List<int>> _networkCollisions = new Dictionary<int, List<int>>();
         private Dictionary<int, IActor> _localColliders = new Dictionary<int, IActor>();
+        private RaycastHit[] _raycastResults = new RaycastHit[Constants.COLLISION_BUFFER_CAPACITY];
 
         protected override void OnCreate()
         {
             _collisionQuery = GetEntityQuery(
+                typeof(AbilityCollision),
+                ComponentType.ReadOnly<ActorColliderData>(),
+                ComponentType.ReadOnly<Transform>());
+            _raycastQuery = GetEntityQuery(
+                typeof(AbilityRaycast),
                 ComponentType.ReadOnly<ActorColliderData>(),
                 ComponentType.ReadOnly<Transform>());
             _networkQuery = GetEntityQuery(ComponentType.ReadOnly<CollisionReceiveData>());
@@ -45,7 +52,7 @@ namespace Crimson.Core.Systems
                 }
                 else
                 {
-                    _networkCollisions.Add(collision.ActorStateId, new List<int> {collision.HitStateId});
+                    _networkCollisions.Add(collision.ActorStateId, new List<int> { collision.HitStateId });
                 }
 
                 PostUpdateCommands.DestroyEntity(entity);
@@ -61,6 +68,90 @@ namespace Crimson.Core.Systems
                     if (actor != null) _localColliders.Add(id.StateId, actor);
                 });
             }
+            Entities.With(_raycastQuery).ForEach(
+                (Entity entity, AbilityRaycast abilityRaycast, ref ActorColliderData colliderData) =>
+                {
+                    var gameObject = abilityRaycast.gameObject;
+                    float3 position = gameObject.transform.position;
+                    Quaternion rotation = gameObject.transform.rotation;
+                    bool destroyAfterActions = false;
+
+                    var hits = Physics.RaycastNonAlloc(colliderData.Ray, _raycastResults, colliderData.RayDistance);
+
+                    if (hits == 0 && !_networkCollisions.ContainsKey(abilityRaycast.Actor.ActorStateId))
+                    {
+                        return;
+                    }
+
+                    _networkCollisions.TryGetValue(abilityRaycast.Actor.ActorStateId, out var receivedCollisions);
+                    var networkCollisionActors = new List<IActor>();
+                    if (receivedCollisions != null)
+                        foreach (var col in receivedCollisions)
+                        {
+                            _localColliders.TryGetValue(col, out var hitActor);
+                            if (hitActor != null) networkCollisionActors.Add(hitActor);
+                        }
+
+                    for (var i = 0; i <= hits; i++)
+                    {
+                        Collider hit;
+                        IActor hitActor;
+                        if (i == hits && networkCollisionActors.Count > 0)
+                        {
+                            hitActor = networkCollisionActors.First();
+                            hit = hitActor.GameObject.GetComponent<Collider>();
+                            i--;
+                            networkCollisionActors.RemoveAt(0);
+                        }
+                        else if (i < hits)
+                        {
+                            hit = _raycastResults[i].collider;
+                            hitActor = hit.GetComponent<IActor>();
+                        }
+                        else continue;
+
+                        foreach (var action in abilityRaycast.collisionActions)
+                        {
+                            if (!action.collisionLayerMask.Contains(hit.gameObject.layer)) continue;
+                            if (action.useTagFilter)
+                            {
+                                switch (action.filterMode)
+                                {
+                                    case TagFilterMode.IncludeOnly:
+                                        if (!action.filterTags.Contains(hit.gameObject.tag)) continue;
+                                        break;
+                                    case TagFilterMode.Exclude:
+                                        if (action.filterTags.Contains(hit.gameObject.tag)) continue;
+                                        break;
+                                    default:
+                                        throw new ArgumentOutOfRangeException();
+                                }
+                            }
+                            Debug.Log("Raycast: Execute Actions");
+                            foreach (var a in action.actions)
+                            {
+                                switch (a)
+                                {
+                                    case IActorAbilityTarget exchange:
+                                        exchange.TargetActor = hitActor;
+                                        exchange.AbilityOwnerActor = abilityRaycast.Actor.Owner;
+                                        exchange.Execute();
+                                        break;
+                                    case IActorAbility ability:
+                                        ability.Execute();
+                                        break;
+                                }
+                            }
+
+                            if (action.destroyAfterAction) destroyAfterActions = true;
+                        }
+                    }
+
+                    if (destroyAfterActions)
+                    {
+                        PostUpdateCommands.AddComponent<ImmediateActorDestructionData>(entity);
+                    }
+                });
 
             Entities.With(_collisionQuery).ForEach(
                 (Entity entity, AbilityCollision abilityCollision, ref ActorColliderData colliderData) =>
@@ -83,8 +174,8 @@ namespace Crimson.Core.Systems
                                 ((colliderData.CapsuleStart + position) + (colliderData.CapsuleEnd + position)) / 2f;
                             var point1 = colliderData.CapsuleStart + position;
                             var point2 = colliderData.CapsuleEnd + position;
-                            point1 = (float3)(rotation*(point1 - center)) + center;
-                            point2 = (float3)(rotation*(point2 - center)) + center;
+                            point1 = (float3)(rotation * (point1 - center)) + center;
+                            point2 = (float3)(rotation * (point2 - center)) + center;
                             size = Physics.OverlapCapsuleNonAlloc(point1,
                                 point2,
                                 colliderData.CapsuleRadius, _results);
@@ -104,11 +195,11 @@ namespace Crimson.Core.Systems
                     }
 
                     int selfHit = 0;
-                    
+
                     if (abilityCollision.SpawnerColliders == null)
                     {
                         var spawner = abilityCollision.Actor.Spawner;
-                        if ((spawner == null) || 
+                        if ((spawner == null) ||
                         ((abilityCollision.SpawnerColliders = spawner.GameObject.GetAllColliders()) == null))
                         {
                             abilityCollision.SpawnerColliders = new List<Collider>();
@@ -146,7 +237,7 @@ namespace Crimson.Core.Systems
                         }
                         else continue;
 
-                        
+
 
                         if (abilityCollision.OwnColliders.Count > 0 &&
                             abilityCollision.OwnColliders.FirstOrDefault(c => c == hit)) continue;
@@ -160,10 +251,10 @@ namespace Crimson.Core.Systems
                                 continue;
                             }
                         }
-                        
+
                         if (abilityCollision.debugCollisions && Application.isEditor)
                         {
-                            Debug.Log($"[COLLISION] HIT] {hit.gameObject} into {abilityCollision.Actor.GameObject} and collision exists: {abilityCollision.ExistentCollisions.Contains(hit)}" );
+                            Debug.Log($"[COLLISION] HIT] {hit.gameObject} into {abilityCollision.Actor.GameObject} and collision exists: {abilityCollision.ExistentCollisions.Contains(hit)}");
                         }
 
                         if (abilityCollision.ExistentCollisions.Exists(c => c == hit)) continue;
