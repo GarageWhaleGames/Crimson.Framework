@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Assets.Farm.Scripts.Core.Building" BaseTypeListCollapsed="true">
+    <Position X="0.5" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAgAAEAgAAgAAAAAAQAAAAAAAABAAAAEAAAAAA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Buildings\Building.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Assets.Farm.Scripts.Core.Researches.Research">
+    <Position X="0.5" Y="9.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAggAAAAAACAAQAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Researches\Research.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Struct Name="Assets.Farm.Scripts.Core.Buildings.BuildingOrder">
+    <Position X="3.25" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAEAAAAAACAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Buildings\BuildingOrder.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Assets.Farm.Scripts.Core.Buildings.BuildingUpgrade">
+    <Position X="6" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAgAABAAAQA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Buildings\BuildingUpgrade.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Assets.Farm.Scripts.Core.ProducedResources.Battery" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Resources\Battery.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="Assets.Farm.Scripts.Core.Currencies.Aluminium" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Resources\Currencies\Aluminium.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="Assets.Farm.Scripts.Core.Currencies.Diamonds" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Resources\Currencies\Diamonds.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="Assets.Farm.Scripts.Core.Currencies.Energy" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="3" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Resources\Currencies\Energy.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="Assets.Farm.Scripts.Core.ProducedResources.ConstructionMaterial" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Resources\ConstructionMaterial.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="Assets.Farm.Scripts.Core.ProducedResources.Food" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="4.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Resources\Food.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Struct Name="Assets.Farm.Scripts.Core.ProducedResources.Gears" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="6.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Resources\Gears.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Struct>
+  <Interface Name="Assets.Farm.Scripts.Core.Resources.Interfaces.IResource">
+    <Position X="4.75" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Resources\Interfaces\IResource.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Assets.Farm.Scripts.Core.Buildings.Interfaces.IBuilding">
+    <Position X="0.5" Y="4" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAgAAAAAAAAAQAAAAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Farm\Scripts\Core\Buildings\Interfaces\IBuilding.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
