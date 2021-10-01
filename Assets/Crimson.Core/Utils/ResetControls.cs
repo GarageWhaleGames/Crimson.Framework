@@ -26,7 +26,7 @@ namespace Crimson.Core.Utils
             {
                 var a = dstManager.GetComponentObject<ExecuteInUpdate>(entity);
                 a.Abilities.Add(this);
-                dstManager.SetComponentObject(entity, typeof(ExecuteInUpdate), a);
+                dstManager.SetComponentData(entity, a);
             }
             else
             {

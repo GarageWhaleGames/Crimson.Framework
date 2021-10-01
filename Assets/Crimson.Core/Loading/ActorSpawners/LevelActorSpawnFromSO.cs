@@ -8,7 +8,6 @@ using UnityEngine.Assertions;
 namespace Crimson.Core.Loading.ActorSpawners
 {
     [HideMonoScript]
-    [DoNotAddToEntity]
     public class LevelActorSpawnFromSO : MonoBehaviour, IActorSpawner, IComponentName
     {
         public string ComponentName

@@ -1,0 +1,86 @@
+{
+    "m_SelectedDeviceId": "f92437a1",
+    "m_SelectedPackage": {
+        "deviceId": "f92437a1",
+        "name": "com.GarageWhale.Crimson",
+        "processId": 25609,
+        "exited": false
+    },
+    "m_SelectedPriority": 0,
+    "m_KnownPackagesForSerialization": [
+        {
+            "deviceId": "f92437a1",
+            "name": "com.GarageWhale.Crimson",
+            "processId": 24116,
+            "exited": false
+        },
+        {
+            "deviceId": "f92437a1",
+            "name": "com.GarageWhale.Crimson",
+            "processId": 25609,
+            "exited": false
+        }
+    ],
+    "m_Tags": {
+        "m_Entries": [
+            {
+                "m_Name": "Filter by all listed tags",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "No Filter",
+                "m_Selected": true
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Tag Control...",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "Unity",
+                "m_Selected": false
+            },
+            {
+                "m_Name": "CRASH",
+                "m_Selected": false
+            }
+        ]
+    },
+    "m_MemoryViewerState": {
+        "MemoryWindowHeight": 300.0,
+        "MemoryWindowWidth": 170.0,
+        "MemoryTypeEnabled": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+        ],
+        "MemoryGroup": 2,
+        "Behavior": 0
+    },
+    "m_Filter": "",
+    "m_FilterIsRegularExpression": false,
+    "m_SymbolPaths": [
+        {
+            "Name": "/Applications/Unity/2021.1.15f1/PlaybackEngines/AndroidPlayer/Variations/il2cpp/Development/Symbols/arm64-v8a",
+            "Enabled": true
+        },
+        {
+            "Name": "/Applications/Unity/2021.1.15f1/PlaybackEngines/AndroidPlayer/Variations/il2cpp/Development/Symbols/arm64-v8a",
+            "Enabled": true
+        }
+    ]
+}

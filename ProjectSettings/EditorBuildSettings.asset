@@ -6,8 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Crimson.Magicka/Axes.Online.Content/Scenes/Rooms.unity
-    guid: 96ae6716247a27644be06e3bc264c9b9
+    path: Assets/Crimson.Content/Scenes/Rooms_clear.unity
+    guid: 651291e0a991c4a4fa069bf7941bfd50
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 16d0d19b3eac44f8494faad85828f8d8,
       type: 2}

@@ -9,7 +9,7 @@ namespace Crimson.Core.Utils.LowLevel.Obsolete
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.AfterSceneLoad)]
         private static void SetFixedUpdate()
         {
-            FixedRateUtils.EnableFixedRateSimple(World.DefaultGameObjectInjectionWorld.GetExistingSystem<FixedUpdateGroup>(), UnityEngine.Time.fixedDeltaTime);
+            //FixedRateUtils.EnableFixedRateSimple(World.DefaultGameObjectInjectionWorld.GetExistingSystem<FixedUpdateGroup>(), UnityEngine.Time.fixedDeltaTime);
         }
         
     }

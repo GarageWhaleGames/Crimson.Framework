@@ -1,11 +1,6 @@
 namespace Crimson.Core.Utils
 {
-    [System.AttributeUsage(System.AttributeTargets.Class |
-                           System.AttributeTargets.Struct)]
-    public class DoNotAddToEntity : System.Attribute
-    {
-    }
-
+    
     public class CastToUI : System.Attribute
     {
         private string _fieldId;

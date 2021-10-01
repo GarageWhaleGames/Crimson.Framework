@@ -7,7 +7,5 @@ namespace Assets.Crimson.Core.Common
     {
         public float Delay;
         public float StartupDelay;
-
-        public bool IsEmpty => Delay == StartupDelay && Delay == 0;
     }
 }

@@ -9,16 +9,16 @@ namespace Crimson.Core.Common
     [HideMonoScript]
     public class UIDynamicTextField : MonoBehaviour, IUIElement
     {
-        public string FieldText;
+        public string fieldText;
 
-        [ValueDropdown("UIAssociatedIds")] public string AssociatedFieldID = "";
+        [ValueDropdown("UIAssociatedIds")] public string associatedFieldID = "";
 
         private TextMeshProUGUI _textMeshPro;
 
         private object _cachedFieldValue = new object();
         private UIReceiver _receiver = null;
 
-        public string AssociatedID => AssociatedFieldID;
+        public string AssociatedID => associatedFieldID;
 
         public void Awake()
         {
@@ -35,7 +35,7 @@ namespace Crimson.Core.Common
 
             if (_cachedFieldValue.Equals(input)) return;
 
-            _textMeshPro.SetText($"{FieldText}{input}");
+            _textMeshPro.SetText($"{fieldText}{input}");
             _cachedFieldValue = input;
         }
 

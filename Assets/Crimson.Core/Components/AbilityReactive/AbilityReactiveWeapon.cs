@@ -13,7 +13,6 @@ using UnityEngine;
 namespace Crimson.Core.Components.AbilityReactive
 {
     [HideMonoScript]
-    [DoNotAddToEntity]
     public abstract class AbilityReactiveWeapon : TimerBaseBehaviour,
         IActorAbilityTarget,
         IActorSpawnerAbility,

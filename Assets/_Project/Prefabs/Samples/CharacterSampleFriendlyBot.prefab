@@ -77,8 +77,8 @@ MonoBehaviour:
     destroyAbilityAfterSpawn: 0
     randomSeed: 0
   SpawnDelays:
-    Delay: 1
-    StartupDelay: 5
+    Delay: 0
+    StartupDelay: 0.5
 --- !u!114 &-1330729215862922913
 MonoBehaviour:
   m_ObjectHideFlags: 0

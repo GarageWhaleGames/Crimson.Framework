@@ -15,13 +15,13 @@ namespace Crimson.Core.Utils.LowLevel
             World.DefaultGameObjectInjectionWorld = world;
 
             DefaultWorldInitialization.AddSystemsToRootLevelSystemGroups(world, systems);
-            ScriptBehaviourUpdateOrder.UpdatePlayerLoop(world);
-
+            
             // Moving SimulationSystemGroup to FixedUpdate is done in two parts.
             // The PlayerLoopSystem of type SimulationSystemGroup has to be found,
             // stored, and removed before adding it to the FixedUpdate PlayerLoopSystem.
 
             PlayerLoopSystem playerLoop = PlayerLoop.GetCurrentPlayerLoop();
+            ScriptBehaviourUpdateOrder.AddWorldToPlayerLoop(world,ref playerLoop);
 
             // simulationSystem has to be constructed or compiler will complain due to
             //    using non-assigned variables.

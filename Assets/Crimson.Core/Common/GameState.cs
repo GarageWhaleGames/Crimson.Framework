@@ -63,13 +63,10 @@ namespace Crimson.Core.Common
 
         public bool NeedCheckEndGame;
 
-        public override void PostConvert()
+        public override void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
-            WorldEntityManager.AddComponentData(ActorEntity, new GameStateData());
-        }
-
-        protected override void Start()
-        {
+            base.Convert(entity, dstManager, conversionSystem);
+            
             sampleSpawner.SpawnPoints = new List<GameObject> { this.gameObject };
             sampleSpawner.objectsToSpawn = new List<GameObject>
             {
@@ -79,6 +76,11 @@ namespace Crimson.Core.Common
             };
             metrica = AppMetrica.Instance;
             Setup();
+            
+        }
+        public override void PostConvert()
+        {
+            WorldEntityManager.AddComponentData(ActorEntity, new GameStateData());
         }
 
         private static IEnumerable Tags()

@@ -43,10 +43,8 @@ namespace Crimson.Core.Loading
             {
                 return;
             }
-
-            _currentItemIndex++;
-
-            _timer.TimedActions.AddAction(SpawnCurrentItem, _delays.Delay);
+            
+            _timer.TimedActions.AddAction(SpawnCurrentItem, _delays.Delay*_currentItemIndex);
         }
 
         public void Spawn()

@@ -8,7 +8,6 @@ using UnityEngine;
 namespace Crimson.Core.Components
 {
     [HideMonoScript]
-    [DoNotAddToEntity]
     public class AbilityAddActionsToPlayerInput : MonoBehaviour, IActorAbility
     {
         [InfoBox(

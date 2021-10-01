@@ -1,8 +1,8 @@
+using System.Collections.Generic;
+using System.Linq;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Crimson.Core.Utils.LowLevel;
-using System.Collections.Generic;
-using System.Linq;
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
@@ -29,7 +29,7 @@ namespace Crimson.Core.Systems
         private float2 _moveInput;
         private float2 _mouseInput;
         private float2 _lookInput;
-
+        
         private NativeArray<float> _customInputs;
         private NativeArray<float2> _customSticksInputs;
 
@@ -43,7 +43,7 @@ namespace Crimson.Core.Systems
         {
             _customInputs = new NativeArray<float>(Constants.INPUT_BUFFER_CAPACITY, Allocator.Persistent);
             _customSticksInputs = new NativeArray<float2>(Constants.INPUT_BUFFER_CAPACITY, Allocator.Persistent);
-
+            
             _moveAction = new InputAction("move", binding: "<Gamepad>/leftStick");
             _moveAction.AddCompositeBinding("Dpad")
                 .With("Up", "<Keyboard>/w")
@@ -78,33 +78,31 @@ namespace Crimson.Core.Systems
             for (var i = 0; i <= 9; i++)
             {
                 var j = i;
-                var action = new InputAction($"CustomAction{j}", binding: $"<Keyboard>/{j}");
-
+                _customActions.Add(new InputAction($"CustomAction{j}", binding: $"<Keyboard>/{j}"));
                 switch (j)
                 {
                     case 0:
-                        action.AddBinding(new InputBinding("<Mouse>/leftButton"));
+                        _customActions.Last().AddBinding(new InputBinding("<Mouse>/leftButton"));
                         break;
                     case 1:
-                        action.AddBinding(new InputBinding("<Mouse>/rightButton"));
+                        _customActions.Last().AddBinding(new InputBinding("<Mouse>/rightButton"));
                         break;
                 }
 
-                action.started += context => { _customInputs[j] = context.ReadValue<float>(); };
-                action.performed += context => { _customInputs[j] = context.ReadValue<float>(); };
-                action.canceled += context => { _customInputs[j] = context.ReadValue<float>(); };
-                action.Enable();
-                _customActions.Add(action);
+                _customActions.Last().performed += context => { _customInputs[j] = context.ReadValue<float>(); };
+                _customActions.Last().canceled += context => { _customInputs[j] = context.ReadValue<float>(); };
+                _customActions.Last().Enable();
             }
-
+            
             RegisterCustomSticks();
         }
+
         protected override void OnStopRunning()
         {
             _mouseAction.Disable();
             //_lookAction.Disable();
             _moveAction.Disable();
-
+            
             foreach (var c in _customActions)
             {
                 c.Disable();
@@ -138,19 +136,21 @@ namespace Crimson.Core.Systems
             for (var k = 0; k <= 4; k++)
             {
                 var j = k;
-
+                
                 _customSticksInputActions.Add(new InputAction($"customStick_{j}", binding: $"<CustomDevice>/customStick_{j}"));
-                _customSticksInputActions.Last().started += context => { _customSticksInputs[j] = context.ReadValue<Vector2>(); };
+                
                 _customSticksInputActions.Last().performed += context => { _customSticksInputs[j] = context.ReadValue<Vector2>(); };
                 _customSticksInputActions.Last().canceled += context => { _customSticksInputs[j] = context.ReadValue<Vector2>(); };
                 _customSticksInputActions.Last().Enable();
             }
         }
 
-        //[BurstCompile]
+        [BurstCompile]
+#pragma warning disable 618
         private struct PlayerInputJob : IJobForEachWithEntity<PlayerInputData, UserInputData>
+#pragma warning restore 618
         {
-            public EntityCommandBuffer.Concurrent Ecb;
+            public EntityCommandBuffer.ParallelWriter Ecb;
 
             [ReadOnly] public float2 MoveInput;
             [ReadOnly] public float2 MouseInput;
@@ -168,7 +168,7 @@ namespace Crimson.Core.Systems
                 {
                     inputData.CustomInput[i] = CustomInputs[i];
                 }
-                
+
                 for (var i = 0; i < CustomSticksInputs.Length; i++)
                 {
                     inputData.CustomSticksInput[i] = CustomSticksInputs[i];
@@ -181,7 +181,7 @@ namespace Crimson.Core.Systems
         {
             var job = new PlayerInputJob
             {
-                Ecb = _barrier.CreateCommandBuffer().ToConcurrent(),
+                Ecb = _barrier.CreateCommandBuffer().AsParallelWriter(),
                 MoveInput = _moveInput,
                 MouseInput = _mouseInput,
                 LookInput = _lookInput,

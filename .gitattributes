@@ -85,8 +85,3 @@ FBSDKCoreKit filter=lfs diff=lfs merge=lfs -text
 FBSDKLoginKit filter=lfs diff=lfs merge=lfs -text
 FBSDKShareKit filter=lfs diff=lfs merge=lfs -text
 UnityFbxSdkNative filter=lfs diff=lfs merge=lfs -text
-
-# EOL Previous "binary"
-*.unity text eol=lf
-*.asset text eol=lf
-*.prefab text eol=lf

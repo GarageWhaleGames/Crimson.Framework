@@ -40,7 +40,7 @@ namespace Crimson.Core.Components
         public void AddComponentData(ref Entity entity, IActor actor)
         {
             Actor = actor;
-            
+
             var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
             dstManager.AddComponentData(entity, new ActorFollowMovementData());

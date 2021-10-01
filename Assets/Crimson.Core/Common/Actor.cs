@@ -105,12 +105,14 @@ namespace Crimson.Core.Common
         private List<IActorAbility> _abilities = new List<IActorAbility>();
         private List<IPerkAbility> _appliedPerks = new List<IPerkAbility>();
 
-        public void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
+        public virtual void Convert(Entity entity, EntityManager dstManager, GameObjectConversionSystem conversionSystem)
         {
             ActorEntity = entity;
             WorldEntityManager = dstManager;
             WorldEntityManager.AddComponent<NetworkSyncReceive>(ActorEntity);
             if (!ComponentName.Equals(string.Empty)) ComponentNames.Add(this.ComponentName);
+            
+            PostConvert();
 
             HandleAbilities(entity);
         }
@@ -153,28 +155,26 @@ namespace Crimson.Core.Common
             // Root ConvertToEntity is responsible for converting the whole hierarchy
             if (transform.parent != null && transform.parent.GetComponentInParent<ConvertToEntity>() != null)
                 return;
+            
+            this.gameObject.AddComponent<ConvertToEntity>().ConversionMode = ConvertToEntity.Mode.ConvertAndInjectGameObject;
 
-            EntityConversionUtils.ConvertAndInjectOriginal(this.gameObject);
+            //ConvertAndInjectOriginal(this.gameObject);
 
-            PostConvert();
+            //PostConvert();
         }
-
-        protected virtual void Start()
-        {
-        }
-
+        
         private void OnDestroy()
         {
             try
             {
-                if (WorldEntityManager == null) return;
                 if (ActorEntity.Index <= WorldEntityManager.EntityCapacity && WorldEntityManager.Exists(ActorEntity))
                 {
                     WorldEntityManager.DestroyEntity(ActorEntity);
                 }
             }
-            catch (Exception e)
+            catch
             {
+                // ignored
             }
         }
 

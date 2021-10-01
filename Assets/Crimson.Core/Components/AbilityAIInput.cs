@@ -31,6 +31,15 @@ namespace Crimson.Core.Components
             _dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
             _dstManager.AddComponent<NetworkSyncReceive>(entity);
+            
+            var tempBehaviours = new List<AIBehaviourSetting>();
+
+            foreach (var t in behaviours)
+            {
+                tempBehaviours.Add(t.CopyBehaviour());
+            }
+
+            behaviours = tempBehaviours;
 
             for (var i = 0; i < behaviours.Count; i++)
             {
@@ -41,19 +50,7 @@ namespace Crimson.Core.Components
             StartTimer();
             EvaluateAll();
         }
-
-        private void Start()
-        {
-            var tempBehaviours = new List<AIBehaviourSetting>();
-
-            foreach (var t in behaviours)
-            {
-                tempBehaviours.Add(t.CopyBehaviour());
-            }
-
-            behaviours = tempBehaviours;
-        }
-
+        
         public void EvaluateAll()
         {
             this.RemoveAction(EvaluateAll);

@@ -1,8 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Xml.Linq;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Unity.Entities;
+using Unity.Collections;
 
 namespace Crimson.Core.Systems
 {

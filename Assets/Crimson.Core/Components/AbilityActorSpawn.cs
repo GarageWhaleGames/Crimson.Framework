@@ -11,7 +11,6 @@ using UnityEngine;
 namespace Crimson.Core.Components
 {
     [HideMonoScript]
-    [DoNotAddToEntity]
     public class AbilityActorSpawn : TimerBaseBehaviour, IActorAbility, IActorSpawnerAbility, IComponentName
     {
         [Space]
@@ -37,6 +36,7 @@ namespace Crimson.Core.Components
         public void AddComponentData(ref Entity entity, IActor actor)
         {
             Actor = actor;
+            if (ExecuteOnAwake) Execute();
         }
 
         [ContextMenu("Execute")]
@@ -50,26 +50,14 @@ namespace Crimson.Core.Components
         {
             _spawnedObjectCollection.SetItems(ActorSpawn.GenerateData(SpawnData, Actor, Actor.Owner));
             _spawnedObjectCollection.Clear();
-            if (SpawnDelays.IsEmpty)
-            {
-                _spawnedObjectCollection.Spawn();
-            }
-            else
-            {
-                _spawnedObjectCollection.SpawnWithOptions(Timer, SpawnDelays);
-            }
+            _spawnedObjectCollection.SpawnWithOptions(Timer, SpawnDelays);
+            
         }
 
         private void DestroyAbilityAfterSpawn()
         {
-            if (!SpawnData.DestroyAbilityAfterSpawn) return;
-
-            Destroy(this);
+            if (SpawnData.DestroyAbilityAfterSpawn) Destroy(this);
         }
 
-        private void Start()
-        {
-            if (ExecuteOnAwake) Execute();
-        }
     }
 }

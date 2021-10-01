@@ -10,7 +10,6 @@ using UnityEngine;
 
 namespace Crimson.Core.Components.AbilityReactive
 {
-    [DoNotAddToEntity]
     public class DragAim : TimerBaseBehaviour,
         IActorAbility,
         IComponentName,

@@ -12,7 +12,9 @@ namespace Crimson.Core.Systems
     public class PlayerMovementSystem : JobComponentSystem
     {
         [BurstCompile]
+#pragma warning disable 618
         private struct PlayerMovementJob : IJobForEach<PlayerInputData, ActorMovementData>
+#pragma warning restore 618
         {
             public void Execute(ref PlayerInputData input, ref ActorMovementData movement)
             {

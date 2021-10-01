@@ -27,8 +27,6 @@ namespace GameFramework.Example.AI
         private Transform _transform = null;
         private readonly NavMeshPath _path = new NavMeshPath();
 
-        private int _currentWaypoint = 0;
-
         public float Evaluate(Entity entity, AIBehaviourSetting behaviour, AbilityAIInput ai, List<Transform> targets)
         {
             _behaviour = behaviour;
@@ -44,8 +42,6 @@ namespace GameFramework.Example.AI
 
         public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
         {
-
-
             return true;
         }
     }
