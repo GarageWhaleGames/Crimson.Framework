@@ -1,0 +1,52 @@
+{
+    "name": "FarmInputActions",
+    "maps": [
+        {
+            "name": "FarmActionMap",
+            "id": "27b55cb9-3da5-4e07-b63d-0146862049f2",
+            "actions": [
+                {
+                    "name": "CreateBuilding",
+                    "type": "Button",
+                    "id": "756fc0e8-6e77-4bed-b673-ee05132a8c82",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "SelectBuildingPosition",
+                    "type": "Value",
+                    "id": "a1af9c4b-1751-4d96-bc72-ab6b9a612c9a",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "f64d58d9-62ed-4755-80db-a5a9439529ec",
+                    "path": "<Mouse>/press",
+                    "interactions": "Tap",
+                    "processors": "",
+                    "groups": "",
+                    "action": "CreateBuilding",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "0dcfaa70-8d09-42bb-ad99-66d79b374757",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SelectBuildingPosition",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}
