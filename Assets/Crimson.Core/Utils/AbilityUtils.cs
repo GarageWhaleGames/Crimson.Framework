@@ -45,149 +45,6 @@ namespace Crimson.Core.Utils
             return newComponents;
         }
 
-        public static void SetAbilityLevel(this ILevelable ability, int level,
-            List<FieldInfo> levelablePropertiesInfo, IActor actor, IActor target = null)
-        {
-            ability.Level = level;
-
-            foreach (var levelableProperty in ability.LevelablePropertiesList)
-            {
-                var fieldInfo =
-                    levelablePropertiesInfo.FirstOrDefault(f => f.Name == levelableProperty.propertyName);
-
-                if (fieldInfo == null || fieldInfo.FieldType != levelableProperty.modifier.GetType()) continue;
-
-                var fieldValue = fieldInfo.GetValue(ability);
-
-                var newValue = 0.0f;
-
-                switch (levelableProperty.levelablePropertyAction)
-                {
-                    case ModifiablePropertiesActions.Multiply:
-                        newValue = target == null || target == actor.Owner
-                            ? (float)fieldValue * levelableProperty.modifier
-                            : (float)((float)fieldValue * Math.Pow(levelableProperty.modifier, ability.Level - 1));
-                        break;
-                    case ModifiablePropertiesActions.Add:
-                        newValue = target == null || target == actor.Owner
-                            ? (float)fieldValue + levelableProperty.modifier
-                            : (float)fieldValue + (ability.Level - 1) * levelableProperty.modifier;
-                        break;
-                }
-
-                fieldInfo.SetValue(ability, newValue);
-            }
-        }
-
-        public static void UpdateBindingIndex(this IBindable bindable, int idx, Entity entity)
-        {
-            bindable.BindingIndex = idx;
-
-            var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-
-            if (dstManager.HasComponent<BindedActionsCooldownData>(entity))
-            {
-                var existingComponent = dstManager.GetComponentData<BindedActionsCooldownData>(entity);
-
-                existingComponent.ReadyToUseBindingIndexes.Add(idx);
-                dstManager.SetComponentData(entity, existingComponent);
-                return;
-            }
-
-            World.DefaultGameObjectInjectionWorld.EntityManager.AddComponentData(entity, new BindedActionsCooldownData
-            {
-                ReadyToUseBindingIndexes = new FixedList32<int> { bindable.BindingIndex }
-            });
-        }
-
-        public static void StartAbilityCooldownTimer(this ICooldownable timer, IActor actor)
-        {
-            var actorPlayer = actor.Abilities.FirstOrDefault(a => a is AbilityActorPlayer) as AbilityActorPlayer;
-
-            if (actorPlayer == null || !actorPlayer.actorToUI) return;
-
-            if (!(timer is IBindable)) return;
-
-            var bindable = (IBindable)timer;
-
-            if (bindable.BindingIndex < 0) return;
-
-            var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-
-            var uiReceiverList = actorPlayer.UIReceiverList;
-
-            if (dstManager.HasComponent<BindedActionsCooldownData>(actor.ActorEntity))
-            {
-                var existingComponent = dstManager.GetComponentData<BindedActionsCooldownData>(actor.ActorEntity);
-
-                if (existingComponent.OnCooldownBindingIndexes.Contains(bindable.BindingIndex)) return;
-
-                existingComponent.OnCooldownBindingIndexes.Add(bindable.BindingIndex);
-                dstManager.SetComponentData(actor.ActorEntity, existingComponent);
-            }
-            else
-            {
-                dstManager.AddComponentData(actor.ActorEntity, new BindedActionsCooldownData
-                {
-                    OnCooldownBindingIndexes = new FixedList32<int> { bindable.BindingIndex },
-                });
-            }
-
-            var abilityPlayerInput = actor.Abilities.FirstOrDefault(a => a is AbilityPlayerInput) as AbilityPlayerInput;
-
-            if (abilityPlayerInput == null) return;
-
-            var currentBinding = abilityPlayerInput.customBindings.FirstOrDefault(b => b.index == bindable.BindingIndex);
-
-            if (!currentBinding.Equals(new CustomBinding()) && currentBinding.actions.FirstOrDefault(a =>
-                    a is IAimable aimable && aimable.AimingAvailable && aimable.DeactivateAimingOnCooldown) != null)
-            {
-                uiReceiverList.ForEach(r => ((UIReceiver)r).SetCustomButtonOnCooldown(bindable.BindingIndex, true));
-            }
-        }
-
-        public static void FinishAbilityCooldownTimer(this ICooldownable timer, IActor actor)
-        {
-            var actorPlayer = actor.Abilities.FirstOrDefault(a => a is AbilityActorPlayer) as AbilityActorPlayer;
-
-            if (actorPlayer == null || !actorPlayer.actorToUI) return;
-
-            if (!(timer is IBindable bindable)) return;
-
-            var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-
-            var uiReceiverList = actorPlayer.UIReceiverList;
-
-            var abilityPlayerInput = actor.Abilities.FirstOrDefault(a => a is AbilityPlayerInput) as AbilityPlayerInput;
-
-            if (abilityPlayerInput == null) return;
-
-            var currentBinding =
-                abilityPlayerInput.customBindings.FirstOrDefault(b => b.index == bindable.BindingIndex);
-
-            if (!currentBinding.Equals(new CustomBinding()) && currentBinding.actions.FirstOrDefault(a =>
-                    a is IAimable aimable && aimable.AimingAvailable && aimable.DeactivateAimingOnCooldown) != null)
-            {
-                uiReceiverList.ForEach(r => ((UIReceiver)r).SetCustomButtonOnCooldown(bindable.BindingIndex, false));
-            }
-
-            if (dstManager.HasComponent<BindedActionsCooldownData>(actor.ActorEntity))
-            {
-                var existingComponent = dstManager.GetComponentData<BindedActionsCooldownData>(actor.ActorEntity);
-
-                if (!existingComponent.ReadyToUseBindingIndexes.Contains(bindable.BindingIndex))
-                {
-                    existingComponent.ReadyToUseBindingIndexes.Add(bindable.BindingIndex);
-                    dstManager.SetComponentData(actor.ActorEntity, existingComponent);
-                }
-                return;
-            }
-
-            dstManager.AddComponentData(actor.ActorEntity,
-                new BindedActionsCooldownData
-                { ReadyToUseBindingIndexes = new FixedList32<int> { bindable.BindingIndex } });
-        }
-
         public static void EvaluateAim(this IAimable aiming, IActor actor, Vector2 pos)
         {
             var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
@@ -200,12 +57,15 @@ namespace Crimson.Core.Utils
                     case AimingType.AimingArea:
                         prefabToSpawn = aiming.AimingProperties.aimingAreaPrefab;
                         break;
+
                     case AimingType.SightControl:
                         prefabToSpawn = aiming.AimingProperties.sightPrefab;
                         break;
+
                     case AimingType.Circle:
                         prefabToSpawn = aiming.AimingProperties.circlePrefab;
                         break;
+
                     default:
                         throw new ArgumentOutOfRangeException();
                 }
@@ -270,6 +130,48 @@ namespace Crimson.Core.Utils
             return aiming.SpawnedAimingPrefab.transform.position;
         }
 
+        public static void FinishAbilityCooldownTimer(this ICooldownable timer, IActor actor)
+        {
+            var actorPlayer = actor.Abilities.FirstOrDefault(a => a is AbilityActorPlayer) as AbilityActorPlayer;
+
+            if (actorPlayer == null || !actorPlayer.actorToUI) return;
+
+            if (!(timer is IBindable bindable)) return;
+
+            var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
+            var uiReceiverList = actorPlayer.UIReceiverList;
+
+            var abilityPlayerInput = actor.Abilities.FirstOrDefault(a => a is AbilityPlayerInput) as AbilityPlayerInput;
+
+            if (abilityPlayerInput == null) return;
+
+            var currentBinding =
+                abilityPlayerInput.customBindings.FirstOrDefault(b => b.index == bindable.BindingIndex);
+
+            if (!currentBinding.Equals(new CustomBinding()) && currentBinding.actions.FirstOrDefault(a =>
+                    a is IAimable aimable && aimable.AimingAvailable && aimable.DeactivateAimingOnCooldown) != null)
+            {
+                uiReceiverList.ForEach(r => ((UIReceiver)r).SetCustomButtonOnCooldown(bindable.BindingIndex, false));
+            }
+
+            if (dstManager.HasComponent<BindedActionsCooldownData>(actor.ActorEntity))
+            {
+                var existingComponent = dstManager.GetComponentData<BindedActionsCooldownData>(actor.ActorEntity);
+
+                if (!existingComponent.ReadyToUseBindingIndexes.Contains(bindable.BindingIndex))
+                {
+                    existingComponent.ReadyToUseBindingIndexes.Add(bindable.BindingIndex);
+                    dstManager.SetComponentData(actor.ActorEntity, existingComponent);
+                }
+                return;
+            }
+
+            dstManager.AddComponentData(actor.ActorEntity,
+                new BindedActionsCooldownData
+                { ReadyToUseBindingIndexes = new FixedList32<int> { bindable.BindingIndex } });
+        }
+
         public static void ResetAiming(this IAimable aiming, IActor actor)
         {
             var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
@@ -291,6 +193,46 @@ namespace Crimson.Core.Utils
             Object.Destroy(aiming.SpawnedAimingPrefab);
         }
 
+        public static void SetAbilityLevel(this ILevelable ability, int level,
+                                                    List<FieldInfo> levelablePropertiesInfo, IActor actor, IActor target = null)
+        {
+            ability.Level = level;
+            var levelIndex = level - 1;
+
+            foreach (var levelableProperty in ability.LevelablePropertiesList)
+            {
+                var fieldInfo =
+                    levelablePropertiesInfo.FirstOrDefault(f => f.Name == levelableProperty.propertyName);
+
+                if (fieldInfo == null || fieldInfo.FieldType != levelableProperty.modifier.GetType()) continue;
+
+                var fieldValue = (float)fieldInfo.GetValue(ability);
+
+                var newValue = 0.0f;
+                var isTargetValid = target == null || target == actor.Owner;
+                //TODO:
+                //  Вынести логику действий в отдальные объекты
+                //  Сделать по шаблону фабричный метод
+                //  Сбор объектов через рефлексию
+                //  Либо сделать через перегрузку операторов и прокси таблицы для них
+                switch (levelableProperty.levelablePropertyAction)
+                {
+                    case ModifiablePropertiesActions.Multiply:
+                        newValue = isTargetValid
+                            ? fieldValue * levelableProperty.modifier
+                            : fieldValue * (float)Math.Pow(levelableProperty.modifier, levelIndex);
+                        break;
+
+                    case ModifiablePropertiesActions.Add:
+                        newValue = isTargetValid
+                            ? fieldValue + levelableProperty.modifier
+                            : fieldValue + (levelIndex * levelableProperty.modifier);
+                        break;
+                }
+
+                fieldInfo.SetValue(ability, newValue);
+            }
+        }
 
         public static void SetLevelableProperty(this ILevelable levelable, List<FieldInfo> levelablePropertiesInfoCached)
         {
@@ -302,6 +244,73 @@ namespace Crimson.Core.Utils
 
             levelable.LevelablePropertiesList.RemoveAt(levelable.LevelablePropertiesList.Count - 1);
             levelable.LevelablePropertiesList.Add(lastStruct);
+        }
+
+        public static void StartAbilityCooldownTimer(this ICooldownable timer, IActor actor)
+        {
+            var actorPlayer = actor.Abilities.FirstOrDefault(a => a is AbilityActorPlayer) as AbilityActorPlayer;
+
+            if (actorPlayer == null || !actorPlayer.actorToUI) return;
+
+            if (!(timer is IBindable)) return;
+
+            var bindable = (IBindable)timer;
+
+            if (bindable.BindingIndex < 0) return;
+
+            var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
+            var uiReceiverList = actorPlayer.UIReceiverList;
+
+            if (dstManager.HasComponent<BindedActionsCooldownData>(actor.ActorEntity))
+            {
+                var existingComponent = dstManager.GetComponentData<BindedActionsCooldownData>(actor.ActorEntity);
+
+                if (existingComponent.OnCooldownBindingIndexes.Contains(bindable.BindingIndex)) return;
+
+                existingComponent.OnCooldownBindingIndexes.Add(bindable.BindingIndex);
+                dstManager.SetComponentData(actor.ActorEntity, existingComponent);
+            }
+            else
+            {
+                dstManager.AddComponentData(actor.ActorEntity, new BindedActionsCooldownData
+                {
+                    OnCooldownBindingIndexes = new FixedList32<int> { bindable.BindingIndex },
+                });
+            }
+
+            var abilityPlayerInput = actor.Abilities.FirstOrDefault(a => a is AbilityPlayerInput) as AbilityPlayerInput;
+
+            if (abilityPlayerInput == null) return;
+
+            var currentBinding = abilityPlayerInput.customBindings.FirstOrDefault(b => b.index == bindable.BindingIndex);
+
+            if (!currentBinding.Equals(new CustomBinding()) && currentBinding.actions.FirstOrDefault(a =>
+                    a is IAimable aimable && aimable.AimingAvailable && aimable.DeactivateAimingOnCooldown) != null)
+            {
+                uiReceiverList.ForEach(r => ((UIReceiver)r).SetCustomButtonOnCooldown(bindable.BindingIndex, true));
+            }
+        }
+
+        public static void UpdateBindingIndex(this IBindable bindable, int idx, Entity entity)
+        {
+            bindable.BindingIndex = idx;
+
+            var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
+            if (dstManager.HasComponent<BindedActionsCooldownData>(entity))
+            {
+                var existingComponent = dstManager.GetComponentData<BindedActionsCooldownData>(entity);
+
+                existingComponent.ReadyToUseBindingIndexes.Add(idx);
+                dstManager.SetComponentData(entity, existingComponent);
+                return;
+            }
+
+            World.DefaultGameObjectInjectionWorld.EntityManager.AddComponentData(entity, new BindedActionsCooldownData
+            {
+                ReadyToUseBindingIndexes = new FixedList32<int> { bindable.BindingIndex }
+            });
         }
     }
 }

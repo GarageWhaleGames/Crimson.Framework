@@ -1,12 +1,17 @@
-﻿using Assets.Farm.Scripts.Core.Resources.Interfaces;
+﻿using System;
+using Assets.Farm.Scripts.Core.Resources;
+using Sirenix.OdinInspector;
+using UnityEngine;
 
 namespace Assets.Farm.Scripts.Core.Buildings
 {
-    struct BuildingUpgrade
+    [Serializable]
+    public struct BuildingUpgrade
     {
-        private int Level;
-        private IResource[] CostResources;
-        private int Time;
-        private BuildingOrder DefaultOrder;
+        public Resource[] CostResources;
+        [HideInInspector] public DateTime StartTime;
+
+        [InfoBox("Time in minutes")]
+        public float TimeForUpgrade;
     }
 }

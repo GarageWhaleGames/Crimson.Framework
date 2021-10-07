@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using Crimson.Core.Common;
+﻿using Crimson.Core.Common;
 using Crimson.Core.Enums;
 using Crimson.Core.Utils;
 using Sirenix.OdinInspector;
+using System.Collections.Generic;
+using System.Linq;
+using System.Reflection;
 using Unity.Entities;
 using UnityEngine;
 
@@ -18,31 +18,49 @@ namespace Crimson.Core.Components
 
         public IActor Actor { get; set; }
 
-        [TitleGroup("Player data")] [NetworkSimData] [CastToUI("Name")] [InfoBox("32 symbols max")]
+        [TitleGroup("Player data")]
+        [NetworkSimData]
+        [CastToUI("Name")]
+        [InfoBox("32 symbols max")]
         public string PlayerName;
 
-        [NetworkSimData] [CastToUI("MaxHealth")] [LevelableValue]
+        [NetworkSimData]
+        [CastToUI("MaxHealth")]
+        [LevelableValue]
         public int MaxHealth;
 
-        [NetworkSimData] [ReadOnly] [CastToUI("CurrentHealth")] [LevelableValue]
+        [NetworkSimData]
+        [ReadOnly]
+        [CastToUI("CurrentHealth")]
+        [LevelableValue]
         public int CurrentHealth;
 
-        [NetworkSimData] [ReadOnly] [CastToUI("CurrentExperience")]
+        [NetworkSimData]
+        [ReadOnly]
+        [CastToUI("CurrentExperience")]
         public int CurrentExperience;
 
-        [NetworkSimData] [ReadOnly] [CastToUI("LevelUpRequiredExperience")] [LevelableValue]
+        [NetworkSimData]
+        [ReadOnly]
+        [CastToUI("LevelUpRequiredExperience")]
+        [LevelableValue]
         public int LevelUpRequiredExperience;
 
-        [NetworkSimData] [ReadOnly] [CastToUI("CurrentLevel")]
+        [NetworkSimData]
+        [ReadOnly]
+        [CastToUI("CurrentLevel")]
         public int CurrentLevel = 1;
 
-        [NetworkSimData] [ReadOnly] [CastToUI("TotalDamageApplied")]
+        [NetworkSimData]
+        [ReadOnly]
+        [CastToUI("TotalDamageApplied")]
         public int TotalDamageApplied;
-        
+
         [ReadOnly]
         public int deathCount;
 
-        [TitleGroup("External behaviours")]  [ValidateInput("MustBeAbility", "Ability MonoBehaviours must derive from IActorAbility!")]
+        [TitleGroup("External behaviours")]
+        [ValidateInput("MustBeAbility", "Ability MonoBehaviours must derive from IActorAbility!")]
         public MonoBehaviour levelUpAction;
         [ValidateInput("MustBeAbility", "Ability MonoBehaviours must derive from IActorAbility!")]
         public MonoBehaviour healAction;
@@ -58,12 +76,15 @@ namespace Crimson.Core.Components
 
         public ActorTakeDamageAnimProperties actorTakeDamageAnimProperties;
 
-        [TitleGroup("UI channel info")] [OnValueChanged("UpdateUIChannelInfo")]
+        [TitleGroup("UI channel info")]
+        [OnValueChanged("UpdateUIChannelInfo")]
         public bool ExplicitUIChannel;
 
         [ShowIf("ExplicitUIChannel")] public int UIChannelID = 0;
 
-        [Space] [TitleGroup("Levelable properties")] [OnValueChanged("SetLevelableProperty")]
+        [Space]
+        [TitleGroup("Levelable properties")]
+        [OnValueChanged("SetLevelableProperty")]
         public List<LevelableProperties> levelablePropertiesList = new List<LevelableProperties>();
 
         public bool TimerActive
@@ -103,7 +124,7 @@ namespace Crimson.Core.Components
                 if (!ReferenceEquals(_maxDistanceWeapon, null)) return _maxDistanceWeapon;
 
                 return Actor.Abilities.Where(a => a is AbilityWeapon)
-                    .OrderByDescending(w => ((AbilityWeapon) w).findTargetProperties.maxDistanceThreshold)
+                    .OrderByDescending(w => ((AbilityWeapon)w).findTargetProperties.maxDistanceThreshold)
                     .FirstOrDefault();
             }
         }
@@ -135,7 +156,7 @@ namespace Crimson.Core.Components
 
             CurrentHealth = MaxHealth;
             LevelUpRequiredExperience = GameMeta.PointsToLevelUp;
-            
+
             UIReceiverList = new List<IActor>();
 
             _dstManager.AddComponentData(entity, new PlayerStateData
@@ -276,7 +297,7 @@ namespace Crimson.Core.Components
 
             if (levelUpAction != null)
             {
-                ((IActorAbility) levelUpAction).Execute();
+                ((IActorAbility)levelUpAction).Execute();
             }
 
             if (actorToUI)
@@ -295,10 +316,10 @@ namespace Crimson.Core.Components
         public void SetLevel(int level)
         {
             this.SetAbilityLevel(level, LevelablePropertiesInfoCached, Actor);
-            
+
             foreach (var ability in Actor.Abilities.Where(a => a is ILevelable && !ReferenceEquals(a, this)))
             {
-                ((ILevelable) ability).SetLevel(Level);
+                ((ILevelable)ability).SetLevel(Level);
             }
         }
 
@@ -312,7 +333,7 @@ namespace Crimson.Core.Components
         {
             foreach (var receiver in UIReceiverList.Where(receiver => _fieldsInfo.ContainsKey(fieldName)))
             {
-                ((UIReceiver) receiver)?.UpdateUIElementsData(
+                ((UIReceiver)receiver)?.UpdateUIElementsData(
                     _fieldsInfo[fieldName].GetCustomAttribute<CastToUI>(false).FieldId,
                     _fieldsInfo[fieldName].GetValue(this));
             }
@@ -348,10 +369,10 @@ namespace Crimson.Core.Components
         {
             if (!ExplicitUIChannel) UIChannelID = 0;
         }
-        
+
         private bool MustBeAbility(MonoBehaviour a)
         {
-            return (a is IActorAbility)||(a is null);
+            return (a is IActorAbility) || (a is null);
         }
     }
 

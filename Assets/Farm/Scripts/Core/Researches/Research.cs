@@ -1,47 +1,16 @@
-﻿using Assets.Farm.Scripts.Core.Resources.Interfaces;
+﻿using Assets.Farm.Scripts.Core.Resources;
+using System;
 
 namespace Assets.Farm.Scripts.Core.Researches
 {
-    class Research
+    [Serializable]
+    public struct Research
     {
-        public int ID
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public Resource[] Costs { get; set; }
+        public string Description { get; set; }
+        public int ID { get; set; }
 
-        public string Name
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public IResource[] Costs
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public int Time
-        {
-            get => default;
-            set
-            {
-            }
-        }
-
-        public string Description
-        {
-            get => default;
-            set
-            {
-            }
-        }
+        public string Name { get; set; }
+        public int Time { get; set; }
     }
 }
