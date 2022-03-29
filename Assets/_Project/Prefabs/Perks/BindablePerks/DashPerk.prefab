@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5157345633992761293}
-  - component: {fileID: -1201467966035257858}
+  - component: {fileID: 6848550663150226291}
   - component: {fileID: 328192306876815148}
   m_Layer: 5
   m_Name: DashPerk
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1201467966035257858
+--- !u!114 &6848550663150226291
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,15 +41,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 6882162225140268797}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d3aa30ca3bd408d92446c07a6810628, type: 3}
+  m_Script: {fileID: 11500000, guid: afa9707340687fd4384a7eb93a33f904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  customBinding:
-    index: 3
+  binding:
+    _inputAction: {fileID: 7403196822482766466, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
+      type: 3}
     actions:
     - {fileID: 328192306876815148}
   destroyAfterActions: 1
-  removeSameIndexBindings: 1
+  removeSameIndexBindings: 0
 --- !u!114 &328192306876815148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67,6 +68,7 @@ MonoBehaviour:
   timer: 0.1
   cooldownTime: 5
   aimingAvailable: 0
+  useMovementVector: 1
   deactivateAimingOnCooldown: 1
   aimingProperties:
     evaluateActionOptions: 0
@@ -85,7 +87,7 @@ MonoBehaviour:
   - {fileID: 8575838153484086779, guid: 1fdfdd2c1c4a1b74280496a8b40cf8da, type: 3}
   - {fileID: 2154348514870167830, guid: b381f5f18673d7849a50b48f8131c7a5, type: 3}
   perkRelatedComponents:
-  - {fileID: -1201467966035257858}
+  - {fileID: 0}
   levelablePropertiesList:
   - propertyName: force
     levelablePropertyAction: 1

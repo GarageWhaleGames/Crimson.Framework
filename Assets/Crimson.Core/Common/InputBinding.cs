@@ -1,16 +1,19 @@
-using Crimson.Core.Components;
+﻿using Crimson.Core.Components;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Crimson.Core.Common
+namespace Assets.Crimson.Core.Common
 {
 	[Serializable]
-	public struct CustomBinding
+	public struct InputBinding
 	{
-		public int index;
+		[SerializeField] private InputActionReference _inputAction;
+		public Guid ID => _inputAction.action.id;
+
+		public InputAction Input => _inputAction.action;
 
 		[ValidateInput(nameof(MustBeAbility), "Ability MonoBehaviours must derive from IActorAbility!")]
 		public List<MonoBehaviour> actions;
@@ -20,14 +23,14 @@ namespace Crimson.Core.Common
 			return !a.Exists(t => !(t is IActorAbility)) || a.Count == 0;
 		}
 
-		public static bool operator ==(CustomBinding left, CustomBinding right)
+		public static bool operator ==(InputBinding left, InputBinding right)
 		{
-			return left.index == right.index;
+			return left.ID == right.ID;
 		}
 
-		public static bool operator !=(CustomBinding left, CustomBinding right)
+		public static bool operator !=(InputBinding left, InputBinding right)
 		{
-			return left.index != right.index;
+			return left.ID != right.ID;
 		}
 
 		public override int GetHashCode()

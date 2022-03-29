@@ -13,163 +13,211 @@ using UnityEngine;
 
 namespace Crimson.Core.Components
 {
-    public struct AIInputData : IComponentData
-    {
-        public byte foo;
-    }
+	public struct AIInputData : IComponentData
+	{
+		public byte foo;
+	}
 
-    public struct CompensateCameraRotation : IComponentData
-    {
-    }
+	public struct CompensateCameraRotation : IComponentData
+	{
+	}
 
-    public struct NetworkInputData : IComponentData
-    {
-        public byte foo;
-    }
+	public struct NetworkInputData : IComponentData
+	{
+		public byte foo;
+	}
 
-    [NetworkSimObject]
-    public struct PlayerInputData : IComponentData
-    {
-        [NetworkSimData] public float CompensateAngle;
-        [NetworkSimData] public FixedList512<float> CustomInput;
-        [NetworkSimData] public FixedList512<float2> CustomSticksInput;
-        [NetworkSimData] public float2 Look;
-        public float MinMagnitude;
-        [NetworkSimData] public float2 Mouse;
-        [NetworkSimData] public float2 Move;
-        internal bool InventoryState;
+	[NetworkSimObject]
+	public struct PlayerInputData : IComponentData
+	{
+		[NetworkSimData] public float CompensateAngle;
+		[NetworkSimData] public FixedList512<float> CustomInput;
+		[NetworkSimData] public FixedList512<float2> CustomSticksInput;
+		[NetworkSimData] public float2 Look;
+		public float MinMagnitude;
+		[NetworkSimData] public float2 Mouse;
+		[NetworkSimData] public float2 Move;
+		internal bool InventoryState;
 
-        public override string ToString()
-        {
-            var results = $"Move:{Move}\n" +
-                          $"Mouse:{Mouse}\n" +
-                          $"Look:{Look}\n";
+		public override string ToString()
+		{
+			var results = $"Move:{Move}\n" +
+						  $"Mouse:{Mouse}\n" +
+						  $"Look:{Look}\n";
 
-            results += $"CustomInput:\n";
-            for (var i = 0; i < CustomInput.Length; i++)
-            {
-                results += $"\t{CustomInput[i]}:{CustomSticksInput[i]}\n";
-            }
+			results += $"CustomInput:\n";
+			for (var i = 0; i < CustomInput.Length; i++)
+			{
+				results += $"\t{CustomInput[i]}:{CustomSticksInput[i]}\n";
+			}
 
-            return results;
-        }
-    }
+			return results;
+		}
+	}
 
-    public struct UserInputData : IComponentData
-    {
-        public byte foo;
-    }
+	public struct UserInputData : IComponentData
+	{
+		public byte foo;
+	}
 
-    [HideMonoScript]
-    public class AbilityPlayerInput : MonoBehaviour, IActorAbility
-    {
-        [ShowIf("inputSource", InputSource.AIInput)]
-        [InfoBox("Additional AI Ability Component is needed to use AI Input")]
-        [ValidateInput("MustBeAI", "AI MonoBehaviour must exist and derive from IAISettings!")]
-        [LabelText("AI Behaviour Component")]
-        public MonoBehaviour AIBehaviour;
+	[HideMonoScript]
+	public class AbilityPlayerInput : MonoBehaviour, IActorAbility
+	{
+		[ShowIf("inputSource", InputSource.AIInput)]
+		[InfoBox("Additional AI Ability Component is needed to use AI Input")]
+		[ValidateInput("MustBeAI", "AI MonoBehaviour must exist and derive from IAISettings!")]
+		[LabelText("AI Behaviour Component")]
+		public MonoBehaviour AIBehaviour;
 
-        [HideInInspector] public Dictionary<int, List<IActorAbility>> bindingsDict;
+		[HideInInspector] public Dictionary<int, List<IActorAbility>> bindingsDict;
 
-        [ShowIfGroup("inputSource", InputSource.UserInput)]
-        public bool compensateCameraRotation = true;
+		[ShowIfGroup("inputSource", InputSource.UserInput)]
+		public bool compensateCameraRotation = true;
 
-        [Space]
-        [InfoBox(
-            "Bind Abilities calls to Custom Inputs, indexes 0..9 represent keyboard keys of 0..9.\n" +
-            "Further bindings are as set in User Input")]
-        public List<CustomBinding> customBindings = new List<CustomBinding>();
+		[Space]
+		[InfoBox(
+			"Bind Abilities calls to Custom Inputs, indexes 0..9 represent keyboard keys of 0..9.\n" +
+			"Further bindings are as set in User Input")]
+		public List<CustomBinding> customBindings = new List<CustomBinding>();
 
-        [EnumToggleButtons] public InputSource inputSource;
+		[EnumToggleButtons] public InputSource inputSource;
 
-        [ShowIfGroup("inputSource", InputSource.UserInput)]
-        public float minMoveInputMagnitude = 0f;
+		[ShowIfGroup("inputSource", InputSource.UserInput)]
+		public float minMoveInputMagnitude = 0f;
 
-        public IActor Actor { get; set; }
+		private readonly List<InputBinding> _inputBindings = new List<InputBinding>();
+		private readonly Dictionary<Guid, List<IActorAbility>> _inputBindingsDict = new Dictionary<Guid, List<IActorAbility>>();
 
-        public void AddComponentData(ref Entity entity, IActor actor)
-        {
-            bindingsDict = new Dictionary<int, List<IActorAbility>>();
+		public IActor Actor { get; set; }
 
-            Actor = actor;
+		public void AddComponentData(ref Entity entity, IActor actor)
+		{
+			bindingsDict = new Dictionary<int, List<IActorAbility>>();
 
-            var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+			Actor = actor;
 
-            var c = new FixedList512<float> { Length = Constants.INPUT_BUFFER_CAPACITY };
-            var sticksInput = new FixedList512<float2> { Length = Constants.INPUT_BUFFER_CAPACITY };
+			var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-            dstManager.AddComponentData(entity, new PlayerInputData
-            {
-                CustomInput = c,
-                MinMagnitude = minMoveInputMagnitude,
-                CustomSticksInput = sticksInput
-            });
+			var c = new FixedList512<float> { Length = Constants.INPUT_BUFFER_CAPACITY };
+			var sticksInput = new FixedList512<float2> { Length = Constants.INPUT_BUFFER_CAPACITY };
 
-            foreach (var binding in customBindings)
-            {
-                AddCustomBinding(binding);
-            }
+			dstManager.AddComponentData(entity, new PlayerInputData
+			{
+				CustomInput = c,
+				MinMagnitude = minMoveInputMagnitude,
+				CustomSticksInput = sticksInput
+			});
 
-            dstManager.AddComponentData(entity, new MoveByInputData());
+			foreach (var binding in customBindings)
+			{
+				AddCustomBinding(binding);
+			}
 
-            switch (inputSource)
-            {
-                case InputSource.Default:
-                    break;
+			dstManager.AddComponentData(entity, new MoveByInputData());
 
-                case InputSource.UserInput:
-                    dstManager.AddComponentData(entity, new UserInputData());
-                    dstManager.AddComponentData(entity, new NetworkSyncSend());
-                    if (compensateCameraRotation)
-                    {
-                        dstManager.AddComponentData(entity, new CompensateCameraRotation());
-                    }
+			switch (inputSource)
+			{
+				case InputSource.Default:
+					break;
 
-                    break;
+				case InputSource.UserInput:
+					dstManager.AddComponentData(entity, new UserInputData());
+					dstManager.AddComponentData(entity, new NetworkSyncSend());
+					if (compensateCameraRotation)
+					{
+						dstManager.AddComponentData(entity, new CompensateCameraRotation());
+					}
 
-                case InputSource.NetworkInput:
-                    dstManager.AddComponentData(entity, new NetworkInputData());
-                    break;
+					break;
 
-                case InputSource.AIInput:
-                    dstManager.AddComponentData(entity, new AIInputData());
-                    dstManager.AddComponentData(entity, new NetworkSyncSend());
-                    break;
+				case InputSource.NetworkInput:
+					dstManager.AddComponentData(entity, new NetworkInputData());
+					break;
 
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-        }
+				case InputSource.AIInput:
+					dstManager.AddComponentData(entity, new AIInputData());
+					dstManager.AddComponentData(entity, new NetworkSyncSend());
+					break;
 
-        public void AddCustomBinding(CustomBinding binding)
-        {
-            if (!customBindings.Contains(binding)) customBindings.Add(binding);
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
+		}
 
-            if (!bindingsDict.Keys.Contains(binding.index))
-            {
-                bindingsDict.Add(binding.index, binding.actions.ConvertAll(a => a as IActorAbility));
-            }
-            else
-            {
-                bindingsDict[binding.index].AddRange(binding.actions.ConvertAll(a => a as IActorAbility));
-            }
-        }
+		public void AddCustomBinding(CustomBinding binding)
+		{
+			if (!customBindings.Contains(binding)) customBindings.Add(binding);
 
-        public void Execute()
-        {
-        }
+			if (!bindingsDict.Keys.Contains(binding.index))
+			{
+				bindingsDict.Add(binding.index, binding.actions.ConvertAll(a => a as IActorAbility));
+			}
+			else
+			{
+				bindingsDict[binding.index].AddRange(binding.actions.ConvertAll(a => a as IActorAbility));
+			}
+		}
 
-        public void RemoveCustomBinding(int indexToRemove)
-        {
-            var bindingToRemove = customBindings.FirstOrDefault(b => b.index == indexToRemove);
-            customBindings.Remove(bindingToRemove);
+		public void Execute()
+		{
+		}
 
-            bindingsDict.Remove(indexToRemove);
-        }
+		public void RemoveCustomBinding(int indexToRemove)
+		{
+			var bindingToRemove = customBindings.FirstOrDefault(b => b.index == indexToRemove);
+			customBindings.Remove(bindingToRemove);
 
-        private bool MustBeAI(MonoBehaviour a)
-        {
-            return a is IAIModule;
-        }
-    }
+			bindingsDict.Remove(indexToRemove);
+		}
+
+		internal void AddBinding(InputBinding binding)
+		{
+			if (!_inputBindings.Contains(binding))
+			{
+				_inputBindings.Add(binding);
+			}
+
+			if (!_inputBindingsDict.Keys.Contains(binding.ID))
+			{
+				_inputBindingsDict.Add(binding.ID, binding.actions.ConvertAll(a => a as IActorAbility));
+				binding.Input.performed += ActionPerformed;
+			}
+			else
+			{
+				_inputBindingsDict[binding.ID].AddRange(binding.actions.ConvertAll(a => a as IActorAbility));
+			}
+		}
+
+		private void ActionPerformed(UnityEngine.InputSystem.InputAction.CallbackContext context)
+		{
+			if (_inputBindingsDict.ContainsKey(context.action.id))
+			{
+				_inputBindingsDict[context.action.id].ForEach(s => s.Execute());
+			}
+		}
+
+		internal IEnumerable<InputBinding> GetInputBindings(Guid id)
+		{
+			return _inputBindings.Where(s => s.ID == id);
+		}
+
+		internal void RemoveBindingByID(Guid id)
+		{
+			var binding = _inputBindings.FirstOrDefault(s => s.ID == id);
+			if (binding != null)
+			{
+				binding.Input.performed -= ActionPerformed;
+			}
+
+			if (_inputBindingsDict.ContainsKey(id))
+			{
+				_inputBindingsDict.Remove(id);
+			}
+		}
+
+		private bool MustBeAI(MonoBehaviour a)
+		{
+			return a is IAIModule;
+		}
+	}
 }

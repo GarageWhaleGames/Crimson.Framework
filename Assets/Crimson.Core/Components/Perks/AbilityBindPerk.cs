@@ -1,18 +1,20 @@
-﻿using Crimson.Core.Common;
+﻿using Assets.Crimson.Core.Common;
+using Crimson.Core.Common;
+using Crimson.Core.Components;
 using Sirenix.OdinInspector;
 using System.Linq;
 using Unity.Entities;
 using UnityEngine;
 
-namespace Crimson.Core.Components
+namespace Assets.Crimson.Core.Components.Perks
 {
 	[HideMonoScript]
-	public class AbilityAddActionsToPlayerInput : MonoBehaviour, IActorAbility
+	public class AbilityBindPerk : MonoBehaviour, IActorAbility
 	{
 		[InfoBox(
 			"Bind Abilities calls to Custom Inputs, indexes 0..9 represent keyboard keys of 0..9.\n" +
 			"Further bindings are as set in User Input")]
-		public CustomBinding customBinding;
+		public InputBinding binding;
 
 		public bool destroyAfterActions = true;
 		public bool removeSameIndexBindings;
@@ -25,32 +27,37 @@ namespace Crimson.Core.Components
 
 			var abilityPlayerInput = actor.Abilities.FirstOrDefault(a => a is AbilityPlayerInput) as AbilityPlayerInput;
 
-			if (abilityPlayerInput == null) return;
-
-			var existingBindings = abilityPlayerInput.customBindings
-				.Where(binding => binding == customBinding);
-
-			if (existingBindings.Any() && removeSameIndexBindings)
+			if (abilityPlayerInput == null)
 			{
-				foreach (var binding in existingBindings)
-				{
-					binding.actions.ForEach(a =>
-					{
-						if (a is IPerkAbility ability)
-						{
-							ability.Remove();
-						}
-						else
-						{
-							Destroy(a);
-						}
-					});
-				}
-
-				abilityPlayerInput.RemoveCustomBinding(customBinding.index);
+				return;
 			}
 
-			abilityPlayerInput.AddCustomBinding(customBinding);
+			if (removeSameIndexBindings)
+			{
+				var existingBindings = abilityPlayerInput.GetInputBindings(binding.ID);
+
+				if (existingBindings.Any() )
+				{
+					foreach (var binding in existingBindings)
+					{
+						binding.actions.ForEach(a =>
+						{
+							if (a is IPerkAbility ability)
+							{
+								ability.Remove();
+							}
+							else
+							{
+								Destroy(a);
+							}
+						});
+					}
+
+					abilityPlayerInput.RemoveBindingByID(binding.ID);
+				}
+			}			
+
+			abilityPlayerInput.AddBinding(binding);
 
 			if (destroyAfterActions)
 			{

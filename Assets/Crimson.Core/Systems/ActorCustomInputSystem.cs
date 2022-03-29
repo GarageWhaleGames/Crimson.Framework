@@ -37,7 +37,7 @@ namespace Crimson.Core.Systems
                                 reactiveParser.Parse(b.Key, playerInput);
                             }
                             if (Math.Abs(playerInput.CustomInput[b.Key]) >= Constants.INPUT_THRESH)
-                                a.Execute();
+                                a?.Execute();
 
                             if (mapping.inputSource != InputSource.UserInput) return;
 
