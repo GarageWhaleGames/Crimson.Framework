@@ -100,7 +100,7 @@ MonoBehaviour:
       UsePool: 1
   projectileStartupDelay: 0
   cooldownTime: 0.3
-  projectileClipCapacity: 10
+  projectileClipCapacity: 20
   clipReloadTime: 1
   forceBursts: 0
   burstShotCountRange: {x: 1, y: 1}
@@ -116,7 +116,6 @@ MonoBehaviour:
   reloadAnimProps:
     AnimationName: 
     HasAnimation: 0
-  _cooldownTime: 0.3
 --- !u!114 &594245501430399794
 MonoBehaviour:
   m_ObjectHideFlags: 0

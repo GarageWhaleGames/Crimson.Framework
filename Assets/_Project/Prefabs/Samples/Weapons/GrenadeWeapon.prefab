@@ -113,7 +113,7 @@ MonoBehaviour:
   appliedPerksNames: []
   aimingByInput: 0
   SpawnPointOffset: {x: 0, y: 1.5, z: 1}
-  _cooldownTime: 0.2
+  _cooldownTime: 0.5
 --- !u!114 &7594929337795694942
 MonoBehaviour:
   m_ObjectHideFlags: 0

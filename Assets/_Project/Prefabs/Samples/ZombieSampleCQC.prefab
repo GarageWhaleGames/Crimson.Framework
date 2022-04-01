@@ -322,7 +322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb68bfe9b20e4840be7f8b09537fb0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 5
   useDynamics: 1
   movementStart:
     curve:
@@ -516,7 +516,7 @@ MonoBehaviour:
       MaxSize: 0
       UsePool: 0
   projectileStartupDelay: 0
-  cooldownTime: 0.3
+  cooldownTime: 0.15
   projectileClipCapacity: 0
   clipReloadTime: 0
   forceBursts: 0

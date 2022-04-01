@@ -123,6 +123,7 @@ MonoBehaviour:
   moveDirection: 0
   forwardVector: {x: 0, y: 0, z: 0}
   compensateSpawnerRotation: 1
+  OffsetDirection: {x: 0, y: 0, z: 0}
 --- !u!114 &-329834800428341583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,9 +180,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionMovementSettings:
-    reaction: 1
     alsoStopRotation: 1
+    inputMultiplier: 0.75
     force2DBounce: 1
+    reaction: 1
 --- !u!114 &2866327413141821552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,9 +196,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7505beefdc468b98e39e54f7335d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perkLevel: 1
-  damageValue: 20
+  CriticalDamageChance: 0.1
+  CriticalDamageMultiplier: 1
+  Damage: 10
   levelablePropertiesList: []
+  perkLevel: 1
 --- !u!114 &-4054787997842051503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +214,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentName: 
+  ExecuteNow: 0
   ExecuteOnAwake: 0
   SpawnData:
     spawnerDisabled: 0
@@ -223,6 +228,7 @@ MonoBehaviour:
     spawnPointsFrom: 0
     _spawnPoints: []
     spawnPointTag: 
+    useChildrenObjects: 0
     rotationOfSpawns: 4
     parentOfSpawns: 0
     actorWithComponentName: 
@@ -234,6 +240,11 @@ MonoBehaviour:
     runSpawnActionsOnObjects: 1
     destroyAbilityAfterSpawn: 0
     randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
   SpawnDelays:
     Delay: 0
     StartupDelay: 0
@@ -323,6 +334,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4354915010304090}
     m_Modifications:
+    - target: {fileID: 97723075476329869, guid: ecff78142485b654bbacbd9644260c28,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.21293165
+      objectReference: {fileID: 0}
+    - target: {fileID: 97723075476329869, guid: ecff78142485b654bbacbd9644260c28,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.23624152
+      objectReference: {fileID: 0}
+    - target: {fileID: 97723075476329869, guid: ecff78142485b654bbacbd9644260c28,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0.2735849
+      objectReference: {fileID: 0}
+    - target: {fileID: 1280612601857447718, guid: ecff78142485b654bbacbd9644260c28,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1370785642216675843, guid: ecff78142485b654bbacbd9644260c28,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3501533120736757307, guid: ecff78142485b654bbacbd9644260c28,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4407090430448136125, guid: ecff78142485b654bbacbd9644260c28,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5104429608362490231, guid: ecff78142485b654bbacbd9644260c28,
         type: 3}
       propertyPath: m_Name
@@ -382,6 +428,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8883715940822634290, guid: ecff78142485b654bbacbd9644260c28,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ecff78142485b654bbacbd9644260c28, type: 3}
