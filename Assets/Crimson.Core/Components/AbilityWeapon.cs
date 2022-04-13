@@ -138,7 +138,7 @@ namespace Crimson.Core.Components
 
 		private Entity _entity;
 
-		public WeaponClip ClipData { get; private set; }
+		public WeaponClip ClipData { get; } = new WeaponClip();
 
 		private EntityManager _dstManager;
 
@@ -152,7 +152,7 @@ namespace Crimson.Core.Components
 
 			_entity = entity;
 
-			ClipData = new WeaponClip(projectileClipCapacity, projectileClipCapacity);
+			ClipData.Setup(projectileClipCapacity, projectileClipCapacity);
 
 			SpawnCallbacks = new List<Action<GameObject>>();
 
@@ -240,7 +240,10 @@ namespace Crimson.Core.Components
 					}
 					Timer.TimedActions.AddAction(FinishTimer, CooldownTime * (_additionalShotsNum + 1));
 				}
-				if (projectileClipCapacity == 0) return;
+				if (projectileClipCapacity == 0)
+				{
+					return;
+				}
 
 				ClipData.Decrease();
 				if (ClipData.IsEmpty)

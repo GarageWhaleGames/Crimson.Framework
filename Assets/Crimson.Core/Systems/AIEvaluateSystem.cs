@@ -17,13 +17,13 @@ namespace Crimson.Core.Systems
         protected override void OnCreate()
         {
             _queryAI = GetEntityQuery(
-                ComponentType.ReadWrite<EvaluateAIData>(),
+                ComponentType.ReadWrite<EvaluateAITag>(),
                 ComponentType.ReadOnly<AIInputData>(),
                 ComponentType.ReadOnly<Transform>(),
                 ComponentType.ReadOnly<AbilityAIInput>(),
                 ComponentType.Exclude<DeadActorTag>(),
                 ComponentType.Exclude<DestructionPendingTag>(),
-                ComponentType.Exclude<SetupAIData>(),
+                ComponentType.Exclude<SetupAITag>(),
                 ComponentType.Exclude<NetworkInputData>());
             _queryTargets = GetEntityQuery(
                 ComponentType.ReadOnly<Transform>(),
@@ -66,8 +66,8 @@ namespace Crimson.Core.Systems
                     ai.activeBehaviour = bestBehaviour;
                     ai.activeBehaviourPriority = bestPriority;
                     
-                    World.EntityManager.RemoveComponent<EvaluateAIData>(entity);
-                    World.EntityManager.AddComponent<SetupAIData>(entity);
+                    World.EntityManager.RemoveComponent<EvaluateAITag>(entity);
+                    World.EntityManager.AddComponent<SetupAITag>(entity);
                 }
             );
             

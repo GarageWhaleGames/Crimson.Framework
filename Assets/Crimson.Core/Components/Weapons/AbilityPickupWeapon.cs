@@ -1,6 +1,7 @@
 ﻿using Assets.Crimson.Core.Common.Interfaces;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
+using Crimson.Core.Loading.SpawnDataTypes;
 using Sirenix.OdinInspector;
 using Unity.Entities;
 using UnityEngine;
@@ -11,6 +12,8 @@ namespace Assets.Crimson.Core.Components.Weapons
 	{
 		[ValidateInput(nameof(MustBeWeapon), "MonoBehaviours must derive from IEquipable!")]
 		public MonoBehaviour TargetWeapon;
+
+		private SpawnItemData _spawnData;
 
 		public IActor AbilityOwnerActor { get; set; }
 		public IActor Actor { get; set; }
@@ -35,13 +38,27 @@ namespace Assets.Crimson.Core.Components.Weapons
 				return;
 			}
 
-			var equipAbility = TargetWeapon.GetComponent<IEquipable>();
+			_spawnData = new SpawnItemData()
+			{
+				Owner = TargetActor,
+				Spawner = TargetActor,
+				Prefab = TargetWeapon.gameObject,
+				SampledComponents = new Component[0]
+			};
+
+			EquipWeapon();
+		}
+
+		private void EquipWeapon()
+		{
+			var spawnedWeapon = ActorSpawn.Spawn(_spawnData);
+			var equipAbility = spawnedWeapon.GetComponent<IEquipable>();
 			equipAbility.Equip(TargetActor);
 		}
 
 		private bool MustBeWeapon(MonoBehaviour item)
 		{
-			return item == null || item is IEquipable || item.GetComponent<IEquipable>() != null;
+			return item != null && (item is IEquipable || item.GetComponentInChildren<IEquipable>() != null);
 		}
 	}
 }

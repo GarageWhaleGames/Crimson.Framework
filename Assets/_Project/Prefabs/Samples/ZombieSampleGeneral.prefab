@@ -148,11 +148,12 @@ MonoBehaviour:
     basePriority: 1.34
     additionalMode: 'Random mode: priority as probability'
     executeCustomInput: 0
+    LimitDistance: 2
     targetFilterMode: 0
     targetFilterTags:
     - Player
     - Ally
-  - behaviourType: RoamBehaviour
+  - behaviourType: LimitedRoamBehaviour
     priorityCurve:
       serializedVersion: 2
       m_Curve:
@@ -181,7 +182,8 @@ MonoBehaviour:
     curveMaxSample: 100
     basePriority: 0.88
     additionalMode: 
-    executeCustomInput: 3
+    executeCustomInput: 1
+    LimitDistance: 2
     targetFilterMode: 0
     targetFilterTags: []
   behaviourUpdatePeriod: {x: 0, y: 2.3312101}
@@ -216,6 +218,7 @@ MonoBehaviour:
     basePriority: 1
     additionalMode: 
     executeCustomInput: 0
+    LimitDistance: 2
     targetFilterMode: 0
     targetFilterTags: []
   activeBehaviourPriority: 0

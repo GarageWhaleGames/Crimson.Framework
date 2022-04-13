@@ -9,40 +9,42 @@ using Random = UnityEngine.Random;
 
 namespace GameFramework.Example.AI
 {
-    [Serializable]
-    public class StandBehaviour : IAIBehaviour
-    {
-        public string XAxis => "";
+	[Serializable]
+	public class StandBehaviour : IAIBehaviour
+	{
+		public string XAxis => "";
 
-        public string[] AdditionalModes => new string[0];
+		public string[] AdditionalModes => new string[0];
 
-        public bool NeedCurve => false;
-        public bool NeedTarget => false;
-        public bool NeedActions => false;
+		public bool NeedCurve => false;
+		public bool NeedTarget => false;
+		public bool NeedActions => false;
 
-        private const float FINISH_ROAM_DISTSQ = 2f;
-        private const float PRIORITY_MULTIPLIER = 0.5f;
+		public bool HasDistanceLimit => false;
 
-        private AIBehaviourSetting _behaviour = null;
-        private Transform _transform = null;
-        private readonly NavMeshPath _path = new NavMeshPath();
+		private const float FINISH_ROAM_DISTSQ = 2f;
+		private const float PRIORITY_MULTIPLIER = 0.5f;
 
-        public float Evaluate(Entity entity, AIBehaviourSetting behaviour, AbilityAIInput ai, List<Transform> targets)
-        {
-            _behaviour = behaviour;
-            _transform = _behaviour.Actor.GameObject.transform;
+		private AIBehaviourSetting _behaviour = null;
+		private Transform _transform = null;
+		private readonly NavMeshPath _path = new NavMeshPath();
 
-            return Random.value * _behaviour.basePriority;
-        }
+		public float Evaluate(Entity entity, AIBehaviourSetting behaviour, AbilityAIInput ai, List<Transform> targets)
+		{
+			_behaviour = behaviour;
+			_transform = _behaviour.Actor.GameObject.transform;
 
-        public bool SetUp(Entity entity, EntityManager dstManager)
-        {
-            return true;
-        }
+			return Random.value * _behaviour.basePriority;
+		}
 
-        public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
-        {
-            return true;
-        }
-    }
+		public bool SetUp(Entity entity, EntityManager dstManager)
+		{
+			return true;
+		}
+
+		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
+		{
+			return true;
+		}
+	}
 }

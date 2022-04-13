@@ -11,7 +11,6 @@ TagManager:
   - DestructibleObject
   - RotatingWeapon
   - IgnoreProjectiles
-  - WeaponPoint
   - AdditinalAnimator
   - PowerUp
   - Trap
@@ -26,9 +25,11 @@ TagManager:
   - Zone-1-Spawn
   - Zone-2-Spawn
   - Zone-3-Spawn
-  - Zone-3-Boss
   - TestSpawn
   - Claws1
+  - CinemachineTarget
+  - MagnetObjects
+  - WeaponMountPoint
   layers:
   - Default
   - TransparentFX

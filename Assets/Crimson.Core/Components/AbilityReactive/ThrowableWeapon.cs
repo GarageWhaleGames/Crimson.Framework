@@ -103,11 +103,11 @@ namespace Assets.Crimson.Core.Components.AbilityReactive
 			set => _cooldownTime = value;
 		}
 
-		public WeaponClip ClipData { get; private set; }
+		public WeaponClip ClipData { get; } = new WeaponClip();
 
 		protected EntityManager CurrentEntityManager => World.DefaultGameObjectInjectionWorld.EntityManager;
 		private Transform SpawnPointsRoot { get; set; }
-
+		
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			Actor = actor;
@@ -115,7 +115,7 @@ namespace Assets.Crimson.Core.Components.AbilityReactive
 			_dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 			SpawnCallbacks = new List<Action<GameObject>>();
 			IsEnable = true;
-			ClipData = new WeaponClip(projectileClipCapacity, projectileClipCapacity);
+			ClipData.Setup(projectileClipCapacity, projectileClipCapacity);
 			_dstManager.AddComponent<TimerData>(entity);
 
 			if (actorProjectileSpawnAnimProperties != null

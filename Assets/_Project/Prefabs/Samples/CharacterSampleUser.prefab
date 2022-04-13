@@ -47,14 +47,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cb3e455117448ea9f306badb3b4145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inputSource: 1
-  compensateCameraRotation: 1
-  minMoveInputMagnitude: 1
   AIBehaviour: {fileID: 0}
+  compensateCameraRotation: 1
   customBindings:
   - index: 1
     actions:
     - {fileID: 6517037303009265377}
+  inputSource: 1
+  minMoveInputMagnitude: 1
 --- !u!114 &-4939348821489114762
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentName: 
+  ExecuteNow: 0
   ExecuteOnAwake: 1
   SpawnData:
     spawnerDisabled: 0
@@ -81,6 +82,7 @@ MonoBehaviour:
     spawnPointsFrom: 0
     _spawnPoints: []
     spawnPointTag: 
+    useChildrenObjects: 0
     rotationOfSpawns: 3
     parentOfSpawns: 0
     actorWithComponentName: 
@@ -92,6 +94,11 @@ MonoBehaviour:
     runSpawnActionsOnObjects: 1
     destroyAbilityAfterSpawn: 0
     randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
   SpawnDelays:
     Delay: 0
     StartupDelay: 0
@@ -108,6 +115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentName: 
+  ExecuteNow: 0
   ExecuteOnAwake: 1
   SpawnData:
     spawnerDisabled: 0
@@ -124,6 +132,7 @@ MonoBehaviour:
     spawnPointsFrom: 0
     _spawnPoints: []
     spawnPointTag: 
+    useChildrenObjects: 0
     rotationOfSpawns: 3
     parentOfSpawns: 0
     actorWithComponentName: UIRoot
@@ -135,6 +144,11 @@ MonoBehaviour:
     runSpawnActionsOnObjects: 1
     destroyAbilityAfterSpawn: 0
     randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
   SpawnDelays:
     Delay: 0
     StartupDelay: 0
@@ -151,6 +165,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   newTag: Player
+  alsoSetLayer: 0
+  newLayer: 
   applyOnStart: 1
 --- !u!114 &6517037303009265377
 MonoBehaviour:
@@ -164,11 +180,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01f27bbc5db2e824eaa1a3864f89642e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  componentName: 
-  primaryProjectile: 0
+  actorProjectileSpawnAnimProperties:
+    HasActorProjectileAnimation: 0
+    ActorProjectileAnimationName: 
   aimingAvailable: 1
-  deactivateAimingOnCooldown: 1
+  appliedPerksNames: []
   attackDirectionType: 0
+  clipReloadDisplayToggle: []
+  clipReloadTime: 1
+  componentName: 
+  cooldownTime: 0.3
+  deactivateAimingOnCooldown: 1
+  primaryProjectile: 0
+  projectileClipCapacity: 0
+  reloadDisplayToggle: []
+  startupDelay: 0
+  suppressWeaponSpawn: 0
   weaponSpawnItem:
     spawnerDisabled: 0
     objectsToSpawn:
@@ -181,6 +208,7 @@ MonoBehaviour:
     spawnPointsFrom: 0
     _spawnPoints: []
     spawnPointTag: 
+    useChildrenObjects: 0
     rotationOfSpawns: 3
     parentOfSpawns: 1
     actorWithComponentName: 
@@ -192,14 +220,8 @@ MonoBehaviour:
     runSpawnActionsOnObjects: 0
     destroyAbilityAfterSpawn: 0
     randomSeed: 0
-  startupDelay: 0
-  cooldownTime: 0.3
-  projectileClipCapacity: 0
-  clipReloadTime: 1
-  reloadDisplayToggle: []
-  clipReloadDisplayToggle: []
-  actorProjectileSpawnAnimProperties:
-    HasActorProjectileAnimation: 0
-    ActorProjectileAnimationName: 
-  suppressWeaponSpawn: 0
-  appliedPerksNames: []
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0

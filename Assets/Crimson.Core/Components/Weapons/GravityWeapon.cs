@@ -28,14 +28,15 @@ namespace Assets.Crimson.Core.Components.Weapons
 		public float _maxDistance = 10;
 		public Vector3 MagnetOffset = Vector3.forward;
 
+		public ActionsList ActionsOnEnable;
+		public ActionsList ActionsOnDisable;
+
 		private EntityManager _entityManager;
 		[SerializeField] private float _force = 10;
 		private bool _isEnable;
 		private RaycastHit[] _raycastResults = new RaycastHit[25];
 
 		public event System.Action OnShot;
-
-		public event System.Action OnReload;
 
 		public IActor Actor { get; set; }
 
@@ -45,8 +46,13 @@ namespace Assets.Crimson.Core.Components.Weapons
 			set
 			{
 				_isEnable = value;
-				if (!value)
+				if (_isEnable)
 				{
+					ActionsOnEnable.Execute();
+				}
+				else
+				{
+					ActionsOnDisable.Execute();
 					Deactivate();
 				}
 			}
@@ -57,6 +63,12 @@ namespace Assets.Crimson.Core.Components.Weapons
 		public void Activate()
 		{
 			SetActivateState(true);
+		}
+
+		private void Awake()
+		{
+			ActionsOnDisable.Init();
+			ActionsOnEnable.Init();
 		}
 
 		public void AddComponentData(ref Entity entity, IActor actor)
@@ -133,6 +145,7 @@ namespace Assets.Crimson.Core.Components.Weapons
 
 		private void TryGrabObject()
 		{
+			OnShot?.Invoke();
 			var ray = new Ray(transform.position, transform.forward);
 			var resultsCount = Physics.RaycastNonAlloc(ray, _raycastResults, _maxDistance);
 			if (resultsCount == 0)

@@ -1,3 +1,4 @@
+using Assets.Crimson.Core.Common.Filters;
 using Crimson.Core.Components;
 using Crimson.Core.Enums;
 using Crimson.Core.Utils;
@@ -9,66 +10,70 @@ using UnityEngine;
 
 namespace Crimson.Core.Common
 {
-    [Serializable]
-    public struct CollisionAction
-    {
-        [InfoBox("Objects without layer set will always collide")]
-        public LayerMask collisionLayerMask;
+	[Serializable]
+	public struct CollisionAction
+	{
+		[InfoBox("Objects without layer set will always collide")]
+		public LayerMask collisionLayerMask;
 
-        [InfoBox("Filter by tags works in addition to Collision Layer Mask")]
-        public bool useTagFilter;
+		[InfoBox("Filter by tags works in addition to Collision Layer Mask")]
+		public bool useTagFilter;
 
-        [ShowIf("useTagFilter")]
-        [EnumToggleButtons]
-        public TagFilterMode filterMode;
+		[ShowIf(nameof(useTagFilter))]
+		[EnumToggleButtons]
+		public TagFilterMode filterMode;
 
-        [ShowIf("useTagFilter")]
-        [ValueDropdown("Tags")]
-        public List<string> filterTags;
+		[ShowIf(nameof(useTagFilter))]
+		[ValueDropdown(nameof(Tags))]
+		public List<string> filterTags;
 
-        public bool executeOnCollisionWithSpawner;
+		public VelocityFilter velocityFilter;
 
-        public bool destroyAfterAction;
+		public bool executeOnCollisionWithSpawner;
 
-        [ValidateInput("MustBeAbility", "Ability MonoBehaviours must derive from IActorAbility!")]
-        [SerializeField]
-        public List<MonoBehaviour> actions;
+		public bool destroyAfterAction;
 
-        private bool MustBeAbility(List<MonoBehaviour> a)
-        {
-            return !a.Exists(t => !(t is IActorAbility)) || a.Count == 0;
-        }
+		[ValidateInput(nameof(MustBeAbility), "Ability MonoBehaviours must derive from IActorAbility!")]
+		[SerializeField]
+		public List<MonoBehaviour> actions;
 
-        private static IEnumerable Tags()
-        {
-            return EditorUtils.GetEditorTags();
-        }
-    }
+		private bool MustBeAbility(List<MonoBehaviour> a)
+		{
+			return !a.Exists(t => !(t is IActorAbility)) || a.Count == 0;
+		}
 
-    [Serializable]
-    public struct CollisionSettings
-    {
-        [InfoBox("Objects without layer set will always collide")]
-        public LayerMask collisionLayerMask;
+		private static IEnumerable Tags()
+		{
+			return EditorUtils.GetEditorTags();
+		}
+	}
 
-        [InfoBox("Filter by tags works in addition to Collision Layer Mask")]
-        public bool useTagFilter;
+	[Serializable]
+	public struct CollisionSettings
+	{
+		[InfoBox("Objects without layer set will always collide")]
+		public LayerMask collisionLayerMask;
 
-        [ShowIf("useTagFilter")]
-        [EnumToggleButtons]
-        public TagFilterMode filterMode;
+		[InfoBox("Filter by tags works in addition to Collision Layer Mask")]
+		public bool useTagFilter;
 
-        [ShowIf("useTagFilter")]
-        [ValueDropdown("Tags")]
-        public List<string> filterTags;
+		[ShowIf(nameof(useTagFilter))]
+		[EnumToggleButtons]
+		public TagFilterMode filterMode;
 
-        public bool executeOnCollisionWithSpawner;
+		[ShowIf(nameof(useTagFilter))]
+		[ValueDropdown(nameof(Tags))]
+		public List<string> filterTags;
 
-        public bool destroyAfterAction;
+		public VelocityFilter velocityFilter;
 
-        private static IEnumerable Tags()
-        {
-            return EditorUtils.GetEditorTags();
-        }
-    }
+		public bool executeOnCollisionWithSpawner;
+
+		public bool destroyAfterAction;
+
+		private static IEnumerable Tags()
+		{
+			return EditorUtils.GetEditorTags();
+		}
+	}
 }

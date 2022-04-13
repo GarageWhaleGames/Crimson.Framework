@@ -15,13 +15,13 @@ namespace Crimson.Core.Systems
         protected override void OnCreate()
         {
             _queryAI = GetEntityQuery(
-                ComponentType.ReadWrite<SetupAIData>(),
+                ComponentType.ReadWrite<SetupAITag>(),
                 ComponentType.ReadOnly<AIInputData>(),
                 ComponentType.ReadOnly<AbilityAIInput>(),
                 ComponentType.ReadOnly<Transform>(),
                 ComponentType.Exclude<DeadActorTag>(),
                 ComponentType.Exclude<DestructionPendingTag>(),
-                ComponentType.Exclude<EvaluateAIData>(),
+                ComponentType.Exclude<EvaluateAITag>(),
                 ComponentType.Exclude<NetworkInputData>());
         }
 
@@ -49,7 +49,7 @@ namespace Crimson.Core.Systems
                         ai.EvaluateAll();
                     }
                     
-                    World.EntityManager.RemoveComponent<SetupAIData>(entity);
+                    World.EntityManager.RemoveComponent<SetupAITag>(entity);
                 }
             );
         }

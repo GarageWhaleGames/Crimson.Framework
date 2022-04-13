@@ -1,7 +1,6 @@
 ﻿using Assets.Crimson.Core.Common.Interfaces;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
-using Crimson.Core.Utils;
 using Sirenix.OdinInspector;
 using Unity.Entities;
 using UnityEngine;
@@ -28,8 +27,7 @@ namespace Assets.Crimson.Core.Components.Weapons
 				return;
 			}
 
-			var copies = target.GameObject.CopyComponentsWithLinks(TargetWeapon);
-			var gravityWeapon = copies[0] as GravityWeapon;
+			var gravityWeapon = TargetWeapon as GravityWeapon;
 			var owner = target.Owner;
 			var ownerEntity = owner.ActorEntity;
 			gravityWeapon.AddComponentData(ref ownerEntity, owner);

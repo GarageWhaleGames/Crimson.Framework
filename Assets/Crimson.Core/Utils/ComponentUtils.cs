@@ -16,21 +16,16 @@ namespace Crimson.Core.Utils
 		private const BindingFlags Flags = BindingFlags.Public | BindingFlags.Instance |
 								   BindingFlags.Default | BindingFlags.DeclaredOnly;
 
-		public static AIBehaviourSetting CopyBehaviour(this AIBehaviourSetting s)
+		public static AIBehaviourSetting CopyFields(this AIBehaviourSetting source)
 		{
-			return new AIBehaviourSetting
+			var copy = new AIBehaviourSetting();
+			var type = source.GetType();
+			foreach (var field in type.GetFields(Flags))
 			{
-				Actor = s.Actor,
-				additionalMode = s.additionalMode,
-				basePriority = s.basePriority,
-				behaviourType = s.behaviourType,
-				curveMaxSample = s.curveMaxSample,
-				curveMinSample = s.curveMinSample,
-				executeCustomInput = s.executeCustomInput,
-				priorityCurve = s.priorityCurve,
-				targetFilterMode = s.targetFilterMode,
-				targetFilterTags = s.targetFilterTags
-			};
+				var value = field.GetValue(source);
+				type.GetField(field.Name).SetValue(copy, value);
+			}
+			return copy;
 		}
 
 		public static Component CopyComponent(this GameObject go, Component sample)

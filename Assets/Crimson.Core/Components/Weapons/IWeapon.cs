@@ -12,7 +12,5 @@ namespace Assets.Crimson.Core.Components.Weapons
 		void StopFire();
 
 		event Action OnShot;
-
-		event Action OnReload;
 	}
 }

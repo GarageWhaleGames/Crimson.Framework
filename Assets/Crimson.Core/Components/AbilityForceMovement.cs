@@ -1,3 +1,4 @@
+using Assets.Crimson.Core.Common;
 using Crimson.Core.Common;
 using Sirenix.OdinInspector;
 using Unity.Entities;
@@ -14,14 +15,19 @@ namespace Crimson.Core.Components
 		[InfoBox("To set movement speed and dynamics, use AbilityMovement component")]
 		[EnumToggleButtons] public MoveDirection moveDirection;
 
-		[ShowIf("moveDirection", MoveDirection.UseDirection)]
+		[ShowIf(nameof(moveDirection), MoveDirection.UseDirection)]
 		public Vector3 forwardVector;
 
-		[ShowIf("moveDirection", MoveDirection.UseDirection)]
+		[ShowIf(nameof(moveDirection), MoveDirection.UseDirection)]
 		public bool compensateSpawnerRotation = true;
 
-		[ShowIf("moveDirection", MoveDirection.SpawnerForward)]
+		[ShowIf(nameof(moveDirection), MoveDirection.SpawnerForward)]
 		public Vector3 OffsetDirection = Vector3.zero;
+
+		public bool _useVariance;
+
+		[ShowIf(nameof(_useVariance))]
+		public TransformVariance _transformVariance;
 
 		public Transform Spawner => Actor.Spawner.GameObject.transform;
 
@@ -36,6 +42,8 @@ namespace Crimson.Core.Components
 			{
 				MoveDirection = moveDirection,
 				ForwardVector = forwardVector,
+				Variance = _transformVariance,
+				UseVariance = _useVariance,
 				OffsetDirection = OffsetDirection,
 				CompensateSpawnerRotation = compensateSpawnerRotation,
 				stopGuiding = false
@@ -54,6 +62,8 @@ namespace Crimson.Core.Components
 		public bool CompensateSpawnerRotation;
 		public bool stopGuiding;
 		public float3 OffsetDirection;
+		public TransformVariance Variance;
+		public bool UseVariance;
 	}
 
 	public enum MoveDirection

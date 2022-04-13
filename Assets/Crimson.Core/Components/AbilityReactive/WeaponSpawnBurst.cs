@@ -1,4 +1,5 @@
-﻿using Assets.Crimson.Core.Components.Weapons;
+﻿using Assets.Crimson.Core.Common;
+using Assets.Crimson.Core.Components.Weapons;
 using Crimson.Core.Common;
 using Crimson.Core.Components.Interfaces;
 using Crimson.Core.Enums;
@@ -33,7 +34,6 @@ namespace Crimson.Core.Components.AbilityReactive
 
 		[Space]
 		[ShowInInspector]
-		[SerializeField]
 		public string componentName = "";
 
 		public bool primaryProjectile;
@@ -84,7 +84,23 @@ namespace Crimson.Core.Components.AbilityReactive
 		public List<GameObject> SpawnedObjects { get; private set; }
 		public List<Action<GameObject>> SpawnCallbacks { get; set; }
 		public Action<GameObject> DisposableSpawnCallback { get; set; }
-		public bool IsEnable { get; set; }
+
+		public bool IsEnable
+		{
+			get => isEnable;
+			set
+			{
+				isEnable = value;
+				if (isEnable)
+				{
+					ActionsOnEnable.Execute();
+				}
+				else
+				{
+					ActionsOnDisable.Execute();
+				}
+			}
+		}
 
 		public float CooldownTime
 		{
@@ -102,13 +118,17 @@ namespace Crimson.Core.Components.AbilityReactive
 		[ValidateInput(nameof(MustBeAimable), "Ability MonoBehaviours must derive from IAimable!")]
 		public MonoBehaviour AimComponent;
 
+		public ActionsList ActionsOnEnable = new ActionsList();
+
+		public ActionsList ActionsOnDisable = new ActionsList();
+
 		protected Entity _entity;
 		private bool _actorToUi;
 		private EntityManager _dstManager;
 
 		public event Action OnShot;
 
-		public event Action OnReload;
+		private bool isEnable;
 
 		public bool ActionExecutionAllowed { get; set; }
 		public IAimable Aim => AimComponent as IAimable;
@@ -121,7 +141,13 @@ namespace Crimson.Core.Components.AbilityReactive
 		public Transform SpawnPointsRoot { get; private set; }
 		protected EntityManager CurrentEntityManager => World.DefaultGameObjectInjectionWorld.EntityManager;
 
-		public WeaponClip ClipData { get; private set; }
+		public WeaponClip ClipData { get; private set; } = new WeaponClip();
+
+		private void Awake()
+		{
+			ActionsOnDisable.Init();
+			ActionsOnEnable.Init();
+		}
 
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
@@ -131,7 +157,7 @@ namespace Crimson.Core.Components.AbilityReactive
 			_dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
 			_entity = entity;
-			ClipData = new WeaponClip(projectileClipCapacity, projectileClipCapacity);
+			ClipData.Setup(projectileClipCapacity, projectileClipCapacity);
 			SpawnCallbacks = new List<Action<GameObject>>();
 
 			_dstManager.AddComponent<TimerData>(entity);
@@ -139,7 +165,7 @@ namespace Crimson.Core.Components.AbilityReactive
 			if (actorProjectileSpawnAnimProperties != null
 				&& actorProjectileSpawnAnimProperties.HasActorProjectileAnimation)
 			{
-				_dstManager.AddComponentData(entity, new ActorProjectileAnimData
+				_dstManager.AddComponentData(actor.Owner.ActorEntity, new ActorProjectileAnimData
 				{
 					AnimHash = Animator.StringToHash(actorProjectileSpawnAnimProperties.ActorProjectileAnimationName)
 				});
@@ -150,9 +176,15 @@ namespace Crimson.Core.Components.AbilityReactive
 			var playerActor = actor.Abilities.FirstOrDefault(a => a is AbilityActorPlayer) as AbilityActorPlayer;
 			_actorToUi = playerActor != null && playerActor.actorToUI;
 
-			if (!Actor.Abilities.Contains(this)) Actor.Abilities.Add(this);
+			if (!Actor.Abilities.Contains(this))
+			{
+				Actor.Abilities.Add(this);
+			}
 
-			if (!_actorToUi) return;
+			if (!_actorToUi)
+			{
+				return;
+			}
 
 			CreateSpawnPointsRoot();
 			ResetSpawnPointRootRotation();
@@ -210,7 +242,6 @@ namespace Crimson.Core.Components.AbilityReactive
 		public void Reload()
 		{
 			ClipData.Reload();
-			OnReload?.Invoke();
 		}
 
 		public void ResetSpawnPointRootRotation()
@@ -220,7 +251,7 @@ namespace Crimson.Core.Components.AbilityReactive
 
 		public void Spawn()
 		{
-			CurrentEntityManager.AddComponentData(_entity,
+			CurrentEntityManager.AddComponentData(Actor.Owner.ActorEntity,
 					new ActorProjectileThrowAnimTag());
 
 			LookAtTargetIfAimExist();

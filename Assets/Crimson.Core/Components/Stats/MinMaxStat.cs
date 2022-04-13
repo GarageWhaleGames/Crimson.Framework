@@ -8,9 +8,9 @@ namespace Crimson.Core.Components.Stats
 	{
 		[SerializeField] private T _current;
 
-		[SerializeField] private T _maxLimit;
-
 		[SerializeField] private T _minLimit;
+
+		[SerializeField] private T _maxLimit;
 
 		public T Current
 		{

@@ -1,8 +1,8 @@
-using System;
-using System.Collections.Generic;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Crimson.Core.Utils;
+using System;
+using System.Collections.Generic;
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
@@ -11,76 +11,78 @@ using Random = UnityEngine.Random;
 
 namespace Crimson.Core.AI
 {
-    [Serializable]
-    public class RoamBehaviour : IAIBehaviour
-    {
-        public string XAxis => "";
+	[Serializable]
+	public class RoamBehaviour : IAIBehaviour
+	{
+		public string XAxis => "";
 
-        public string[] AdditionalModes => new string[0];
+		public string[] AdditionalModes => new string[0];
 
-        public bool NeedCurve => false;
-        public bool NeedTarget => false;
-        public bool NeedActions => false;
+		public bool NeedCurve => false;
+		public bool NeedTarget => false;
+		public bool NeedActions => false;
 
-        private const float FINISH_ROAM_DISTSQ = 2f;
-        private const float PRIORITY_MULTIPLIER = 0.5f;
+		public bool HasDistanceLimit => false;
 
-        private AIBehaviourSetting _behaviour = null;
-        private Transform _transform = null;
-        private readonly NavMeshPath _path = new NavMeshPath();
+		private const float FINISH_ROAM_DISTSQ = 2f;
+		private const float PRIORITY_MULTIPLIER = 0.5f;
 
-        private int _currentWaypoint = 0;
+		private AIBehaviourSetting _behaviour = null;
+		private Transform _transform = null;
+		private readonly NavMeshPath _path = new NavMeshPath();
 
-        public float Evaluate(Entity entity, AIBehaviourSetting behaviour, AbilityAIInput ai, List<Transform> targets)
-        {
-            _behaviour = behaviour;
-            _transform = _behaviour.Actor.GameObject.transform;
+		private int _currentWaypoint = 0;
 
-            return Random.value * _behaviour.basePriority;
-        }
+		public float Evaluate(Entity entity, AIBehaviourSetting behaviour, AbilityAIInput ai, List<Transform> targets)
+		{
+			_behaviour = behaviour;
+			_transform = _behaviour.Actor.GameObject.transform;
 
-        public bool SetUp(Entity entity, EntityManager dstManager)
-        {
-            Vector3 target;
-            float distSq;
+			return Random.value * _behaviour.basePriority;
+		}
 
-            _path.ClearCorners();
+		public bool SetUp(Entity entity, EntityManager dstManager)
+		{
+			Vector3 target;
+			float distSq;
 
-            _currentWaypoint = 1;
+			_path.ClearCorners();
 
-            do
-            {
-                target = NavMeshRandomPointUtil.GetRandomLocation();
-                distSq = math.distancesq(_transform.position, target);
-            } while (distSq < FINISH_ROAM_DISTSQ);
+			_currentWaypoint = 1;
 
-            var result = NavMesh.CalculatePath(_transform.position, target, NavMesh.AllAreas, _path);
+			do
+			{
+				target = NavMeshRandomPointUtil.GetRandomLocation();
+				distSq = math.distancesq(_transform.position, target);
+			} while (distSq < FINISH_ROAM_DISTSQ);
 
-            return result;
-        }
+			var result = NavMesh.CalculatePath(_transform.position, target, NavMesh.AllAreas, _path);
 
-        public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
-        {
-            if (_path.status == NavMeshPathStatus.PathInvalid || _transform == null) return false;
+			return result;
+		}
 
-            var distSq = math.distancesq(_transform.position, _path.corners[_currentWaypoint]);
+		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
+		{
+			if (_path.status == NavMeshPathStatus.PathInvalid || _transform == null) return false;
 
-            if (distSq <= Constants.WAYPOINT_SQDIST_THRESH)
-            {
-                _currentWaypoint++;
-            }
+			var distSq = math.distancesq(_transform.position, _path.corners[_currentWaypoint]);
 
-            if ((_currentWaypoint == _path.corners.Length - 1 && distSq < FINISH_ROAM_DISTSQ) || _currentWaypoint >= _path.corners.Length )
-            {
-                inputData.Move = float2.zero;
-                return false;
-            }
+			if (distSq <= Constants.WAYPOINT_SQDIST_THRESH)
+			{
+				_currentWaypoint++;
+			}
 
-            var dir = math.normalize(_path.corners[_currentWaypoint] - _transform.position);
+			if ((_currentWaypoint == _path.corners.Length - 1 && distSq < FINISH_ROAM_DISTSQ) || _currentWaypoint >= _path.corners.Length)
+			{
+				inputData.Move = float2.zero;
+				return false;
+			}
 
-            inputData.Move = new float2(dir.x, dir.z);
+			var dir = math.normalize(_path.corners[_currentWaypoint] - _transform.position);
 
-            return true;
-        }
-    }
+			inputData.Move = new float2(dir.x, dir.z);
+
+			return true;
+		}
+	}
 }

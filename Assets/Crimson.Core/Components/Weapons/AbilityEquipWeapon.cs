@@ -1,7 +1,6 @@
 ﻿using Assets.Crimson.Core.Common.Interfaces;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
-using Crimson.Core.Utils;
 using Sirenix.OdinInspector;
 using Unity.Entities;
 using UnityEngine;
@@ -18,27 +17,21 @@ namespace Assets.Crimson.Core.Components.Weapons
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			Actor = actor;
-			if (actor.GameObject.GetComponent<HotkeyWeapon>())
-			{
-				Equip(actor);
-			}
 		}
 
 		public void Equip(IActor target)
 		{
-			if (!(target.GameObject.CopyComponent(TargetWeapon) is IWeapon copy))
+			if (TargetWeapon == null)
 			{
-				Debug.LogError("[Equip Weapon] Error copying component to Actor!");
 				return;
 			}
 
-			var e = target.ActorEntity;
-			copy.AddComponentData(ref e, target);
+			var weapon = TargetWeapon as IWeapon;
 
 			var hotkeyWeapon = target.GameObject.GetComponent<HotkeyWeapon>();
 			if (hotkeyWeapon != null)
 			{
-				hotkeyWeapon.Add(copy);
+				hotkeyWeapon.Add(weapon);
 			}
 		}
 

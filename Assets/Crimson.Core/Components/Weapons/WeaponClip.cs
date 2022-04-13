@@ -17,7 +17,7 @@ namespace Assets.Crimson.Core.Components.Weapons
 			}
 		}
 
-		public int Capacity { get; }
+		public int Capacity { get; private set; }
 
 		public int Count { get; private set; }
 
@@ -25,7 +25,11 @@ namespace Assets.Crimson.Core.Components.Weapons
 
 		public event Action OnUpdate;
 
-		public WeaponClip(int capacity, int count)
+		public WeaponClip()
+		{
+		}
+
+		public void Setup(int capacity, int count)
 		{
 			Capacity = capacity;
 			Count = count;

@@ -87,6 +87,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentName: 
+  ExecuteNow: 0
   ExecuteOnAwake: 1
   SpawnData:
     spawnerDisabled: 0
@@ -133,6 +134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentName: 
+  ExecuteNow: 0
   ExecuteOnAwake: 1
   SpawnData:
     spawnerDisabled: 0
@@ -201,12 +203,12 @@ MonoBehaviour:
     CurrentExperience: 0
     Energy:
       _current: 100
-      _maxLimit: 100
       _minLimit: 0
+      _maxLimit: 100
     Health:
       _current: 100
-      _maxLimit: 100
       _minLimit: 0
+      _maxLimit: 100
     Level: 1
     LevelUpRequiredExperience: 100
     TotalDamageApplied: 0
@@ -381,6 +383,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentName: 
+  ExecuteNow: 0
   ExecuteOnAwake: 1
   SpawnData:
     spawnerDisabled: 0
