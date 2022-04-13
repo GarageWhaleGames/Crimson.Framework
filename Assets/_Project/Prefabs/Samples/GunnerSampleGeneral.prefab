@@ -138,6 +138,42 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0
       - serializedVersion: 3
+        time: 0.37832898
+        value: 0.030332245
+        inSlope: 1.0991855
+        outSlope: 1.0991855
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5499547
+        value: 0.1599564
+        inSlope: 1.4939901
+        outSlope: 1.4939901
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.58340883
+        value: 0.2072292
+        inSlope: 2.5269933
+        outSlope: 2.5269933
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.93638885
+        value: 0.94332767
+        inSlope: 0.8493111
+        outSlope: 0.8493111
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 1
         value: 1
         inSlope: 0
@@ -149,11 +185,12 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    curveMinSample: 0
+    curveMinSample: 5
     curveMaxSample: 20
-    basePriority: 0.1
+    basePriority: 2.06
     additionalMode: 'Random mode: priority as probability'
     executeCustomInput: 0
+    LimitDistance: 0
     targetFilterMode: 0
     targetFilterTags:
     - Player
@@ -163,8 +200,17 @@ MonoBehaviour:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 1
+        time: 0.03184727
+        value: 0.9880161
+        inSlope: 1.3699137
+        outSlope: 1.3699137
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.03983307
+        value: 0.99596786
         inSlope: -0.003957478
         outSlope: -0.003957478
         tangentMode: 0
@@ -172,8 +218,62 @@ MonoBehaviour:
         inWeight: 0
         outWeight: 0.6603614
       - serializedVersion: 3
+        time: 0.342516
+        value: 0.9940842
+        inSlope: -0.055556353
+        outSlope: -0.055556353
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.49735966
+        value: 0.9968406
+        inSlope: 0.0640832
+        outSlope: 0.0640832
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5234398
+        value: 1.0001945
+        inSlope: 0.061263137
+        outSlope: 0.061263137
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.5448405
+        value: 1.0082387
+        inSlope: 1.4299742
+        outSlope: 1.4299742
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.54539186
+        value: 1.0093805
+        inSlope: 0.037270624
+        outSlope: 0.037270624
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 0.9890554
+        value: 1.0289527
+        inSlope: 0.17768867
+        outSlope: 0.17768867
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      - serializedVersion: 3
         time: 0.9936621
-        value: 0.6248169
+        value: 1.0042264
         inSlope: -1.4543452
         outSlope: -1.4543452
         tangentMode: 0
@@ -192,11 +292,12 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    curveMinSample: 0
-    curveMaxSample: 60
+    curveMinSample: 15
+    curveMaxSample: 35
     basePriority: 3
     additionalMode: 
     executeCustomInput: 1
+    LimitDistance: 0
     targetFilterMode: 0
     targetFilterTags:
     - Player
@@ -228,12 +329,13 @@ MonoBehaviour:
       m_RotationOrder: 4
     curveMinSample: 0
     curveMaxSample: 100
-    basePriority: 0.37
+    basePriority: 0.71
     additionalMode: 
     executeCustomInput: 3
+    LimitDistance: 0
     targetFilterMode: 0
     targetFilterTags: []
-  behaviourUpdatePeriod: {x: 5, y: 7}
+  behaviourUpdatePeriod: {x: 0.19867751, y: 0.41942802}
   activeBehaviour:
     behaviourType: 
     priorityCurve:
@@ -265,6 +367,7 @@ MonoBehaviour:
     basePriority: 1
     additionalMode: 
     executeCustomInput: 0
+    LimitDistance: 0
     targetFilterMode: 0
     targetFilterTags: []
   activeBehaviourPriority: 0
@@ -335,11 +438,11 @@ MonoBehaviour:
       MaxSize: 0
       UsePool: 0
   projectileStartupDelay: 0
-  cooldownTime: 0.1
-  projectileClipCapacity: 0
+  cooldownTime: 1
+  projectileClipCapacity: 50
   clipReloadTime: 1
   forceBursts: 1
-  burstShotCountRange: {x: 4, y: 5}
+  burstShotCountRange: {x: 2, y: 4}
   reloadDisplayToggle: []
   clipReloadDisplayToggle: []
   actorProjectileSpawnAnimProperties:
@@ -371,6 +474,10 @@ MonoBehaviour:
     filterMode: 0
     filterTags:
     - Player
+    velocityFilter:
+      Use: 0
+      Mode: 0
+      Velocity: 0
     executeOnCollisionWithSpawner: 0
     destroyAfterAction: 0
   spawnTargetEffect: 1
@@ -394,9 +501,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   perkLevel: 0
-  force: 45
+  force: 50
   timer: 0.3
-  cooldownTime: 3
+  cooldownTime: 5
   aimingAvailable: 0
   useMovementVector: 1
   deactivateAimingOnCooldown: 0
@@ -454,12 +561,12 @@ MonoBehaviour:
     CurrentExperience: 0
     Energy:
       _current: 100
-      _maxLimit: 100
       _minLimit: 0
+      _maxLimit: 100
     Health:
       _current: 100
-      _maxLimit: 100
       _minLimit: 0
+      _maxLimit: 100
     Level: 0
     LevelUpRequiredExperience: 0
     TotalDamageApplied: 0
@@ -473,7 +580,7 @@ MonoBehaviour:
   additionalForceAnim:
     AnimationName: 
     HasAnimation: 0
-  corpseCleanupDelay: 5
+  corpseCleanupDelay: 8
   deadActorBehaviour:
     RemoveTag: 0
     RemoveRigidbody: 1
@@ -520,7 +627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb68bfe9b20e4840be7f8b09537fb0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 4
+  movementSpeed: 3
   useDynamics: 0
   movementStart:
     curve:

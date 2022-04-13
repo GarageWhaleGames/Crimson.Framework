@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb68bfe9b20e4840be7f8b09537fb0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 20
+  movementSpeed: 28
   useDynamics: 0
   movementStart:
     curve:
@@ -122,6 +122,11 @@ MonoBehaviour:
   moveDirection: 0
   forwardVector: {x: 0, y: 0, z: 0}
   compensateSpawnerRotation: 1
+  OffsetDirection: {x: 0, y: 0, z: 0}
+  _useVariance: 0
+  _transformVariance:
+    PostionOffset: {x: 0, y: 0, z: 0}
+    RotationOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &-329834800428341583
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -145,6 +150,10 @@ MonoBehaviour:
     - CollisionObjects
     - Ally
     - Player
+    velocityFilter:
+      Use: 0
+      Mode: 0
+      Velocity: 0
     executeOnCollisionWithSpawner: 0
     destroyAfterAction: 0
     actions:
@@ -159,6 +168,10 @@ MonoBehaviour:
     - CollisionObjects
     - Ally
     - Player
+    velocityFilter:
+      Use: 0
+      Mode: 0
+      Velocity: 0
     executeOnCollisionWithSpawner: 0
     destroyAfterAction: 0
     actions:
@@ -179,9 +192,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   collisionMovementSettings:
-    reaction: 1
     alsoStopRotation: 1
+    inputMultiplier: 0.75
     force2DBounce: 1
+    reaction: 1
 --- !u!114 &2866327413141821552
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -194,9 +208,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7505beefdc468b98e39e54f7335d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  perkLevel: 1
-  damageValue: 7
+  CriticalDamageChance: 0.1
+  CriticalDamageMultiplier: 1
+  Damage: 0
   levelablePropertiesList: []
+  perkLevel: 1
 --- !u!114 &-4054787997842051503
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -210,6 +226,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentName: 
+  ExecuteNow: 0
   ExecuteOnAwake: 0
   SpawnData:
     spawnerDisabled: 0
@@ -223,6 +240,7 @@ MonoBehaviour:
     spawnPointsFrom: 0
     _spawnPoints: []
     spawnPointTag: 
+    useChildrenObjects: 0
     rotationOfSpawns: 4
     parentOfSpawns: 1
     actorWithComponentName: 
@@ -234,6 +252,11 @@ MonoBehaviour:
     runSpawnActionsOnObjects: 1
     destroyAbilityAfterSpawn: 0
     randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
   SpawnDelays:
     Delay: 0
     StartupDelay: 0.1
@@ -249,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28c327207e74b30a8ea4c9513e0109a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 1.5
+  lifespan: 7
   startOnSpawn: 1
   actionOnDestroy: {fileID: -4054787997842051503}
 --- !u!1 &1816478409737304

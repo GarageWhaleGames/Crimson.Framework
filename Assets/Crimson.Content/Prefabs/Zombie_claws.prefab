@@ -74,6 +74,10 @@ MonoBehaviour:
     filterTags:
     - Player
     - Ally
+    velocityFilter:
+      Use: 0
+      Mode: 0
+      Velocity: 0
     executeOnCollisionWithSpawner: 0
     destroyAfterAction: 0
     actions:
@@ -154,7 +158,7 @@ SphereCollider:
   m_GameObject: {fileID: 1090190289803064}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.9
   m_Center: {x: 0, y: 0, z: 0}
