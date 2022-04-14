@@ -99,7 +99,7 @@ MonoBehaviour:
       MaxSize: 10
       UsePool: 1
   projectileStartupDelay: 0
-  cooldownTime: 0.3
+  cooldownTime: 0.4
   projectileClipCapacity: 1000
   clipReloadTime: 1
   forceBursts: 0
