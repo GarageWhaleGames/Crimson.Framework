@@ -187,7 +187,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     curveMinSample: 5
     curveMaxSample: 20
-    basePriority: 2.06
+    basePriority: 0
     additionalMode: 'Random mode: priority as probability'
     executeCustomInput: 0
     LimitDistance: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    curveMinSample: 15
+    curveMinSample: 8
     curveMaxSample: 35
     basePriority: 3
     additionalMode: 
@@ -335,7 +335,74 @@ MonoBehaviour:
     LimitDistance: 0
     targetFilterMode: 0
     targetFilterTags: []
-  behaviourUpdatePeriod: {x: 0.19867751, y: 0.41942802}
+  - behaviourType: CircleRoamBehaviour
+    priorityCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    curveMinSample: 5
+    curveMaxSample: 12
+    basePriority: 1.78
+    additionalMode: 
+    executeCustomInput: 1
+    LimitDistance: 8
+    targetFilterMode: 0
+    targetFilterTags:
+    - Player
+  - behaviourType: StandBehaviour
+    priorityCurve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    curveMinSample: 0
+    curveMaxSample: 100
+    basePriority: 1.79
+    additionalMode: 
+    executeCustomInput: 1
+    LimitDistance: 0
+    targetFilterMode: 0
+    targetFilterTags: []
+  behaviourUpdatePeriod: {x: 2.847684, y: 5.9381914}
   activeBehaviour:
     behaviourType: 
     priorityCurve:
@@ -387,12 +454,12 @@ MonoBehaviour:
   primaryProjectile: 1
   aimingAvailable: 0
   deactivateAimingOnCooldown: 0
-  onClickAttackType: 0
+  onClickAttackType: 1
   attackDirectionType: 0
   findTargetProperties:
-    targetType: 0
+    targetType: 3
     actorWithComponentName: 
-    targetTag: 
+    targetTag: Player
     ignoreSpawner: 0
     strategy: 0
     maxDistanceThreshold: 0

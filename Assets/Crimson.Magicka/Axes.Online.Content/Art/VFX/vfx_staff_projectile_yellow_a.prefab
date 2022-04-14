@@ -66,7 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb68bfe9b20e4840be7f8b09537fb0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 28
+  movementSpeed: 30
   useDynamics: 0
   movementStart:
     curve:
@@ -208,9 +208,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf7505beefdc468b98e39e54f7335d5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CriticalDamageChance: 0.1
+  CriticalDamageChance: 0.057
   CriticalDamageMultiplier: 1
-  Damage: 0
+  Damage: 3
   levelablePropertiesList: []
   perkLevel: 1
 --- !u!114 &-4054787997842051503

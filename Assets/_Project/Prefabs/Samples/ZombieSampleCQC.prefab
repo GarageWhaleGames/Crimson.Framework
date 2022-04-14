@@ -146,7 +146,7 @@ MonoBehaviour:
       m_RotationOrder: 4
     curveMinSample: 0
     curveMaxSample: 10
-    basePriority: 1.34
+    basePriority: 1.72
     additionalMode: 'Random mode: priority as probability'
     executeCustomInput: 0
     LimitDistance: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     curveMinSample: 0
-    curveMaxSample: 1
+    curveMaxSample: 2
     basePriority: 3
     additionalMode: 
     executeCustomInput: 1
@@ -468,12 +468,12 @@ MonoBehaviour:
   primaryProjectile: 0
   aimingAvailable: 0
   deactivateAimingOnCooldown: 0
-  onClickAttackType: 0
+  onClickAttackType: 1
   attackDirectionType: 0
   findTargetProperties:
-    targetType: 0
+    targetType: 3
     actorWithComponentName: 
-    targetTag: 
+    targetTag: Player
     ignoreSpawner: 0
     strategy: 0
     maxDistanceThreshold: 0
@@ -519,7 +519,7 @@ MonoBehaviour:
       MaxSize: 0
       UsePool: 0
   projectileStartupDelay: 0
-  cooldownTime: 0.2
+  cooldownTime: 0.6
   projectileClipCapacity: 0
   clipReloadTime: 0
   forceBursts: 0
