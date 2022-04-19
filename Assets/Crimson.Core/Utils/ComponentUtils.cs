@@ -1,4 +1,3 @@
-using Crimson.Core.AI;
 using Crimson.Core.Common;
 using System;
 using System.Collections;
@@ -15,18 +14,6 @@ namespace Crimson.Core.Utils
 	{
 		private const BindingFlags Flags = BindingFlags.Public | BindingFlags.Instance |
 								   BindingFlags.Default | BindingFlags.DeclaredOnly;
-
-		public static AIBehaviourSetting CopyFields(this AIBehaviourSetting source)
-		{
-			var copy = new AIBehaviourSetting();
-			var type = source.GetType();
-			foreach (var field in type.GetFields(Flags))
-			{
-				var value = field.GetValue(source);
-				type.GetField(field.Name).SetValue(copy, value);
-			}
-			return copy;
-		}
 
 		public static Component CopyComponent(this GameObject go, Component sample)
 		{

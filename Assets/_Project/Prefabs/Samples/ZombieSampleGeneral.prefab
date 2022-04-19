@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: -3678600976375478634}
   - component: {fileID: -8540745754969349028}
   - component: {fileID: -2649103701540452547}
-  - component: {fileID: 1577040857332071559}
   - component: {fileID: 4098585114710412302}
   - component: {fileID: 8104460044487187730}
   - component: {fileID: -4166381054128957909}
   - component: {fileID: -1660482124880579045}
   - component: {fileID: 7440159293158877815}
+  - component: {fileID: 1243705283061110171}
   m_Layer: 0
   m_Name: ZombieSampleGeneral
   m_TagString: Untagged
@@ -117,110 +117,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d9e3a09b334f1f8083c00d873c71ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviours:
-  - behaviourType: ChaseBehaviour
-    priorityCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0.2
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    curveMinSample: 0
-    curveMaxSample: 10
-    basePriority: 1.34
-    additionalMode: 'Random mode: priority as probability'
-    executeCustomInput: 0
-    LimitDistance: 2
-    targetFilterMode: 0
-    targetFilterTags:
-    - Player
-    - Ally
-  - behaviourType: LimitedRoamBehaviour
-    priorityCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    curveMinSample: 0
-    curveMaxSample: 100
-    basePriority: 0.88
-    additionalMode: 
-    executeCustomInput: 1
-    LimitDistance: 2
-    targetFilterMode: 0
-    targetFilterTags: []
   behaviourUpdatePeriod: {x: 0, y: 2.3312101}
-  activeBehaviour:
-    behaviourType: 
-    priorityCurve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    curveMinSample: 0
-    curveMaxSample: 100
-    basePriority: 1
-    additionalMode: 
-    executeCustomInput: 0
-    LimitDistance: 2
-    targetFilterMode: 0
-    targetFilterTags: []
   activeBehaviourPriority: 0
 --- !u!114 &-8540745754969349028
 MonoBehaviour:
@@ -256,12 +153,12 @@ MonoBehaviour:
     CurrentExperience: 0
     Energy:
       _current: 100
-      _maxLimit: 100
       _minLimit: 0
+      _maxLimit: 100
     Health:
       _current: 100
-      _maxLimit: 100
       _minLimit: 0
+      _maxLimit: 100
     Level: 1
     LevelUpRequiredExperience: 100
     TotalDamageApplied: 0
@@ -310,77 +207,6 @@ MonoBehaviour:
   levelUpAction: {fileID: 0}
   targetMarkActorComponentName: Aim Enemy Mark
   UIChannelID: 0
---- !u!114 &1577040857332071559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322200569230309113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb68bfe9b20e4840be7f8b09537fb0fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 1
-  useDynamics: 0
-  movementStart:
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: -0.0028305054
-        value: 0.33374023
-        inSlope: 2
-        outSlope: 2
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    timeScale: 0.1
-  movementEnd:
-    curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    timeScale: 0.1
-  movementAnimationProperties:
-    HasMovementAnimation: 1
-    MovementAnimationName: Run
-    MovementAnimationSpeedFactorName: SpeedFactor
-    MovementAnimationSpeedFactorMultiplier: 1.5
 --- !u!114 &4098585114710412302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -400,7 +226,7 @@ MonoBehaviour:
   ownerType: 2
   executeProbability: 0.3
   ExecuteOnAwake: 0
-  DestroyAfterSpawn: 1
+  DestroyAfterSpawn: 0
   spawnedObject: {fileID: 0}
 --- !u!114 &8104460044487187730
 MonoBehaviour:
@@ -424,6 +250,10 @@ MonoBehaviour:
     filterTags:
     - Ally
     - Player
+    velocityFilter:
+      Use: 0
+      Mode: 0
+      Velocity: 0
     executeOnCollisionWithSpawner: 0
     destroyAfterAction: 0
     actions:
@@ -531,3 +361,38 @@ MonoBehaviour:
   ExecuteOnAwake: 0
   DestroyAfterSpawn: 0
   spawnedObject: {fileID: 0}
+--- !u!114 &1243705283061110171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb68bfe9b20e4840be7f8b09537fb0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 1
+  useDynamics: 0
+  movementStart:
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    timeScale: 1
+  movementEnd:
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    timeScale: 1
+  movementAnimationProperties:
+    HasMovementAnimation: 1
+    MovementAnimationName: Run
+    MovementAnimationSpeedFactorName: SpeedFactor
+    MovementAnimationSpeedFactorMultiplier: 1.5

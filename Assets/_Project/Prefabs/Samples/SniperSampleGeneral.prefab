@@ -1,0 +1,357 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1322200569230309113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2791762632663953111}
+  - component: {fileID: 8452881097323733006}
+  - component: {fileID: -1330729215862922913}
+  - component: {fileID: -3678600976375478634}
+  - component: {fileID: 8170466036268861975}
+  - component: {fileID: -8540745754969349028}
+  - component: {fileID: 5988897775269100673}
+  - component: {fileID: -8646335452286455090}
+  - component: {fileID: 3741422180328167376}
+  m_Layer: 0
+  m_Name: SniperSampleGeneral
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2791762632663953111
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8452881097323733006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: 
+  ExecuteNow: 0
+  ExecuteOnAwake: 1
+  SpawnData:
+    spawnerDisabled: 0
+    objectsToSpawn:
+    - {fileID: 8994825095257699652, guid: ed1df120892365d4e9838ded8b367c64, type: 3}
+    spawnPosition: 2
+    spawnPointsFillingMode: 0
+    fillSpawnPoints: 0
+    x: 1
+    skipBusySpawnPoints: 0
+    spawnPointsFrom: 0
+    _spawnPoints: []
+    spawnPointTag: 
+    useChildrenObjects: 0
+    rotationOfSpawns: 3
+    parentOfSpawns: 2
+    actorWithComponentName: UIRoot
+    parentTag: 
+    chooseParentStrategy: 0
+    copyComponentsFromSamples: []
+    copyComponentsOfType: 0
+    deleteExistingComponents: 0
+    runSpawnActionsOnObjects: 1
+    destroyAbilityAfterSpawn: 0
+    randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
+  SpawnDelays:
+    Delay: 0
+    StartupDelay: 0
+--- !u!114 &-1330729215862922913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1cb3e455117448ea9f306badb3b4145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AIBehaviour: {fileID: -3678600976375478634}
+  compensateCameraRotation: 1
+  customBindings:
+  - index: 1
+    actions:
+    - {fileID: 8170466036268861975}
+  inputSource: 3
+  minMoveInputMagnitude: 0
+--- !u!114 &-3678600976375478634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3d9e3a09b334f1f8083c00d873c71ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  behaviourUpdatePeriod: {x: 0, y: 1}
+  activeBehaviourPriority: 0
+--- !u!114 &8170466036268861975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d15864b4ea84fc5bd98b70ce935a95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: 
+  primaryProjectile: 1
+  aimingAvailable: 0
+  deactivateAimingOnCooldown: 0
+  onClickAttackType: 0
+  attackDirectionType: 0
+  findTargetProperties:
+    targetType: 0
+    actorWithComponentName: 
+    targetTag: 
+    ignoreSpawner: 0
+    strategy: 0
+    maxDistanceThreshold: 0
+  aimingProperties:
+    evaluateActionOptions: 0
+    aimingType: 0
+    aimingAreaPrefab: {fileID: 0}
+    sightPrefab: {fileID: 0}
+    circlePrefab: {fileID: 0}
+    sightDistance: 0
+    reverseControls: 0
+  aimingAnimProperties:
+    HasActorAimingAnimation: 0
+    ActorAimingAnimationName: 
+  projectileSpawnData:
+    spawnerDisabled: 0
+    objectsToSpawn:
+    - {fileID: 1090190289803064, guid: 9c3f051267bdf9e48ae4328d1b5e6d98, type: 3}
+    spawnPosition: 2
+    spawnPointsFillingMode: 0
+    fillSpawnPoints: 0
+    x: 0
+    skipBusySpawnPoints: 0
+    spawnPointsFrom: 0
+    _spawnPoints:
+    - {fileID: 0}
+    spawnPointTag: 
+    useChildrenObjects: 0
+    rotationOfSpawns: 0
+    parentOfSpawns: 0
+    actorWithComponentName: 
+    parentTag: 
+    chooseParentStrategy: 0
+    copyComponentsFromSamples: []
+    copyComponentsOfType: 0
+    deleteExistingComponents: 0
+    runSpawnActionsOnObjects: 1
+    destroyAbilityAfterSpawn: 0
+    randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
+  projectileStartupDelay: 0
+  cooldownTime: 0.2
+  projectileClipCapacity: 0
+  clipReloadTime: 1
+  forceBursts: 1
+  burstShotCountRange: {x: 1, y: 9}
+  reloadDisplayToggle: []
+  clipReloadDisplayToggle: []
+  actorProjectileSpawnAnimProperties:
+    HasActorProjectileAnimation: 1
+    ActorProjectileAnimationName: Throw
+  suppressWeaponSpawn: 0
+  appliedPerksNames: []
+  aimingByInput: 0
+--- !u!114 &-8540745754969349028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92e3aeea62d402bb3fb244ca47a231a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newTag: Enemy
+  alsoSetLayer: 0
+  newLayer: 
+  applyOnStart: 1
+--- !u!114 &5988897775269100673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efab744802f94701bdb0b235b75b3f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initStats:
+    CriticalDamageChance: 0
+    CriticalDamageMultiplier: 0
+    CurrentExperience: 0
+    Energy:
+      _current: 100
+      _minLimit: 0
+      _maxLimit: 100
+    Health:
+      _current: 100
+      _minLimit: 0
+      _maxLimit: 100
+    Level: 0
+    LevelUpRequiredExperience: 0
+    TotalDamageApplied: 0
+  actorDeathAnimProperties:
+    HasActorDeathAnimation: 1
+    ActorDeathAnimationName: Dead
+  actorTakeDamageAnimProperties:
+    HasActorTakeDamageAnimation: 0
+    ActorTakeDamageName: 
+  actorToUI: 0
+  additionalForceAnim:
+    AnimationName: 
+    HasAnimation: 0
+  corpseCleanupDelay: 5
+  deadActorBehaviour:
+    RemoveTag: 0
+    RemoveRigidbody: 1
+    RemoveColliders: 1
+    RemoveInput: 1
+    OnDeathActionsComponentNames:
+    - Spawn Healing Potion
+  deathCount: 0
+  ExplicitUIChannel: 0
+  healAction: {fileID: 0}
+  isEnabled: 1
+  levelablePropertiesList:
+  - propertyName: MaxHealth
+    levelablePropertyAction: 1
+    modifier: 20
+    levelablePropertiesInfo:
+    - MaxHealth
+    - LevelUpRequiredExperience
+  - propertyName: CurrentHealth
+    levelablePropertyAction: 1
+    modifier: 20
+    levelablePropertiesInfo:
+    - MaxHealth
+    - CurrentHealth
+    - LevelUpRequiredExperience
+  - propertyName: LevelUpRequiredExperience
+    levelablePropertyAction: 1
+    modifier: 300
+    levelablePropertiesInfo:
+    - MaxHealth
+    - LevelUpRequiredExperience
+  levelUpAction: {fileID: 0}
+  targetMarkActorComponentName: Aim Enemy Mark
+  UIChannelID: 0
+--- !u!114 &-8646335452286455090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17eb0bf644eb4bd4b35b4db0dde4cb47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: Spawn Healing Potion
+  objectToSpawn: {fileID: 6775260570760619785, guid: 799f0947368ed4346a68b563835878f6,
+    type: 3}
+  spawnerType: 0
+  ownerType: 2
+  executeProbability: 0.4
+  ExecuteOnAwake: 0
+  DestroyAfterSpawn: 1
+  spawnedObject: {fileID: 0}
+--- !u!114 &3741422180328167376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: 
+  ExecuteNow: 0
+  ExecuteOnAwake: 1
+  SpawnData:
+    spawnerDisabled: 0
+    objectsToSpawn:
+    - {fileID: 1791930136598424, guid: f1a1c60952b571c4fa485b0139d4a6b7, type: 3}
+    spawnPosition: 2
+    spawnPointsFillingMode: 0
+    fillSpawnPoints: 0
+    x: 0
+    skipBusySpawnPoints: 0
+    spawnPointsFrom: 0
+    _spawnPoints: []
+    spawnPointTag: 
+    useChildrenObjects: 0
+    rotationOfSpawns: 0
+    parentOfSpawns: 0
+    actorWithComponentName: 
+    parentTag: 
+    chooseParentStrategy: 0
+    copyComponentsFromSamples: []
+    copyComponentsOfType: 0
+    deleteExistingComponents: 0
+    runSpawnActionsOnObjects: 0
+    destroyAbilityAfterSpawn: 1
+    randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
+  SpawnDelays:
+    Delay: 0
+    StartupDelay: 0

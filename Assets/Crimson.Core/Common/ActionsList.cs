@@ -13,10 +13,12 @@ namespace Assets.Crimson.Core.Common
 	{
 		[ValidateInput(nameof(MustBeAbility), "Ability MonoBehaviours must derive from IActorAbility!")]
 		[SerializeField]
-		public List<MonoBehaviour> actions;
+		public List<MonoBehaviour> actions = new List<MonoBehaviour>();
 
-		public List<IActorAbility> AbilityCollection { get; private set; }
-		public List<IActorAbilityTarget> AbilityTargetCollection { get; private set; }
+		public List<IActorAbility> AbilityCollection { get; private set; } = new List<IActorAbility>();
+
+		public List<IActorAbilityTarget> AbilityTargetCollection { get; private set; } =
+			new List<IActorAbilityTarget>();
 
 		public void Init()
 		{

@@ -1,4 +1,3 @@
-using Assets.Crimson.Core.AI;
 using Crimson.Core.AI;
 using Crimson.Core.Common;
 using Crimson.Core.Utils;
@@ -15,11 +14,11 @@ namespace Crimson.Core.Components
 	{
 		public IActor Actor { get; set; }
 
-		public List<AIBehaviourSetting> behaviours;
+		public List<IAIBehaviour> Behaviours = new List<IAIBehaviour>();
 
 		[MinMaxSlider(0, 30, true)] public Vector2 behaviourUpdatePeriod = new Vector2(2f, 6f);
 
-		[HideInInspector] public AIBehaviourSetting activeBehaviour;
+		[HideInInspector] public IAIBehaviour activeBehaviour;
 		[HideInInspector] public float activeBehaviourPriority = 0;
 
 		private Entity _entity;
@@ -31,22 +30,9 @@ namespace Crimson.Core.Components
 			_entity = entity;
 			_dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
+			Behaviours = new List<IAIBehaviour>();
+
 			_dstManager.AddComponent<NetworkSyncReceive>(entity);
-
-			var tempBehaviours = new List<AIBehaviourSetting>();
-
-			foreach (var t in behaviours)
-			{
-				tempBehaviours.Add(t.CopyFields());
-			}
-
-			behaviours = tempBehaviours;
-
-			for (var i = 0; i < behaviours.Count; i++)
-			{
-				behaviours[i] = behaviours[i].CopyFields();
-				behaviours[i].Actor = Actor;
-			}
 
 			StartTimer();
 			EvaluateAll();
@@ -73,19 +59,16 @@ namespace Crimson.Core.Components
 		{
 		}
 
+#if UNITY_EDITOR
+
 		private void OnDrawGizmosSelected()
 		{
-			if (activeBehaviour != null && activeBehaviour.BehaviourInstance is FallbackBehaviour)
+			if (activeBehaviour != null && activeBehaviour is Assets.Crimson.Core.AI.Interfaces.IDrawGizmos drawer)
 			{
-				var fallbackBehaviour = activeBehaviour.BehaviourInstance as FallbackBehaviour;
-				fallbackBehaviour.DrawGizmosSelected();
-			}
-
-			if (activeBehaviour != null && activeBehaviour.BehaviourInstance is CircleRoamBehaviour)
-			{
-				var circleRoamBehaviour = activeBehaviour.BehaviourInstance as CircleRoamBehaviour;
-				circleRoamBehaviour.DrawGizmosSelected();
+				drawer.DrawGizmos();
 			}
 		}
+
+#endif
 	}
 }

@@ -48,7 +48,7 @@ MonoBehaviour:
   rotationSpeed: 15
   camRayLen: 100
   groundLayerName: Ground
-  sensitivity: 40
+  sensitivity: 50
   Horizontal: 1
   Vertical: 0
   invertVertical: 0
