@@ -18,11 +18,27 @@ namespace Crimson.Core.Components
 
 		[MinMaxSlider(0, 30, true)] public Vector2 behaviourUpdatePeriod = new Vector2(2f, 6f);
 
-		[HideInInspector] public IAIBehaviour activeBehaviour;
+		[ReadOnly, ShowInInspector] private string _currentBehaviour;
+
+		[HideInInspector]
+		public IAIBehaviour activeBehaviour
+		{
+			get => _activeBehaviour;
+			set
+			{
+				_activeBehaviour = value;
+				if (value != null)
+				{
+					_currentBehaviour = value.GetType().Name;
+				}
+			}
+		}
+
 		[HideInInspector] public float activeBehaviourPriority = 0;
 
 		private Entity _entity;
 		private EntityManager _dstManager;
+		private IAIBehaviour _activeBehaviour;
 
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
