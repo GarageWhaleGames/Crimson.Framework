@@ -91,7 +91,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    MaxSample: 100
+    MaxSample: 50
     MinSample: 0
     _xAxisTooltip: distance to closest seen target
   TagFilter:
@@ -100,7 +100,7 @@ MonoBehaviour:
     filterTags: []
   ExecutableCustomInput:
     CustomInputIndex: 1
-  AttackDelay: 1
+  AttackDelay: 2
 --- !u!114 &-4425874461644685554
 MonoBehaviour:
   m_ObjectHideFlags: 0
