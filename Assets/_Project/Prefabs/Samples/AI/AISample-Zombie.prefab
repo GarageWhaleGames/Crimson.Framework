@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 5249163045441211876}
   - component: {fileID: 5103025524498246748}
   - component: {fileID: 5063767497646364380}
+  - component: {fileID: 7423257147226288115}
+  - component: {fileID: -3478847066204257047}
   m_Layer: 0
   m_Name: AISample-Zombie
   m_TagString: Untagged
@@ -28,8 +30,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 93301966582732954}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47,6 +48,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Behaviours:
   - {fileID: 5063767497646364380}
+  - {fileID: 7423257147226288115}
+  - {fileID: -3478847066204257047}
 --- !u!114 &5063767497646364380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,33 +64,101 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Priority:
     Value: 1
---- !u!1 &5565111985230833049
-GameObject:
+--- !u!114 &7423257147226288115
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 93301966582732954}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &93301966582732954
-Transform:
+  m_GameObject: {fileID: 5249163045441211879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f0963bccd4760b2449e15c8e8d908038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority:
+    Value: 1
+  CurvePriority:
+    Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    MaxSample: 100
+    MinSample: 0
+    _xAxisTooltip: Target priority based on distance to it
+  EvaluationMode: 0
+  TagFilter:
+    use: 1
+    filterMode: 0
+    filterTags:
+    - Player
+--- !u!114 &-3478847066204257047
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5565111985230833049}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5249163045441211876}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 5249163045441211879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f119bfc4ce429424e9c2c6c6490ec7c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BasePriority:
+    Value: 1
+  CurvePriority:
+    Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    MaxSample: 100
+    MinSample: 0
+    _xAxisTooltip: Target priority based on distance to it
+  EvaluationMode: 0
+  DistanceLimitation:
+    MaxDistance: 10
+  TagFilter:
+    use: 1
+    filterMode: 0
+    filterTags:
+    - Player

@@ -12,16 +12,13 @@ GameObject:
   - component: {fileID: 8452881097323733006}
   - component: {fileID: -1330729215862922913}
   - component: {fileID: -3678600976375478634}
+  - component: {fileID: 8170466036268861975}
   - component: {fileID: -8540745754969349028}
-  - component: {fileID: -2649103701540452547}
-  - component: {fileID: 4098585114710412302}
-  - component: {fileID: 8104460044487187730}
-  - component: {fileID: -4166381054128957909}
-  - component: {fileID: -1660482124880579045}
-  - component: {fileID: 7440159293158877815}
-  - component: {fileID: 1243705283061110171}
+  - component: {fileID: 5988897775269100673}
+  - component: {fileID: -8646335452286455090}
+  - component: {fileID: 3741422180328167376}
   m_Layer: 0
-  m_Name: ZombieSampleGeneral
+  m_Name: SniperSampleGeneral
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35,7 +32,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1322200569230309113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 10.128908, y: -24.239397, z: -14.475027}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -60,7 +57,7 @@ MonoBehaviour:
     spawnerDisabled: 0
     objectsToSpawn:
     - {fileID: 8994825095257699652, guid: ed1df120892365d4e9838ded8b367c64, type: 3}
-    spawnPosition: 3
+    spawnPosition: 2
     spawnPointsFillingMode: 0
     fillSpawnPoints: 0
     x: 1
@@ -102,7 +99,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AIBehaviour: {fileID: -3678600976375478634}
   compensateCameraRotation: 1
-  customBindings: []
+  customBindings:
+  - index: 1
+    actions:
+    - {fileID: 8170466036268861975}
   inputSource: 3
   minMoveInputMagnitude: 0
 --- !u!114 &-3678600976375478634
@@ -117,8 +117,88 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3d9e3a09b334f1f8083c00d873c71ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  behaviourUpdatePeriod: {x: 0, y: 2.3312101}
+  behaviourUpdatePeriod: {x: 0, y: 1}
   activeBehaviourPriority: 0
+--- !u!114 &8170466036268861975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d15864b4ea84fc5bd98b70ce935a95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: 
+  primaryProjectile: 1
+  aimingAvailable: 0
+  deactivateAimingOnCooldown: 0
+  onClickAttackType: 0
+  attackDirectionType: 0
+  findTargetProperties:
+    targetType: 0
+    actorWithComponentName: 
+    targetTag: 
+    ignoreSpawner: 0
+    strategy: 0
+    maxDistanceThreshold: 0
+  aimingProperties:
+    evaluateActionOptions: 0
+    aimingType: 0
+    aimingAreaPrefab: {fileID: 0}
+    sightPrefab: {fileID: 0}
+    circlePrefab: {fileID: 0}
+    sightDistance: 0
+    reverseControls: 0
+  aimingAnimProperties:
+    HasActorAimingAnimation: 0
+    ActorAimingAnimationName: 
+  projectileSpawnData:
+    spawnerDisabled: 0
+    objectsToSpawn:
+    - {fileID: 1090190289803064, guid: 9c3f051267bdf9e48ae4328d1b5e6d98, type: 3}
+    spawnPosition: 2
+    spawnPointsFillingMode: 0
+    fillSpawnPoints: 0
+    x: 0
+    skipBusySpawnPoints: 0
+    spawnPointsFrom: 0
+    _spawnPoints:
+    - {fileID: 0}
+    spawnPointTag: 
+    useChildrenObjects: 0
+    rotationOfSpawns: 0
+    parentOfSpawns: 0
+    actorWithComponentName: 
+    parentTag: 
+    chooseParentStrategy: 0
+    copyComponentsFromSamples: []
+    copyComponentsOfType: 0
+    deleteExistingComponents: 0
+    runSpawnActionsOnObjects: 1
+    destroyAbilityAfterSpawn: 0
+    randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
+  projectileStartupDelay: 0
+  cooldownTime: 0.2
+  projectileClipCapacity: 0
+  clipReloadTime: 1
+  forceBursts: 1
+  burstShotCountRange: {x: 1, y: 9}
+  reloadDisplayToggle: []
+  clipReloadDisplayToggle: []
+  actorProjectileSpawnAnimProperties:
+    HasActorProjectileAnimation: 1
+    ActorProjectileAnimationName: Throw
+  suppressWeaponSpawn: 0
+  appliedPerksNames: []
+  aimingByInput: 0
 --- !u!114 &-8540745754969349028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +215,7 @@ MonoBehaviour:
   alsoSetLayer: 0
   newLayer: 
   applyOnStart: 1
---- !u!114 &-2649103701540452547
+--- !u!114 &5988897775269100673
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -159,20 +239,20 @@ MonoBehaviour:
       _current: 100
       _minLimit: 0
       _maxLimit: 100
-    Level: 1
-    LevelUpRequiredExperience: 100
+    Level: 0
+    LevelUpRequiredExperience: 0
     TotalDamageApplied: 0
   actorDeathAnimProperties:
     HasActorDeathAnimation: 1
     ActorDeathAnimationName: Dead
   actorTakeDamageAnimProperties:
-    HasActorTakeDamageAnimation: 1
-    ActorTakeDamageName: Hit
+    HasActorTakeDamageAnimation: 0
+    ActorTakeDamageName: 
   actorToUI: 0
   additionalForceAnim:
     AnimationName: 
     HasAnimation: 0
-  corpseCleanupDelay: 2
+  corpseCleanupDelay: 5
   deadActorBehaviour:
     RemoveTag: 0
     RemoveRigidbody: 1
@@ -207,7 +287,7 @@ MonoBehaviour:
   levelUpAction: {fileID: 0}
   targetMarkActorComponentName: Aim Enemy Mark
   UIChannelID: 0
---- !u!114 &4098585114710412302
+--- !u!114 &-8646335452286455090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -224,76 +304,11 @@ MonoBehaviour:
     type: 3}
   spawnerType: 0
   ownerType: 2
-  executeProbability: 0.3
+  executeProbability: 0.4
   ExecuteOnAwake: 0
-  DestroyAfterSpawn: 0
+  DestroyAfterSpawn: 1
   spawnedObject: {fileID: 0}
---- !u!114 &8104460044487187730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322200569230309113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d055b42bf26644d89d2475d3cce69e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useCollider: {fileID: 0}
-  collisionActions:
-  - collisionLayerMask:
-      serializedVersion: 2
-      m_Bits: 8192
-    useTagFilter: 1
-    filterMode: 0
-    filterTags:
-    - Ally
-    - Player
-    velocityFilter:
-      Use: 0
-      Mode: 0
-      Velocity: 0
-    executeOnCollisionWithSpawner: 0
-    destroyAfterAction: 0
-    actions:
-    - {fileID: -4166381054128957909}
-    - {fileID: 7440159293158877815}
-  debugCollisions: 0
-  ExistentCollisions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &-4166381054128957909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322200569230309113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7505beefdc468b98e39e54f7335d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CriticalDamageChance: 0.1
-  CriticalDamageMultiplier: 1
-  Damage: 10
-  levelablePropertiesList: []
-  perkLevel: 1
---- !u!114 &-1660482124880579045
+--- !u!114 &3741422180328167376
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -340,59 +355,3 @@ MonoBehaviour:
   SpawnDelays:
     Delay: 0
     StartupDelay: 0
---- !u!114 &7440159293158877815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322200569230309113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17eb0bf644eb4bd4b35b4db0dde4cb47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentName: 
-  objectToSpawn: {fileID: 431257179778231269, guid: b108e8d0549005145a83a08e685a07ab,
-    type: 3}
-  spawnerType: 0
-  ownerType: 1
-  executeProbability: 1
-  ExecuteOnAwake: 0
-  DestroyAfterSpawn: 0
-  spawnedObject: {fileID: 0}
---- !u!114 &1243705283061110171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322200569230309113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb68bfe9b20e4840be7f8b09537fb0fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 1
-  useDynamics: 0
-  movementStart:
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    timeScale: 1
-  movementEnd:
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    timeScale: 1
-  movementAnimationProperties:
-    HasMovementAnimation: 1
-    MovementAnimationName: Run
-    MovementAnimationSpeedFactorName: SpeedFactor
-    MovementAnimationSpeedFactorMultiplier: 1.5
