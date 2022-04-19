@@ -102,10 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AIBehaviour: {fileID: -3678600976375478634}
   compensateCameraRotation: 1
-  customBindings:
-  - index: 1
-    actions:
-    - {fileID: 4098585114710412302}
+  customBindings: []
   inputSource: 3
   minMoveInputMagnitude: 0
 --- !u!114 &-3678600976375478634

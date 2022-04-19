@@ -1,4 +1,5 @@
 ﻿using Assets.Crimson.Core.AI.GeneralParams;
+using Assets.Crimson.Core.AI.Interfaces;
 using Assets.Crimson.Core.Common.Filters;
 using Crimson.Core.AI;
 using Crimson.Core.Common;
@@ -14,7 +15,7 @@ using UnityEngine;
 namespace Assets.Crimson.Core.AI
 {
 	[Serializable, HideMonoScript]
-	public class AimBehaviour : MonoBehaviour, IActorAbility, IAIBehaviour
+	public class AimBehaviour : MonoBehaviour, IActorAbility, IAIBehaviour, IDrawGizmos
 	{
 		public BasePriority Priority = new BasePriority
 		{
@@ -36,24 +37,10 @@ namespace Assets.Crimson.Core.AI
 		private const float AIM_MAX_DIST = 40f;
 		private readonly Vector3 VIEW_POINT_DELTA = new Vector3(0f, 0.6f, 0f);
 		private const float SHOOTING_ANGLE_THRESH = 1f;
-		private AbilityPlayerInput _input;
 		private Transform _target = null;
 		private Transform _transform = null;
 
 		private float _catchingAimTime;
-
-		private AbilityPlayerInput CustomInput
-		{
-			get
-			{
-				if (_input == null)
-				{
-					_input = Actor.GameObject.GetComponent<AbilityPlayerInput>();
-				}
-
-				return _input;
-			}
-		}
 
 		public IActor Actor { get; set; }
 
@@ -74,7 +61,9 @@ namespace Assets.Crimson.Core.AI
 						x = targetRotation.y * targetRotation.w,
 						y = targetRotation.x * targetRotation.w,
 					};
-					inputData.Look = math.normalize(lookInput);
+					inputData.Look = lookInput.x == 0 && lookInput.y == 0 ?
+						float2.zero
+						: math.normalize(lookInput);
 					result = true;
 				}
 				else if (_catchingAimTime == -1)
@@ -158,7 +147,7 @@ namespace Assets.Crimson.Core.AI
 		{
 		}
 
-		private void OnDrawGizmos()
+		public void DrawGizmos()
 		{
 			var rayLength = 40;
 			var raySize = .2f;

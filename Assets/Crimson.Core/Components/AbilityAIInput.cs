@@ -30,23 +30,9 @@ namespace Crimson.Core.Components
 			_entity = entity;
 			_dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-			_dstManager.AddComponent<NetworkSyncReceive>(entity);
-
 			Behaviours = new List<IAIBehaviour>();
-			//var tempBehaviours = new List<IAIBehaviour>();
 
-			//foreach (var t in Behaviours)
-			//{
-			//	tempBehaviours.Add(t.CopyFields());
-			//}
-
-			//Behaviours = tempBehaviours;
-
-			//for (var i = 0; i < Behaviours.Count; i++)
-			//{
-			//	Behaviours[i] = Behaviours[i].CopyFields();
-			//	Behaviours[i].Actor = Actor;
-			//}
+			_dstManager.AddComponent<NetworkSyncReceive>(entity);
 
 			StartTimer();
 			EvaluateAll();
@@ -72,5 +58,17 @@ namespace Crimson.Core.Components
 		public void Execute()
 		{
 		}
+
+#if UNITY_EDITOR
+
+		private void OnDrawGizmosSelected()
+		{
+			if (activeBehaviour != null && activeBehaviour is Assets.Crimson.Core.AI.Interfaces.IDrawGizmos drawer)
+			{
+				drawer.DrawGizmos();
+			}
+		}
+
+#endif
 	}
 }

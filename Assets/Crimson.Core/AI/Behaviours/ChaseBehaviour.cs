@@ -18,11 +18,6 @@ namespace Crimson.Core.AI
 	[Serializable, HideMonoScript]
 	public class ChaseBehaviour : MonoBehaviour, IActorAbility, IAIBehaviour
 	{
-		public BasePriority Priority = new BasePriority
-		{
-			Value = 1
-		};
-
 		public CurvePriority CurvePriority = new CurvePriority(0)
 		{
 			XAxisTooltip = "Target priority based on distance to it"
@@ -30,18 +25,69 @@ namespace Crimson.Core.AI
 
 		public EvaluationMode EvaluationMode;
 
-		public TagFilter TagFilter;
+		public BasePriority Priority = new BasePriority
+		{
+			Value = 1
+		};
 
-		public IActor Actor { get; set; }
+		public TagFilter TagFilter;
 
 		private const float FINISH_CHASE_DISTSQ = 5f;
 		private const float PRIORITY_MULTIPLIER = 0.5f;
-
+		private int _currentWaypoint = 0;
+		private NavMeshPath _path;
 		private Transform _target = null;
 		private Transform _transform = null;
-		private NavMeshPath _path;
+		public IActor Actor { get; set; }
 
-		private int _currentWaypoint = 0;
+		public NavMeshPath Path
+		{
+			get
+			{
+				if (_path == null)
+				{
+					_path = new NavMeshPath();
+				}
+
+				return _path;
+			}
+		}
+
+		public void AddComponentData(ref Entity entity, IActor actor)
+		{
+			Actor = actor;
+		}
+
+		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
+		{
+			if (Path.status == NavMeshPathStatus.PathInvalid)
+			{
+				return false;
+			}
+
+			var distance = 0.0f;
+			if (Path.corners.Length > _currentWaypoint)
+			{
+				distance = math.distancesq(_transform.position, Path.corners[_currentWaypoint]);
+			}
+
+			if (distance <= Constants.WAYPOINT_SQDIST_THRESH)
+			{
+				_currentWaypoint++;
+			}
+
+			if (_currentWaypoint >= Path.corners.Length)
+			{
+				inputData.Move = float2.zero;
+				return false;
+			}
+
+			var dir = Path.corners[_currentWaypoint] - _transform.position;
+
+			inputData.Move = math.normalize(new float2(dir.x, dir.z));
+
+			return true;
+		}
 
 		public float Evaluate(Entity entity, AbilityAIInput ai, List<Transform> targets)
 		{
@@ -110,19 +156,13 @@ namespace Crimson.Core.AI
 				Priority.Value * PRIORITY_MULTIPLIER;
 		}
 
-		private float CalculatePriorityFor(Vector3 position)
+		public void Execute()
 		{
-			var distance = math.distance(_transform.position, position);
-			return CurvePriority.Evaluate(distance);
 		}
 
 		public bool SetUp(Entity entity, EntityManager dstManager)
 		{
-			if (_path == null)
-			{
-				_path = new NavMeshPath();
-			}
-			_path.ClearCorners();
+			Path.ClearCorners();
 
 			if (_target == null || _transform == null)
 			{
@@ -130,45 +170,15 @@ namespace Crimson.Core.AI
 			}
 
 			_currentWaypoint = 1;
-			var result = NavMesh.CalculatePath(_transform.position, _target.position, NavMesh.AllAreas, _path);
+			var result = NavMesh.CalculatePath(_transform.position, _target.position, NavMesh.AllAreas, Path);
 
 			return result;
 		}
 
-		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
+		private float CalculatePriorityFor(Vector3 position)
 		{
-			if (_path.status == NavMeshPathStatus.PathInvalid)
-			{
-				return false;
-			}
-
-			var distSq = math.distancesq(_transform.position, _path.corners[_currentWaypoint]);
-
-			if (distSq <= Constants.WAYPOINT_SQDIST_THRESH)
-			{
-				_currentWaypoint++;
-			}
-
-			if (_currentWaypoint >= _path.corners.Length)
-			{
-				inputData.Move = float2.zero;
-				return false;
-			}
-
-			var dir = _path.corners[_currentWaypoint] - _transform.position;
-
-			inputData.Move = math.normalize(new float2(dir.x, dir.z));
-
-			return true;
-		}
-
-		public void AddComponentData(ref Entity entity, IActor actor)
-		{
-			Actor = actor;
-		}
-
-		public void Execute()
-		{
+			var distance = math.distance(_transform.position, position);
+			return CurvePriority.Evaluate(distance);
 		}
 	}
 }

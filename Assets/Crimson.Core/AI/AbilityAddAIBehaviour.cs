@@ -1,6 +1,7 @@
 ﻿using Crimson.Core.AI;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
+using Crimson.Core.Utils;
 using Sirenix.OdinInspector;
 using System.Linq;
 using Unity.Entities;
@@ -9,7 +10,7 @@ using UnityEngine;
 namespace Assets.Crimson.Core.AI
 {
 	[HideMonoScript]
-	public class AbilityAddAIBehaviour : MonoBehaviour, IActorAbility
+	public class AbilityAddAIBehaviour : TimerBaseBehaviour, IActorAbility
 	{
 		[ValidateInput(nameof(MustBeAI), "MonoBehaviours must derive from IAIBehaviour!")]
 		public MonoBehaviour[] Behaviours;
@@ -22,7 +23,8 @@ namespace Assets.Crimson.Core.AI
 		{
 			_entity = entity;
 			Actor = actor;
-			Execute();
+			Timer.TimedActions.AddAction(Execute, 1);
+			Timer.Start();
 		}
 
 		public void Execute()
