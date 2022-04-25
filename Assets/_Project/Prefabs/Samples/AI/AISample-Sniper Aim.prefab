@@ -95,6 +95,6 @@ MonoBehaviour:
     - Player
   ExecutableCustomInput:
     CustomInputIndex: 1
-  AttackDelay: 1
+  AttackDelay: 4
   SightRadius: 20
   SearchTime: 0.25
