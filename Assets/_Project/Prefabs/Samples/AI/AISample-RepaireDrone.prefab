@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BasePriority:
-    Value: 1
+    Value: 2
   CurvePriority:
     Curve:
       serializedVersion: 2

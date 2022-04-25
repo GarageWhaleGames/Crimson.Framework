@@ -11,10 +11,10 @@ GameObject:
   - component: {fileID: 4723018560654850}
   - component: {fileID: 33398595887791320}
   - component: {fileID: 23638827291034866}
-  - component: {fileID: 64012685003847206}
   - component: {fileID: 8013044959796567550}
   - component: {fileID: 3356243660255048771}
   - component: {fileID: 147921930239687858}
+  - component: {fileID: 7679026496694843536}
   m_Layer: 0
   m_Name: SM_Prop_Drone_Ball_01
   m_TagString: Untagged
@@ -86,20 +86,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!64 &64012685003847206
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1102490093963696}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 43214367423207870, guid: 68bfa4eb0b6417549a51fb3a269dc553, type: 2}
 --- !u!54 &8013044959796567550
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -149,3 +135,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!136 &7679026496694843536
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102490093963696}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.34795204
+  m_Height: 0.5521535
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
