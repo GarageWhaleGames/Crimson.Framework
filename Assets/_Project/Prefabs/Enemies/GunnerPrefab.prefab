@@ -3095,6 +3095,7 @@ GameObject:
   - component: {fileID: 6644099361251957952}
   - component: {fileID: 7102236806472715367}
   - component: {fileID: 5270593983970642840}
+  - component: {fileID: -8687988107851036036}
   - component: {fileID: -3974295473923632167}
   - component: {fileID: 4651076874256938922}
   - component: {fileID: 7468147895218278085}
@@ -3107,7 +3108,6 @@ GameObject:
   - component: {fileID: 975227147266582735}
   - component: {fileID: -119941344543025747}
   - component: {fileID: -7290221781631348989}
-  - component: {fileID: -8687988107851036036}
   - component: {fileID: -6772271949140531671}
   - component: {fileID: 2423355874371044013}
   - component: {fileID: 5664320460237105083}
@@ -3198,6 +3198,80 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentName: 
   ExecuteOnSpawn: []
+--- !u!114 &-8687988107851036036
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6421465469547581357}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efab744802f94701bdb0b235b75b3f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initStats:
+    CriticalDamageChance: 0
+    CriticalDamageMultiplier: 0
+    CurrentExperience: 0
+    Energy:
+      _current: 100
+      _minLimit: 0
+      _maxLimit: 100
+      _freeze: 0
+    Health:
+      _current: 100
+      _minLimit: 0
+      _maxLimit: 100
+      _freeze: 0
+    Level: 0
+    LevelUpRequiredExperience: 0
+    TotalDamageApplied: 0
+  actorDeathAnimProperties:
+    HasActorDeathAnimation: 1
+    ActorDeathAnimationName: Dead
+  actorTakeDamageAnimProperties:
+    HasActorTakeDamageAnimation: 0
+    ActorTakeDamageName: 
+  actorToUI: 0
+  additionalForceAnim:
+    AnimationName: 
+    HasAnimation: 0
+  corpseCleanupDelay: 5
+  deadActorBehaviour:
+    RemoveTag: 0
+    RemoveRigidbody: 1
+    RemoveColliders: 1
+    RemoveInput: 1
+    OnDeathActionsComponentNames:
+    - Spawn Healing Potion
+  deathCount: 0
+  ExplicitUIChannel: 0
+  healAction: {fileID: 0}
+  isEnabled: 1
+  levelablePropertiesList:
+  - propertyName: MaxHealth
+    levelablePropertyAction: 1
+    modifier: 20
+    levelablePropertiesInfo:
+    - MaxHealth
+    - LevelUpRequiredExperience
+  - propertyName: CurrentHealth
+    levelablePropertyAction: 1
+    modifier: 20
+    levelablePropertiesInfo:
+    - MaxHealth
+    - CurrentHealth
+    - LevelUpRequiredExperience
+  - propertyName: LevelUpRequiredExperience
+    levelablePropertyAction: 1
+    modifier: 300
+    levelablePropertiesInfo:
+    - MaxHealth
+    - LevelUpRequiredExperience
+  levelUpAction: {fileID: 0}
+  targetMarkActorComponentName: Aim Enemy Mark
+  UIChannelID: 0
 --- !u!114 &-3974295473923632167
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3580,80 +3654,6 @@ MonoBehaviour:
   alsoSetLayer: 0
   newLayer: 
   applyOnStart: 1
---- !u!114 &-8687988107851036036
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6421465469547581357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efab744802f94701bdb0b235b75b3f9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initStats:
-    CriticalDamageChance: 0
-    CriticalDamageMultiplier: 0
-    CurrentExperience: 0
-    Energy:
-      _current: 100
-      _minLimit: 0
-      _maxLimit: 100
-      _freeze: 0
-    Health:
-      _current: 100
-      _minLimit: 0
-      _maxLimit: 100
-      _freeze: 0
-    Level: 0
-    LevelUpRequiredExperience: 0
-    TotalDamageApplied: 0
-  actorDeathAnimProperties:
-    HasActorDeathAnimation: 1
-    ActorDeathAnimationName: Dead
-  actorTakeDamageAnimProperties:
-    HasActorTakeDamageAnimation: 0
-    ActorTakeDamageName: 
-  actorToUI: 0
-  additionalForceAnim:
-    AnimationName: 
-    HasAnimation: 0
-  corpseCleanupDelay: 5
-  deadActorBehaviour:
-    RemoveTag: 0
-    RemoveRigidbody: 1
-    RemoveColliders: 1
-    RemoveInput: 1
-    OnDeathActionsComponentNames:
-    - Spawn Healing Potion
-  deathCount: 0
-  ExplicitUIChannel: 0
-  healAction: {fileID: 0}
-  isEnabled: 1
-  levelablePropertiesList:
-  - propertyName: MaxHealth
-    levelablePropertyAction: 1
-    modifier: 20
-    levelablePropertiesInfo:
-    - MaxHealth
-    - LevelUpRequiredExperience
-  - propertyName: CurrentHealth
-    levelablePropertyAction: 1
-    modifier: 20
-    levelablePropertiesInfo:
-    - MaxHealth
-    - CurrentHealth
-    - LevelUpRequiredExperience
-  - propertyName: LevelUpRequiredExperience
-    levelablePropertyAction: 1
-    modifier: 300
-    levelablePropertiesInfo:
-    - MaxHealth
-    - LevelUpRequiredExperience
-  levelUpAction: {fileID: 0}
-  targetMarkActorComponentName: Aim Enemy Mark
-  UIChannelID: 0
 --- !u!114 &-6772271949140531671
 MonoBehaviour:
   m_ObjectHideFlags: 0
