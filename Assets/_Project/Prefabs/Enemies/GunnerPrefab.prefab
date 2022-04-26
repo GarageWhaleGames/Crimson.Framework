@@ -3396,16 +3396,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cb3e455117448ea9f306badb3b4145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AIBehaviour: {fileID: -3678600976375478634, guid: 3b5b124c840e2634aaebe3f9dacb9ac0,
-    type: 3}
+  AIBehaviour: {fileID: 8144904806880491574}
   compensateCameraRotation: 1
   customBindings:
   - index: 1
     actions:
-    - {fileID: 8170466036268861975, guid: 3b5b124c840e2634aaebe3f9dacb9ac0, type: 3}
+    - {fileID: 5088807022606734235}
   - index: 3
     actions:
-    - {fileID: -1924274504665356381, guid: 3b5b124c840e2634aaebe3f9dacb9ac0, type: 3}
+    - {fileID: -119941344543025747}
   inputSource: 3
   minMoveInputMagnitude: 0
 --- !u!114 &5088807022606734235
