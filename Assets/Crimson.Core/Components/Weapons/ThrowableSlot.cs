@@ -20,6 +20,8 @@ namespace Assets.Crimson.Core.Components.Weapons
 		[CastToUI("CurrentThrowable")]
 		public IThrowable _weapon;
 
+		public bool IsEmpty => _weapon == null;
+
 		public IActor Actor { get; set; }
 
 		public void AddComponentData(ref Entity entity, IActor actor)

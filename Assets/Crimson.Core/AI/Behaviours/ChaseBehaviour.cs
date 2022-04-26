@@ -61,7 +61,7 @@ namespace Crimson.Core.AI
 
 			var dir = _path.Direction;
 
-			inputData.Move = math.normalize(new float2(dir.x, dir.z));
+			inputData.Move = new float2(dir.x, dir.z);
 
 			return true;
 		}

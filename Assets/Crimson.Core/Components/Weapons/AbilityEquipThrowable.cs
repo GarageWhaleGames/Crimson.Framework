@@ -18,7 +18,7 @@ namespace Assets.Crimson.Core.Components.Weapons
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			Actor = actor;
-			if (actor.GameObject.GetComponent<ThrowableSlot>())
+			if (actor.GameObject.GetComponent<HotkeyWeapon>())
 			{
 				Equip(actor);
 			}
@@ -35,10 +35,10 @@ namespace Assets.Crimson.Core.Components.Weapons
 			var e = target.ActorEntity;
 			copy.AddComponentData(ref e, target);
 
-			var slot = target.GameObject.GetComponent<ThrowableSlot>();
-			if (slot != null)
+			var hotkey = target.GameObject.GetComponent<HotkeyWeapon>();
+			if (hotkey != null)
 			{
-				slot.Change(copy);
+				hotkey.Add(copy);
 			}
 		}
 

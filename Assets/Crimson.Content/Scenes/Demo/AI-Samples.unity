@@ -4564,7 +4564,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SpawnData.copyComponentsFromSamples.Array.data[2]
       value: 
-      objectReference: {fileID: 1703253512496696105, guid: aef33018dcb22a643843185c4acffb66,
+      objectReference: {fileID: 1703253512496696105, guid: 7c364f50bf7445e42928a2fb859bec3a,
         type: 3}
     - target: {fileID: 9173056185145076088, guid: 73229eaebbdde45339bf6e78786e88d5,
         type: 3}
