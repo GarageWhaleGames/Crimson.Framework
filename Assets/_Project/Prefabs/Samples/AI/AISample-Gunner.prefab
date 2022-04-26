@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 6978235024533551524}
   - component: {fileID: 3433854336482446152}
   - component: {fileID: 6232921491605006581}
+  - component: {fileID: 29047142967384380}
+  - component: {fileID: 9223132244519698431}
   m_Layer: 0
   m_Name: AISample-Gunner
   m_TagString: Untagged
@@ -50,6 +52,8 @@ MonoBehaviour:
   - {fileID: 6978235024533551524}
   - {fileID: 3433854336482446152}
   - {fileID: 6232921491605006581}
+  - {fileID: 29047142967384380}
+  - {fileID: 9223132244519698431}
 --- !u!114 &6978235024533551524
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62,8 +66,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f0963bccd4760b2449e15c8e8d908038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Priority:
-    Value: 0.1
   CurvePriority:
     Curve:
       serializedVersion: 2
@@ -89,10 +91,12 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    MaxSample: 20
-    MinSample: 0
+    MaxSample: 40
+    MinSample: 10
     _xAxisTooltip: Target priority based on distance to it
-  EvaluationMode: 1
+  EvaluationMode: 0
+  Priority:
+    Value: 0.5
   TagFilter:
     use: 1
     filterMode: 0
@@ -174,3 +178,68 @@ MonoBehaviour:
     Value: 1.31
   ExecutableInput:
     CustomInputIndex: 3
+--- !u!114 &29047142967384380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249163045441211879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e34cfd6dca1e224f8a8121a9d83c156, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority:
+    Value: 1
+--- !u!114 &9223132244519698431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249163045441211879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f119bfc4ce429424e9c2c6c6490ec7c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BasePriority:
+    Value: 1.3
+  CurvePriority:
+    Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    MaxSample: 9
+    MinSample: 0
+    _xAxisTooltip: Target priority based on distance to it
+  EvaluationMode: 0
+  DistanceLimitation:
+    MaxDistance: 10
+  TagFilter:
+    use: 1
+    filterMode: 0
+    filterTags:
+    - Player
+    - Ally
