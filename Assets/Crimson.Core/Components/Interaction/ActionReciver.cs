@@ -6,15 +6,15 @@ using UnityEngine;
 
 namespace Assets.Crimson.Core.Components.Interaction
 {
-    [Serializable]
-    public struct ActionReciver
-    {
-        [ValidateInput(nameof(MustBeAbilityTarget), "Ability MonoBehaviours must derive from IActorAbilityTarget!")]
-        public List<MonoBehaviour> Actions;
+	[Serializable]
+	public struct ActionReciver
+	{
+		[ValidateInput(nameof(MustBeAbilityTarget), "Ability MonoBehaviours must derive from IActorAbilityTarget or IActorAbility!")]
+		public List<MonoBehaviour> Actions;
 
-        private bool MustBeAbilityTarget(List<MonoBehaviour> a)
-        {
-            return !a.Exists(t => !(t is IActorAbilityTarget)) || a.Count == 0;
-        }
-    }
+		private bool MustBeAbilityTarget(List<MonoBehaviour> a)
+		{
+			return !a.Exists(t => !(t is IActorAbilityTarget) && !(t is IActorAbility)) || a.Count == 0;
+		}
+	}
 }
