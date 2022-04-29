@@ -66,6 +66,19 @@ namespace Crimson.Core.AI
 			return true;
 		}
 
+		public void DrawGizmos()
+		{
+			if (_target == null)
+			{
+				return;
+			}
+
+			Gizmos.color = Color.green;
+			var targetPosition = _path.EndWaypointPosition;
+			Gizmos.DrawLine(_transform.position, targetPosition);
+			Gizmos.DrawSphere(targetPosition, .5f);
+		}
+
 		public float Evaluate(Entity entity, AbilityAIInput ai, List<Transform> targets)
 		{
 			Transform target = null;
@@ -77,22 +90,43 @@ namespace Crimson.Core.AI
 			}
 
 			var filteredTargets = targets.Where(t => TagFilter.Filter(t) && t != _transform).ToList();
-			if (filteredTargets.Count == 0)
+			switch (filteredTargets.Count)
 			{
-				return 0f;
+				case 0:
+					break;
+
+				case 1:
+					target = filteredTargets.First();
+					break;
+
+				default:
+					target = SelectTarget(filteredTargets);
+					break;
 			}
 
-			if (filteredTargets.Count == 1)
+			if (target == null)
 			{
-				target = filteredTargets.First();
-				_target = target;
-				return math.distancesq(_transform.position, target.position) < FINISH_CHASE_DISTSQ
-					? 0f :
-					Priority.Value * PRIORITY_MULTIPLIER;
+				return 0;
 			}
+			_target = target;
+			var distance = math.distancesq(_transform.position, target.position);
+			return distance < FINISH_CHASE_DISTSQ ?
+				0f :
+				Priority.Value * PRIORITY_MULTIPLIER;
+		}
 
-			var sampleScale = CurvePriority.SampleScale;
+		public void Execute()
+		{
+		}
 
+		public bool SetUp(Entity entity, EntityManager dstManager)
+		{
+			return _path.Setup(_transform, _target);
+		}
+
+		private Transform SelectTarget(List<Transform> filteredTargets)
+		{
+			Transform target;
 			switch (EvaluationMode)
 			{
 				case EvaluationMode.Random:
@@ -128,38 +162,14 @@ namespace Crimson.Core.AI
 					target = orderedTargets.Last();
 					break;
 			}
-			_target = target;
-			return math.distancesq(_transform.position, target.position) < FINISH_CHASE_DISTSQ ?
-				0f :
-				Priority.Value * PRIORITY_MULTIPLIER;
-		}
 
-		public void Execute()
-		{
-		}
-
-		public bool SetUp(Entity entity, EntityManager dstManager)
-		{
-			return _path.Setup(_transform, _target);
+			return target;
 		}
 
 		private float CalculatePriorityFor(Vector3 position)
 		{
 			var distance = math.distance(_transform.position, position);
 			return CurvePriority.Evaluate(distance);
-		}
-
-		public void DrawGizmos()
-		{
-			if (_target == null)
-			{
-				return;
-			}
-
-			Gizmos.color = Color.green;
-			var targetPosition = _path.EndWaypointPosition;
-			Gizmos.DrawLine(_transform.position, targetPosition);
-			Gizmos.DrawSphere(targetPosition, .5f);
 		}
 	}
 }

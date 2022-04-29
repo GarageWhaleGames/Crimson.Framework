@@ -43,8 +43,8 @@ namespace Assets.Crimson.Core.AI
 		private Transform _target = null;
 		private Transform _transform = null;
 
-		private const float Finish_position_threshold = .5f;
-		private readonly AIPathControl _path = new AIPathControl(finishThreshold: Finish_position_threshold);
+		private const float FinishPositionThreshold = .5f;
+		private readonly AIPathControl _path = new AIPathControl(finishThreshold: FinishPositionThreshold);
 
 		public IActor Actor { get; set; }
 
@@ -53,7 +53,7 @@ namespace Assets.Crimson.Core.AI
 			get
 			{
 				var distanceToTarget = math.distancesq(_transform.position, _target.position);
-				return _path.IsValid && _path.HasArrived ? 0f :
+				return distanceToTarget > DistanceLimitation.MaxDistance ? 0f :
 					CurvePriority.Evaluate(distanceToTarget) * BasePriority.Value;
 			}
 		}
@@ -96,20 +96,28 @@ namespace Assets.Crimson.Core.AI
 			}
 
 			var filteredTargets = targets.Where(t => TagFilter.Filter(t) && t != _transform).ToList();
-			if (filteredTargets.Count == 0)
+			switch (filteredTargets.Count)
 			{
-				return 0f;
+				case 1:
+					_target = filteredTargets.First();
+					break;
+
+				default:
+					_target = SelectTarget(filteredTargets);
+					break;
 			}
 
-			if (filteredTargets.Count == 1)
+			if (_target == null)
 			{
-				_target = filteredTargets.First();
-				_fallbackPlace = CalculateBestPosition(_target);
-				return Priority;
+				return 0;
 			}
+			_fallbackPlace = CalculateBestPosition(_target);
+			return Priority;
+		}
 
-			var sampleScale = CurvePriority.SampleScale;
-
+		private Transform SelectTarget(List<Transform> filteredTargets)
+		{
+			Transform target;
 			switch (EvaluationMode)
 			{
 				case EvaluationMode.Random:
@@ -117,16 +125,16 @@ namespace Assets.Crimson.Core.AI
 
 					var priorityCache = 0f;
 
-					foreach (var target in filteredTargets)
+					foreach (var item in filteredTargets)
 					{
-						var distance = math.distance(_transform.position, target.position);
+						var distance = math.distance(_transform.position, item.position);
 						var priority = CurvePriority.Evaluate(distance);
 
 						priorities.Add(new MinMaxTarget
 						{
 							Min = priorityCache,
 							Max = priority + priorityCache,
-							Target = target
+							Target = item
 						});
 
 						priorityCache += priority;
@@ -134,7 +142,7 @@ namespace Assets.Crimson.Core.AI
 
 					var randomNumber = UnityEngine.Random.Range(0f, priorityCache);
 
-					_target = priorities.Find(t => t.Min < randomNumber && t.Max >= randomNumber).Target;
+					target = priorities.Find(t => t.Min < randomNumber && t.Max >= randomNumber).Target;
 					break;
 
 				default: // ReSharper disable once RedundantCaseLabel
@@ -145,12 +153,11 @@ namespace Assets.Crimson.Core.AI
 						return CurvePriority.Evaluate(distance);
 					}).ToList();
 
-					_target = orderedTargets.Last();
+					target = orderedTargets.Last();
 					break;
 			}
 
-			_fallbackPlace = CalculateBestPosition(_target);
-			return Priority;
+			return target;
 		}
 
 		public void Execute()
