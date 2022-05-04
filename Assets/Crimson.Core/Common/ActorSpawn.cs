@@ -45,11 +45,12 @@ namespace Crimson.Core.Common
 			{
 				var newSpawnPoints = new List<GameObject>();
 
-				foreach (var point in settings.SpawnPoints)
+				for (var i = 0; i < settings.SpawnPoints.Count; i++)
 				{
-					foreach (Transform t in point.transform)
+					var point = settings.SpawnPoints[i];
+					for (var j = 0; j < point.transform.childCount; j++)
 					{
-						newSpawnPoints.Add(t.gameObject);
+						newSpawnPoints.Add(point.transform.GetChild(j).gameObject);
 					}
 				}
 
