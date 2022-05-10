@@ -36,26 +36,16 @@ namespace Assets.Crimson.Core.AI.Behaviours
 
 		public float SightRadius = 20;
 		public float SearchTime = .25f;
-
-		private const float AIM_MAX_DIST = 40f;
-		private readonly Vector3 VIEW_POINT_DELTA = new Vector3(0f, 1.5f, 0f);
-		private const float SHOOTING_ANGLE_THRESH = 1f;
 		private Transform _target = null;
 		private Transform _weaponRoot;
 		private SearchingLaser _searchingLaser;
 		private Transform _transform = null;
-
-		private Ray GetRayTo(Transform target)
-		{
-			var origin = _transform.position + VIEW_POINT_DELTA;
-			var direction = target.position - origin;
-			return new Ray(origin, direction);
-		}
-
 		private readonly DelayTimer _delayTimer = new DelayTimer();
 
 		public IActor Actor { get; set; }
-
+		private readonly Vector3 VIEW_POINT_DELTA = new Vector3(0f, 1.5f, 0f);
+		private const float SHOOTING_ANGLE_THRESH = 1f;
+		private const float AIM_MAX_DIST = 40f;
 		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
 		{
 			var result = true;
@@ -65,6 +55,8 @@ namespace Assets.Crimson.Core.AI.Behaviours
 			{
 				var targetRotation = Quaternion.FromToRotation(_transform.forward, direction);
 				var angle = math.abs(targetRotation.eulerAngles.y);
+				var maxAngle = CalculateMaxAngle();
+				_searchingLaser.MaxAngle = maxAngle;
 				if (angle >= SHOOTING_ANGLE_THRESH)
 				{
 					_searchingLaser.Run();
@@ -100,7 +92,6 @@ namespace Assets.Crimson.Core.AI.Behaviours
 
 			return result;
 		}
-
 		public float Evaluate(Entity entity, AbilityAIInput ai, List<Transform> targets)
 		{
 			if (World.DefaultGameObjectInjectionWorld.EntityManager.HasComponent<DeadActorTag>(entity))
@@ -112,25 +103,20 @@ namespace Assets.Crimson.Core.AI.Behaviours
 
 			var orderedTargets = targets
 				.Where(t => TagFilter.Filter(t) && t != _transform)
-				.OrderBy(t => math.distancesq(_transform.position, t.position)).ToList();
+				.OrderBy(t => math.distancesq(_transform.position, t.position));
 
-			if (orderedTargets.Count == 0)
+			foreach (var target in orderedTargets)
 			{
-				return 0f;
-			}
-
-			foreach (var t in orderedTargets)
-			{
-				var direction = t.position - _transform.position;
-				if (Physics.Raycast(GetRayTo(t), out var hit,
+				var direction = target.position - _transform.position;
+				if (Physics.Raycast(GetRayTo(target), out var hit,
 					AIM_MAX_DIST))
 				{
-					if (hit.transform != t)
+					if (hit.transform != target)
 					{
 						continue;
 					}
 
-					_target = t;
+					_target = target;
 					var distance = math.distance(_transform.position, _target.position);
 					var result = CurvePriority.Evaluate(distance) * Priority.Value;
 
@@ -167,6 +153,34 @@ namespace Assets.Crimson.Core.AI.Behaviours
 		{
 			DrawRay(_transform, Color.red);
 			DrawRay(_weaponRoot, Color.yellow);
+			DrawTarget(_target, Color.green);
+		}
+
+		private float CalculateMaxAngle()
+		{
+			var direction = _target.position - _transform.position;
+			var right = (Quaternion.AngleAxis(90, Vector3.up) * direction).normalized;
+			var maxRightDirection = direction + (right * SightRadius);
+			return Vector3.Angle(direction, maxRightDirection);
+		}
+
+		private Ray GetRayTo(Transform target)
+		{
+			var origin = _transform.position + VIEW_POINT_DELTA;
+			var direction = target.position - origin;
+			return new Ray(origin, direction);
+		}
+
+		private void DrawTarget(Transform target, Color color)
+		{
+			if (target == null)
+			{
+				return;
+			}
+
+			Gizmos.color = color;
+			Gizmos.matrix = target.localToWorldMatrix;
+			Gizmos.DrawWireSphere(Vector3.zero, SightRadius);
 		}
 
 		private void DrawRay(Transform transform, Color color)

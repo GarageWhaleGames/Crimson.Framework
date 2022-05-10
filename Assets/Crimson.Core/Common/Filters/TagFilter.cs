@@ -25,7 +25,7 @@ namespace Assets.Crimson.Core.Common.Filters
 
 		public bool Filter(IActor actor)
 		{
-			return Filter(actor.GameObject.transform);
+			return actor != null && Filter(actor.GameObject.transform);
 		}
 
 		private static IEnumerable Tags()

@@ -26,7 +26,7 @@ namespace Crimson.Core.AI
 		public TagFilter TagFilter;
 
 		private const float FINISH_BEHAVIOUR_DISTSQ = 20f;
-		private readonly AIPathControl _path = new AIPathControl(finishThreshold: FINISH_BEHAVIOUR_DISTSQ);
+		private AIPathControl _path;
 		private Transform _target = null;
 		private Transform _transform = null;
 
@@ -44,19 +44,13 @@ namespace Crimson.Core.AI
 				return false;
 			}
 
-			_path.NextPoint();
-
 			if (_path.HasArrived)
 			{
 				inputData.Move = float2.zero;
 				return false;
 			}
 
-			var dir = _path.Direction;
-
-			inputData.Move = new float2(dir.x, dir.z);
-
-			return true;
+			return _path.IsValid;
 		}
 
 		public float Evaluate(Entity entity, AbilityAIInput ai, List<Transform> targets)
@@ -82,7 +76,8 @@ namespace Crimson.Core.AI
 
 		public bool SetUp(Entity entity, EntityManager dstManager)
 		{
-			return _path.Setup(_transform, _target);
+			_path.SetTarget(_target);
+			return true;
 		}
 
 		public void DrawGizmos()

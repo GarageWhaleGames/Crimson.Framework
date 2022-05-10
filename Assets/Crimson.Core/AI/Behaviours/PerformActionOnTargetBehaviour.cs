@@ -40,7 +40,7 @@ namespace Assets.Crimson.Core.AI
 
 		private Transform _target = null;
 		private Transform _transform = null;
-		private readonly AIPathControl _path = new AIPathControl(finishThreshold: FINISH_CHASE_DISTSQ);
+		private AIPathControl _path;
 
 		public float Evaluate(Entity entity, AbilityAIInput ai, List<Transform> targets)
 		{
@@ -110,7 +110,8 @@ namespace Assets.Crimson.Core.AI
 
 		public bool SetUp(Entity entity, EntityManager dstManager)
 		{
-			return _path.Setup(_transform, _target);
+			_path.SetTarget(_target);
+			return true;
 		}
 
 		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
@@ -119,8 +120,6 @@ namespace Assets.Crimson.Core.AI
 			{
 				return false;
 			}
-
-			_path.NextPoint();
 
 			if (Physics.Raycast(_transform.position + VIEW_POINT_DELTA, _target.position - _transform.position, out var hit,
 				DistanceLimitation.MaxDistance) && hit.transform == _target)
@@ -138,16 +137,13 @@ namespace Assets.Crimson.Core.AI
 				return false;
 			}
 
-			var dir = _path.Direction;
-
-			inputData.Move = math.normalize(new float2(dir.x, dir.z));
-
-			return true;
+			return _path.IsValid;
 		}
 
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			Actor = actor;
+			_path = new AIPathControl(transform);
 		}
 
 		public void Execute()

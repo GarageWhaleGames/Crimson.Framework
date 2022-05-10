@@ -46,7 +46,7 @@ namespace Assets.Crimson.Core.AI
 		private Vector3 _targetPosition;
 		private Transform _transform = null;
 
-		private readonly AIPathControl _path = new AIPathControl(finishThreshold: PositionThreshold);
+		private AIPathControl _path;
 
 		private float Priority
 		{
@@ -67,18 +67,13 @@ namespace Assets.Crimson.Core.AI
 				return false;
 			}
 
-			_path.NextPoint();
-
 			if (_path.HasArrived)
 			{
 				inputData.Move = float2.zero;
 				return false;
 			}
 
-			var dir = _path.Direction;
-			inputData.Move = new float2(dir.x, dir.z);
-
-			return true;
+			return _path.IsValid;
 		}
 
 		public float Evaluate(Entity entity, AbilityAIInput ai, List<Transform> targets)
@@ -150,7 +145,8 @@ namespace Assets.Crimson.Core.AI
 		public bool SetUp(Entity entity, EntityManager dstManager)
 		{
 			_targetPosition = CalculateBestPosition(_target);
-			return _path.Setup(_transform, _targetPosition);
+			_path.SetTarget(_targetPosition);
+			return true;
 		}
 
 		public void DrawGizmos()

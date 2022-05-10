@@ -211,19 +211,19 @@ MonoBehaviour:
       _current: 100
       _minLimit: 0
       _maxLimit: 100
-      _freeze: 1
+      _freeze: 0
     Level: 1
     LevelUpRequiredExperience: 100
     TotalDamageApplied: 0
   actorDeathAnimProperties:
     HasActorDeathAnimation: 1
     ActorDeathAnimationName: Dead
-  actorTakeDamageAnimProperties:
-    HasActorTakeDamageAnimation: 0
-    ActorTakeDamageName: 
+  TakeDamageAnimation:
+    AnimationName: Hit
+    HasAnimation: 1
   actorToUI: 0
   additionalForceAnim:
-    AnimationName: 
+    AnimationName: Hit
     HasAnimation: 0
   corpseCleanupDelay: 5
   deadActorBehaviour:
@@ -575,6 +575,7 @@ MonoBehaviour:
   _changeAction: {fileID: -9094400888386443425, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
     type: 3}
   _slot: {fileID: 7093220250429794912}
+  _throwableSlot: {fileID: -93229221922767859}
   Weapons: []
 --- !u!114 &6232876792227498021
 MonoBehaviour:

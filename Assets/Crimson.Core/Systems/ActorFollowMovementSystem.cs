@@ -64,7 +64,7 @@ namespace Crimson.Core.Systems
                     if (math.abs(delta.z) < Constants.FOLLOW_MOVEMENT_AXIS_THRESH) delta.z = 0f;
                     
                     movement.Input = delta;
-                    
+
                     if (!follow.continousFollow) PostUpdateCommands.RemoveComponent<ActorFollowMovementData>(entity);
                 }
             );

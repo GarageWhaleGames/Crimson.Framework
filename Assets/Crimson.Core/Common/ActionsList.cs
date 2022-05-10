@@ -8,11 +8,10 @@ using UnityEngine;
 
 namespace Assets.Crimson.Core.Common
 {
-	[Serializable]
+	[Serializable, HideLabel]
 	public class ActionsList
 	{
 		[ValidateInput(nameof(MustBeAbility), "Ability MonoBehaviours must derive from IActorAbility!")]
-		[SerializeField]
 		public List<MonoBehaviour> actions = new List<MonoBehaviour>();
 
 		public List<IActorAbility> AbilityCollection { get; private set; } = new List<IActorAbility>();

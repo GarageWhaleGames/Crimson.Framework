@@ -6,9 +6,7 @@ namespace Assets.Crimson.Core.AI
 	public class SearchingLaser
 	{
 		public Transform Target;
-		private float _angle;
 		private Quaternion _fromRotation;
-		private float _maxAngle;
 		private float _rotationThreshold = .1f;
 		private bool _runned;
 		private float _speedTime;
@@ -17,17 +15,13 @@ namespace Assets.Crimson.Core.AI
 
 		public SearchingLaser(float angle, float speedTime)
 		{
-			_maxAngle = angle;
+			MaxAngle = angle;
 			_speedTime = speedTime;
 		}
 
 		public bool IsStopped { get; private set; } = true;
-
-		private float Angle
-		{
-			get => _angle;
-			set => _angle = value;
-		}
+		public float MaxAngle { get; set; }
+		private float Angle { get; set; }
 
 		private Quaternion TargetRotation
 		{
@@ -47,13 +41,13 @@ namespace Assets.Crimson.Core.AI
 		public void ResetAngle()
 		{
 			TargetRotation = Quaternion.identity;
-			Angle = _maxAngle;
+			Angle = MaxAngle;
 		}
 
 		public void Run()
 		{
 			_runned = true;
-			Angle = _maxAngle;
+			Angle = MaxAngle;
 			if (IsStopped)
 			{
 				CalculateRotation(Angle);

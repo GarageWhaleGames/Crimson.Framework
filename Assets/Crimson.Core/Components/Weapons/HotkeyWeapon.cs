@@ -14,11 +14,13 @@ namespace Assets.Crimson.Core.Components.Weapons
 		public InputActionReference _activateGravigunAction;
 		public InputActionReference _changeAction;
 		public WeaponSlot _slot;
+		public ThrowableSlot _throwableSlot;
 
 		[ValidateInput(nameof(MustBeWeapon), "Perk MonoBehaviours must derive from IWeapon!")]
 		public List<MonoBehaviour> Weapons;
 
 		private readonly List<IWeapon> _weapons = new List<IWeapon>();
+		private readonly List<IThrowable> _throwables = new List<IThrowable>();
 
 		private IWeapon _gravityGun;
 
@@ -57,6 +59,15 @@ namespace Assets.Crimson.Core.Components.Weapons
 			}
 		}
 
+		internal void Add(IThrowable throwable)
+		{
+			_throwables.Add(throwable);
+			if (_throwableSlot.IsEmpty)
+			{
+				_throwableSlot.Change(throwable);
+			}
+		}
+
 		private void ChangeActionHandler(InputAction.CallbackContext obj)
 		{
 			SelectNextWeapon();
@@ -92,6 +103,14 @@ namespace Assets.Crimson.Core.Components.Weapons
 			}
 
 			_slot.Change(_gravityGun);
+		}
+
+		private void OnValidate()
+		{
+			if (_throwableSlot == null)
+			{
+				_throwableSlot = GetComponentInChildren<ThrowableSlot>();
+			}
 		}
 	}
 }

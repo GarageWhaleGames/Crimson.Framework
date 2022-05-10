@@ -41,10 +41,12 @@ namespace Crimson.Core.Components
 		[TitleGroup("Player animation properties")]
 		public ActorDeathAnimProperties actorDeathAnimProperties;
 
-		public ActorTakeDamageAnimProperties actorTakeDamageAnimProperties;
+		[Header("Take Damage Animation")]
+		public ActorGeneralAnimProperties TakeDamageAnimation;
 
 		[HideInInspector] public bool actorToUI;
 
+		[Header("Additional Force Animation")]
 		public ActorGeneralAnimProperties additionalForceAnim;
 
 		public float corpseCleanupDelay;
@@ -240,11 +242,11 @@ namespace Crimson.Core.Components
 
 			_dstManager.AddComponent<TimerData>(entity);
 
-			if (actorTakeDamageAnimProperties.HasActorTakeDamageAnimation)
+			if (TakeDamageAnimation.HasAnimation)
 			{
 				_dstManager.AddComponentData(entity, new ActorTakeDamageAnimData
 				{
-					AnimHash = Animator.StringToHash(actorTakeDamageAnimProperties.ActorTakeDamageName)
+					AnimHash = TakeDamageAnimation.AnimationHash
 				});
 			}
 
@@ -406,6 +408,11 @@ namespace Crimson.Core.Components
 			if (delta > 0 && healAction != null)
 			{
 				((IActorAbility)healAction).Execute();
+			}
+
+			if (delta < 0)
+			{
+				_dstManager.AddComponentData(_entity, new DamagedActorTag());
 			}
 
 			UpdateUIData(nameof(CurrentHealth));

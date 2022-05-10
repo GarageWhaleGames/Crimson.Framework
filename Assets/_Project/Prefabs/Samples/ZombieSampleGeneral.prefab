@@ -15,11 +15,9 @@ GameObject:
   - component: {fileID: -8540745754969349028}
   - component: {fileID: -2649103701540452547}
   - component: {fileID: 4098585114710412302}
-  - component: {fileID: 8104460044487187730}
-  - component: {fileID: -4166381054128957909}
-  - component: {fileID: -1660482124880579045}
-  - component: {fileID: 7440159293158877815}
   - component: {fileID: 1243705283061110171}
+  - component: {fileID: 2619144611948369514}
+  - component: {fileID: 2125715967745892130}
   m_Layer: 0
   m_Name: ZombieSampleGeneral
   m_TagString: Untagged
@@ -102,7 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AIBehaviour: {fileID: -3678600976375478634}
   compensateCameraRotation: 1
-  customBindings: []
+  customBindings:
+  - index: 1
+    actions:
+    - {fileID: 2619144611948369514}
   inputSource: 3
   minMoveInputMagnitude: 0
 --- !u!114 &-3678600976375478634
@@ -155,10 +156,12 @@ MonoBehaviour:
       _current: 100
       _minLimit: 0
       _maxLimit: 100
+      _freeze: 0
     Health:
       _current: 100
       _minLimit: 0
       _maxLimit: 100
+      _freeze: 0
     Level: 1
     LevelUpRequiredExperience: 100
     TotalDamageApplied: 0
@@ -228,139 +231,6 @@ MonoBehaviour:
   ExecuteOnAwake: 0
   DestroyAfterSpawn: 0
   spawnedObject: {fileID: 0}
---- !u!114 &8104460044487187730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322200569230309113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d055b42bf26644d89d2475d3cce69e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  useCollider: {fileID: 0}
-  collisionActions:
-  - collisionLayerMask:
-      serializedVersion: 2
-      m_Bits: 8192
-    useTagFilter: 1
-    filterMode: 0
-    filterTags:
-    - Ally
-    - Player
-    velocityFilter:
-      Use: 0
-      Mode: 0
-      Velocity: 0
-    executeOnCollisionWithSpawner: 0
-    destroyAfterAction: 0
-    actions:
-    - {fileID: -4166381054128957909}
-    - {fileID: 7440159293158877815}
-  debugCollisions: 0
-  ExistentCollisions:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
---- !u!114 &-4166381054128957909
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322200569230309113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7505beefdc468b98e39e54f7335d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CriticalDamageChance: 0.1
-  CriticalDamageMultiplier: 1
-  Damage: 10
-  levelablePropertiesList: []
-  perkLevel: 1
---- !u!114 &-1660482124880579045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322200569230309113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentName: 
-  ExecuteNow: 0
-  ExecuteOnAwake: 1
-  SpawnData:
-    spawnerDisabled: 0
-    objectsToSpawn:
-    - {fileID: 1791930136598424, guid: f1a1c60952b571c4fa485b0139d4a6b7, type: 3}
-    spawnPosition: 2
-    spawnPointsFillingMode: 0
-    fillSpawnPoints: 0
-    x: 0
-    skipBusySpawnPoints: 0
-    spawnPointsFrom: 0
-    _spawnPoints: []
-    spawnPointTag: 
-    useChildrenObjects: 0
-    rotationOfSpawns: 0
-    parentOfSpawns: 0
-    actorWithComponentName: 
-    parentTag: 
-    chooseParentStrategy: 0
-    copyComponentsFromSamples: []
-    copyComponentsOfType: 0
-    deleteExistingComponents: 0
-    runSpawnActionsOnObjects: 0
-    destroyAbilityAfterSpawn: 1
-    randomSeed: 0
-    poolSettings:
-      CollectionCheck: 0
-      InitSize: 0
-      MaxSize: 0
-      UsePool: 0
-  SpawnDelays:
-    Delay: 0
-    StartupDelay: 0
---- !u!114 &7440159293158877815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1322200569230309113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17eb0bf644eb4bd4b35b4db0dde4cb47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentName: 
-  objectToSpawn: {fileID: 431257179778231269, guid: b108e8d0549005145a83a08e685a07ab,
-    type: 3}
-  spawnerType: 0
-  ownerType: 1
-  executeProbability: 1
-  ExecuteOnAwake: 0
-  DestroyAfterSpawn: 0
-  spawnedObject: {fileID: 0}
 --- !u!114 &1243705283061110171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -396,3 +266,69 @@ MonoBehaviour:
     MovementAnimationName: Run
     MovementAnimationSpeedFactorName: SpeedFactor
     MovementAnimationSpeedFactorMultiplier: 1.5
+--- !u!114 &2619144611948369514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22185d44d9412944ca97fed25a401df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation:
+    AnimationName: attack
+    HasAnimation: 1
+  Use: 1
+  Duration: 4.5
+  actions:
+  - {fileID: 2125715967745892130}
+--- !u!114 &2125715967745892130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1322200569230309113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: Claws
+  ExecuteNow: 1
+  ExecuteOnAwake: 0
+  SpawnData:
+    spawnerDisabled: 0
+    objectsToSpawn:
+    - {fileID: 1090190289803064, guid: 476eeece5461648ecb6a65777fa3e2de, type: 3}
+    spawnPosition: 2
+    spawnPointsFillingMode: 0
+    fillSpawnPoints: 0
+    x: 0
+    skipBusySpawnPoints: 0
+    spawnPointsFrom: 1
+    _spawnPoints: []
+    spawnPointTag: Claws1
+    useChildrenObjects: 0
+    rotationOfSpawns: 0
+    parentOfSpawns: 0
+    actorWithComponentName: 
+    parentTag: 
+    chooseParentStrategy: 0
+    copyComponentsFromSamples: []
+    copyComponentsOfType: 0
+    deleteExistingComponents: 0
+    runSpawnActionsOnObjects: 0
+    destroyAbilityAfterSpawn: 0
+    randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
+  SpawnDelays:
+    Delay: 0
+    StartupDelay: 0

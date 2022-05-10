@@ -87,7 +87,9 @@ namespace Crimson.Core.Components
 		public ActorProjectileSpawnAnimProperties actorProjectileSpawnAnimProperties;
 
 		public bool suppressWeaponSpawn = false;
-		public List<GameObject> _aimEffects;
+		public List<GameObject> _aimEffects = new List<GameObject>();
+
+		public readonly List<GameObject> _aimEffectInstances = new List<GameObject>();
 
 		[HideInInspector] public List<string> appliedPerksNames = new List<string>();
 
@@ -195,6 +197,7 @@ namespace Crimson.Core.Components
 				};
 				var instance = ActorSpawn.Spawn(spawnData);
 				instance.transform.SetParent(SpawnPointsRoot, false);
+				_aimEffectInstances.Add(instance);
 			}
 			ResetSpawnPointRootRotation();
 
@@ -217,6 +220,19 @@ namespace Crimson.Core.Components
 			baseSpawnPoint.transform.localRotation = Quaternion.identity;
 
 			projectileSpawnData.SpawnPoints.Add(baseSpawnPoint);
+		}
+
+		internal void DestroyAimEffects()
+		{
+			if (_aimEffectInstances.Count == 0)
+			{
+				return;
+			}
+			for (var i = 0; i < _aimEffectInstances.Count; i++)
+			{
+				Destroy(_aimEffectInstances[i]);
+			}
+			_aimEffectInstances.Clear();
 		}
 
 		public void Execute()
@@ -362,6 +378,15 @@ namespace Crimson.Core.Components
 			}
 
 			SpawnPointsRoot.localRotation = Quaternion.Euler(0, -180, 0);
+		}
+
+		public void SetAimEffectsState(bool state)
+		{
+			for (var i = 0; i < _aimEffectInstances.Count; i++)
+			{
+				var instance = _aimEffectInstances[i];
+				instance.SetActive(state);
+			}
 		}
 
 		public void Spawn()

@@ -31,7 +31,7 @@ namespace Crimson.Core.AI
 		private const float FINISH_ROAM_DISTSQ = 2f;
 
 		private Transform _transform = null;
-		private readonly AIPathControl _path = new AIPathControl(finishThreshold: FINISH_ROAM_DISTSQ);
+		private AIPathControl _path;
 
 		public float Evaluate(Entity entity, AbilityAIInput ai, List<Transform> targets)
 		{
@@ -51,7 +51,8 @@ namespace Crimson.Core.AI
 				distSq = math.distancesq(_transform.position, target);
 			} while (distSq < FINISH_ROAM_DISTSQ);
 
-			return _path.Setup(_transform, target);
+			_path.SetTarget(target);
+			return true;
 		}
 
 		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
@@ -61,24 +62,19 @@ namespace Crimson.Core.AI
 				return false;
 			}
 
-			_path.NextPoint();
-
 			if (_path.HasArrived)
 			{
 				inputData.Move = float2.zero;
 				return false;
 			}
 
-			var dir = _path.Direction;
-
-			inputData.Move = new float2(dir.x, dir.z);
-
-			return true;
+			return _path.IsValid;
 		}
 
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			Actor = actor;
+			_path = new AIPathControl(transform);
 		}
 
 		public void Execute()

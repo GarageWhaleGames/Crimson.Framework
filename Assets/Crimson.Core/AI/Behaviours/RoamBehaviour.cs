@@ -28,14 +28,13 @@ namespace Crimson.Core.AI
 		private const float PRIORITY_MULTIPLIER = 0.5f;
 
 		private Transform _transform = null;
-		private readonly AIPathControl _path = new AIPathControl(finishThreshold: FINISH_ROAM_DISTSQ);
+		private AIPathControl _path;
 
 		[ShowInInspector, ReadOnly] private Vector3 _target;
 
 		public float Evaluate(Entity entity, AbilityAIInput ai, List<Transform> targets)
 		{
 			_transform = Actor.GameObject.transform;
-
 			return Random.value * Priority.Value * PRIORITY_MULTIPLIER;
 		}
 
@@ -48,34 +47,21 @@ namespace Crimson.Core.AI
 				_target = NavMeshRandomPointUtil.GetRandomLocation();
 				distSq = math.distancesq(_transform.position, _target);
 			} while (distSq < FINISH_ROAM_DISTSQ);
-
-			return _path.Setup(_transform, _target);
+			_path.SetTarget(_target);
+			return _path.HasArrived;
 		}
 
 		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
 		{
-			if (!_path.IsValid)
-			{
-				return false;
-			}
-
-			_path.NextPoint();
-			if (_path.HasArrived)
-			{
-				inputData.Move = float2.zero;
-				return false;
-			}
-
-			var dir = _path.Direction;
-
-			inputData.Move = new float2(dir.x, dir.z);
-
-			return true;
+			_path.SetTarget(_target);
+			inputData.Move = _path.MoveDirection;
+			return !_path.HasArrived;
 		}
 
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			Actor = actor;
+			_path = new AIPathControl(transform);
 		}
 
 		public void Execute()

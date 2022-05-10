@@ -18,9 +18,15 @@ namespace Crimson.Core.Systems
 		private EntityQuery _projectileQuery;
 		private EntityQuery _reloadAnimationsQuery;
 		private EntityQuery _strafeActorsQuery;
+		private EntityQuery _meleeQuery;
 
 		protected override void OnCreate()
 		{
+			_meleeQuery = GetEntityQuery(
+				ComponentType.Exclude<DeadActorTag>(),
+				ComponentType.ReadOnly<AnimationMeleeAttackTag>(),
+				ComponentType.ReadOnly<Animator>());
+
 			_movementQuery = GetEntityQuery(
 				ComponentType.ReadOnly<ActorMovementAnimationData>(),
 				ComponentType.ReadOnly<Animator>());
@@ -83,6 +89,24 @@ namespace Crimson.Core.Systems
 					animator.SetBool(animation.AnimHash, Math.Abs(move.x) > Constants.MIN_MOVEMENT_THRESH || Math.Abs(move.z) > Constants.MIN_MOVEMENT_THRESH);
 					animator.SetFloat(animation.SpeedFactorHash,
 						animation.SpeedFactorMultiplier * movement.ExternalMultiplier * Math.Max(Math.Abs(move.x), Math.Abs(move.z)));
+				});
+			Entities.With(_meleeQuery).ForEach(
+				(Entity entity, Animator animator, ref AnimationMeleeAttackTag data) =>
+				{
+					if (animator == null)
+					{
+						Debug.LogError("[Melee attack] No Animator found!");
+						return;
+					}
+
+					if (data.NameHash == 0)
+					{
+						Debug.LogError("[Melee attack] Some hash(es) not found, check your Actor Component Settings!");
+						return;
+					}
+
+					animator.SetTrigger(data.NameHash);
+					dstManager.RemoveComponent<AnimationMeleeAttackTag>(entity);
 				});
 
 			Entities.With(_projectileQuery).ForEach(

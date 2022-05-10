@@ -45,7 +45,6 @@ namespace Crimson.Core.Components
 			Actor = actor;
 			_entity = entity;
 			_dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-
 			Behaviours = new List<IAIBehaviour>();
 
 			_dstManager.AddComponent<NetworkSyncReceive>(entity);

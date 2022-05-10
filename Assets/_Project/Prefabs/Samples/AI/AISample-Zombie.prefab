@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 5249163045441211876}
   - component: {fileID: 5103025524498246748}
-  - component: {fileID: 5063767497646364380}
   - component: {fileID: 7423257147226288115}
   - component: {fileID: -3478847066204257047}
+  - component: {fileID: 2884453550206634493}
   m_Layer: 0
   m_Name: AISample-Zombie
   m_TagString: Untagged
@@ -47,23 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Behaviours:
-  - {fileID: 5063767497646364380}
   - {fileID: 7423257147226288115}
   - {fileID: -3478847066204257047}
---- !u!114 &5063767497646364380
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5249163045441211879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d09ecb9fcf1e51347a222fa3233e1f28, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Priority:
-    Value: 1
+  - {fileID: 2884453550206634493}
 --- !u!114 &7423257147226288115
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +148,57 @@ MonoBehaviour:
     filterMode: 0
     filterTags:
     - Player
+--- !u!114 &2884453550206634493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249163045441211879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37eb98650b5e6044eb4469ced0f2301e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Priority:
+    Value: 1
+  CurvePriority:
+    Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -1
+        outSlope: -1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: -1
+        outSlope: -1
+        tangentMode: 34
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    MaxSample: 10
+    MinSample: 0
+    _xAxisTooltip: distance to closest seen target
+  ExecutableCustomInput:
+    CustomInputIndex: 1
+  AttackAnimationName: attack
+  TagFilter:
+    use: 1
+    filterMode: 0
+    filterTags:
+    - Player
+  MaxDistance: 2
+  Cooldown:
+    Use: 1
+    AttackCooldown: 6

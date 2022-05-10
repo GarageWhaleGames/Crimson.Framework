@@ -18,65 +18,48 @@ namespace Crimson.Core.AI
 	[Serializable, HideMonoScript]
 	public class ChaseBehaviour : MonoBehaviour, IActorAbility, IAIBehaviour, IDrawGizmos
 	{
+		public BasePriority Priority = new BasePriority
+		{
+			Value = 1
+		};
+
 		public EvaluatedCurve CurvePriority = new EvaluatedCurve(0)
 		{
 			XAxisTooltip = "Target priority based on distance to it"
 		};
 
 		public EvaluationMode EvaluationMode;
-
-		public BasePriority Priority = new BasePriority
-		{
-			Value = 1
-		};
-
 		public TagFilter TagFilter;
 
-		private const float FINISH_CHASE_DISTSQ = 1f;
 		private const float PRIORITY_MULTIPLIER = 0.5f;
-		private readonly AIPathControl _path = new AIPathControl(finishThreshold: FINISH_CHASE_DISTSQ);
+
+		private AIPathControl _path;
 		private Transform _target = null;
+
 		private Transform _transform = null;
 		public IActor Actor { get; set; }
+
+		private Transform Target
+		{
+			get => _target;
+			set
+			{
+				_target = value;
+				_path.SetTarget(value);
+			}
+		}
 
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			Actor = actor;
+			_path = new AIPathControl(transform);
 		}
 
 		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
 		{
-			if (!_path.IsValid)
-			{
-				return false;
-			}
-
-			_path.NextPoint();
-
-			if (_path.HasArrived)
-			{
-				inputData.Move = float2.zero;
-				return false;
-			}
-
-			var dir = _path.Direction;
-
-			inputData.Move = math.normalize(new float2(dir.x, dir.z));
-
-			return true;
-		}
-
-		public void DrawGizmos()
-		{
-			if (_target == null)
-			{
-				return;
-			}
-
-			Gizmos.color = Color.green;
-			var targetPosition = _path.EndWaypointPosition;
-			Gizmos.DrawLine(_transform.position, targetPosition);
-			Gizmos.DrawSphere(targetPosition, .5f);
+			_path.SetTarget(_target.position);
+			inputData.Move = _path.MoveDirection;
+			return !_path.HasArrived;
 		}
 
 		public float Evaluate(Entity entity, AbilityAIInput ai, List<Transform> targets)
@@ -90,43 +73,22 @@ namespace Crimson.Core.AI
 			}
 
 			var filteredTargets = targets.Where(t => TagFilter.Filter(t) && t != _transform).ToList();
-			switch (filteredTargets.Count)
+			if (filteredTargets.Count == 0)
 			{
-				case 0:
-					break;
-
-				case 1:
-					target = filteredTargets.First();
-					break;
-
-				default:
-					target = SelectTarget(filteredTargets);
-					break;
+				return 0f;
 			}
 
-			if (target == null)
+			if (filteredTargets.Count == 1)
 			{
-				return 0;
+				target = filteredTargets.First();
+				Target = target;
+				return _path.HasArrived
+					? 0f :
+					Priority.Value * PRIORITY_MULTIPLIER;
 			}
-			_target = target;
-			var distance = math.distancesq(_transform.position, target.position);
-			return distance < FINISH_CHASE_DISTSQ ?
-				0f :
-				Priority.Value * PRIORITY_MULTIPLIER;
-		}
 
-		public void Execute()
-		{
-		}
+			var sampleScale = CurvePriority.SampleScale;
 
-		public bool SetUp(Entity entity, EntityManager dstManager)
-		{
-			return _path.Setup(_transform, _target);
-		}
-
-		private Transform SelectTarget(List<Transform> filteredTargets)
-		{
-			Transform target;
 			switch (EvaluationMode)
 			{
 				case EvaluationMode.Random:
@@ -162,14 +124,45 @@ namespace Crimson.Core.AI
 					target = orderedTargets.Last();
 					break;
 			}
+			Target = target;
+			return _path.HasArrived ?
+				0f :
+				Priority.Value * PRIORITY_MULTIPLIER;
+		}
 
-			return target;
+		public void Execute()
+		{
+		}
+
+		public bool SetUp(Entity entity, EntityManager dstManager)
+		{
+			return true;
 		}
 
 		private float CalculatePriorityFor(Vector3 position)
 		{
 			var distance = math.distance(_transform.position, position);
 			return CurvePriority.Evaluate(distance);
+		}
+
+		public void DrawGizmos()
+		{
+			if (Target == null || _path == null || !_path.IsValid)
+			{
+				return;
+			}
+
+			Gizmos.color = Color.green;
+			var targetPosition = _path.EndWaypointPosition;
+			DrawTarget(targetPosition, Color.green);
+			DrawTarget(_path.NextPosition, Color.yellow);
+		}
+
+		private void DrawTarget(Vector3 postion, Color color)
+		{
+			Gizmos.color = color;
+			Gizmos.DrawLine(_transform.position, postion);
+			Gizmos.DrawSphere(postion, .5f);
 		}
 	}
 }
