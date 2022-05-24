@@ -155,7 +155,7 @@ namespace Crimson.Core.AI
 			Gizmos.color = Color.green;
 			var targetPosition = _path.EndWaypointPosition;
 			DrawTarget(targetPosition, Color.green);
-			DrawTarget(_path.NextPosition, Color.yellow);
+			DrawDirection(_path.MoveDirection);
 		}
 
 		private void DrawTarget(Vector3 postion, Color color)
@@ -163,6 +163,12 @@ namespace Crimson.Core.AI
 			Gizmos.color = color;
 			Gizmos.DrawLine(_transform.position, postion);
 			Gizmos.DrawSphere(postion, .5f);
+		}
+
+		private void DrawDirection(Vector2 direction)
+		{
+			Gizmos.color = Color.green;
+			Gizmos.DrawLine(_transform.position, _transform.position + new Vector3(direction.x, 0, direction.y));
 		}
 	}
 }

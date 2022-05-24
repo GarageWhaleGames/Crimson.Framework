@@ -18,7 +18,7 @@ namespace Crimson.Core.Systems
 
         protected override void OnUpdate()
         {
-            var dt = Time.DeltaTime;
+            var dt = UnityEngine.Time.deltaTime;
 
             Entities.With(_query).ForEach(
                 (Entity entity, TimerComponent timer) =>

@@ -90,7 +90,7 @@ MonoBehaviour:
     copyComponentsFromSamples: []
     copyComponentsOfType: 0
     deleteExistingComponents: 0
-    runSpawnActionsOnObjects: 0
+    runSpawnActionsOnObjects: 1
     destroyAbilityAfterSpawn: 0
     randomSeed: 0
     poolSettings:

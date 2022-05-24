@@ -57,25 +57,28 @@ namespace Assets.Crimson.Core.AI
 			}
 		}
 
+		public Vector3 FallbackPlace
+		{
+			get => _fallbackPlace;
+			set
+			{
+				_path?.SetTarget(value);
+				_fallbackPlace = value;
+			}
+		}
+
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			Actor = actor;
+			_path = new AIPathControl(transform);
 		}
 
 		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
 		{
-			if (!_path.IsValid)
-			{
-				return false;
-			}
-
-			if (_path.HasArrived)
-			{
-				inputData.Move = float2.zero;
-				return false;
-			}
-
-			return _path.IsValid;
+			_path.SetTarget(_fallbackPlace);
+			inputData.Move = _path.MoveDirection;
+			inputData.Look = _path.MoveDirection;
+			return !_path.HasArrived;
 		}
 
 		public float Evaluate(Entity entity, AbilityAIInput ai, List<Transform> targets)
@@ -97,7 +100,7 @@ namespace Assets.Crimson.Core.AI
 			if (filteredTargets.Count == 1)
 			{
 				_target = filteredTargets.First();
-				_fallbackPlace = CalculateBestPosition(_target);
+				FallbackPlace = CalculateBestPosition(_target);
 				return Priority;
 			}
 
@@ -140,7 +143,7 @@ namespace Assets.Crimson.Core.AI
 					break;
 			}
 
-			_fallbackPlace = CalculateBestPosition(_target);
+			FallbackPlace = CalculateBestPosition(_target);
 			return Priority;
 		}
 
@@ -150,14 +153,14 @@ namespace Assets.Crimson.Core.AI
 
 		public bool SetUp(Entity entity, EntityManager dstManager)
 		{
-			_path.SetTarget(_target);
+			_path.SetTarget(FallbackPlace);
 			return true;
 		}
 
 		public void DrawGizmos()
 		{
 			Gizmos.color = Color.green;
-			Gizmos.DrawSphere(_fallbackPlace, .2f);
+			Gizmos.DrawSphere(FallbackPlace, .2f);
 			Gizmos.color = Color.yellow;
 			var points = positions;
 			for (var i = 0; i < points.Length; i++)

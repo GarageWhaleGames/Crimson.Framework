@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8554245778113844356}
   - component: {fileID: -860582596180290556}
   - component: {fileID: 4343178701271225426}
+  - component: {fileID: 3383840527337155405}
   m_Layer: 0
   m_Name: Grenade-Explosion
   m_TagString: Untagged
@@ -49,7 +50,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentName: 
-  ExecuteOnSpawn: []
+  ExecuteOnSpawn:
+  - {fileID: 3383840527337155405}
 --- !u!114 &4945427743926334028
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -71,6 +73,10 @@ MonoBehaviour:
     filterMode: 0
     filterTags:
     - Enemy
+    velocityFilter:
+      Use: 0
+      Mode: 0
+      Velocity: 0
     executeOnCollisionWithSpawner: 0
     destroyAfterAction: 1
     actions:
@@ -170,3 +176,18 @@ MonoBehaviour:
   SpawnDelays:
     Delay: 0
     StartupDelay: 0
+--- !u!114 &3383840527337155405
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5593429760451260625}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0049dcfaa2c41b04c8a1dea72e4c71aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Power: 5
+  Radius: 5
+  Mode: 1

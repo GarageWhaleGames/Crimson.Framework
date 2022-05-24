@@ -1,4 +1,5 @@
-﻿using Crimson.Core.Common;
+﻿using Assets.Crimson.Core.Components.Tags;
+using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Crimson.Core.Utils.LowLevel;
 using Unity.Entities;

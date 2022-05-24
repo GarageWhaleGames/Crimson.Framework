@@ -62,7 +62,7 @@ namespace Crimson.Core.Systems
 					var position = (Vector2)Camera.main.WorldToScreenPoint(transform.position);
 					var angle = Mathf.Atan2(mouse.y - position.y, mouse.x - position.x) * (180 / Mathf.PI);
 
-					transform.rotation = Quaternion.AngleAxis(-angle + 90, Vector3.up);
+					transform.rotation = Quaternion.AngleAxis(-angle-90, Vector3.up);
 				});
 		}
 	}

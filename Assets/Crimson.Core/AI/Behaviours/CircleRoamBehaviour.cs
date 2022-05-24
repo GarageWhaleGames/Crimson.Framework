@@ -189,6 +189,7 @@ namespace Assets.Crimson.Core.AI
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			Actor = actor;
+			_path = new AIPathControl(transform);
 		}
 
 		public void Execute()

@@ -1,4 +1,6 @@
 ﻿using Assets.Crimson.Core.Common;
+using Assets.Crimson.Core.Components.Tags;
+using Assets.Crimson.Core.Components.Tags.Effects;
 using Crimson.Core.Common;
 using Crimson.Core.Components.Stats;
 using Crimson.Core.Enums;
@@ -408,6 +410,14 @@ namespace Crimson.Core.Components
 			if (delta > 0 && healAction != null)
 			{
 				((IActorAbility)healAction).Execute();
+				_dstManager.AddComponentData(_entity, new HealedActorTag());
+			}
+
+			if (delta < 0)
+			{
+				_dstManager.AddComponentData(_entity, new DamageFXTag());
+				_dstManager.AddComponentData(_entity, new ShakeFXTag());
+				_dstManager.AddComponentData(_entity, new DamagedActorTag());
 			}
 
 			if (delta < 0)

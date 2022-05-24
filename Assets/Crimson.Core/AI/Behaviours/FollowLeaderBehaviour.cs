@@ -35,6 +35,7 @@ namespace Crimson.Core.AI
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			Actor = actor;
+			_path = new AIPathControl(transform);
 		}
 
 		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)

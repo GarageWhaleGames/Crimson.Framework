@@ -87,9 +87,10 @@ namespace Crimson.Core.Components
 		public ActorProjectileSpawnAnimProperties actorProjectileSpawnAnimProperties;
 
 		public bool suppressWeaponSpawn = false;
+
 		public List<GameObject> _aimEffects = new List<GameObject>();
 
-		public readonly List<GameObject> _aimEffectInstances = new List<GameObject>();
+		private readonly List<GameObject> _aimEffectInstances = new List<GameObject>();
 
 		[HideInInspector] public List<string> appliedPerksNames = new List<string>();
 
