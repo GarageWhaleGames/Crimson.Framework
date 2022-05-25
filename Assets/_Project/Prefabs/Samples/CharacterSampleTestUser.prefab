@@ -438,7 +438,7 @@ MonoBehaviour:
   AnimProperties:
     AnimationName: 
     HasAnimation: 0
-  cooldownTime: 3
+  cooldownTime: 0.75
   force: 25
   perkRelatedComponents: []
   timer: 0.1

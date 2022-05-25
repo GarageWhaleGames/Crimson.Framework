@@ -163,9 +163,9 @@ MonoBehaviour:
       _maxLimit: 0
       _freeze: 0
     Health:
-      _current: 10
+      _current: 70
       _minLimit: 0
-      _maxLimit: 10
+      _maxLimit: 70
       _freeze: 0
     Level: 1
     LevelUpRequiredExperience: 100
@@ -180,7 +180,7 @@ MonoBehaviour:
   additionalForceAnim:
     AnimationName: 
     HasAnimation: 0
-  corpseCleanupDelay: 2
+  corpseCleanupDelay: 4
   deadActorBehaviour:
     RemoveTag: 0
     RemoveRigidbody: 1
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb68bfe9b20e4840be7f8b09537fb0fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 1
+  movementSpeed: 2
   useDynamics: 0
   movementStart:
     curve:

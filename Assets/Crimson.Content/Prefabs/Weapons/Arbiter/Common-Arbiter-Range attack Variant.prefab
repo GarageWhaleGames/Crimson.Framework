@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3650114144178085592, guid: 917168ff3e5242047aad66fcaf17ccb8,
+        type: 3}
+      propertyPath: Damage
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7929926478047567897, guid: 917168ff3e5242047aad66fcaf17ccb8,
         type: 3}
       propertyPath: collisionActions.Array.data[0].filterTags.Array.size
