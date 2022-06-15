@@ -26,6 +26,7 @@ namespace Assets.Crimson.Core.Components.Weapons
 		public InputActionReference _activationAction;
 		public Entity _entity;
 		public float _maxDistance = 10;
+		public float _boxSize = 1.5f;
 		public Vector3 MagnetOffset = Vector3.forward;
 
 		public ActionsList ActionsOnEnable;
@@ -34,7 +35,7 @@ namespace Assets.Crimson.Core.Components.Weapons
 		private EntityManager _entityManager;
 		[SerializeField] private float _force = 10;
 		private bool _isEnable;
-		private RaycastHit[] _raycastResults = new RaycastHit[25];
+		private RaycastHit[] _raycastResults = new RaycastHit[100];
 
 		public event System.Action OnShot;
 
@@ -128,6 +129,10 @@ namespace Assets.Crimson.Core.Components.Weapons
 			Gizmos.color = Color.yellow;
 			Gizmos.matrix = transform.localToWorldMatrix;
 			Gizmos.DrawWireSphere(MagnetOffset, 1);
+			var center = Vector3.forward * (_maxDistance / 2);
+			var halfExtents = _boxSize * Vector3.one;
+			halfExtents.z = _maxDistance;
+			Gizmos.DrawWireCube(center, halfExtents);
 		}
 
 #endif
@@ -146,22 +151,30 @@ namespace Assets.Crimson.Core.Components.Weapons
 		private void TryGrabObject()
 		{
 			OnShot?.Invoke();
-			var ray = new Ray(transform.position, transform.forward);
-			var resultsCount = Physics.RaycastNonAlloc(ray, _raycastResults, _maxDistance);
+			var center = transform.position;
+			center += transform.forward.normalized * (_maxDistance / 2);
+			var halfExtents = _boxSize * Vector3.one;
+			halfExtents.z = _maxDistance;
+			halfExtents /= 2;
+			var resultsCount = Physics.BoxCastNonAlloc(center, halfExtents, transform.forward, _raycastResults);
 			if (resultsCount == 0)
 			{
 				return;
 			}
-			var result = _raycastResults[resultsCount - 1];
-			var target = result.rigidbody;
-			if (target == null)
+
+			for (var i = 0; i < resultsCount; i++)
 			{
-				return;
-			}
-			var abilityMagnet = target.GetComponent<AbilityMagnet>();
-			if (abilityMagnet != null)
-			{
-				abilityMagnet.MagnetTo(_entity);
+				var result = _raycastResults[resultsCount - 1];
+				if (result.rigidbody == null)
+				{
+					continue;
+				}
+				var ability = result.rigidbody.GetComponent<AbilityMagnet>();
+				if (ability == null)
+				{
+					continue;
+				}
+				ability.MagnetTo(_entity);
 			}
 		}
 	}

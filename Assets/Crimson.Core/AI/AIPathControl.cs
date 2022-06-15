@@ -44,6 +44,12 @@ namespace Assets.Crimson.Core.AI
 
 			_navAgent.SetDestination(target);
 			_navAgent.nextPosition = _parent.position;
+			_navAgent.isStopped = false;
+		}
+
+		public void Stop()
+		{
+			_navAgent.isStopped = true;
 		}
 
 		public AIPathControl(Transform parent)
@@ -51,7 +57,7 @@ namespace Assets.Crimson.Core.AI
 			_parent = parent;
 			_navAgent = parent.GetComponent<NavMeshAgent>();
 			_navAgent.updatePosition = false;
-			_navAgent.updateRotation = true;
+			_navAgent.updateRotation = false;
 		}
 	}
 }

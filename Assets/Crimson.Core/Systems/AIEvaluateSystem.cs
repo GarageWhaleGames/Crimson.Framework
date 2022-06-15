@@ -2,6 +2,7 @@ using Crimson.Core.AI;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
 using System.Collections.Generic;
+using System.Text;
 using Unity.Entities;
 using UnityEngine;
 

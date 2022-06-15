@@ -23,8 +23,9 @@ namespace Assets.Crimson.Core.Components
 
 			_bindings.MoveInputRef.action.performed += ReadMove;
 			_bindings.MoveInputRef.action.canceled += ReadMove;
+
 			_bindings.LookInputRef.action.performed += ReadLook;
-			_bindings.MoveInputRef.action.canceled += ReadLook;
+			_bindings.LookInputRef.action.canceled += ReadLook;
 
 			SubscribeCustomInput(0, _bindings.CustomInput0Ref);
 			SubscribeCustomInput(1, _bindings.CustomInput1Ref);
@@ -59,7 +60,6 @@ namespace Assets.Crimson.Core.Components
 			}
 
 			var inputData = _entityManager.GetComponentData<PlayerInputData>(_entity);
-
 			inputData.Mouse = context.ReadValue<Vector2>();
 			inputData.Look = context.ReadValue<Vector2>();
 			_entityManager.SetComponentData(_entity, inputData);

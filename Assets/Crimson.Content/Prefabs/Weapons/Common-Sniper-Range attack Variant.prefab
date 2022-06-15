@@ -233,7 +233,7 @@ MonoBehaviour:
   SpawnData:
     spawnerDisabled: 0
     objectsToSpawn:
-    - {fileID: 1503859245115456, guid: f912532b5710eb6429ad86a7083557cd, type: 3}
+    - {fileID: 5687938133246104122, guid: 607cea74ccca45f4898d5de7889c03d7, type: 3}
     spawnPosition: 2
     spawnPointsFillingMode: 0
     fillSpawnPoints: 0
@@ -249,7 +249,7 @@ MonoBehaviour:
     parentTag: 
     chooseParentStrategy: 0
     copyComponentsFromSamples: []
-    copyComponentsOfType: 0
+    copyComponentsOfType: 2
     deleteExistingComponents: 0
     runSpawnActionsOnObjects: 1
     destroyAbilityAfterSpawn: 0
@@ -322,7 +322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4472020574192814710}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalPosition: {x: -0, y: 1.5, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children: []
   m_Father: {fileID: 4469474990234654324}

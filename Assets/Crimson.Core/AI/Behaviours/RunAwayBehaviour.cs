@@ -65,6 +65,7 @@ namespace Crimson.Core.AI
 
 		public bool Behave(Entity entity, EntityManager dstManager, ref PlayerInputData inputData)
 		{
+			inputData.Move = _path.MoveDirection;
 			return _path.IsValid;
 		}
 

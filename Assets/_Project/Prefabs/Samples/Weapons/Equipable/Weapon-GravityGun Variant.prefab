@@ -69,12 +69,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d0838917cb453dc4cad3e49b1be3f4b4, type: 3}
---- !u!1 &1500130926639448403 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1200260564779906, guid: d0838917cb453dc4cad3e49b1be3f4b4,
-    type: 3}
-  m_PrefabInstance: {fileID: 1501328703084692177}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1496637615495398669 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4738324210206684, guid: d0838917cb453dc4cad3e49b1be3f4b4,
@@ -153,6 +147,21 @@ PrefabInstance:
       propertyPath: componentName
       value: GravityGun
       objectReference: {fileID: 0}
+    - target: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.999962
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.008726558
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8744062145712760159, guid: 194d4f1e3d0c8894c9f478f4fe202fc1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 194d4f1e3d0c8894c9f478f4fe202fc1, type: 3}
@@ -181,7 +190,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 0
-  Target: {fileID: 1500130926639448403}
+  Targets: []
 --- !u!114 &4695952822674535236
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -208,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   State: 1
-  Target: {fileID: 1500130926639448403}
+  Targets: []
 --- !u!114 &8931255258272452073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -225,6 +234,7 @@ MonoBehaviour:
   _activationAction: {fileID: 1120369429361536294, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
     type: 3}
   _maxDistance: 20
+  _boxSize: 1.5
   MagnetOffset: {x: 0, y: 0, z: 2}
   ActionsOnEnable:
     actions:

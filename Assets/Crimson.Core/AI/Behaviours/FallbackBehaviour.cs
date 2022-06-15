@@ -77,7 +77,6 @@ namespace Assets.Crimson.Core.AI
 		{
 			_path.SetTarget(_fallbackPlace);
 			inputData.Move = _path.MoveDirection;
-			inputData.Look = _path.MoveDirection;
 			return !_path.HasArrived;
 		}
 

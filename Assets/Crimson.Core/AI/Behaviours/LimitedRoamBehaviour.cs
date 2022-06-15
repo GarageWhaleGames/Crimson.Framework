@@ -67,7 +67,7 @@ namespace Crimson.Core.AI
 				inputData.Move = float2.zero;
 				return false;
 			}
-
+			inputData.Move = _path.MoveDirection;
 			return _path.IsValid;
 		}
 

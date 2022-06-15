@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 5249163045441211876}
   - component: {fileID: 5103025524498246748}
-  - component: {fileID: 8169100845269302903}
   - component: {fileID: 652032778645058572}
+  - component: {fileID: 2379025228306173546}
   m_Layer: 0
   m_Name: AISample-Sniper bot
   m_TagString: Untagged
@@ -46,59 +46,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Behaviours:
-  - {fileID: 8169100845269302903}
   - {fileID: 652032778645058572}
---- !u!114 &8169100845269302903
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5249163045441211879}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f119bfc4ce429424e9c2c6c6490ec7c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BasePriority:
-    Value: 3
-  CurvePriority:
-    Curve:
-      serializedVersion: 2
-      m_Curve:
-      - serializedVersion: 3
-        time: 0
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0
-        outWeight: 0
-      - serializedVersion: 3
-        time: 1
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    MaxSample: 100
-    MinSample: 0
-    _xAxisTooltip: Target priority based on distance to it
-  EvaluationMode: 0
-  DistanceLimitation:
-    MaxDistance: 10
-  TagFilter:
-    use: 1
-    filterMode: 0
-    filterTags:
-    - Player
-    - Ally
+  - {fileID: 2379025228306173546}
 --- !u!114 &652032778645058572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,30 +69,12 @@ MonoBehaviour:
       - serializedVersion: 3
         time: 0
         value: 0
-        inSlope: 0
-        outSlope: 0
+        inSlope: 2
+        outSlope: 2
         tangentMode: 0
         weightedMode: 0
         inWeight: 0
         outWeight: 0
-      - serializedVersion: 3
-        time: 0.03
-        value: -0.0029296875
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
-      - serializedVersion: 3
-        time: 0.0301
-        value: 1
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 0
-        weightedMode: 0
-        inWeight: 0.33333334
-        outWeight: 0.33333334
       - serializedVersion: 3
         time: 1
         value: 1
@@ -169,4 +100,55 @@ MonoBehaviour:
     CustomInputIndex: 1
   AttackDelay: 1
   SightRadius: 5
-  SearchTime: 0.25
+  SearchTime: 0.5
+--- !u!114 &2379025228306173546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5249163045441211879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f119bfc4ce429424e9c2c6c6490ec7c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BasePriority:
+    Value: 1
+  CurvePriority:
+    Curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 3
+        time: 0
+        value: 1
+        inSlope: -3.6783907
+        outSlope: -3.6783907
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0.044241037
+      - serializedVersion: 3
+        time: 1
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0.33333334
+        outWeight: 0.33333334
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    MaxSample: 100
+    MinSample: 0
+    _xAxisTooltip: Target priority based on distance to it
+  EvaluationMode: 0
+  DistanceLimitation:
+    MaxDistance: 10
+  TagFilter:
+    use: 1
+    filterMode: 0
+    filterTags:
+    - Player
+    - Ally
