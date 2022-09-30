@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2511257164177020097}
   m_RootOrder: 2
@@ -58,6 +59,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2511257164177020097}
   m_RootOrder: 0
@@ -202,6 +204,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6884472432773207788}
   - {fileID: 7173592674734727870}
@@ -269,6 +272,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2511257164177020097}
   m_Father: {fileID: 0}
@@ -349,6 +353,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     timeScale: 1
+  workTime: 0
   movementAnimationProperties:
     HasMovementAnimation: 0
     MovementAnimationName: 
@@ -520,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28c327207e74b30a8ea4c9513e0109a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 3
+  lifespan: 3.2
   startOnSpawn: 1
   actionOnDestroy: {fileID: 9096040789164012318}
 --- !u!114 &166662497725121757
@@ -571,6 +576,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0.0000004768371}
   m_LocalPosition: {x: -0, y: 0, z: -0.1179}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2511257164177020097}
   m_RootOrder: 3
@@ -5347,6 +5353,7 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
+  m_MeshDistribution: 0
   m_SortMode: 1
   m_MinParticleSize: 0
   m_MaxParticleSize: 12.54
@@ -5370,6 +5377,10 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+  m_MeshWeighting: 1
+  m_MeshWeighting1: 1
+  m_MeshWeighting2: 1
+  m_MeshWeighting3: 1
   m_MaskInteraction: 0
 --- !u!1 &6412371858593822980
 GameObject:
@@ -5398,6 +5409,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1332}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2511257164177020097}
   m_RootOrder: 4
@@ -5492,6 +5504,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.1186}
   m_LocalScale: {x: 3, y: 3, z: 3}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2511257164177020097}
   m_RootOrder: 5
@@ -10258,6 +10271,7 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
+  m_MeshDistribution: 0
   m_SortMode: 1
   m_MinParticleSize: 0
   m_MaxParticleSize: 5
@@ -10281,6 +10295,10 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+  m_MeshWeighting: 1
+  m_MeshWeighting1: 1
+  m_MeshWeighting2: 1
+  m_MeshWeighting3: 1
   m_MaskInteraction: 0
 --- !u!1 &6461038027337005910
 GameObject:
@@ -10310,6 +10328,7 @@ Transform:
   m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071069}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2511257164177020097}
   m_RootOrder: 6
@@ -15135,6 +15154,7 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_RenderMode: 0
+  m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
@@ -15158,6 +15178,10 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+  m_MeshWeighting: 1
+  m_MeshWeighting1: 1
+  m_MeshWeighting2: 1
+  m_MeshWeighting3: 1
   m_MaskInteraction: 0
 --- !u!1 &8860195040448831267
 GameObject:
@@ -15187,6 +15211,7 @@ Transform:
   m_LocalRotation: {x: -1, y: -0, z: -0, w: 0.00000058114523}
   m_LocalPosition: {x: 0, y: 0, z: -0.1231}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2511257164177020097}
   m_RootOrder: 7
@@ -19954,6 +19979,7 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_RenderMode: 1
+  m_MeshDistribution: 0
   m_SortMode: 1
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
@@ -19977,6 +20003,10 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+  m_MeshWeighting: 1
+  m_MeshWeighting1: 1
+  m_MeshWeighting2: 1
+  m_MeshWeighting3: 1
   m_MaskInteraction: 0
 --- !u!1001 &8429769877230547059
 PrefabInstance:

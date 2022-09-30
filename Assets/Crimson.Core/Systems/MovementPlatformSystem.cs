@@ -1,6 +1,5 @@
-﻿using Assets.Crimson.Core.Common;
+using Assets.Crimson.Core.Common;
 using Assets.Crimson.Core.Common.Extensions;
-using Assets.Crimson.Core.Components;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Unity.Entities;
@@ -14,11 +13,12 @@ namespace Assets.Crimson.Core.Systems
 	{
 		private EntityQuery _platformsQuery;
 		private Collider[] _results = new Collider[Constants.COLLISION_BUFFER_CAPACITY];
-
+  
 		protected override void OnCreate()
 		{
 			_platformsQuery = GetEntityQuery(
-				ComponentType.ReadOnly<MovingPlatformData>());
+				ComponentType.ReadWrite<MovingPlatformData>(),
+				ComponentType.ReadOnly<ActorColliderData>());
 		}
 
 		protected override void OnUpdate()

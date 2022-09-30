@@ -34,9 +34,9 @@ namespace Crimson.Core.Systems
 				{
 					if (ai.activeBehaviour == null)
 					{
-						Debug.LogError(
-							"[Behave AI SYSTEM] AI Behaviour marked for AI Setup, but activeBehaviour is null! Aborting AI for this Actor: " +
-							ai.transform.gameObject);
+						//Debug.LogError(
+						//	"[Behave AI SYSTEM] AI Behaviour marked for AI Setup, but activeBehaviour is null! Aborting AI for this Actor: " +
+						//	ai.transform.gameObject);
 						return;
 					}
 

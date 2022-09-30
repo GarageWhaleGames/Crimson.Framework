@@ -4,6 +4,7 @@ using Crimson.Core.Components.AbilityReactive;
 using Crimson.Core.Enums;
 using Crimson.Core.Utils.LowLevel;
 using System;
+using Unity.Collections;
 using Unity.Entities;
 
 namespace Crimson.Core.Systems
@@ -16,7 +17,7 @@ namespace Crimson.Core.Systems
 		protected override void OnCreate()
 		{
 			_query = GetEntityQuery(
-				ComponentType.ReadOnly<PlayerInputData>(),
+				ComponentType.ReadWrite<PlayerInputData>(),
 				ComponentType.ReadOnly<AbilityPlayerInput>(),
 				ComponentType.Exclude<DeadActorTag>());
 		}
@@ -27,6 +28,7 @@ namespace Crimson.Core.Systems
 				(Entity entity, AbilityPlayerInput mapping, ref PlayerInputData input) =>
 				{
 					var playerInput = input;
+					input.CustomInput = new FixedList512Bytes<float> { Length = Constants.INPUT_BUFFER_CAPACITY };
 					foreach (var b in mapping.bindingsDict)
 					{
 						b.Value.ForEach(a =>
@@ -37,16 +39,21 @@ namespace Crimson.Core.Systems
 								reactiveParser.Parse(b.Key, playerInput);
 							}
 							if (Math.Abs(playerInput.CustomInput[b.Key]) >= Constants.INPUT_THRESH)
-								a.Execute();
-
-							if (mapping.inputSource != InputSource.UserInput) return;
-
-							PostUpdateCommands.AddComponent(entity, new NotifyButtonActionExecutedData
 							{
-								ButtonIndex = b.Key
-							});
+								a.Execute();
+							}
+
+							if (mapping.inputSource == InputSource.UserInput)
+							{
+								PostUpdateCommands.AddComponent(entity, new NotifyButtonActionExecutedData
+								{
+									ButtonIndex = b.Key
+								});
+							}
 						});
 					}
+
+
 				});
 		}
 	}
