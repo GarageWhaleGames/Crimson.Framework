@@ -431,7 +431,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SpawnData.copyComponentsFromSamples.Array.data[1]
       value: 
-      objectReference: {fileID: 219696582898746723, guid: d3d61627f53f4e24f9b451d331daa0b2,
+      objectReference: {fileID: 219696582898746723, guid: 816e2cab77f9ee64d8e8fd4e6646b55c,
         type: 3}
     - target: {fileID: 4340358458289354448, guid: 0933cfd309049c541a225f2c6763e52b,
         type: 3}
@@ -538,7 +538,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SpawnData.copyComponentsFromSamples.Array.data[1]
       value: 
-      objectReference: {fileID: 219696582898746723, guid: d3d61627f53f4e24f9b451d331daa0b2,
+      objectReference: {fileID: 219696582898746723, guid: 816e2cab77f9ee64d8e8fd4e6646b55c,
         type: 3}
     - target: {fileID: 4340358458289354448, guid: 0933cfd309049c541a225f2c6763e52b,
         type: 3}
@@ -911,7 +911,7 @@ PrefabInstance:
         type: 3}
       propertyPath: SpawnData.copyComponentsFromSamples.Array.data[1]
       value: 
-      objectReference: {fileID: 219696582898746723, guid: d3d61627f53f4e24f9b451d331daa0b2,
+      objectReference: {fileID: 219696582898746723, guid: 816e2cab77f9ee64d8e8fd4e6646b55c,
         type: 3}
     - target: {fileID: 4340358458289354448, guid: 0933cfd309049c541a225f2c6763e52b,
         type: 3}
