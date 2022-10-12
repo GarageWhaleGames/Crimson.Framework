@@ -14,11 +14,7 @@ GameObject:
   - component: {fileID: 6748390534130873612}
   - component: {fileID: 1741994161196160966}
   - component: {fileID: 5361989116664018087}
-  - component: {fileID: 3005303906965274516}
   - component: {fileID: 6585889142924801}
-  - component: {fileID: -6952116100790158110}
-  - component: {fileID: -5290097000537636670}
-  - component: {fileID: 924906851837422776}
   - component: {fileID: 2566817678050206234}
   - component: {fileID: 2970064523160460450}
   - component: {fileID: 1989436583810379950}
@@ -107,13 +103,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AIBehaviour: {fileID: 6748390534130873612}
   compensateCameraRotation: 1
-  customBindings:
-  - index: 1
-    actions:
-    - {fileID: -6952116100790158110}
-  - index: 2
-    actions:
-    - {fileID: -5290097000537636670}
+  customBindings: []
   inputSource: 3
   minMoveInputMagnitude: 0
 --- !u!114 &6748390534130873612
@@ -224,27 +214,6 @@ MonoBehaviour:
   levelUpAction: {fileID: 0}
   targetMarkActorComponentName: Aim Enemy Mark
   UIChannelID: 0
---- !u!114 &3005303906965274516
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219696582898746723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17eb0bf644eb4bd4b35b4db0dde4cb47, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentName: Spawn Healing Potion
-  objectToSpawn: {fileID: 6775260570760619785, guid: 799f0947368ed4346a68b563835878f6,
-    type: 3}
-  spawnerType: 0
-  ownerType: 2
-  executeProbability: 0.3
-  ExecuteOnAwake: 0
-  DestroyAfterSpawn: 0
-  spawnedObject: {fileID: 0}
 --- !u!114 &6585889142924801
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,85 +250,6 @@ MonoBehaviour:
     MovementAnimationName: Run
     MovementAnimationSpeedFactorName: SpeedFactor
     MovementAnimationSpeedFactorMultiplier: 1.5
---- !u!114 &-6952116100790158110
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219696582898746723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2caa2cd08508b247bd968a66cfc5b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Use: 1
-  Duration: 0.7
-  actions:
-  - {fileID: 924906851837422776}
---- !u!114 &-5290097000537636670
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219696582898746723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c2caa2cd08508b247bd968a66cfc5b81, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Use: 1
-  Duration: 1
-  actions:
-  - {fileID: 924906851837422776}
---- !u!114 &924906851837422776
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 219696582898746723}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentName: droid-attack
-  ExecuteNow: 1
-  ExecuteOnAwake: 0
-  SpawnData:
-    spawnerDisabled: 0
-    objectsToSpawn:
-    - {fileID: 3411136207413131176, guid: 5cfd4f47d6dd13d4da2ee579ffef0a6f, type: 3}
-    spawnPosition: 2
-    spawnPointsFillingMode: 0
-    fillSpawnPoints: 0
-    x: 0
-    skipBusySpawnPoints: 0
-    spawnPointsFrom: 1
-    _spawnPoints: []
-    spawnPointTag: Claws1
-    useChildrenObjects: 0
-    rotationOfSpawns: 0
-    parentOfSpawns: 0
-    actorWithComponentName: 
-    parentTag: 
-    chooseParentStrategy: 0
-    copyComponentsFromSamples: []
-    copyComponentsOfType: 0
-    deleteExistingComponents: 0
-    runSpawnActionsOnObjects: 0
-    destroyAbilityAfterSpawn: 0
-    randomSeed: 0
-    poolSettings:
-      CollectionCheck: 0
-      InitSize: 0
-      MaxSize: 0
-      UsePool: 0
-  SpawnDelays:
-    Delay: 0
-    StartupDelay: 0
 --- !u!114 &2566817678050206234
 MonoBehaviour:
   m_ObjectHideFlags: 0
