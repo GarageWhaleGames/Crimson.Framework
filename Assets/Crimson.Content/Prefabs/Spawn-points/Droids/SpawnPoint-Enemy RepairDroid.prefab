@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -65,10 +66,10 @@ MonoBehaviour:
     spawnerDisabled: 0
     objectsToSpawn:
     - {fileID: 1567029851618839925, guid: 9a8e44438f9ba664b8f82970d9e93123, type: 3}
-    spawnPosition: 0
+    spawnPosition: 2
     spawnPointsFillingMode: 0
     fillSpawnPoints: 0
-    x: 0
+    x: 1
     skipBusySpawnPoints: 0
     spawnPointsFrom: 1
     _spawnPoints: []
@@ -81,8 +82,10 @@ MonoBehaviour:
     chooseParentStrategy: 0
     copyComponentsFromSamples:
     - {fileID: 7670242131266225950, guid: e5133513f7273694ca88ddb7c2e2b446, type: 3}
-    - {fileID: 219696582898746723, guid: e433813ab07cba5438d073d7f6eb6d73, type: 3}
-    - {fileID: 5249163045441211879, guid: 832bbb39039d3144988e6705931d0d80, type: 3}
+    - {fileID: 758353118697322359, guid: 773e676a221ca6142b202d1349fcaaeb, type: 3}
+    - {fileID: 219696582898746723, guid: 69c15c49d664fc04a94824743794a6ba, type: 3}
+    - {fileID: 5511769553303187349, guid: f4e5d9b486b275944b391e600f44ff54, type: 3}
+    - {fileID: 6695723817843697174, guid: 6fe6a42b92faa904497d394b57a5ccaf, type: 3}
     copyComponentsOfType: 2
     deleteExistingComponents: 0
     runSpawnActionsOnObjects: 0
