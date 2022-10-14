@@ -45,6 +45,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 10.279026, y: -13.65749, z: 9.895868}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -63,13 +64,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   AIBehaviour: {fileID: 0}
   compensateCameraRotation: 1
-  customBindings:
-  - index: 1
-    actions: []
-  - index: 2
-    actions: []
-  - index: 3
-    actions: []
+  customBindings: []
   inputSource: 1
   minMoveInputMagnitude: 1
 --- !u!114 &-4939348821489114762
@@ -104,7 +99,6 @@ MonoBehaviour:
     parentOfSpawns: 0
     actorWithComponentName: 
     parentTag: 
-    parentPoint: {fileID: 0}
     chooseParentStrategy: 0
     copyComponentsFromSamples: []
     copyComponentsOfType: 0
@@ -152,7 +146,6 @@ MonoBehaviour:
     parentOfSpawns: 0
     actorWithComponentName: UIRoot
     parentTag: UIRoot
-    parentPoint: {fileID: 0}
     chooseParentStrategy: 0
     copyComponentsFromSamples: []
     copyComponentsOfType: 0
@@ -209,7 +202,7 @@ MonoBehaviour:
       _current: 100
       _minLimit: 0
       _maxLimit: 100
-      _freeze: 0
+      _freeze: 1
     Level: 1
     LevelUpRequiredExperience: 100
     TotalDamageApplied: 0
@@ -407,7 +400,6 @@ MonoBehaviour:
     parentOfSpawns: 0
     actorWithComponentName: UIRoot
     parentTag: UIRoot
-    parentPoint: {fileID: 0}
     chooseParentStrategy: 0
     copyComponentsFromSamples: []
     copyComponentsOfType: 0
