@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0.00044625977, y: 0.00072994793, z: -0.70763946, w: 0.7065732}
   m_LocalPosition: {x: 0.466, y: -0.257, z: 0.155}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 812824069627893779}
   m_Father: {fileID: 0}
@@ -59,7 +60,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28c327207e74b30a8ea4c9513e0109a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 3
+  lifespan: 1.5
   startOnSpawn: 1
   actionOnDestroy: {fileID: 0}
 --- !u!1 &812824069627893804
@@ -90,6 +91,7 @@ Transform:
   m_LocalRotation: {x: 0.00000017764972, y: 0.28586414, z: -0.00000013742824, w: 0.95827013}
   m_LocalPosition: {x: 0.000000020452344, y: 5.9136554e-12, z: -0.00000006695953}
   m_LocalScale: {x: 0.6660135, y: 0.6660135, z: 0.6660135}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 812824068883327340}
   m_RootOrder: 0
@@ -4914,6 +4916,7 @@ ParticleSystemRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_RenderMode: 0
+  m_MeshDistribution: 0
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 3
@@ -4937,4 +4940,8 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
+  m_MeshWeighting: 1
+  m_MeshWeighting1: 1
+  m_MeshWeighting2: 1
+  m_MeshWeighting3: 1
   m_MaskInteraction: 0

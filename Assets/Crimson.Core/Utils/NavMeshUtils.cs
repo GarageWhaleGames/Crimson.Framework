@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using Unity.Mathematics;
+using UnityEngine;
+using UnityEngine.AI;
 
 namespace Assets.Crimson.Core.Utils
 {
-	internal static class NavMeshUtils
+	public static class NavMeshUtils
 	{
 		public static Vector3[] CalculatePositionsOnCircle(Vector3 sourcePosition, float distance, int points)
 		{
@@ -20,6 +22,17 @@ namespace Assets.Crimson.Core.Utils
 				initPosition = Quaternion.AngleAxis(angleDegree, Vector3.up) * initPosition;
 			}
 			return results;
+		}
+
+		public static float2 GetVelocity(this NavMeshAgent agent)
+		{
+			var hasIsArrived = agent.isOnNavMesh && agent.remainingDistance <= agent.stoppingDistance;
+			if (hasIsArrived)
+			{
+				return float2.zero;
+			}
+			var direction = math.normalizesafe(new float2(agent.velocity.x, agent.velocity.z), float2.zero);
+			return direction;
 		}
 
 		public static float Length(this UnityEngine.AI.NavMeshPath path)

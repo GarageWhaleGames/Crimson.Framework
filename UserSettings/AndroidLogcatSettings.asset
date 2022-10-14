@@ -113,8 +113,11 @@
         "MemoryGroup": 2,
         "Behavior": 0
     },
-    "m_Filter": "Crimson",
-    "m_FilterIsRegularExpression": false,
+    "m_FilterOptions": {
+        "m_Filter": "",
+        "m_UseRegularExpressions": false,
+        "m_MatchCase": false
+    },
     "m_SymbolPaths": [
         {
             "Name": "/Applications/Unity/2021.1.15f1/PlaybackEngines/AndroidPlayer/Variations/il2cpp/Development/Symbols/arm64-v8a",
@@ -144,5 +147,16 @@
             "Name": "/Users/user/Documents/crimson.framework/Builds/9-0.01-v1.symbols/arm64-v8a",
             "Enabled": true
         }
-    ]
+    ],
+    "m_CaptureVideoSettings": {
+        "TimeLimitEnabled": false,
+        "TimeLimit": 180,
+        "VideoSizeEnabled": false,
+        "VideoSizeX": 1280,
+        "VideoSizeY": 720,
+        "BitRateEnabled": false,
+        "BitRateK": 20000,
+        "DisplayIdEnabled": false,
+        "DisplayId": ""
+    }
 }

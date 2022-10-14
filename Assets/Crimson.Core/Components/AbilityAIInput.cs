@@ -50,7 +50,7 @@ namespace Crimson.Core.Components
 			_dstManager.AddComponent<NetworkSyncReceive>(entity);
 
 			StartTimer();
-			EvaluateAll();
+			//EvaluateAll();
 		}
 
 		public void EvaluateAll()
