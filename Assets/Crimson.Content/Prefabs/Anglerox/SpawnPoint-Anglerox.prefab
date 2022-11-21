@@ -1,0 +1,102 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3706507198359825300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3706507198359825303}
+  - component: {fileID: 3706507198359825302}
+  - component: {fileID: 3706507198359825305}
+  m_Layer: 0
+  m_Name: SpawnPoint-Anglerox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3706507198359825303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706507198359825300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3706507198359825302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706507198359825300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e47d41c27514e84ab0ce1cee5d70b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: 
+  ExecuteOnSpawn: []
+--- !u!114 &3706507198359825305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3706507198359825300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: 
+  ExecuteNow: 0
+  ExecuteOnAwake: 1
+  SpawnData:
+    spawnerDisabled: 0
+    objectsToSpawn:
+    - {fileID: 969305559512887726, guid: 9bee10a44d542b84c8ddfc1290a6fb21, type: 3}
+    spawnPosition: 0
+    spawnPointsFillingMode: 0
+    fillSpawnPoints: 1
+    x: 0
+    skipBusySpawnPoints: 0
+    spawnPointsFrom: 0
+    _spawnPoints:
+    - {fileID: 0}
+    - {fileID: 0}
+    spawnPointTag: 
+    useChildrenObjects: 0
+    rotationOfSpawns: 0
+    parentOfSpawns: 0
+    actorWithComponentName: 
+    parentTag: 
+    chooseParentStrategy: 0
+    copyComponentsFromSamples:
+    - {fileID: 7670242131266225950, guid: e5133513f7273694ca88ddb7c2e2b446, type: 3}
+    - {fileID: 774899593392371021, guid: 2cac182243735f54c9deb7b15c8bb9bc, type: 3}
+    - {fileID: 51177463365656585, guid: 4db74cacc47acce4b80671abad008723, type: 3}
+    - {fileID: 4978421317857125721, guid: 68c39bad514050942a11a6fa5347c108, type: 3}
+    copyComponentsOfType: 2
+    deleteExistingComponents: 0
+    runSpawnActionsOnObjects: 1
+    destroyAbilityAfterSpawn: 0
+    randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
+  SpawnDelays:
+    Delay: 0
+    StartupDelay: 0

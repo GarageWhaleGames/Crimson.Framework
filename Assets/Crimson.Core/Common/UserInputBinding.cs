@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine.InputSystem;
 
 namespace Assets.Crimson.Core.Common
@@ -6,13 +7,9 @@ namespace Assets.Crimson.Core.Common
 	[Serializable]
 	public struct UserInputBinding
 	{
-		public InputActionReference CustomInput0Ref;
-		public InputActionReference CustomInput1Ref;
-		public InputActionReference CustomInput2Ref;
-		public InputActionReference CustomInput3Ref;
-		public InputActionReference CustomInput4Ref;
-		public InputActionReference CustomInput5Ref;
+		public List<InputActionReference> CustomInputs;
 		public InputActionReference LookInputRef;
 		public InputActionReference MoveInputRef;
+		public InputActionReference PointerInputRef;
 	}
 }

@@ -11,18 +11,15 @@ GameObject:
   - component: {fileID: 109786123851096012}
   - component: {fileID: 7669828600908181923}
   - component: {fileID: -4939348821489114762}
-  - component: {fileID: -136997334286632821}
   - component: {fileID: -5199557533950553967}
   - component: {fileID: -1969340818193211531}
   - component: {fileID: -5360728394872650663}
   - component: {fileID: 4166300824754732120}
   - component: {fileID: -8052119949386301436}
   - component: {fileID: -1626559676057499026}
-  - component: {fileID: 484398431847593746}
   - component: {fileID: -7126598297091492315}
   - component: {fileID: 4824009499160723703}
   - component: {fileID: 8256079418673208729}
-  - component: {fileID: 1657955151746243340}
   - component: {fileID: 3756407391955540221}
   - component: {fileID: 7093220250429794912}
   - component: {fileID: -93229221922767859}
@@ -62,7 +59,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cb3e455117448ea9f306badb3b4145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AIBehaviour: {fileID: 0}
   compensateCameraRotation: 1
   customBindings: []
   inputSource: 1
@@ -85,7 +81,8 @@ MonoBehaviour:
   SpawnData:
     spawnerDisabled: 0
     objectsToSpawn:
-    - {fileID: 8908091917784543394, guid: 98ab9143ccfb34348ba1f2f67304b347, type: 3}
+    - {fileID: 8908091917784543394, guid: 6a0e79a12bf0d2b4897eb31280b6ddfe, type: 3}
+    - {fileID: 9021903524027786950, guid: f9e806d19bdd64c438fca370a1e20ff8, type: 3}
     spawnPosition: 2
     spawnPointsFillingMode: 0
     fillSpawnPoints: 0
@@ -114,53 +111,6 @@ MonoBehaviour:
   SpawnDelays:
     Delay: 0
     StartupDelay: 0.1
---- !u!114 &-136997334286632821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5854924350193893075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentName: 
-  ExecuteNow: 0
-  ExecuteOnAwake: 1
-  SpawnData:
-    spawnerDisabled: 0
-    objectsToSpawn:
-    - {fileID: 9021903524027786950, guid: f9e806d19bdd64c438fca370a1e20ff8, type: 3}
-    spawnPosition: 2
-    spawnPointsFillingMode: 0
-    fillSpawnPoints: 0
-    x: 1
-    skipBusySpawnPoints: 0
-    spawnPointsFrom: 0
-    _spawnPoints: []
-    spawnPointTag: 
-    useChildrenObjects: 0
-    rotationOfSpawns: 3
-    parentOfSpawns: 0
-    actorWithComponentName: UIRoot
-    parentTag: UIRoot
-    chooseParentStrategy: 0
-    copyComponentsFromSamples: []
-    copyComponentsOfType: 0
-    deleteExistingComponents: 0
-    runSpawnActionsOnObjects: 1
-    destroyAbilityAfterSpawn: 0
-    randomSeed: 0
-    poolSettings:
-      CollectionCheck: 0
-      InitSize: 0
-      MaxSize: 0
-      UsePool: 0
-  SpawnDelays:
-    Delay: 0
-    StartupDelay: 0.2
 --- !u!114 &-5199557533950553967
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,24 +149,20 @@ MonoBehaviour:
       _maxLimit: 100
       _freeze: 0
     Health:
-      _current: 100
+      _current: 10000
       _minLimit: 0
-      _maxLimit: 100
-      _freeze: 1
+      _maxLimit: 10000
+      _freeze: 0
     Level: 1
     LevelUpRequiredExperience: 100
     TotalDamageApplied: 0
   actorDeathAnimProperties:
     HasActorDeathAnimation: 1
     ActorDeathAnimationName: Dead
-  TakeDamageAnimation:
-    AnimationName: Hit
-    HasAnimation: 1
   actorToUI: 0
   additionalForceAnim:
     AnimationName: Hit
     HasAnimation: 0
-  NeedCleanup: 0
   corpseCleanupDelay: 5
   deadActorBehaviour:
     RemoveTag: 0
@@ -251,6 +197,11 @@ MonoBehaviour:
     - MaxHealth
     - LevelUpRequiredExperience
   levelUpAction: {fileID: -8052119949386301436}
+  NeedCleanup: 0
+  DeathAbilities: []
+  TakeDamageAnimation:
+    AnimationName: Hit
+    HasAnimation: 1
   targetMarkActorComponentName: Aim Enemy Mark
   UIChannelID: 0
 --- !u!114 &-5360728394872650663
@@ -415,26 +366,6 @@ MonoBehaviour:
   SpawnDelays:
     Delay: 0
     StartupDelay: 0.4
---- !u!114 &484398431847593746
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5854924350193893075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a778dc02e74a5b4b9dd900e90235e85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _perkEffects: []
-  AnimProperties:
-    AnimationName: 
-    HasAnimation: 0
-  cooldownTime: 3
-  force: 25
-  perkRelatedComponents: []
-  timer: 0.1
 --- !u!114 &-7126598297091492315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -477,36 +408,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _bindings:
-    CustomInput0Ref: {fileID: 8499406344986960131, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
-      type: 3}
-    CustomInput1Ref: {fileID: -2987503995153389196, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
-      type: 3}
-    CustomInput2Ref: {fileID: -5223751574103376669, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
-      type: 3}
-    CustomInput3Ref: {fileID: 7403196822482766466, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
-      type: 3}
-    CustomInput4Ref: {fileID: 4949502820845526323, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
-      type: 3}
-    CustomInput5Ref: {fileID: 4291827903331515788, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
-      type: 3}
+    CustomInputs:
+    - {fileID: 8499406344986960131, guid: 1523ff8b0b3be9a499c77e654fdd9e4d, type: 3}
+    - {fileID: -2987503995153389196, guid: 1523ff8b0b3be9a499c77e654fdd9e4d, type: 3}
+    - {fileID: -5223751574103376669, guid: 1523ff8b0b3be9a499c77e654fdd9e4d, type: 3}
+    - {fileID: 7403196822482766466, guid: 1523ff8b0b3be9a499c77e654fdd9e4d, type: 3}
+    - {fileID: 4949502820845526323, guid: 1523ff8b0b3be9a499c77e654fdd9e4d, type: 3}
+    - {fileID: 4291827903331515788, guid: 1523ff8b0b3be9a499c77e654fdd9e4d, type: 3}
     LookInputRef: {fileID: -5630151704836100654, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
       type: 3}
     MoveInputRef: {fileID: -1680190386980627800, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
       type: 3}
---- !u!114 &1657955151746243340
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5854924350193893075}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13e0bff8d5234b4439717fbc190fb3bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Speed: 5
-  Offset: {x: 0, y: 1.5, z: 0}
+    PointerInputRef: {fileID: -3271555394339080868, guid: 1523ff8b0b3be9a499c77e654fdd9e4d,
+      type: 3}
 --- !u!114 &3756407391955540221
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -540,6 +454,7 @@ MonoBehaviour:
     type: 3}
   _weaponChangeDuration: 1
   Weapon: {fileID: 0}
+  EnableOnStart: 0
 --- !u!114 &-93229221922767859
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -85,12 +85,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 558700366730362479}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &7897805719530536146 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 558700366730362479}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1995909038479340772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,15 +156,15 @@ MonoBehaviour:
     spawnerDisabled: 0
     objectsToSpawn:
     - {fileID: 3638087958422087704, guid: 12e82b72a5f3a5340b1b20da27c30ce2, type: 3}
-    spawnPosition: 2
+    spawnPosition: 0
     spawnPointsFillingMode: 0
     fillSpawnPoints: 0
     x: 0
     skipBusySpawnPoints: 0
-    spawnPointsFrom: 0
+    spawnPointsFrom: 1
     _spawnPoints:
     - {fileID: 0}
-    spawnPointTag: 
+    spawnPointTag: WeaponMountPoint
     useChildrenObjects: 0
     rotationOfSpawns: 0
     parentOfSpawns: 0
@@ -180,7 +174,7 @@ MonoBehaviour:
     copyComponentsFromSamples: []
     copyComponentsOfType: 0
     deleteExistingComponents: 0
-    runSpawnActionsOnObjects: 0
+    runSpawnActionsOnObjects: 1
     destroyAbilityAfterSpawn: 0
     randomSeed: 0
     poolSettings:
@@ -189,8 +183,8 @@ MonoBehaviour:
       MaxSize: 10
       UsePool: 1
   projectileStartupDelay: 0
-  cooldownTime: 0.3
-  projectileClipCapacity: 10
+  cooldownTime: 0.2
+  projectileClipCapacity: 50
   clipReloadTime: 1
   forceBursts: 0
   burstShotCountRange: {x: 1, y: 1}
@@ -212,6 +206,12 @@ MonoBehaviour:
   reloadAnimProps:
     AnimationName: 
     HasAnimation: 0
+--- !u!4 &7897805719530536146 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 558700366730362479}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &777821298459778319
 PrefabInstance:
   m_ObjectHideFlags: 0

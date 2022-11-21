@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: 0.70710653, y: 1.566249e-10, z: 8.011237e-12, w: 0.7071071}
   m_LocalPosition: {x: 0.1062, y: -0.1421, z: -0.0078}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 584613670808675582}
   m_RootOrder: 4
@@ -201,7 +202,7 @@ PrefabInstance:
     - target: {fileID: 230970627649061259, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
       propertyPath: m_Name
-      value: EquipableWeapon Multi Rocket launcher Variant
+      value: EquipableWeapon Multi Rocket Launcher
       objectReference: {fileID: 0}
     - target: {fileID: 3287228919993228339, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
@@ -243,12 +244,6 @@ PrefabInstance:
 --- !u!1 &357039506442272740 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 230970627649061259, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 558700366730362479}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &7897805719530536146 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
     type: 3}
   m_PrefabInstance: {fileID: 558700366730362479}
   m_PrefabAsset: {fileID: 0}
@@ -374,3 +369,9 @@ MonoBehaviour:
   ActionsOnDisable:
     actions:
     - {fileID: 3496920647679153277}
+--- !u!4 &7897805719530536146 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 558700366730362479}
+  m_PrefabAsset: {fileID: 0}

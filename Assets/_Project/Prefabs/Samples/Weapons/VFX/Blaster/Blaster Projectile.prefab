@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 9082032016700387436}
   - component: {fileID: 215532471028146452}
   - component: {fileID: 8374658111768211256}
+  - component: {fileID: 3959901417828374720}
   m_Layer: 12
   m_Name: Blaster Projectile
   m_TagString: Untagged
@@ -121,14 +122,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 155e9d255d7f4ab89786cf777c343ee2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDirection: 0
+  moveDirection: 3
   forwardVector: {x: 0, y: 0, z: 0}
   compensateSpawnerRotation: 1
   OffsetDirection: {x: 0, y: 0, z: 0}
-  _useVariance: 1
+  _useVariance: 0
   _transformVariance:
     PostionOffset: {x: 0, y: 0, z: 0}
-    RotationOffset: {x: 5, y: 5, z: 0}
+    RotationOffset: {x: 1, y: 1, z: 0}
     Cycled: 0
     MemoryKoef: 0
 --- !u!114 &4196610924736697958
@@ -213,7 +214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CriticalDamageChance: 0.1
   CriticalDamageMultiplier: 1
-  Damage: 10
+  Damage: 14
   levelablePropertiesList: []
   perkLevel: 1
 --- !u!114 &215532471028146452
@@ -244,7 +245,7 @@ MonoBehaviour:
     _spawnPoints: []
     spawnPointTag: 
     useChildrenObjects: 0
-    rotationOfSpawns: 4
+    rotationOfSpawns: 0
     parentOfSpawns: 0
     actorWithComponentName: 
     parentTag: 
@@ -278,6 +279,19 @@ MonoBehaviour:
   lifespan: 0.3
   startOnSpawn: 1
   actionOnDestroy: {fileID: 215532471028146452}
+--- !u!114 &3959901417828374720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4777973401180162265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9680c88d6db91e4083821bb27c261cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ExecuteOnAwake: 1
 --- !u!1 &5117682026709594702
 GameObject:
   m_ObjectHideFlags: 0

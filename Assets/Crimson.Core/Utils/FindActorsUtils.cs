@@ -113,5 +113,40 @@ namespace Crimson.Core.Utils
 
 			return t;
 		}
+
+		public static IActor ChooseActor(Transform origin, IReadOnlyList<IActor> targets, ChooseTargetStrategy s)
+		{
+			IActor target;
+
+			switch (targets.Count)
+			{
+				case 0: return null;
+				case 1: return targets[0];
+				default:
+					if (targets.Count == 0) return null;
+
+					target = targets[0];
+					float3 currentPosition = origin.position;
+					var currentDistance = math.distancesq(currentPosition, target.GameObject.transform.position);
+
+					if (s == ChooseTargetStrategy.FirstInChildren) return target;
+					if (s == ChooseTargetStrategy.Random) return targets[UnityEngine.Random.Range(0, targets.Count)];
+
+					for (var i = 1; i < targets.Count; i++)
+					{
+						var tempDistanceSq = math.distancesq(currentPosition, targets[i].GameObject.transform.position);
+
+						if ((s != ChooseTargetStrategy.Nearest || !(tempDistanceSq < currentDistance)) &&
+							(s != ChooseTargetStrategy.Farthest || !(tempDistanceSq > currentDistance))) continue;
+
+						currentDistance = tempDistanceSq;
+						target = targets[i];
+					}
+
+					break;
+			}
+
+			return target;
+		}
 	}
 }

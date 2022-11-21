@@ -16,7 +16,7 @@ namespace Assets.Crimson.Core.Utils
 			for (var i = 0; i < points; i++)
 			{
 				var position = initPosition + sourcePosition;
-				results[i] = UnityEngine.AI.NavMesh.SamplePosition(position, out var hit, smallRadius, UnityEngine.AI.NavMesh.AllAreas)
+				results[i] = NavMesh.SamplePosition(position, out var hit, smallRadius, NavMesh.AllAreas)
 					? hit.position
 					: position;
 				initPosition = Quaternion.AngleAxis(angleDegree, Vector3.up) * initPosition;
@@ -35,11 +35,11 @@ namespace Assets.Crimson.Core.Utils
 			return direction;
 		}
 
-		public static float Length(this UnityEngine.AI.NavMeshPath path)
+		public static float Length(this NavMeshPath path)
 		{
 			var length = 0.0f;
 
-			if ((path.status != UnityEngine.AI.NavMeshPathStatus.PathInvalid) && (path.corners.Length > 1))
+			if ((path.status != NavMeshPathStatus.PathInvalid) && (path.corners.Length > 1))
 			{
 				for (var i = 1; i < path.corners.Length; ++i)
 				{
@@ -48,6 +48,25 @@ namespace Assets.Crimson.Core.Utils
 			}
 
 			return length;
+		}
+
+		public static bool TryGetFirstReachable(this NavMeshAgent agent, Vector3[] positions, out Vector3 resultPosition)
+		{
+			var result = false;
+			resultPosition = Vector3.zero;
+
+			var path = new NavMeshPath();
+			for (var i = 0; i < positions.Length; i++)
+			{
+				var position = positions[i];
+				if (agent.CalculatePath(position, path))
+				{
+					result = true;
+					resultPosition = position;
+				}
+			}
+
+			return result;
 		}
 	}
 }

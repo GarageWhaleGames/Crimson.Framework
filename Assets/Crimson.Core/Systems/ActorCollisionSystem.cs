@@ -173,15 +173,13 @@ namespace Crimson.Core.Systems
 
 						if (abilityCollision.debugCollisions && Application.isEditor)
 						{
-							Debug.Log($"[COLLISION] HIT] {hit.gameObject} into {abilityCollision.Actor.GameObject} and collision exists: {abilityCollision.ExistentCollisions.Contains(hit)}");
+ 							Debug.Log($"[COLLISION] HIT] {hit.gameObject} into {abilityCollision.Actor.GameObject} and collision exists: {abilityCollision.ExistentCollisions.Contains(hit)}");
 						}
 
-						if (abilityCollision.ExistentCollisions.Exists(c => c == hit))
+						if (!abilityCollision.ExistentCollisions.Exists(c => c == hit))
 						{
-							continue;
-						}
-
-						abilityCollision.ExistentCollisions.Add(hit);
+							abilityCollision.ExistentCollisions.Add(hit);
+						}					
 
 						foreach (var action in abilityCollision.collisionActions)
 						{

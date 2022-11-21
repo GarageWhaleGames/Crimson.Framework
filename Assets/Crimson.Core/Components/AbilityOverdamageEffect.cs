@@ -51,7 +51,7 @@ namespace Assets.Crimson.Core.Components
 					if (_dstManager.HasComponent<AbilityActorPlayer>(_entity))
 					{
 						var actorPlayer = _dstManager.GetComponentObject<AbilityActorPlayer>(_entity);
-						actorPlayer.Death();
+						actorPlayer.StartDeathTimer();
 					}
 				}
 			}

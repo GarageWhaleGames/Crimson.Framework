@@ -42,6 +42,7 @@ namespace Crimson.Core.Components
 			if (ExecuteOnAwake) Execute();
 		}
 
+		[Button]
 		public void Execute()
 		{
 			Spawn();

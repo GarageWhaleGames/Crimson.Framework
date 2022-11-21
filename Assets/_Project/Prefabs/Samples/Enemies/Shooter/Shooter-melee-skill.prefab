@@ -1,0 +1,120 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5038747287413662313
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5038747287413662310}
+  - component: {fileID: 5038747287413662311}
+  - component: {fileID: 5038747287413662309}
+  - component: {fileID: 5038747287413662308}
+  m_Layer: 0
+  m_Name: Shooter-melee-skill
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5038747287413662310
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5038747287413662313}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5038747287413662311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5038747287413662313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3aa30ca3bd408d92446c07a6810628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customBinding:
+    index: 1
+    actions:
+    - {fileID: 5038747287413662309}
+  destroyAfterAdd: 1
+  removeSameIndexBindings: 1
+--- !u!114 &5038747287413662309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5038747287413662313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22185d44d9412944ca97fed25a401df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation:
+    AnimationName: attack
+    HasAnimation: 1
+  Use: 1
+  Duration: 1
+  actions:
+  - {fileID: 5038747287413662308}
+--- !u!114 &5038747287413662308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5038747287413662313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: Melee-attack
+  ExecuteNow: 0
+  ExecuteOnAwake: 0
+  SpawnData:
+    spawnerDisabled: 0
+    objectsToSpawn:
+    - {fileID: 7640034446136612692, guid: 3cc27a9ec9b550c408248dda2d62f1ca, type: 3}
+    spawnPosition: 2
+    spawnPointsFillingMode: 0
+    fillSpawnPoints: 0
+    x: 0
+    skipBusySpawnPoints: 0
+    spawnPointsFrom: 1
+    _spawnPoints: []
+    spawnPointTag: Claws1
+    useChildrenObjects: 0
+    rotationOfSpawns: 0
+    parentOfSpawns: 0
+    actorWithComponentName: 
+    parentTag: 
+    chooseParentStrategy: 0
+    copyComponentsFromSamples: []
+    copyComponentsOfType: 0
+    deleteExistingComponents: 0
+    runSpawnActionsOnObjects: 1
+    destroyAbilityAfterSpawn: 0
+    randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
+  SpawnDelays:
+    Delay: 0
+    StartupDelay: 0

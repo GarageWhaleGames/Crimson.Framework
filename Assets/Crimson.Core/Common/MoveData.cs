@@ -8,5 +8,6 @@ namespace Assets.Crimson.Core.Common
 		public float Velocity;
 		public float3 EndPosition;
 		public float PositionThreshold;
+		public bool IgnoreRaycast;
 	}
 }

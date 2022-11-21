@@ -1,4 +1,6 @@
-﻿using Crimson.Core.Common;
+﻿using Assets.Crimson.Core.Common.ComponentDatas;
+using Assets.Crimson.Core.Components.Tags;
+using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Crimson.Core.Utils;
 using System.Linq;
@@ -9,10 +11,11 @@ namespace Crimson.Core.Systems
 {
 	public class ActorApplyDeathSystem : ComponentSystem
 	{
-		private EntityQuery _weaponQuery;
 		private EntityQuery _destructionActorByTimerQuery;
-		private EntityQuery _immediateActorDestructionTransformQuery;
 		private EntityQuery _immediateActorDestructionRectTransformQuery;
+		private EntityQuery _immediateActorDestructionTransformQuery;
+		private EntityQuery _ressurectQuery;
+		private EntityQuery _weaponQuery;
 
 		protected override void OnCreate()
 		{
@@ -20,10 +23,16 @@ namespace Crimson.Core.Systems
 				ComponentType.ReadOnly<AbilityWeapon>(),
 				ComponentType.ReadOnly<DeadActorTag>());
 
-			_destructionActorByTimerQuery = GetEntityQuery(ComponentType.ReadOnly<AbilityActorPlayer>(),
+			_destructionActorByTimerQuery = GetEntityQuery(
+				ComponentType.ReadOnly<AbilityActorPlayer>(),
 				ComponentType.ReadOnly<DeadActorTag>(),
 				ComponentType.Exclude<ImmediateDestructionActorTag>(),
 				ComponentType.Exclude<DestructionPendingTag>());
+
+			_ressurectQuery = GetEntityQuery(
+				ComponentType.ReadOnly<AbilityActorPlayer>(),
+				ComponentType.ReadOnly<DeadActorTag>(),
+				ComponentType.ReadOnly<RessurectTag>());
 
 			_immediateActorDestructionTransformQuery = GetEntityQuery(ComponentType.ReadOnly<ImmediateDestructionActorTag>(),
 				ComponentType.ReadOnly<Transform>());
@@ -35,6 +44,17 @@ namespace Crimson.Core.Systems
 		protected override void OnUpdate()
 		{
 			var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+
+			Entities.With(_ressurectQuery).ForEach(
+				(Entity entity, AbilityActorPlayer abilityPlayer) =>
+				{
+					EntityManager.RemoveComponent<OverdamageData>(entity);
+					EntityManager.RemoveComponent<OverdamageFXTag>(entity);
+					EntityManager.RemoveComponent<RessurectTag>(entity);
+					EntityManager.RemoveComponent<DeadActorTag>(entity);
+					EntityManager.RemoveComponent<DestructionPendingTag>(entity);
+					EntityManager.RemoveComponent<ImmediateDestructionActorTag>(entity);
+				});
 
 			Entities.With(_weaponQuery).ForEach(
 				(AbilityWeapon weapon) =>
@@ -66,10 +86,6 @@ namespace Crimson.Core.Systems
 					{
 						actorPlayer.gameObject.DeathPhysics(entity, actorPlayer.deadActorBehaviour);
 						actorPlayer.StartDeathTimer();
-					}
-					else
-					{
-						actorPlayer.RemoveUIElements();
 					}
 
 					dstManager.AddComponent<DestructionPendingTag>(entity);

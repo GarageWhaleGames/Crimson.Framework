@@ -216,5 +216,13 @@ namespace Crimson.Core.Common
 				// ignored
 			}
 		}
+
+		private void OnValidate()
+		{
+			if (GetComponents<Actor>().Length > 1)
+			{
+				Debug.LogError("On gameobject more than one actors, destroy on of them", gameObject);
+			}
+		}
 	}
 }

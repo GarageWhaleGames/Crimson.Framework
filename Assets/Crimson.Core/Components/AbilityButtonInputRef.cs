@@ -28,9 +28,12 @@ namespace Assets.Crimson.Core.Components
 			Actor = actor;
 			_dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-			_input.action.performed += StartAction;
-			_input.action.canceled += StopAction;
-			_input.action.Enable();
+			if (_input != null)
+			{
+				_input.action.performed += StartAction;
+				_input.action.canceled += StopAction;
+				_input.action.Enable();
+			}
 
 			_actions = actions.ConvertAll(s => s as IActorAbility);
 		}
@@ -42,6 +45,16 @@ namespace Assets.Crimson.Core.Components
 		private bool MustBeAbility(List<MonoBehaviour> a)
 		{
 			return !a.Exists(t => !(t is IActorAbility)) || a.Count == 0;
+		}
+
+		private void OnDestroy()
+		{
+			if (_input == null)
+			{
+				return;
+			}
+			_input.action.performed -= StartAction;
+			_input.action.canceled -= StopAction;
 		}
 
 		private void StartAction(InputAction.CallbackContext context)

@@ -17,7 +17,7 @@ MonoBehaviour:
   useScattering: 1
   scattering: 0.418
   useAmbientLighting: 0
-  ambientLightingStrength: 3.33
+  ambientLightingStrength: 1
   useColor: 0
   color: {r: 0.0000005066395, g: 0.5, b: 0.5, a: 1}
   colorStrength: 1

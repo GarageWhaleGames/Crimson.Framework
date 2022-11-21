@@ -26,9 +26,13 @@ namespace Crimson.Core.Common
 				Debug.LogError("[TIMER COMPONENT] No IActor component found, aborting!");
 				return;
 			}
+
 			var dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-			dstManager.AddComponent<TimerData>(actor.ActorEntity);
-			dstManager.AddComponentObject(actor.ActorEntity, this);
+			if (dstManager.Exists(actor.ActorEntity))
+			{
+				dstManager.AddComponent<TimerData>(actor.ActorEntity);
+				dstManager.AddComponentObject(actor.ActorEntity, this);
+			}
 		}
 
 		public void DestroyWithEntity()

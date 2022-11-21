@@ -142,12 +142,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 3671853058695389926}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6390407312666124379 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 3671853058695389926}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1611118571048444940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -195,14 +189,14 @@ MonoBehaviour:
     fillSpawnPoints: 0
     x: 0
     skipBusySpawnPoints: 0
-    spawnPointsFrom: 0
+    spawnPointsFrom: 1
     _spawnPoints: []
-    spawnPointTag: 
+    spawnPointTag: WeaponMountPoint
     useChildrenObjects: 0
     rotationOfSpawns: 0
     parentOfSpawns: 0
     actorWithComponentName: 
-    parentTag: 
+    parentTag: WeaponMountPoint
     chooseParentStrategy: 0
     copyComponentsFromSamples: []
     copyComponentsOfType: 0
@@ -267,3 +261,9 @@ MonoBehaviour:
   State: 0
   Targets:
   - {fileID: 3585314354706916205}
+--- !u!4 &6390407312666124379 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 3671853058695389926}
+  m_PrefabAsset: {fileID: 0}

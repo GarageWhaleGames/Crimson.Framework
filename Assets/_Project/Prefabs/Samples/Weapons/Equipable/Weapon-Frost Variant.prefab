@@ -142,12 +142,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 4519803442606820423}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &6116963858542710522 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 4519803442606820423}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1503636689028163862
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -219,15 +213,15 @@ MonoBehaviour:
     spawnerDisabled: 0
     objectsToSpawn:
     - {fileID: 1818218211170410, guid: e0010223075b2f848854338d1599df09, type: 3}
-    spawnPosition: 2
+    spawnPosition: 0
     spawnPointsFillingMode: 0
     fillSpawnPoints: 0
     x: 0
     skipBusySpawnPoints: 0
-    spawnPointsFrom: 0
+    spawnPointsFrom: 1
     _spawnPoints:
     - {fileID: 0}
-    spawnPointTag: 
+    spawnPointTag: WeaponMountPoint
     useChildrenObjects: 0
     rotationOfSpawns: 0
     parentOfSpawns: 0
@@ -269,3 +263,9 @@ MonoBehaviour:
   reloadAnimProps:
     AnimationName: 
     HasAnimation: 0
+--- !u!4 &6116963858542710522 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 4519803442606820423}
+  m_PrefabAsset: {fileID: 0}

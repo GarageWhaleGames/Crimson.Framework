@@ -14,7 +14,7 @@ namespace Assets.Crimson.Core.Systems
 		{
 			_syncMoveQuery = GetEntityQuery(
 				ComponentType.ReadWrite<PlayerInputData>(),
-				ComponentType.ReadOnly<NavAgentAdapter>()
+				ComponentType.ReadOnly<NavMeshAgent>()
 				);
 		}
 		protected override void OnUpdate()

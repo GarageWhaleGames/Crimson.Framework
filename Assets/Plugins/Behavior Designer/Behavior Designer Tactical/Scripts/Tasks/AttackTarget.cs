@@ -24,7 +24,7 @@ namespace Assets.Plugins.Behavior_Designer.Behavior_Designer_Tactical.Scripts.Ta
 
 		public override TaskStatus OnUpdate()
 		{
-			if (Target.Value == null)
+			if (Target.Value == null || !_entityManager.HasComponent<PlayerInputData>(_actor.ActorEntity))
 			{
 				return TaskStatus.Failure;
 			}

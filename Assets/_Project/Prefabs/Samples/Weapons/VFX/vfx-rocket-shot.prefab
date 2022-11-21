@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3634883157211129722}
   m_RootOrder: 0
@@ -59,7 +60,6 @@ GameObject:
   - component: {fileID: 5265546632698648977}
   - component: {fileID: 4881883727067863679}
   - component: {fileID: 1565554630138636112}
-  - component: {fileID: 8486107640918872433}
   - component: {fileID: 8600579458164341297}
   - component: {fileID: 157576923612502793}
   m_Layer: 10
@@ -79,6 +79,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 3634497278198229206}
   - {fileID: 4760908037300168642}
@@ -147,6 +148,7 @@ MonoBehaviour:
       m_PostInfinity: 2
       m_RotationOrder: 4
     timeScale: 1
+  workTime: 0
   movementAnimationProperties:
     HasMovementAnimation: 0
     MovementAnimationName: 
@@ -168,10 +170,12 @@ MonoBehaviour:
   forwardVector: {x: 0, y: 0, z: 0}
   compensateSpawnerRotation: 1
   OffsetDirection: {x: 0, y: 0, z: 0}
-  _useVariance: 1
+  _useVariance: 0
   _transformVariance:
     PostionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 5, y: 5, z: 0}
+    Cycled: 0
+    MemoryKoef: 0
 --- !u!114 &5265546632698648977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -186,23 +190,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useCollider: {fileID: 3720313388265070554}
   collisionActions:
-  - collisionLayerMask:
-      serializedVersion: 2
-      m_Bits: 8503
-    useTagFilter: 1
-    filterMode: 0
-    filterTags:
-    - CollisionObjects
-    - Enemy
-    - DestructibleObject
-    velocityFilter:
-      Use: 0
-      Mode: 0
-      Velocity: 0
-    executeOnCollisionWithSpawner: 0
-    destroyAfterAction: 1
-    actions:
-    - {fileID: 8486107640918872433}
   - collisionLayerMask:
       serializedVersion: 2
       m_Bits: 8503
@@ -254,56 +241,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CriticalDamageChance: 0.1
   CriticalDamageMultiplier: 1
-  Damage: 10
+  Damage: 70
   levelablePropertiesList: []
   perkLevel: 1
---- !u!114 &8486107640918872433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3638087958422087704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  componentName: 
-  ExecuteNow: 0
-  ExecuteOnAwake: 0
-  SpawnData:
-    spawnerDisabled: 0
-    objectsToSpawn:
-    - {fileID: 1070101629368536, guid: 1ef475ebfb44d964bb2037eaa9db1cb2, type: 3}
-    spawnPosition: 2
-    spawnPointsFillingMode: 0
-    fillSpawnPoints: 0
-    x: 0
-    skipBusySpawnPoints: 0
-    spawnPointsFrom: 0
-    _spawnPoints: []
-    spawnPointTag: 
-    useChildrenObjects: 0
-    rotationOfSpawns: 4
-    parentOfSpawns: 0
-    actorWithComponentName: 
-    parentTag: 
-    chooseParentStrategy: 0
-    copyComponentsFromSamples: []
-    copyComponentsOfType: 0
-    deleteExistingComponents: 0
-    runSpawnActionsOnObjects: 1
-    destroyAbilityAfterSpawn: 0
-    randomSeed: 0
-    poolSettings:
-      CollectionCheck: 0
-      InitSize: 0
-      MaxSize: 0
-      UsePool: 0
-  SpawnDelays:
-    Delay: 0
-    StartupDelay: 0
 --- !u!114 &8600579458164341297
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,9 +256,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28c327207e74b30a8ea4c9513e0109a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 3
+  lifespan: 2
   startOnSpawn: 1
-  actionOnDestroy: {fileID: 8486107640918872433}
+  actionOnDestroy: {fileID: 0}
 --- !u!114 &157576923612502793
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -446,7 +386,8 @@ PrefabInstance:
       propertyPath: m_Materials.Array.size
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114841909408766930, guid: 89cabaed2b8ddf34f84ddba3eaa49707, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 89cabaed2b8ddf34f84ddba3eaa49707, type: 3}
 --- !u!4 &4760908037300168642 stripped
 Transform:

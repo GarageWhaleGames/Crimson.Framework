@@ -1,3 +1,5 @@
+using Assets.Crimson.Core.Components.Targets;
+using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Crimson.Core.Utils.LowLevel;
 using System;
@@ -14,6 +16,7 @@ namespace Crimson.Core.Systems
 		protected override void OnCreate()
 		{
 			_query = GetEntityQuery(
+				ComponentType.ReadOnly<Actor>(),
 				ComponentType.ReadOnly<AbilityForceMovement>(),
 				ComponentType.ReadOnly<ActorMovementData>(),
 				ComponentType.ReadOnly<ActorForceMovementData>(),
@@ -23,13 +26,19 @@ namespace Crimson.Core.Systems
 		protected override void OnUpdate()
 		{
 			Entities.With(_query).ForEach(
-				(Entity entity, AbilityForceMovement forceMovement, ref ActorForceMovementData data,
+				(Entity entity,
+					AbilityForceMovement forceMovement,
+					ref ActorForceMovementData data,
 					ref ActorMovementData movement) =>
 				{
 					switch (data.MoveDirection)
 					{
 						case MoveDirection.SpawnerForward:
-							if (data.stopGuiding || forceMovement.Actor.Spawner == null) return;
+							if (data.stopGuiding || forceMovement.Actor.Spawner == null)
+							{
+								return;
+							}
+
 							data.ForwardVector = forceMovement.Spawner.forward;
 							data.ForwardVector += (float3)forceMovement.Spawner.TransformVector(data.OffsetDirection);
 							data.stopGuiding = true;
@@ -50,6 +59,21 @@ namespace Crimson.Core.Systems
 
 						case MoveDirection.SelfForward:
 							data.ForwardVector = forceMovement.transform.forward;
+							break;
+
+						case MoveDirection.SpawnerEnemy:
+							var actor = forceMovement.Actor;
+							var enemy = EntityManager.GetComponentData<EnemyTargetData>(actor.Spawner.ActorEntity);
+							if (enemy.Entity == Entity.Null)
+							{
+								data.ForwardVector = forceMovement.Spawner.forward;
+								data.ForwardVector += (float3)forceMovement.Spawner.TransformVector(data.OffsetDirection);
+								data.stopGuiding = false;
+							}
+							else
+							{
+								data.ForwardVector = enemy.Position - (float3)actor.GameObject.transform.position;
+							}
 							break;
 
 						default:

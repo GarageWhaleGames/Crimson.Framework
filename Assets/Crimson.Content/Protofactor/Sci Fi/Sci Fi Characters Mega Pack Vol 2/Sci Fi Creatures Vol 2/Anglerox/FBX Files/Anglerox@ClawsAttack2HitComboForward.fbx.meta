@@ -1,0 +1,1038 @@
+fileFormatVersion: 2
+guid: 3ad7571cb9d0f9c4e8d6f839d285454a
+ModelImporter:
+  serializedVersion: 21300
+  internalIDToNameTable:
+  - first:
+      1: 100000
+    second: //RootNode
+  - first:
+      1: 100002
+    second: Anglerox_
+  - first:
+      1: 100004
+    second: Anglerox_ Head
+  - first:
+      1: 100006
+    second: Anglerox_ L Calf
+  - first:
+      1: 100008
+    second: Anglerox_ L Clavicle
+  - first:
+      1: 100010
+    second: Anglerox_ L Finger0
+  - first:
+      1: 100012
+    second: Anglerox_ L Finger01
+  - first:
+      1: 100014
+    second: Anglerox_ L Finger1
+  - first:
+      1: 100016
+    second: Anglerox_ L Finger11
+  - first:
+      1: 100018
+    second: Anglerox_ L Finger2
+  - first:
+      1: 100020
+    second: Anglerox_ L Finger21
+  - first:
+      1: 100022
+    second: Anglerox_ L Foot
+  - first:
+      1: 100024
+    second: Anglerox_ L Forearm
+  - first:
+      1: 100026
+    second: Anglerox_ L Hand
+  - first:
+      1: 100028
+    second: Anglerox_ L Thigh
+  - first:
+      1: 100030
+    second: Anglerox_ L Toe0
+  - first:
+      1: 100032
+    second: Anglerox_ L UpperArm
+  - first:
+      1: 100034
+    second: Anglerox_ Neck
+  - first:
+      1: 100036
+    second: Anglerox_ Pelvis
+  - first:
+      1: 100038
+    second: Anglerox_ R Calf
+  - first:
+      1: 100040
+    second: Anglerox_ R Clavicle
+  - first:
+      1: 100042
+    second: Anglerox_ R Finger0
+  - first:
+      1: 100044
+    second: Anglerox_ R Finger01
+  - first:
+      1: 100046
+    second: Anglerox_ R Finger1
+  - first:
+      1: 100048
+    second: Anglerox_ R Finger11
+  - first:
+      1: 100050
+    second: Anglerox_ R Finger2
+  - first:
+      1: 100052
+    second: Anglerox_ R Finger21
+  - first:
+      1: 100054
+    second: Anglerox_ R Foot
+  - first:
+      1: 100056
+    second: Anglerox_ R Forearm
+  - first:
+      1: 100058
+    second: Anglerox_ R Hand
+  - first:
+      1: 100060
+    second: Anglerox_ R Thigh
+  - first:
+      1: 100062
+    second: Anglerox_ R Toe0
+  - first:
+      1: 100064
+    second: Anglerox_ R UpperArm
+  - first:
+      1: 100066
+    second: Anglerox_ Spine
+  - first:
+      1: 100068
+    second: Anglerox_ Spine1
+  - first:
+      1: 100070
+    second: Anglerox_ Spine2
+  - first:
+      1: 100072
+    second: Anglerox_Jaw
+  - first:
+      1: 100074
+    second: Anglerox_SpikeLeftA_1
+  - first:
+      1: 100076
+    second: Anglerox_SpikeLeftA_2
+  - first:
+      1: 100078
+    second: Anglerox_SpikeLeftA_3
+  - first:
+      1: 100080
+    second: Anglerox_SpikeLeftA_4
+  - first:
+      1: 100082
+    second: Anglerox_SpikeLeftA_5
+  - first:
+      1: 100084
+    second: Anglerox_SpikeLeftA_6
+  - first:
+      1: 100086
+    second: Anglerox_SpikeLeftA_7
+  - first:
+      1: 100088
+    second: Anglerox_SpikeLeftB_1
+  - first:
+      1: 100090
+    second: Anglerox_SpikeLeftB_2
+  - first:
+      1: 100092
+    second: Anglerox_SpikeLeftB_3
+  - first:
+      1: 100094
+    second: Anglerox_SpikeLeftB_4
+  - first:
+      1: 100096
+    second: Anglerox_SpikeLeftB_5
+  - first:
+      1: 100098
+    second: Anglerox_SpikeLeftB_6
+  - first:
+      1: 100100
+    second: Anglerox_SpikeLeftB_7
+  - first:
+      1: 100102
+    second: Anglerox_SpikeLeftC_1
+  - first:
+      1: 100104
+    second: Anglerox_SpikeLeftC_2
+  - first:
+      1: 100106
+    second: Anglerox_SpikeLeftC_3
+  - first:
+      1: 100108
+    second: Anglerox_SpikeLeftC_4
+  - first:
+      1: 100110
+    second: Anglerox_SpikeLeftC_5
+  - first:
+      1: 100112
+    second: Anglerox_SpikeRightA_1
+  - first:
+      1: 100114
+    second: Anglerox_SpikeRightA_2
+  - first:
+      1: 100116
+    second: Anglerox_SpikeRightA_3
+  - first:
+      1: 100118
+    second: Anglerox_SpikeRightA_4
+  - first:
+      1: 100120
+    second: Anglerox_SpikeRightA_5
+  - first:
+      1: 100122
+    second: Anglerox_SpikeRightA_6
+  - first:
+      1: 100124
+    second: Anglerox_SpikeRightA_7
+  - first:
+      1: 100126
+    second: Anglerox_SpikeRightB_1
+  - first:
+      1: 100128
+    second: Anglerox_SpikeRightB_2
+  - first:
+      1: 100130
+    second: Anglerox_SpikeRightB_3
+  - first:
+      1: 100132
+    second: Anglerox_SpikeRightB_4
+  - first:
+      1: 100134
+    second: Anglerox_SpikeRightB_5
+  - first:
+      1: 100136
+    second: Anglerox_SpikeRightB_6
+  - first:
+      1: 100138
+    second: Anglerox_SpikeRightB_7
+  - first:
+      1: 100140
+    second: Anglerox_SpikeRightC_1
+  - first:
+      1: 100142
+    second: Anglerox_SpikeRightC_2
+  - first:
+      1: 100144
+    second: Anglerox_SpikeRightC_3
+  - first:
+      1: 100146
+    second: Anglerox_SpikeRightC_4
+  - first:
+      1: 100148
+    second: Anglerox_SpikeRightC_5
+  - first:
+      1: 100150
+    second: Anglerox_Tongue_1
+  - first:
+      1: 100152
+    second: Anglerox_Tongue_2
+  - first:
+      1: 100154
+    second: Anglerox_Tongue_3
+  - first:
+      1: 100156
+    second: Anglerox_Tongue_4
+  - first:
+      1: 100158
+    second: Anglerox_Tongue_5
+  - first:
+      1: 100160
+    second: root
+  - first:
+      4: 400000
+    second: //RootNode
+  - first:
+      4: 400002
+    second: Anglerox_
+  - first:
+      4: 400004
+    second: Anglerox_ Head
+  - first:
+      4: 400006
+    second: Anglerox_ L Calf
+  - first:
+      4: 400008
+    second: Anglerox_ L Clavicle
+  - first:
+      4: 400010
+    second: Anglerox_ L Finger0
+  - first:
+      4: 400012
+    second: Anglerox_ L Finger01
+  - first:
+      4: 400014
+    second: Anglerox_ L Finger1
+  - first:
+      4: 400016
+    second: Anglerox_ L Finger11
+  - first:
+      4: 400018
+    second: Anglerox_ L Finger2
+  - first:
+      4: 400020
+    second: Anglerox_ L Finger21
+  - first:
+      4: 400022
+    second: Anglerox_ L Foot
+  - first:
+      4: 400024
+    second: Anglerox_ L Forearm
+  - first:
+      4: 400026
+    second: Anglerox_ L Hand
+  - first:
+      4: 400028
+    second: Anglerox_ L Thigh
+  - first:
+      4: 400030
+    second: Anglerox_ L Toe0
+  - first:
+      4: 400032
+    second: Anglerox_ L UpperArm
+  - first:
+      4: 400034
+    second: Anglerox_ Neck
+  - first:
+      4: 400036
+    second: Anglerox_ Pelvis
+  - first:
+      4: 400038
+    second: Anglerox_ R Calf
+  - first:
+      4: 400040
+    second: Anglerox_ R Clavicle
+  - first:
+      4: 400042
+    second: Anglerox_ R Finger0
+  - first:
+      4: 400044
+    second: Anglerox_ R Finger01
+  - first:
+      4: 400046
+    second: Anglerox_ R Finger1
+  - first:
+      4: 400048
+    second: Anglerox_ R Finger11
+  - first:
+      4: 400050
+    second: Anglerox_ R Finger2
+  - first:
+      4: 400052
+    second: Anglerox_ R Finger21
+  - first:
+      4: 400054
+    second: Anglerox_ R Foot
+  - first:
+      4: 400056
+    second: Anglerox_ R Forearm
+  - first:
+      4: 400058
+    second: Anglerox_ R Hand
+  - first:
+      4: 400060
+    second: Anglerox_ R Thigh
+  - first:
+      4: 400062
+    second: Anglerox_ R Toe0
+  - first:
+      4: 400064
+    second: Anglerox_ R UpperArm
+  - first:
+      4: 400066
+    second: Anglerox_ Spine
+  - first:
+      4: 400068
+    second: Anglerox_ Spine1
+  - first:
+      4: 400070
+    second: Anglerox_ Spine2
+  - first:
+      4: 400072
+    second: Anglerox_Jaw
+  - first:
+      4: 400074
+    second: Anglerox_SpikeLeftA_1
+  - first:
+      4: 400076
+    second: Anglerox_SpikeLeftA_2
+  - first:
+      4: 400078
+    second: Anglerox_SpikeLeftA_3
+  - first:
+      4: 400080
+    second: Anglerox_SpikeLeftA_4
+  - first:
+      4: 400082
+    second: Anglerox_SpikeLeftA_5
+  - first:
+      4: 400084
+    second: Anglerox_SpikeLeftA_6
+  - first:
+      4: 400086
+    second: Anglerox_SpikeLeftA_7
+  - first:
+      4: 400088
+    second: Anglerox_SpikeLeftB_1
+  - first:
+      4: 400090
+    second: Anglerox_SpikeLeftB_2
+  - first:
+      4: 400092
+    second: Anglerox_SpikeLeftB_3
+  - first:
+      4: 400094
+    second: Anglerox_SpikeLeftB_4
+  - first:
+      4: 400096
+    second: Anglerox_SpikeLeftB_5
+  - first:
+      4: 400098
+    second: Anglerox_SpikeLeftB_6
+  - first:
+      4: 400100
+    second: Anglerox_SpikeLeftB_7
+  - first:
+      4: 400102
+    second: Anglerox_SpikeLeftC_1
+  - first:
+      4: 400104
+    second: Anglerox_SpikeLeftC_2
+  - first:
+      4: 400106
+    second: Anglerox_SpikeLeftC_3
+  - first:
+      4: 400108
+    second: Anglerox_SpikeLeftC_4
+  - first:
+      4: 400110
+    second: Anglerox_SpikeLeftC_5
+  - first:
+      4: 400112
+    second: Anglerox_SpikeRightA_1
+  - first:
+      4: 400114
+    second: Anglerox_SpikeRightA_2
+  - first:
+      4: 400116
+    second: Anglerox_SpikeRightA_3
+  - first:
+      4: 400118
+    second: Anglerox_SpikeRightA_4
+  - first:
+      4: 400120
+    second: Anglerox_SpikeRightA_5
+  - first:
+      4: 400122
+    second: Anglerox_SpikeRightA_6
+  - first:
+      4: 400124
+    second: Anglerox_SpikeRightA_7
+  - first:
+      4: 400126
+    second: Anglerox_SpikeRightB_1
+  - first:
+      4: 400128
+    second: Anglerox_SpikeRightB_2
+  - first:
+      4: 400130
+    second: Anglerox_SpikeRightB_3
+  - first:
+      4: 400132
+    second: Anglerox_SpikeRightB_4
+  - first:
+      4: 400134
+    second: Anglerox_SpikeRightB_5
+  - first:
+      4: 400136
+    second: Anglerox_SpikeRightB_6
+  - first:
+      4: 400138
+    second: Anglerox_SpikeRightB_7
+  - first:
+      4: 400140
+    second: Anglerox_SpikeRightC_1
+  - first:
+      4: 400142
+    second: Anglerox_SpikeRightC_2
+  - first:
+      4: 400144
+    second: Anglerox_SpikeRightC_3
+  - first:
+      4: 400146
+    second: Anglerox_SpikeRightC_4
+  - first:
+      4: 400148
+    second: Anglerox_SpikeRightC_5
+  - first:
+      4: 400150
+    second: Anglerox_Tongue_1
+  - first:
+      4: 400152
+    second: Anglerox_Tongue_2
+  - first:
+      4: 400154
+    second: Anglerox_Tongue_3
+  - first:
+      4: 400156
+    second: Anglerox_Tongue_4
+  - first:
+      4: 400158
+    second: Anglerox_Tongue_5
+  - first:
+      4: 400160
+    second: root
+  - first:
+      74: 7400000
+    second: Anglerox@ClawsAttack2HitComboForward
+  - first:
+      95: 9500000
+    second: //RootNode
+  externalObjects: {}
+  materials:
+    materialImportMode: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 0
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Anglerox@ClawsAttack2HitComboForward
+      takeName: Take 001
+      internalID: 0
+      firstFrame: 0
+      lastFrame: 55
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 1
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    nodeNameCollisionStrategy: 0
+    fileIdsGeneration: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    optimizeBones: 0
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton:
+    - name: SK_Anglerox(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: root
+      parentName: SK_Anglerox(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_
+      parentName: root
+      position: {x: -0, y: 0.28050134, z: 1.8535434}
+      rotation: {x: 0, y: 0, z: 0.7071063, w: 0.70710725}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ Pelvis
+      parentName: Anglerox_
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -0.5, y: 0.5, z: 0.4999993, w: 0.5000007}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ Spine
+      parentName: Anglerox_ Pelvis
+      position: {x: -0.20241363, y: -0.0003583908, z: 0.0000002812041}
+      rotation: {x: -0.0000021691326, y: 0.0000008034972, z: -0.17404029, w: 0.9847385}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Thigh
+      parentName: Anglerox_ Spine
+      position: {x: 0.19002868, y: 0.069717176, z: 0.21840608}
+      rotation: {x: -0.4196765, y: 0.87364143, z: -0.006319104, w: 0.24613486}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Calf
+      parentName: Anglerox_ L Thigh
+      position: {x: -1.1426489, y: 0.00000015258789, z: -0.000000076293944}
+      rotation: {x: 0.00000004187723, y: -0.00000008038624, z: 0.6015305, w: 0.7988498}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Foot
+      parentName: Anglerox_ L Calf
+      position: {x: -0.7743419, y: -0.000000076293944, z: 0}
+      rotation: {x: 0.10966092, y: -0.011705331, z: 0.07048984, w: 0.9913973}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Toe0
+      parentName: Anglerox_ L Foot
+      position: {x: -0.11461939, y: 0.50858384, z: -0.02017334}
+      rotation: {x: 0.04130454, y: 0.014020981, z: 0.9460289, w: -0.32113343}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Thigh
+      parentName: Anglerox_ Spine
+      position: {x: 0.19002868, y: 0.0697184, z: -0.21840566}
+      rotation: {x: -0.41967723, y: 0.87364143, z: 0.0063215173, w: -0.24613383}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Calf
+      parentName: Anglerox_ R Thigh
+      position: {x: -1.1426487, y: -0.000000038146972, z: 0.000000076293944}
+      rotation: {x: 0.000000041734584, y: -0.000000005880572, z: 0.6015305, w: 0.7988498}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Foot
+      parentName: Anglerox_ R Calf
+      position: {x: -0.774342, y: 0, z: 0}
+      rotation: {x: -0.10966098, y: 0.01170537, z: 0.07048986, w: 0.9913973}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Toe0
+      parentName: Anglerox_ R Foot
+      position: {x: -0.11461933, y: 0.5085837, z: 0.02017334}
+      rotation: {x: -0.041304536, y: -0.014020969, z: 0.9460289, w: -0.32113352}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ Spine1
+      parentName: Anglerox_ Spine
+      position: {x: -0.47928694, y: -0.00035865782, z: -9.949144e-10}
+      rotation: {x: 1.903519e-14, y: 0.00000048163076, z: -0.17364827, w: 0.9848078}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ Spine2
+      parentName: Anglerox_ Spine1
+      position: {x: -0.47928664, y: -0.00035827636, z: -9.938957e-10}
+      rotation: {x: 2.9545295e-14, y: 0.0000004816308, z: -0.17364822, w: 0.9848078}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ Neck
+      parentName: Anglerox_ Spine2
+      position: {x: -0.4791748, y: -0.000103302, z: -2.8696376e-10}
+      rotation: {x: 5.181585e-14, y: 0.00000024173522, z: -0.08715573, w: 0.9961947}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ Head
+      parentName: Anglerox_ Neck
+      position: {x: -0.13192382, y: 0, z: 0}
+      rotation: {x: 1.8145545e-13, y: 0.00000077507354, z: -0.27944607, w: 0.9601614}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_Jaw
+      parentName: Anglerox_ Head
+      position: {x: -0.2434557, y: 0.4605896, z: -0.000000610351}
+      rotation: {x: 0.95942926, y: -0.28194958, z: 0.00000032135478, w: -0.0000019391262}
+      scale: {x: 1.000001, y: 1, z: 1}
+    - name: Anglerox_Tongue_1
+      parentName: Anglerox_Jaw
+      position: {x: 0.03218765, y: -0.0019322204, z: 0}
+      rotation: {x: -0.00000025679796, y: -0.000000032760784, z: -0.2699671, w: 0.9628696}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_Tongue_2
+      parentName: Anglerox_Tongue_1
+      position: {x: -0.09756027, y: 0.0000030517576, z: -0.000000011288138}
+      rotation: {x: 0.000000022616362, y: -0.00000005816311, z: 0.013533894, w: 0.99990845}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_Tongue_3
+      parentName: Anglerox_Tongue_2
+      position: {x: -0.20437294, y: 0.0000024414062, z: 1.0913936e-13}
+      rotation: {x: 2.5407295e-14, y: -5.4830576e-13, z: 0.046288155, w: 0.9989281}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_Tongue_4
+      parentName: Anglerox_Tongue_3
+      position: {x: -0.22201294, y: -0.0000009155273, z: 1.8189894e-14}
+      rotation: {x: 1.8369364e-15, y: -7.549632e-16, z: 0.0736361, w: 0.9972852}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_Tongue_5
+      parentName: Anglerox_Tongue_4
+      position: {x: -0.26216078, y: 0, z: 7.2759575e-14}
+      rotation: {x: 1.820435e-15, y: -7.9392753e-16, z: 0.052372325, w: 0.9986276}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftA_1
+      parentName: Anglerox_ Head
+      position: {x: 0.15578315, y: -0.24893646, z: 0.2368158}
+      rotation: {x: 0.30689958, y: 0.9342237, z: 0.092761494, w: 0.15631418}
+      scale: {x: 1.000001, y: 1.000001, z: 1}
+    - name: Anglerox_SpikeLeftA_2
+      parentName: Anglerox_SpikeLeftA_1
+      position: {x: -0.35400528, y: 0, z: 0}
+      rotation: {x: 0.00000006971729, y: -0.0000000073971784, z: -0.14065771, w: 0.9900583}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftA_3
+      parentName: Anglerox_SpikeLeftA_2
+      position: {x: -0.3338858, y: 0.00000030517577, z: 0}
+      rotation: {x: 0.0006119834, y: 0.0039568366, z: -0.16613019, w: 0.9860957}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftA_4
+      parentName: Anglerox_SpikeLeftA_3
+      position: {x: -0.30971038, y: 0, z: 0}
+      rotation: {x: 0.0042645494, y: 0.038818933, z: -0.119710684, w: 0.99204046}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftA_5
+      parentName: Anglerox_SpikeLeftA_4
+      position: {x: -0.2945923, y: 0.00000030517577, z: 0.000000038146972}
+      rotation: {x: 0.00028850208, y: 0.0055700834, z: -0.0733121, w: 0.9972935}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftA_6
+      parentName: Anglerox_SpikeLeftA_5
+      position: {x: -0.2924676, y: 0, z: 0}
+      rotation: {x: -0.007956464, y: 0.019460533, z: -0.09137997, w: 0.99559414}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftA_7
+      parentName: Anglerox_SpikeLeftA_6
+      position: {x: -0.30763647, y: -0.00000030517577, z: 0.000000114440915}
+      rotation: {x: 0.000425632, y: 0.0031001559, z: -0.103565544, w: 0.9946177}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightA_1
+      parentName: Anglerox_ Head
+      position: {x: 0.1557838, y: -0.24893492, z: -0.23700194}
+      rotation: {x: 0.15631409, y: 0.09275803, z: 0.9342241, w: 0.30689922}
+      scale: {x: 1, y: 1.000001, z: 1}
+    - name: Anglerox_SpikeRightA_2
+      parentName: Anglerox_SpikeRightA_1
+      position: {x: -0.35400498, y: 0, z: 0.00000030517577}
+      rotation: {x: 0.000000006002023, y: -0.0000000060671375, z: 0.14065766, w: 0.9900583}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightA_3
+      parentName: Anglerox_SpikeRightA_2
+      position: {x: -0.3338858, y: -0.00000030517577, z: -0.000000038146972}
+      rotation: {x: -0.00061201694, y: 0.0039568096, z: 0.16612999, w: 0.9860957}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightA_4
+      parentName: Anglerox_SpikeRightA_3
+      position: {x: -0.30971038, y: 0, z: -0.00000061035155}
+      rotation: {x: -0.0042645712, y: 0.038819097, z: 0.119711004, w: 0.9920404}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightA_5
+      parentName: Anglerox_SpikeRightA_4
+      position: {x: -0.29459238, y: 0, z: 0.00000061035155}
+      rotation: {x: -0.00028842728, y: 0.005569969, z: 0.07331211, w: 0.9972935}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightA_6
+      parentName: Anglerox_SpikeRightA_5
+      position: {x: -0.29246765, y: 0, z: 0.000000076293944}
+      rotation: {x: 0.007956345, y: 0.019460408, z: 0.091379866, w: 0.99559414}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightA_7
+      parentName: Anglerox_SpikeRightA_6
+      position: {x: -0.30763626, y: 0.00000030517577, z: 0}
+      rotation: {x: -0.00042563246, y: 0.0031001572, z: 0.10356543, w: 0.99461776}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Clavicle
+      parentName: Anglerox_ Neck
+      position: {x: 0.15311234, y: 0.027228087, z: 0.19115292}
+      rotation: {x: 0.70644623, y: -0.030561332, z: -0.69028467, w: 0.15331979}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L UpperArm
+      parentName: Anglerox_ L Clavicle
+      position: {x: -0.4193145, y: 0, z: 0}
+      rotation: {x: -0.58443266, y: -0.20726806, z: 0.13484997, w: 0.77284795}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Forearm
+      parentName: Anglerox_ L UpperArm
+      position: {x: -0.8988745, y: 0, z: 0}
+      rotation: {x: -0.000000008853421, y: -0.000000019123446, z: 0.34460488, w: 0.9387479}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Hand
+      parentName: Anglerox_ L Forearm
+      position: {x: -0.8736224, y: -0.000000076293944, z: 0}
+      rotation: {x: -0.46095622, y: 0.020156587, z: 0.038682878, w: 0.8863503}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Finger0
+      parentName: Anglerox_ L Hand
+      position: {x: -0.09447357, y: 0.04851715, z: -0.15909396}
+      rotation: {x: 0.5908262, y: -0.55835, z: 0.22599971, w: 0.53674364}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Finger01
+      parentName: Anglerox_ L Finger0
+      position: {x: -0.20861748, y: -0.00000015258789, z: 0.00000030517577}
+      rotation: {x: 0.00000001447247, y: -0.000000003548556, z: -0.23813954, w: 0.971231}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Finger1
+      parentName: Anglerox_ L Hand
+      position: {x: -0.3064424, y: -0.012207336, z: -0.10593109}
+      rotation: {x: -0.023054387, y: -0.12847464, z: 0.17221381, w: 0.9763735}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Finger11
+      parentName: Anglerox_ L Finger1
+      position: {x: -0.17094406, y: 0, z: 0.000000076293944}
+      rotation: {x: -0.0000000037991645, y: -0.000000014408709, z: -0.25495768, w: 0.96695226}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Finger2
+      parentName: Anglerox_ L Hand
+      position: {x: -0.32101426, y: 0.0056802365, z: 0.062131688}
+      rotation: {x: 0.0067252913, y: 0.10865969, z: 0.06497115, w: 0.9919308}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ L Finger21
+      parentName: Anglerox_ L Finger2
+      position: {x: -0.18285476, y: 0, z: 0.000000014305114}
+      rotation: {x: 7.580493e-11, y: -0.000000015618568, z: -0.17410816, w: 0.98472655}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Clavicle
+      parentName: Anglerox_ Neck
+      position: {x: 0.15311234, y: 0.027229004, z: -0.19115277}
+      rotation: {x: 0.7064458, y: -0.030563252, z: 0.69028455, w: -0.15332176}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R UpperArm
+      parentName: Anglerox_ R Clavicle
+      position: {x: -0.41931444, y: 0, z: 0.00000015258789}
+      rotation: {x: 0.5844327, y: 0.20726803, z: 0.13484995, w: 0.7728479}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Forearm
+      parentName: Anglerox_ R UpperArm
+      position: {x: -0.8988748, y: 0, z: 0.00000015258789}
+      rotation: {x: 0.000000048251206, y: 0.000000041522696, z: 0.3446049, w: 0.9387478}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Hand
+      parentName: Anglerox_ R Forearm
+      position: {x: -0.8736224, y: 0, z: 0}
+      rotation: {x: 0.46095622, y: -0.020156609, z: 0.038682856, w: 0.8863503}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Finger0
+      parentName: Anglerox_ R Hand
+      position: {x: -0.09447372, y: 0.0485173, z: 0.15909395}
+      rotation: {x: -0.5908262, y: 0.55835, z: 0.22599973, w: 0.53674364}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Finger01
+      parentName: Anglerox_ R Finger0
+      position: {x: -0.20861739, y: -0.000000076293944, z: 0}
+      rotation: {x: 0, y: 0, z: -0.23813957, w: 0.9712309}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Finger1
+      parentName: Anglerox_ R Hand
+      position: {x: -0.3064424, y: -0.012207336, z: 0.10593099}
+      rotation: {x: 0.023054382, y: 0.12847465, z: 0.17221381, w: 0.9763735}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Finger11
+      parentName: Anglerox_ R Finger1
+      position: {x: -0.17094406, y: 0.00000015258789, z: 0.000000076293944}
+      rotation: {x: -0.000000013933816, y: 0.0000000056002545, z: -0.25495768, w: 0.96695226}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Finger2
+      parentName: Anglerox_ R Hand
+      position: {x: -0.3210144, y: 0.005680542, z: -0.06213173}
+      rotation: {x: -0.0067252917, y: -0.108659655, z: 0.06497114, w: 0.9919308}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_ R Finger21
+      parentName: Anglerox_ R Finger2
+      position: {x: -0.18285537, y: 0, z: 0.00000021457672}
+      rotation: {x: 0.000000006931407, y: -0.0000000035899521, z: -0.17410816, w: 0.98472655}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftB_1
+      parentName: Anglerox_ Spine2
+      position: {x: -0.11254196, y: -0.3214305, z: 0.20777893}
+      rotation: {x: 0.4641002, y: 0.88032985, z: -0.003691764, w: 0.09806477}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftB_2
+      parentName: Anglerox_SpikeLeftB_1
+      position: {x: -0.39797682, y: -0.0000015258788, z: 0.000000019073486}
+      rotation: {x: -0.001581003, y: -0.006319048, z: -0.19361985, w: 0.981055}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftB_3
+      parentName: Anglerox_SpikeLeftB_2
+      position: {x: -0.3348109, y: 0, z: 0.000000057220458}
+      rotation: {x: 0.0015568131, y: -0.013644293, z: -0.1454941, w: 0.98926383}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftB_4
+      parentName: Anglerox_SpikeLeftB_3
+      position: {x: -0.31724003, y: 0, z: 0.000000057220458}
+      rotation: {x: -0.0056005046, y: 0.01078576, z: -0.1398967, w: 0.99009156}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftB_5
+      parentName: Anglerox_SpikeLeftB_4
+      position: {x: -0.29470757, y: 0.00000030517577, z: 0.000000057220458}
+      rotation: {x: -0.011406398, y: 0.027918179, z: -0.062117107, w: 0.99761313}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftB_6
+      parentName: Anglerox_SpikeLeftB_5
+      position: {x: -0.29590735, y: 0, z: -0.000000019073486}
+      rotation: {x: -0.017566074, y: 0.015487086, z: -0.09576041, w: 0.9951289}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftB_7
+      parentName: Anglerox_SpikeLeftB_6
+      position: {x: -0.28508177, y: 0, z: 0.000000076293944}
+      rotation: {x: -0.0009787818, y: -0.0065554264, z: -0.1066676, w: 0.99427265}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightB_1
+      parentName: Anglerox_ Spine2
+      position: {x: -0.11254135, y: -0.32142928, z: -0.2080014}
+      rotation: {x: 0.09806497, y: -0.0036942628, z: 0.8803301, w: 0.4640998}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightB_2
+      parentName: Anglerox_SpikeRightB_1
+      position: {x: -0.39797667, y: 0.0000015258788, z: 0}
+      rotation: {x: 0.0015810998, y: -0.0063191294, z: 0.19361965, w: 0.981055}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightB_3
+      parentName: Anglerox_SpikeRightB_2
+      position: {x: -0.334811, y: -0.00000030517577, z: -0.00000061035155}
+      rotation: {x: -0.0015567455, y: -0.01364417, z: 0.14549418, w: 0.98926383}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightB_4
+      parentName: Anglerox_SpikeRightB_3
+      position: {x: -0.31724015, y: 0.00000030517577, z: 0.00000061035155}
+      rotation: {x: 0.005600424, y: 0.010785744, z: 0.13989648, w: 0.99009156}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightB_5
+      parentName: Anglerox_SpikeRightB_4
+      position: {x: -0.29470778, y: 0.00000030517577, z: 0.00000030517577}
+      rotation: {x: 0.011406356, y: 0.027918171, z: 0.06211707, w: 0.99761313}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightB_6
+      parentName: Anglerox_SpikeRightB_5
+      position: {x: -0.29590714, y: -0.0000009155273, z: -0.00000057220456}
+      rotation: {x: 0.017566063, y: 0.0154870935, z: 0.09576076, w: 0.99512887}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightB_7
+      parentName: Anglerox_SpikeRightB_6
+      position: {x: -0.28508124, y: 0.00000061035155, z: 0.0000012207031}
+      rotation: {x: 0.0009788867, y: -0.0065553524, z: 0.106667295, w: 0.9942727}
+      scale: {x: 1, y: 1, z: 0.999999}
+    - name: Anglerox_SpikeLeftC_1
+      parentName: Anglerox_ Spine1
+      position: {x: -0.33566543, y: -0.2577118, z: 0.19309479}
+      rotation: {x: 0.43512958, y: 0.9000545, z: -0.010337447, w: 0.021384936}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftC_2
+      parentName: Anglerox_SpikeLeftC_1
+      position: {x: -0.22174095, y: 0.00000030517577, z: 0.000000019073486}
+      rotation: {x: 0.000000018827143, y: -0.0000000042878425, z: -0.15690964, w: 0.98761296}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftC_3
+      parentName: Anglerox_SpikeLeftC_2
+      position: {x: -0.29921103, y: -0.000002746582, z: 0.000000057220458}
+      rotation: {x: -0.0000000015961473, y: -0.0000000032289813, z: -0.17980964, w: 0.9837014}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftC_4
+      parentName: Anglerox_SpikeLeftC_3
+      position: {x: -0.2879885, y: 0, z: 0.000000038146972}
+      rotation: {x: -4.928793e-10, y: -0.0000000013608025, z: -0.08291595, w: 0.9965566}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeLeftC_5
+      parentName: Anglerox_SpikeLeftC_4
+      position: {x: -0.2763627, y: -0.00000030517577, z: 0.000000038146972}
+      rotation: {x: -0.0000000010304166, y: 0.0000000014315699, z: -0.032817077, w: 0.9994614}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightC_1
+      parentName: Anglerox_ Spine1
+      position: {x: -0.33566514, y: -0.25771102, z: -0.1930014}
+      rotation: {x: 0.021385213, y: -0.010339438, z: 0.9000544, w: 0.43512973}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightC_2
+      parentName: Anglerox_SpikeRightC_1
+      position: {x: -0.22174093, y: -0.00000030517577, z: 0.000000019073486}
+      rotation: {x: 0.0000000046510213, y: -0.000000031499994, z: 0.15690972, w: 0.98761296}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightC_3
+      parentName: Anglerox_SpikeRightC_2
+      position: {x: -0.29921108, y: 0.0000024414062, z: 0.000000019073486}
+      rotation: {x: -7.6190065e-10, y: 0.0000000019021695, z: 0.17980996, w: 0.98370135}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightC_4
+      parentName: Anglerox_SpikeRightC_3
+      position: {x: -0.2879885, y: 0, z: 0}
+      rotation: {x: -0.0000000011166164, y: 8.23213e-11, z: 0.082915835, w: 0.9965566}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Anglerox_SpikeRightC_5
+      parentName: Anglerox_SpikeRightC_4
+      position: {x: -0.2763626, y: -0.00000030517577, z: 0.00000015258789}
+      rotation: {x: -0.0000000010849431, y: 0.0000000020027424, z: 0.032817177, w: 0.99946135}
+      scale: {x: 1, y: 1, z: 1}
+    - name: SK_Anglerox
+      parentName: SK_Anglerox(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0.000000021855694, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: root
+    hasTranslationDoF: 1
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 07f33cee22a1b194e9acf9165c916191,
+    type: 3}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 2
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 0
+  remapMaterialsIfMaterialImportModeIsNone: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -24,7 +24,10 @@ namespace Assets.Crimson.Core.Components
 			Entity = entity;
 			Actor = actor;
 
-			_input.action.performed += Click;
+			if (_input != null)
+			{
+				_input.action.performed += Click;
+			}
 
 			_actions = actions.ConvertAll(s => s as IActorAbility);
 		}
@@ -44,6 +47,14 @@ namespace Assets.Crimson.Core.Components
 		private bool MustBeAbility(List<MonoBehaviour> a)
 		{
 			return !a.Exists(t => !(t is IActorAbility)) || a.Count == 0;
+		}
+
+		private void OnDestroy()
+		{
+			if (_input != null)
+			{
+				_input.action.performed -= Click;
+			}
 		}
 	}
 }

@@ -1,0 +1,12 @@
+newmtl ProBuilderDefault
+map_Kd GridBox_Default.png
+Kd 1 1 1
+d 1
+
+newmtl GridBrown_2
+map_Kd Grid_02_BaseMap.png
+bump Grid_01_Normal.png
+map_Ke Grid_01_Emissive.png
+Kd 0.4716981 0.3558254 0.2999288
+d 1
+

@@ -1,5 +1,6 @@
 ﻿using Assets.Crimson.Core.Common.ComponentDatas;
 using Assets.Crimson.Core.Components.FX.ForCamera;
+using Assets.Crimson.Core.Components.Tags;
 using Assets.Crimson.Core.Components.Tags.Effects;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
@@ -10,10 +11,10 @@ namespace Assets.Crimson.Core.Systems.Effects
 {
 	public class FXSystem : ComponentSystem
 	{
-		private EntityQuery _fadeInQuery;
 		private EntityQuery _damageEffectQuery;
-		private EntityQuery _shakeEffectQuery;
+		private EntityQuery _fadeInQuery;
 		private EntityQuery _overdamageEffectQuery;
+		private EntityQuery _shakeEffectQuery;
 
 		protected override void OnCreate()
 		{
@@ -24,6 +25,7 @@ namespace Assets.Crimson.Core.Systems.Effects
 			_shakeEffectQuery = GetEntityQuery(
 				ComponentType.ReadOnly<ShakeFXTag>());
 			_overdamageEffectQuery = GetEntityQuery(
+				ComponentType.ReadOnly<OverdamageFXTag>(),
 				ComponentType.ReadOnly<AbilityActorPlayer>(),
 				ComponentType.ReadOnly<DeadActorTag>(),
 				ComponentType.ReadOnly<DestructionPendingTag>(),
@@ -82,6 +84,7 @@ namespace Assets.Crimson.Core.Systems.Effects
 			Entities.With(_overdamageEffectQuery).ForEach(
 				(Entity entity, AbilityActorPlayer actorPlayer, ref OverdamageData overdamageData) =>
 				{
+					EntityManager.RemoveComponent<OverdamageFXTag>(entity);
 					if (actorPlayer.deadActorBehaviour == null)
 					{
 						return;

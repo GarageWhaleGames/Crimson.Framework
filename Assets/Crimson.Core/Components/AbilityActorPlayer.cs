@@ -1,4 +1,5 @@
 ﻿using Assets.Crimson.Core.Common;
+using Assets.Crimson.Core.Common.Buffs;
 using Assets.Crimson.Core.Common.ComponentDatas;
 using Assets.Crimson.Core.Components.Tags;
 using Assets.Crimson.Core.Components.Tags.Effects;
@@ -45,16 +46,10 @@ namespace Crimson.Core.Components
 		[TitleGroup("Player animation properties")]
 		public ActorDeathAnimProperties actorDeathAnimProperties;
 
-		[Header("Take Damage Animation")]
-		public ActorGeneralAnimProperties TakeDamageAnimation;
-
 		[HideInInspector] public bool actorToUI;
 
 		[Header("Additional Force Animation")]
 		public ActorGeneralAnimProperties additionalForceAnim;
-
-		[Header("Cleanup after death")]
-		public bool NeedCleanup;
 
 		[ShowIf(nameof(NeedCleanup))]
 		public float corpseCleanupDelay;
@@ -82,13 +77,23 @@ namespace Crimson.Core.Components
 		[ValidateInput(nameof(MustBeAbility), "Ability MonoBehaviours must derive from IActorAbility!")]
 		public MonoBehaviour levelUpAction;
 
+		[Header("Cleanup after death")]
+		public bool NeedCleanup;
+
+		[Header("Execute on death")]
+		[ValidateInput(nameof(MustBeAbilities), "Ability MonoBehaviours must derive from IActorAbility!")]
+		public List<MonoBehaviour> DeathAbilities;
+
+		[Header("Take Damage Animation")]
+		public ActorGeneralAnimProperties TakeDamageAnimation;
+
 		public string targetMarkActorComponentName;
 
 		[ShowIf(nameof(ExplicitUIChannel))] public int UIChannelID = 0;
 
 		[HideInInspector] public List<IActor> UIReceiverList = new List<IActor>();
 
-		private EntityManager _dstManager;
+		private EntityManager _entityManager;
 
 		private Entity _entity;
 
@@ -98,6 +103,7 @@ namespace Crimson.Core.Components
 		private string _playerName;
 		private PlayerStatsData _stats;
 		private TimerComponent _timer;
+		private List<IActorAbility> _deathAbilities;
 
 		public IActor Actor { get; set; }
 
@@ -119,7 +125,7 @@ namespace Crimson.Core.Components
 		[LevelableValue]
 		public float CurrentHealth => _stats.Health.Current;
 
-		public bool IsAlive => CurrentHealth > 0;
+		public bool IsAlive => !_entityManager.HasComponent<DeadActorTag>(_entity);
 
 		[NetworkSimData]
 		[ReadOnly]
@@ -132,7 +138,7 @@ namespace Crimson.Core.Components
 				_stats.Level = value;
 				if (_entity != Entity.Null)
 				{
-					_dstManager.SetComponentData(_entity, _stats);
+					_entityManager.SetComponentData(_entity, _stats);
 				}
 			}
 		}
@@ -206,13 +212,13 @@ namespace Crimson.Core.Components
 				_stats = value;
 				if (_entity != Entity.Null)
 				{
-					if (_dstManager.HasComponent<PlayerStatsData>(_entity))
+					if (_entityManager.HasComponent<PlayerStatsData>(_entity))
 					{
-						_dstManager.SetComponentData(_entity, value);
+						_entityManager.SetComponentData(_entity, value);
 					}
 					else
 					{
-						_dstManager.AddComponentData(_entity, value);
+						_entityManager.AddComponentData(_entity, value);
 					}
 				}
 			}
@@ -236,10 +242,14 @@ namespace Crimson.Core.Components
 			_entity = entity;
 			Actor = actor;
 			Actor.Owner = Actor;
+			_deathAbilities = DeathAbilities.Where(s => s is IActorAbility).Cast<IActorAbility>().ToList();
 
 			_membersInfo = new Dictionary<string, MemberInfo>();
 
-			_dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+			_entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+			_entityManager.AddBuffer<HealthPercentPerTimeBuffData>(_entity);
+			_entityManager.AddBuffer<EnergyPercentPerTimeBuffData>(_entity);
+
 			var stats = _initStats;
 			stats.LevelUpRequiredExperience = GameMeta.PointsToLevelUp;
 			Stats = stats;
@@ -248,11 +258,11 @@ namespace Crimson.Core.Components
 
 			_timer = gameObject.GetOrCreateTimer(_timer);
 
-			_dstManager.AddComponent<TimerData>(entity);
+			_entityManager.AddComponent<TimerData>(entity);
 
 			if (TakeDamageAnimation.HasAnimation)
 			{
-				_dstManager.AddComponentData(entity, new ActorTakeDamageAnimData
+				_entityManager.AddComponentData(entity, new ActorTakeDamageAnimData
 				{
 					AnimHash = TakeDamageAnimation.AnimationHash
 				});
@@ -260,7 +270,7 @@ namespace Crimson.Core.Components
 
 			if (additionalForceAnim.HasAnimation)
 			{
-				_dstManager.AddComponentData(entity, new ActorForceAnimData
+				_entityManager.AddComponentData(entity, new ActorForceAnimData
 				{
 					AnimHash = additionalForceAnim.AnimationHash
 				});
@@ -268,7 +278,7 @@ namespace Crimson.Core.Components
 
 			if (actorDeathAnimProperties.HasActorDeathAnimation)
 			{
-				_dstManager.AddComponentData(entity, new ActorDeathAnimData
+				_entityManager.AddComponentData(entity, new ActorDeathAnimData
 				{
 					AnimHash = Animator.StringToHash(actorDeathAnimProperties.ActorDeathAnimationName)
 				});
@@ -289,7 +299,15 @@ namespace Crimson.Core.Components
 				return;
 			}
 
-			_dstManager.AddComponent<ApplyPresetPerksData>(Actor.ActorEntity);
+			_entityManager.AddComponent<ApplyPresetPerksData>(Actor.ActorEntity);
+		}
+
+		public void Death()
+		{
+			if (_entityManager.Exists(_entity))
+			{
+				_entityManager.AddComponent<ImmediateDestructionActorTag>(_entity);
+			}
 		}
 
 		public void Execute()
@@ -321,7 +339,7 @@ namespace Crimson.Core.Components
 			if (actorToUI)
 			{
 				SetLevel(Level + 1);
-				_dstManager.AddComponent<PerksSelectionAvailableTag>(_entity);
+				_entityManager.AddComponent<PerksSelectionAvailableTag>(_entity);
 			}
 			else
 			{
@@ -330,6 +348,18 @@ namespace Crimson.Core.Components
 
 			UpdateUIData(nameof(Level));
 			UpdateUIData(nameof(CurrentExperience));
+		}
+
+		public void RemoveUIElements()
+		{
+			for (var i = 0; i < UIReceiverList.Count; i++)
+			{
+				var element = UIReceiverList[i];
+				if (_entityManager.Exists(element.ActorEntity))
+				{
+					_entityManager.AddComponent<ImmediateDestructionActorTag>(element.ActorEntity);
+				}
+			}
 		}
 
 		public void SetLevel(int level)
@@ -354,33 +384,19 @@ namespace Crimson.Core.Components
 			StartTimer();
 		}
 
-		public void Death()
-		{
-			_dstManager.AddComponent<ImmediateDestructionActorTag>(_entity);
-		}
-
-		public void RemoveUIElements()
-		{
-			for (var i = 0; i < UIReceiverList.Count; i++)
-			{
-				var element = UIReceiverList[i];
-				_dstManager.AddComponent<ImmediateDestructionActorTag>(element.ActorEntity);
-			}
-		}
-
 		public void StartTimer()
 		{
 			Timer.TimedActions.AddAction(FinishTimer, corpseCleanupDelay);
 		}
 
-		public void UpdateEnergy(int delta)
+		public void UpdateEnergy(float delta)
 		{
 			if (!IsAlive)
 			{
 				return;
 			}
 
-			var playerStats = _dstManager.GetComponentData<PlayerStatsData>(_entity);
+			var playerStats = _entityManager.GetComponentData<PlayerStatsData>(_entity);
 
 			playerStats.Energy.Current += delta;
 
@@ -395,7 +411,7 @@ namespace Crimson.Core.Components
 				return;
 			}
 
-			var playerStats = _dstManager.GetComponentData<PlayerStatsData>(_entity);
+			var playerStats = _entityManager.GetComponentData<PlayerStatsData>(_entity);
 
 			_stats.CurrentExperience += delta;
 			while (CurrentExperience >= LevelUpRequiredExperience)
@@ -418,13 +434,7 @@ namespace Crimson.Core.Components
 				return;
 			}
 
-			var playerStats = _dstManager.GetComponentData<PlayerStatsData>(_entity);
-			if (delta < 0
-				&& playerStats.Health.Current < math.abs(delta))
-			{
-				var overdamage = playerStats.Health.Current + delta;
-				SetOverdamage(overdamage);
-			}
+			var playerStats = _entityManager.GetComponentData<PlayerStatsData>(_entity);
 			playerStats.Health.Current += delta;
 
 			Stats = playerStats;
@@ -432,41 +442,31 @@ namespace Crimson.Core.Components
 			if (delta > 0 && healAction != null)
 			{
 				((IActorAbility)healAction).Execute();
-				_dstManager.AddComponentData(_entity, new HealedActorTag());
+				_entityManager.AddComponentData(_entity, new HealedActorTag());
 			}
 
 			if (delta < 0)
 			{
-				_dstManager.AddComponentData(_entity, new DamageFXTag());
-				_dstManager.AddComponentData(_entity, new ShakeFXTag());
-				_dstManager.AddComponentData(_entity, new DamagedActorTag());
+				_entityManager.AddComponentData(_entity, new DamageFXTag());
+				_entityManager.AddComponentData(_entity, new ShakeFXTag());
+				_entityManager.AddComponentData(_entity, new DamagedActorTag());
 			}
 
 			UpdateUIData(nameof(CurrentHealth));
 
-			if (!IsAlive)
+			if (Stats.Health.MinLimit == Stats.Health.Current)
 			{
 				deathCount++;
-				_dstManager.AddComponent<DeadActorTag>(Actor.ActorEntity);
-			}
-		}
-
-		private void SetOverdamage(float value)
-		{
-			if (Actor == null)
-			{
-				return;
-			}
-			var absValue = math.abs(value);
-			if (_dstManager.HasComponent<OverdamageData>(Actor.ActorEntity))
-			{
-				var data = _dstManager.GetComponentData<OverdamageData>(Actor.ActorEntity);
-				data.Damage += absValue;
-				_dstManager.SetComponentData(_entity, data);
-			}
-			else if (Actor.ActorEntity != Entity.Null)
-			{
-				_dstManager.AddComponentData(Actor.ActorEntity, new OverdamageData(absValue));
+				_entityManager.RemoveComponent<OverdamageData>(Actor.ActorEntity);
+				if (_deathAbilities != null)
+				{
+					for (var i = 0; i < _deathAbilities.Count; i++)
+					{
+						_deathAbilities[i].Execute();
+					}
+				}
+				_entityManager.AddComponent<DeathAnimationTag>(Actor.ActorEntity);
+				_entityManager.AddComponent<DeadActorTag>(Actor.ActorEntity);
 			}
 		}
 
@@ -477,12 +477,12 @@ namespace Crimson.Core.Components
 				return;
 			}
 
-			var playerStats = _dstManager.GetComponentData<PlayerStatsData>(_entity);
+			var playerStats = _entityManager.GetComponentData<PlayerStatsData>(_entity);
 
 			playerStats.Energy.MaxLimit += delta;
 			playerStats.Energy.Current += delta;
 
-			_dstManager.SetComponentData(_entity, playerStats);
+			_entityManager.SetComponentData(_entity, playerStats);
 
 			UpdateUIData(nameof(CurrentEnergy));
 			UpdateUIData(nameof(MaxEnergy));
@@ -495,7 +495,7 @@ namespace Crimson.Core.Components
 				return;
 			}
 
-			var playerStats = _dstManager.GetComponentData<PlayerStatsData>(_entity);
+			var playerStats = _entityManager.GetComponentData<PlayerStatsData>(_entity);
 
 			playerStats.Health.MaxLimit += delta;
 
@@ -511,7 +511,7 @@ namespace Crimson.Core.Components
 				return;
 			}
 
-			var playerStats = _dstManager.GetComponentData<PlayerStatsData>(_entity);
+			var playerStats = _entityManager.GetComponentData<PlayerStatsData>(_entity);
 
 			playerStats.TotalDamageApplied += delta;
 
@@ -527,6 +527,32 @@ namespace Crimson.Core.Components
 		private bool MustBeAbility(MonoBehaviour a)
 		{
 			return (a is IActorAbility) || (a is null);
+		}
+
+		private bool MustBeAbilities(List<MonoBehaviour> items)
+		{
+			return items.All(s => s is IActorAbility) || items.Count == 0;
+		}
+
+		private void SetOverdamage(float value)
+		{
+			if (Actor == null)
+			{
+				return;
+			}
+			var absValue = math.abs(value);
+			if (_entityManager.HasComponent<OverdamageData>(Actor.ActorEntity))
+			{
+				var data = _entityManager.GetComponentData<OverdamageData>(Actor.ActorEntity);
+				data.Damage += absValue;
+				_entityManager.SetComponentData(_entity, data);
+			}
+			else if (Actor.ActorEntity != Entity.Null)
+			{
+				_entityManager.AddComponentData(Actor.ActorEntity, new OverdamageData(absValue));
+			}
+
+			_entityManager.AddComponentData(_entity, new OverdamageFXTag());
 		}
 
 		private void UpdateUIChannelInfo()

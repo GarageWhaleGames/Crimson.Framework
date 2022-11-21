@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 763183415302326813}
   - component: {fileID: 5165171597112101776}
   - component: {fileID: 2249996773759795542}
+  - component: {fileID: 6390662244950456398}
   m_Layer: 0
   m_Name: Sample-Common-Abiter
   m_TagString: Untagged
@@ -103,7 +104,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e1cb3e455117448ea9f306badb3b4145, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AIBehaviour: {fileID: 0}
   compensateCameraRotation: 1
   customBindings:
   - index: 1
@@ -162,14 +162,10 @@ MonoBehaviour:
   actorDeathAnimProperties:
     HasActorDeathAnimation: 1
     ActorDeathAnimationName: Dead
-  TakeDamageAnimation:
-    AnimationName: 
-    HasAnimation: 0
   actorToUI: 0
   additionalForceAnim:
     AnimationName: 
     HasAnimation: 0
-  NeedCleanup: 0
   corpseCleanupDelay: 2
   deadActorBehaviour:
     RemoveTag: 0
@@ -205,6 +201,11 @@ MonoBehaviour:
     - MaxHealth
     - LevelUpRequiredExperience
   levelUpAction: {fileID: 0}
+  NeedCleanup: 0
+  DeathAbilities: []
+  TakeDamageAnimation:
+    AnimationName: 
+    HasAnimation: 0
   targetMarkActorComponentName: Aim Enemy Mark
   UIChannelID: 0
 --- !u!114 &3005303906965274516
@@ -456,5 +457,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9b7a59c1912928f4699ecb4fe43eaa2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6390662244950456398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 219696582898746723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce67dd32ac845648c5595a62bbb14dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

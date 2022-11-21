@@ -12,17 +12,15 @@ namespace Assets.Crimson.Core.Components.Weapons
 	{
 		public InputActionReference _executeAction;
 
+		[CastToUI("CurrentThrowable")]
+		public IThrowable _weapon;
+
 		[ValidateInput(nameof(MustBeThrowable), "MonoBehaviours must derive from IThrowable!")]
 		public MonoBehaviour ThrowableWeapon;
 
 		[HideInInspector] public UIReceiverList UIReceiverList = new UIReceiverList();
-
-		[CastToUI("CurrentThrowable")]
-		public IThrowable _weapon;
-
-		public bool IsEmpty => _weapon == null;
-
 		public IActor Actor { get; set; }
+		public bool IsEmpty => _weapon == null;
 
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
@@ -53,6 +51,14 @@ namespace Assets.Crimson.Core.Components.Weapons
 		private bool MustBeThrowable(MonoBehaviour item)
 		{
 			return item == null || item is IThrowable;
+		}
+
+		private void OnDestroy()
+		{
+			if (_executeAction != null)
+			{
+				_executeAction.action.performed -= ThrowActionHandler;
+			}
 		}
 
 		private void ThrowActionHandler(InputAction.CallbackContext obj)

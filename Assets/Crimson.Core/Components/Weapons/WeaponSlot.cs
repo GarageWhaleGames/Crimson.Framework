@@ -30,6 +30,7 @@ namespace Assets.Crimson.Core.Components.Weapons
 		public IActor Actor { get; set; }
 
 		public bool IsEnable { get; set; }
+		public bool EnableOnStart;
 
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
@@ -50,6 +51,9 @@ namespace Assets.Crimson.Core.Components.Weapons
 			_entityManager.AddComponentData(_entity, new EquipedWeaponData());
 
 			Timer.Start();
+
+			if (EnableOnStart)
+				IsEnable = true;
 
 			if (Weapon != null)
 			{

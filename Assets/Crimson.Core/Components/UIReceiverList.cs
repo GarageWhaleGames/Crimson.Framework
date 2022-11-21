@@ -18,6 +18,7 @@ namespace Assets.Crimson.Core.Components
 
 		public void Init(object parent, Entity entity)
 		{
+			_fieldsInfo.Clear();
 			_parent = parent;
 			World.DefaultGameObjectInjectionWorld.EntityManager.AddComponent<UIReceiverListTag>(entity);
 

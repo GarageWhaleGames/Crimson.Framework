@@ -65,17 +65,17 @@ PrefabInstance:
     - target: {fileID: 230970627649061259, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
       propertyPath: m_Name
-      value: EquipableWeapon Plasme Gun
+      value: EquipableWeapon Plasma Gun
       objectReference: {fileID: 0}
     - target: {fileID: 3287228919993228339, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
-      propertyPath: targetTag
-      value: WeaponMountPoint
+      propertyPath: followX
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3287228919993228339, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
-      propertyPath: followTarget
-      value: 3
+      propertyPath: followZ
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4801918414694250332, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
@@ -85,17 +85,32 @@ PrefabInstance:
     - target: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.006
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.188
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.169
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8744062145712760159, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
@@ -104,15 +119,15 @@ PrefabInstance:
       objectReference: {fileID: 9027714982187357638}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 194d4f1e3d0c8894c9f478f4fe202fc1, type: 3}
---- !u!1 &5880700991455437982 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 230970627649061259, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 5956257807646811413}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &4103522099825665960 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 5956257807646811413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &5880700991455437982 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 230970627649061259, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
     type: 3}
   m_PrefabInstance: {fileID: 5956257807646811413}
   m_PrefabAsset: {fileID: 0}
@@ -159,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   componentName: Plasma Gun
-  _weaponType: 2
+  _weaponType: 1
   primaryProjectile: 0
   abilityOnShot: {fileID: 0}
   aimingAvailable: 0
@@ -195,13 +210,13 @@ MonoBehaviour:
     fillSpawnPoints: 0
     x: 0
     skipBusySpawnPoints: 0
-    spawnPointsFrom: 0
+    spawnPointsFrom: 1
     _spawnPoints:
-    - {fileID: 4155083470175974962}
-    spawnPointTag: 
+    - {fileID: 0}
+    spawnPointTag: WeaponMountPoint
     useChildrenObjects: 0
-    rotationOfSpawns: 0
-    parentOfSpawns: 1
+    rotationOfSpawns: 3
+    parentOfSpawns: 0
     actorWithComponentName: 
     parentTag: WeaponPoint
     chooseParentStrategy: 0
@@ -220,9 +235,9 @@ MonoBehaviour:
   _burstRange: {x: 1, y: 5}
   _burstDelay: 0.1
   projectileStartupDelay: 0
-  cooldownTime: 0.1
+  cooldownTime: 0.071428575
   projectileClipCapacity: 1000
-  clipReloadTime: 1
+  clipReloadTime: 0.9
   reloadDisplayToggle: []
   clipReloadDisplayToggle: []
   actorProjectileSpawnAnimProperties:
@@ -232,12 +247,6 @@ MonoBehaviour:
   appliedPerksNames: []
   aimingByInput: 0
   AimComponent: {fileID: 0}
-  ActionsOnEnable:
-    actions:
-    - {fileID: 7347931288159886798}
-  ActionsOnDisable:
-    actions:
-    - {fileID: 598564529029489492}
 --- !u!1001 &7251838995758909613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -263,27 +272,27 @@ PrefabInstance:
     - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.177
       objectReference: {fileID: 0}
     - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.7071068
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
         type: 3}
@@ -298,7 +307,7 @@ PrefabInstance:
     - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 180
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 8079601086913970540, guid: 48c18f6b4c73ff644af300e94a158af5,
         type: 3}
@@ -307,9 +316,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48c18f6b4c73ff644af300e94a158af5, type: 3}
---- !u!1 &4155083470175974962 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6704284536066719391, guid: 48c18f6b4c73ff644af300e94a158af5,
-    type: 3}
-  m_PrefabInstance: {fileID: 7251838995758909613}
-  m_PrefabAsset: {fileID: 0}

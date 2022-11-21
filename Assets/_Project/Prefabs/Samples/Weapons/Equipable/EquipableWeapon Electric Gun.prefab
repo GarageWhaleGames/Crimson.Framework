@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 230970627649061259, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
       propertyPath: m_Name
-      value: EquipableWeapon Electric Gun Variant
+      value: EquipableWeapon Electric Gun
       objectReference: {fileID: 0}
     - target: {fileID: 3287228919993228339, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
@@ -107,12 +107,6 @@ PrefabInstance:
 --- !u!1 &1548769087254226112 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 230970627649061259, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1606315881375638859}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &8939791187431860214 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
     type: 3}
   m_PrefabInstance: {fileID: 1606315881375638859}
   m_PrefabAsset: {fileID: 0}
@@ -194,10 +188,10 @@ MonoBehaviour:
     fillSpawnPoints: 0
     x: 0
     skipBusySpawnPoints: 0
-    spawnPointsFrom: 0
+    spawnPointsFrom: 1
     _spawnPoints:
     - {fileID: 5523914002923939071}
-    spawnPointTag: 
+    spawnPointTag: WeaponMountPoint
     useChildrenObjects: 0
     rotationOfSpawns: 0
     parentOfSpawns: 0
@@ -237,6 +231,12 @@ MonoBehaviour:
   ActionsOnDisable:
     actions:
     - {fileID: 7981926124408840667}
+--- !u!4 &8939791187431860214 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1606315881375638859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6806962303522260278
 PrefabInstance:
   m_ObjectHideFlags: 0

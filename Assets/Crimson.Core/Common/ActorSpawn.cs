@@ -32,7 +32,9 @@ namespace Crimson.Core.Common
 			if (settings.SpawnPosition == SpawnPosition.UseSpawnPoints &&
 				settings.SpawnPointsFrom == SpawnPointsSource.FindByTag)
 			{
-				settings.SpawnPoints = GameObject.FindGameObjectsWithTag(settings.SpawnPointTag).ToList();
+				settings.SpawnPoints = GameObject.FindGameObjectsWithTag(settings.SpawnPointTag)
+									 .OrderBy(s => Vector3.Distance(s.transform.position, spawner.GameObject.transform.position))
+									 .ToList();
 				if (settings.SpawnPoints.Count == 0)
 				{
 					Debug.LogError("[LEVEL ACTOR SPAWNER] No spawn points found with tag: " +

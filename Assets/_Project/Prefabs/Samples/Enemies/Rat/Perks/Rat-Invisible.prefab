@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8207249245278010865
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8207249245278010878}
+  - component: {fileID: 8207249245278010877}
+  - component: {fileID: 8207249245278010879}
+  - component: {fileID: 8207249245278010867}
+  - component: {fileID: 8207249245278010873}
+  - component: {fileID: 8207249245278010872}
+  m_Layer: 0
+  m_Name: Rat-Invisible
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8207249245278010878
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207249245278010865}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8207249245278010877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207249245278010865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3aa30ca3bd408d92446c07a6810628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customBinding:
+    index: 2
+    actions:
+    - {fileID: 8207249245278010879}
+  destroyAfterAdd: 1
+  removeSameIndexBindings: 1
+--- !u!114 &8207249245278010879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207249245278010865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d35c0c866f12814dae68e061b2948be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: Invisible and Follow
+  ExecuteOnStart: 0
+  Settings:
+    Actions:
+    - {fileID: 8207249245278010873}
+    - {fileID: 8207249245278010872}
+    Delay: 0
+    LoopCount: 1
+    StartupDelay: 0
+--- !u!114 &8207249245278010867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207249245278010865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e882fb038f0ab364c899c3446a45c4ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagFilter:
+    use: 1
+    filterMode: 0
+    filterTags:
+    - Player
+    - Ally
+--- !u!114 &8207249245278010873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207249245278010865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9ed4c298c6b96438c97bb7b8ec678a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8207249245278010872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8207249245278010865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e433f30e9577f98478e8b71887b3c586, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityTarget: {fileID: 8207249245278010867}
+  PositionThreshold: 5

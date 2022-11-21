@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7634552862115458412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7634552862115458415}
+  - component: {fileID: 7634552862115458414}
+  - component: {fileID: 8316797730702808627}
+  - component: {fileID: 5118063039488738570}
+  - component: {fileID: -6515732862702244898}
+  m_Layer: 0
+  m_Name: Ram-PushDash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7634552862115458415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634552862115458412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7634552862115458414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634552862115458412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3aa30ca3bd408d92446c07a6810628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customBinding:
+    index: 1
+    actions:
+    - {fileID: 8316797730702808627}
+  destroyAfterAdd: 1
+  removeSameIndexBindings: 1
+--- !u!114 &8316797730702808627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634552862115458412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22185d44d9412944ca97fed25a401df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation:
+    AnimationName: 
+    HasAnimation: 0
+  Use: 1
+  Duration: 7
+  actions:
+  - {fileID: -6515732862702244898}
+--- !u!114 &5118063039488738570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634552862115458412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e882fb038f0ab364c899c3446a45c4ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagFilter:
+    use: 1
+    filterMode: 0
+    filterTags:
+    - Player
+    - Ally
+--- !u!114 &-6515732862702244898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634552862115458412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d03bbe91d9e3c6e488d0d5c3dc474014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityTarget: {fileID: 5118063039488738570}
+  Duration: 2
+  PostFX: []
+  PreFX:
+  - {fileID: 8916607035571281972, guid: c27d7449129ee0940a4cd7f460f42d5d, type: 3}
+  - {fileID: 2560468823489873303, guid: 7d3cf60963e2fe64ca311da8f353bef5, type: 3}
+  Velocity: 20

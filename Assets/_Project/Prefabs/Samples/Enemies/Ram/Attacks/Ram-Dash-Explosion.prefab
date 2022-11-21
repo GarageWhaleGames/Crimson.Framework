@@ -1,0 +1,182 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8916607035571281972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2053816924838792089}
+  - component: {fileID: 4373570704272585688}
+  - component: {fileID: 4170111554166390138}
+  - component: {fileID: 8821946832671206372}
+  - component: {fileID: -4799755061864733153}
+  - component: {fileID: 4333433338407938939}
+  - component: {fileID: -2901177155634822033}
+  - component: {fileID: 3463084196819366534}
+  m_Layer: 0
+  m_Name: Ram-Dash-Explosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2053816924838792089
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916607035571281972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4373570704272585688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916607035571281972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e47d41c27514e84ab0ce1cee5d70b15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: 
+  ExecuteOnSpawn: []
+--- !u!135 &4170111554166390138
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916607035571281972}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &8821946832671206372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916607035571281972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1ff8c79da9bc4d898e1e63e682db1909, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RunOnAwake: 1
+  findTargetProperties:
+    targetType: 1
+    actorWithComponentName: 
+    targetTag: 
+    ignoreSpawner: 0
+    strategy: 0
+    maxDistanceThreshold: 0
+  followMovementType: 0
+  movementSpeed: 0
+  retainOffset: 0
+  continousFollow: 1
+  hideIfNoTarget: 0
+--- !u!114 &-4799755061864733153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916607035571281972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 535773388f1f4534bdad2a70960d5503, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  followTarget: 1
+  actorWithComponentName: 
+  targetTag: 
+  strategy: 0
+  followX: 0
+  followY: 1
+  followZ: 0
+  retainRotationOffset: 0
+  hideIfNoTarget: 0
+  target: {fileID: 0}
+--- !u!114 &4333433338407938939
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916607035571281972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d055b42bf26644d89d2475d3cce69e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  useCollider: {fileID: 4170111554166390138}
+  collisionActions:
+  - collisionLayerMask:
+      serializedVersion: 2
+      m_Bits: 8193
+    useTagFilter: 1
+    filterMode: 0
+    filterTags:
+    - Player
+    - Enemy
+    - Ally
+    velocityFilter:
+      Use: 0
+      Mode: 0
+      Velocity: 0
+    executeOnCollisionWithSpawner: 0
+    destroyAfterAction: 0
+    actions:
+    - {fileID: 3463084196819366534}
+    - {fileID: -2901177155634822033}
+  debugCollisions: 0
+  ExistentCollisions: []
+--- !u!114 &-2901177155634822033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916607035571281972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf7505beefdc468b98e39e54f7335d5e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CriticalDamageChance: 0.1
+  CriticalDamageMultiplier: 1
+  Damage: 1
+  levelablePropertiesList: []
+  perkLevel: 1
+--- !u!114 &3463084196819366534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8916607035571281972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0049dcfaa2c41b04c8a1dea72e4c71aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Mode: 2
+  Offset: {x: 0, y: 0.5, z: 0}
+  Power: 50
+  Radius: 100
+  UpwardModifier: 0

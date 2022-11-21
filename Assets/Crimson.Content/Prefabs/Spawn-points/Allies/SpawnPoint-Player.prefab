@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -82,7 +83,7 @@ MonoBehaviour:
     copyComponentsFromSamples:
     - {fileID: 7670242131266225950, guid: b066d472f10fc5f4d919e4e86e10da84, type: 3}
     - {fileID: 5854924350193893075, guid: 8e1fc00f9df09e44985eeff91f04db78, type: 3}
-    - {fileID: 1703253512496696105, guid: aef33018dcb22a643843185c4acffb66, type: 3}
+    - {fileID: 4935957120434825583, guid: 5d04c4f8465b2fd4391e06f7ab861a53, type: 3}
     copyComponentsOfType: 2
     deleteExistingComponents: 0
     runSpawnActionsOnObjects: 0

@@ -1,5 +1,4 @@
-﻿using Assets.Crimson.Core.Components.Forces;
-using Crimson.Core.Common;
+﻿using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Sirenix.OdinInspector;
 using Unity.Entities;
@@ -44,6 +43,11 @@ namespace Assets.Crimson.Core.Components.Perks
 				return;
 			}
 			var direction = transform.TransformDirection(Direction).normalized;
+			if (!_agent.isOnNavMesh)
+			{
+				_agent.enabled = false;
+				_agent.enabled = true;
+			}
 			_agent.Move(direction * Value);
 		}
 

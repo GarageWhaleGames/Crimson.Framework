@@ -1,8 +1,9 @@
 ﻿using Assets.Crimson.Core.Common;
 using Crimson.Core.Common;
 using Crimson.Core.Components;
+using System;
+using System.Collections.Generic;
 using Unity.Entities;
-using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,6 +15,7 @@ namespace Assets.Crimson.Core.Components
 		public Entity _entity;
 
 		public EntityManager _entityManager;
+		private Dictionary<int, Action<InputAction.CallbackContext>> _customInputCallbacks = new Dictionary<int, Action<InputAction.CallbackContext>>();
 		public IActor Actor { get; set; }
 
 		public void AddComponentData(ref Entity entity, IActor actor)
@@ -22,21 +24,31 @@ namespace Assets.Crimson.Core.Components
 			Actor = actor;
 			_entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
-			_bindings.MoveInputRef.action.performed += ReadMove;
-			_bindings.MoveInputRef.action.canceled += ReadMove;
-			_bindings.LookInputRef.action.performed += ReadLook;
-			_bindings.MoveInputRef.action.canceled += ReadLook;
+			SubscribeInput(_bindings.MoveInputRef, ReadMove);
+			SubscribeInput(_bindings.LookInputRef, ReadLook);
+			SubscribeInput(_bindings.PointerInputRef, ReadPointer);
 
-			SubscribeCustomInput(0, _bindings.CustomInput0Ref);
-			SubscribeCustomInput(1, _bindings.CustomInput1Ref);
-			SubscribeCustomInput(2, _bindings.CustomInput2Ref);
-			SubscribeCustomInput(3, _bindings.CustomInput3Ref);
-			SubscribeCustomInput(4, _bindings.CustomInput4Ref);
-			SubscribeCustomInput(5, _bindings.CustomInput5Ref);
+			for (var i = 0; i < _bindings.CustomInputs.Count; i++)
+			{
+				_customInputCallbacks.Add(i, (context) => ReadCustomInput(i, context));
+				SubscribeInput(_bindings.CustomInputs[i], _customInputCallbacks[i]);
+			}
 		}
 
 		public void Execute()
 		{
+		}
+
+		private void OnDestroy()
+		{
+			UnsubscribeInput(_bindings.MoveInputRef, ReadMove);
+			UnsubscribeInput(_bindings.LookInputRef, ReadLook);
+			UnsubscribeInput(_bindings.PointerInputRef, ReadPointer);
+
+			for (var i = 0; i < _bindings.CustomInputs.Count; i++)
+			{
+				UnsubscribeInput(_bindings.CustomInputs[i], _customInputCallbacks[i]);
+			}
 		}
 
 		private void ReadCustomInput(int index, InputAction.CallbackContext context)
@@ -60,9 +72,7 @@ namespace Assets.Crimson.Core.Components
 			}
 
 			var inputData = _entityManager.GetComponentData<PlayerInputData>(_entity);
-
-			var mousePosition = Input.mousePosition;
-			inputData.Mouse = new float2(mousePosition.x, mousePosition.y);
+			inputData.Look = context.ReadValue<Vector2>();
 			_entityManager.SetComponentData(_entity, inputData);
 		}
 
@@ -78,10 +88,28 @@ namespace Assets.Crimson.Core.Components
 			_entityManager.SetComponentData(_entity, inputData);
 		}
 
-		private void SubscribeCustomInput(int index, InputAction action)
+		private void ReadPointer(InputAction.CallbackContext context)
 		{
-			action.performed += (context) => ReadCustomInput(index, context);
-			action.canceled += (context) => ReadCustomInput(index, context);
+			if (_entityManager.HasComponent<DeadActorTag>(_entity))
+			{
+				return;
+			}
+
+			var inputData = _entityManager.GetComponentData<PlayerInputData>(_entity);
+			inputData.Mouse = context.ReadValue<Vector2>();
+			_entityManager.SetComponentData(_entity, inputData);
+		}
+
+		private void SubscribeInput(InputAction action, Action<InputAction.CallbackContext> callback)
+		{
+			action.performed += callback;
+			action.canceled += callback;
+		}
+
+		private void UnsubscribeInput(InputAction action, Action<InputAction.CallbackContext> callback)
+		{
+			action.performed -= callback;
+			action.canceled -= callback;
 		}
 	}
 }

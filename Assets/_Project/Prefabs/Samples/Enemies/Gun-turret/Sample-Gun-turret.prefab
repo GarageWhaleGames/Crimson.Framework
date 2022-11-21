@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &774899593392371021
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774899593392371002}
+  - component: {fileID: 774899593392371000}
+  - component: {fileID: 774899593392371014}
+  - component: {fileID: 774899593392371015}
+  - component: {fileID: 774899593392371013}
+  - component: {fileID: 2930112942789317066}
+  m_Layer: 0
+  m_Name: Sample-Gun-turret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &774899593392371002
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774899593392371021}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -8, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &774899593392371000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774899593392371021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1cb3e455117448ea9f306badb3b4145, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  compensateCameraRotation: 1
+  customBindings:
+  - index: 0
+    actions:
+    - {fileID: 0}
+  inputSource: 3
+  minMoveInputMagnitude: 0
+--- !u!114 &774899593392371014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774899593392371021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c92e3aeea62d402bb3fb244ca47a231a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newTag: Enemy
+  alsoSetLayer: 0
+  newLayer: 
+  applyOnStart: 1
+--- !u!114 &774899593392371015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774899593392371021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efab744802f94701bdb0b235b75b3f9c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initStats:
+    CriticalDamageChance: 0
+    CriticalDamageMultiplier: 0
+    CurrentExperience: 0
+    Energy:
+      _current: 0
+      _minLimit: 0
+      _maxLimit: 0
+      _freeze: 0
+    Health:
+      _current: 1
+      _minLimit: 0
+      _maxLimit: 1
+      _freeze: 0
+    Level: 1
+    LevelUpRequiredExperience: 100
+    TotalDamageApplied: 0
+  actorDeathAnimProperties:
+    HasActorDeathAnimation: 1
+    ActorDeathAnimationName: Dead
+  actorToUI: 0
+  additionalForceAnim:
+    AnimationName: 
+    HasAnimation: 0
+  corpseCleanupDelay: 2
+  deadActorBehaviour:
+    RemoveTag: 0
+    RemoveRigidbody: 0
+    RemoveColliders: 0
+    RemoveInput: 0
+    OnDeathActionsComponentNames:
+    - Spawn Death
+    OnOverdamageActionsComponentNames:
+    - Overdamage-FX
+  deathCount: 0
+  ExplicitUIChannel: 0
+  healAction: {fileID: 0}
+  isEnabled: 1
+  levelablePropertiesList:
+  - propertyName: MaxHealth
+    levelablePropertyAction: 1
+    modifier: 20
+    levelablePropertiesInfo:
+    - MaxHealth
+    - LevelUpRequiredExperience
+  - propertyName: CurrentHealth
+    levelablePropertyAction: 1
+    modifier: 20
+    levelablePropertiesInfo:
+    - MaxHealth
+    - CurrentHealth
+    - LevelUpRequiredExperience
+  - propertyName: LevelUpRequiredExperience
+    levelablePropertyAction: 1
+    modifier: 300
+    levelablePropertiesInfo:
+    - MaxHealth
+    - LevelUpRequiredExperience
+  levelUpAction: {fileID: 0}
+  NeedCleanup: 0
+  DeathAbilities: []
+  TakeDamageAnimation:
+    AnimationName: 
+    HasAnimation: 0
+  targetMarkActorComponentName: Aim Enemy Mark
+  UIChannelID: 0
+--- !u!114 &774899593392371013
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774899593392371021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb68bfe9b20e4840be7f8b09537fb0fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 2
+  useDynamics: 0
+  movementStart:
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    timeScale: 1
+  movementEnd:
+    curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    timeScale: 1
+  workTime: 0
+  movementAnimationProperties:
+    HasMovementAnimation: 1
+    MovementAnimationName: Run
+    MovementAnimationSpeedFactorName: SpeedFactor
+    MovementAnimationSpeedFactorMultiplier: 1.5
+--- !u!114 &2930112942789317066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774899593392371021}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1153b6c467b0b4da5b9fcebff3f75f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _externalBehavior: {fileID: 11400000, guid: 5e70b2c84ee7ecd479813ef42691fb5e, type: 2}

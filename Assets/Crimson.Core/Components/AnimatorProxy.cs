@@ -10,49 +10,46 @@ namespace Assets.Crimson.Core.Components
 	[HideMonoScript]
 	public class AnimatorProxy : MonoBehaviour, IActorAbility
 	{
-		[Title(nameof(RealSpeed))]
-		public AnimatorFloat2 RealSpeed;
-
-		[Title(nameof(LookAtDirection))] public AnimatorNormalizedFloat2 LookAtDirection;
-
-		[Title(nameof(CurrentWeapon))] public AnimatorTypeValue CurrentWeapon;
-		[Title(nameof(PreviousWeapon))] public AnimatorTypeValue PreviousWeapon;
-
-		[Title(nameof(WeaponChange))] public AnimatorTrigger WeaponChange;
-		[Title(nameof(Crouch))] public AnimatorBool Crouch;
 		[Title(nameof(Attacking))] public AnimatorBool Attacking;
-
 		[Title(nameof(AttackType))] public AnimatorTypeValue AttackType;
-
+		[Title(nameof(Crouch))] public AnimatorBool Crouch;
+		[Title(nameof(CurrentWeapon))] public AnimatorTypeValue CurrentWeapon;
+		[Title(nameof(Death))] public AnimatorTrigger Death;
+		public int DeathLayer = 7;
+		public string DeathTag = "Death";
+		[Title(nameof(IsDead))] public AnimatorBool IsDead;
+		[Title(nameof(Dodge))] public AnimatorBool Dodge;
+		[Title(nameof(Falling))] public AnimatorBool Falling;
 		[Title(nameof(Hit))] public AnimatorBool Hit;
 		[Title(nameof(HitDirection))] public AnimatorFloat2 HitDirection;
-
-		[Title(nameof(Reloading))] public AnimatorBool Reloading;
-		[Title(nameof(Dodge))] public AnimatorBool Dodge;
-
-		[Title(nameof(Falling))] public AnimatorBool Falling;
-
+		[Title(nameof(IdleFun))] public AnimatorTrigger IdleFun;
+		[Title(nameof(IdleFundID))] public AnimatorTypeValue IdleFundID;
 		[Title(nameof(Interact))] public AnimatorBool Interact;
 		[Title(nameof(InteractType))] public AnimatorTypeValue InteractType;
-
-		[Title(nameof(Death))] public AnimatorTrigger Death;
-		[Title(nameof(IsDead))] public AnimatorBool IsDead;
-
-		[Title(nameof(KnockbackStart))] public AnimatorTrigger KnockbackStart;
+		[Title(nameof(ItemUse))] public AnimatorTrigger ItemUse;
+		[Title(nameof(ItemUseID))] public AnimatorTypeValue ItemUseID;
 		[Title(nameof(KnockbackFly))] public AnimatorBool KnockbackFly;
 		[Title(nameof(KnockbackGround))] public AnimatorBool KnockbackGround;
 		[Title(nameof(KnockbackStandUp))] public AnimatorTrigger KnockbackStandUp;
+		[Title(nameof(KnockbackStart))] public AnimatorTrigger KnockbackStart;
+		[Title(nameof(LookAtDirection))] public AnimatorNormalizedFloat2 LookAtDirection;
+		[Title(nameof(PreviousWeapon))] public AnimatorTypeValue PreviousWeapon;
 
-		[Title(nameof(IdleFun))] public AnimatorTrigger IdleFun;
-		[Title(nameof(IdleFundID))] public AnimatorTypeValue IdleFundID;
+		[Title(nameof(RealSpeed))]
+		public AnimatorFloat2 RealSpeed;
+		public bool ManagedByNavmeshAgent;
 
-		[Title(nameof(ItemUse))] public AnimatorTrigger ItemUse;
-		[Title(nameof(ItemUseID))] public AnimatorTypeValue ItemUseID;
-
+		[Title(nameof(Reloading))] public AnimatorBool Reloading;
+		[PropertyOrder(1)] public Animator TargetAnimator;
+		[Title(nameof(WeaponChange))] public AnimatorTrigger WeaponChange;
 		public IActor Actor { get; set; }
 
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
+			if (TargetAnimator == null)
+			{
+				TargetAnimator = GetComponent<Animator>();
+			}
 			Actor = actor;
 		}
 

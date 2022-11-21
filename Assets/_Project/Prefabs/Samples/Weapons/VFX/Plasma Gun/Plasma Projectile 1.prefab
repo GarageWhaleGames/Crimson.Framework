@@ -169,10 +169,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveDirection: 0
-  forwardVector: {x: 0, y: 0, z: 0}
-  compensateSpawnerRotation: 1
+  forwardVector: {x: 0, y: 0, z: 1}
+  compensateSpawnerRotation: 0
   OffsetDirection: {x: 0, y: 0, z: 0}
-  _useVariance: 1
+  _useVariance: 0
   _transformVariance:
     PostionOffset: {x: 0, y: 0, z: 0}
     RotationOffset: {x: 1, y: 1, z: 0}
@@ -260,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CriticalDamageChance: 0.1
   CriticalDamageMultiplier: 1
-  Damage: 10
+  Damage: 7
   levelablePropertiesList: []
   perkLevel: 1
 --- !u!114 &5468552313622554710

@@ -1,5 +1,4 @@
-﻿using Assets.Crimson.Core.Common;
-using Crimson.Core.Common;
+﻿using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Crimson.Core.Utils;
 using Sirenix.OdinInspector;
@@ -14,28 +13,32 @@ namespace Assets.Crimson.Core.Components.Encounters
 {
 	public class AbilityTagChecker : TimerBaseBehaviour, IActorAbility, IEnableable
 	{
-		public bool ExecuteOnAwake;
+		[Header("Execute On Start")]
+		[ValidateInput(nameof(MustBeAbility), "Ability MonoBehaviours must derive from IActorAbility!")]
+		[PropertyOrder(5)]
+		public List<MonoBehaviour> ActionsOnStart = new List<MonoBehaviour>();
 
-		public float UpdateTime;
+		[Header("Execute On Success")]
+		[PropertyOrder(6)]
+		[ValidateInput(nameof(MustBeAbility), "Ability MonoBehaviours must derive from IActorAbility!")]
+		public List<MonoBehaviour> ActionsOnSuccess = new List<MonoBehaviour>();
 
-		public float CheckupDelay;
+		[PropertyOrder(2)] public float CheckupDelay;
+		[PropertyOrder(0)] public bool ExecuteOnAwake;
+
+		[Header("Spawners for checkout")]
+		[ValidateInput(nameof(MustBeSpawner))]
+		[PropertyOrder(4)] public List<MonoBehaviour> Spawners = new List<MonoBehaviour>();
 
 		[ValueDropdown(nameof(GetComponentTypes))]
-		public string TagName;
+		[PropertyOrder(3)] public string TagName;
 
-		[ValidateInput(nameof(MustBeSpawner))]
-		public List<MonoBehaviour> Spawners = new List<MonoBehaviour>();
-
-		[Header("On Start")]
-		public ActionsList ActionsOnStart = new ActionsList();
-
-		[Header("On Success")]
-		public ActionsList ActionsOnEnd = new ActionsList();
-
-		private IActorSpawner[] _spawners;
-		private EntityManager _dstManager;
+		[PropertyOrder(1)] public float UpdateTime;
+		private IEnumerable<IActorAbility> _abilitiesOnStart;
+		private IEnumerable<IActorAbility> _abilitiesOnSuccess;
 		private Type _checkType;
-
+		private EntityManager _dstManager;
+		private IActorSpawner[] _spawners;
 		public IActor Actor { get; set; }
 		public bool IsEnable { get; set; } = false;
 
@@ -48,8 +51,9 @@ namespace Assets.Crimson.Core.Components.Encounters
 			{
 				_checkType = Types.First(s => s.Name.Equals(TagName));
 			}
-			ActionsOnStart.Init();
-			ActionsOnEnd.Init();
+			_abilitiesOnStart = ActionsOnStart.Where(s => s != null && s is IActorAbility).Cast<IActorAbility>();
+			_abilitiesOnSuccess = ActionsOnSuccess.Where(s => s != null && s is IActorAbility).Cast<IActorAbility>();
+
 			_spawners = Spawners.Cast<IActorSpawner>().ToArray();
 			_dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 			StartTimer();
@@ -67,7 +71,7 @@ namespace Assets.Crimson.Core.Components.Encounters
 				return;
 			}
 			IsEnable = true;
-			ActionsOnStart.Execute();
+			_abilitiesOnStart?.Exectute();
 			Timer.TimedActions.AddAction(Check, CheckupDelay);
 		}
 
@@ -79,13 +83,19 @@ namespace Assets.Crimson.Core.Components.Encounters
 				if (result)
 				{
 					IsEnable = false;
-					ActionsOnEnd.Execute();
+					_abilitiesOnSuccess?.Exectute();
 				}
 				else
 				{
 					Timer.TimedActions.AddAction(Check, UpdateTime);
 				}
 			}
+		}
+
+		private bool CheckActor(GameObject item)
+		{
+			var actor = item.GetComponent<Actor>();
+			return actor != null && (_checkType.Equals(null) || _dstManager.HasComponent(actor.ActorEntity, _checkType));
 		}
 
 		private bool CheckObjects(List<GameObject> objects)
@@ -101,12 +111,6 @@ namespace Assets.Crimson.Core.Components.Encounters
 				}
 			}
 			return result;
-		}
-
-		private bool CheckActor(GameObject item)
-		{
-			var actor = item.GetComponent<Actor>();
-			return actor != null && (_checkType.Equals(null) || _dstManager.HasComponent(actor.ActorEntity, _checkType));
 		}
 
 		private bool CheckSpawners(IActorSpawner[] spawners)
@@ -130,6 +134,11 @@ namespace Assets.Crimson.Core.Components.Encounters
 				.Where(s => s.GetInterfaces().Contains(typeof(IComponentData)))
 				.Select(s => s.Name)
 				.ToArray();
+		}
+
+		private bool MustBeAbility(List<MonoBehaviour> a)
+		{
+			return !a.Exists(t => !(t is IActorAbility)) || a.Count == 0;
 		}
 
 		private bool MustBeSpawner(List<MonoBehaviour> behaviours)

@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2262816505336738834}
   m_RootOrder: 1
@@ -89,6 +90,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3767348516394325425, guid: 151af1bbb05efd140ae82f57cf2b2acc,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6067918062548950407, guid: 151af1bbb05efd140ae82f57cf2b2acc,
         type: 3}
       propertyPath: m_Center.y
@@ -152,7 +158,7 @@ PrefabInstance:
     - target: {fileID: 8050190077725826637, guid: 151af1bbb05efd140ae82f57cf2b2acc,
         type: 3}
       propertyPath: m_Name
-      value: Common-Arbiter
+      value: Common-Arbiter Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 151af1bbb05efd140ae82f57cf2b2acc, type: 3}

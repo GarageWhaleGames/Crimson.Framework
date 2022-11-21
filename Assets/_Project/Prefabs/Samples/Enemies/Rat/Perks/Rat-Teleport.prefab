@@ -1,0 +1,110 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7634552862115458412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7634552862115458415}
+  - component: {fileID: 7634552862115458414}
+  - component: {fileID: 8316797730702808627}
+  - component: {fileID: 5118063039488738570}
+  - component: {fileID: 8267623236739432976}
+  m_Layer: 0
+  m_Name: Rat-Teleport
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7634552862115458415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634552862115458412}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7634552862115458414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634552862115458412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d3aa30ca3bd408d92446c07a6810628, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customBinding:
+    index: 1
+    actions:
+    - {fileID: 8316797730702808627}
+  destroyAfterAdd: 1
+  removeSameIndexBindings: 1
+--- !u!114 &8316797730702808627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634552862115458412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 22185d44d9412944ca97fed25a401df8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animation:
+    AnimationName: 
+    HasAnimation: 0
+  Use: 1
+  Duration: 10
+  actions:
+  - {fileID: 8267623236739432976}
+--- !u!114 &5118063039488738570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634552862115458412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e882fb038f0ab364c899c3446a45c4ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TagFilter:
+    use: 1
+    filterMode: 0
+    filterTags:
+    - Player
+    - Ally
+--- !u!114 &8267623236739432976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634552862115458412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59ac8cc1f4a06264fbc4b64ab5067083, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AbilityTarget: {fileID: 5118063039488738570}
+  PositionThreshold: 1
+  PreFX:
+  - {fileID: 3773512502367931815, guid: 69b2ff53414bda34c834f9c3c1c0e817, type: 3}
+  PostFX:
+  - {fileID: 3773512502367931815, guid: 69b2ff53414bda34c834f9c3c1c0e817, type: 3}

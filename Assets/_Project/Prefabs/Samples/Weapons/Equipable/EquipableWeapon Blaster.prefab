@@ -26,6 +26,7 @@ Transform:
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0.22000003, y: 0.0125, z: -0.005000025}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8939791187431860214}
   m_RootOrder: 1
@@ -95,17 +96,7 @@ PrefabInstance:
     - target: {fileID: 230970627649061259, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
       propertyPath: m_Name
-      value: EquipableWeapon Blaster Variant
-      objectReference: {fileID: 0}
-    - target: {fileID: 3287228919993228339, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-        type: 3}
-      propertyPath: targetTag
-      value: WeaponMountPoint
-      objectReference: {fileID: 0}
-    - target: {fileID: 3287228919993228339, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-        type: 3}
-      propertyPath: followTarget
-      value: 3
+      value: EquipableWeapon Blaster
       objectReference: {fileID: 0}
     - target: {fileID: 4801918414694250332, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
         type: 3}
@@ -137,36 +128,6 @@ PrefabInstance:
 --- !u!1 &1548769087254226112 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 230970627649061259, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1606315881375638859}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &4798074799003997959 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6115017838619374156, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1606315881375638859}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548769087254226112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e76f38ae5d17d44fb544ed6a9c33808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5630159784841139581 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6370517277054595126, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
-    type: 3}
-  m_PrefabInstance: {fileID: 1606315881375638859}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1548769087254226112}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0e76f38ae5d17d44fb544ed6a9c33808, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &8939791187431860214 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
     type: 3}
   m_PrefabInstance: {fileID: 1606315881375638859}
   m_PrefabAsset: {fileID: 0}
@@ -232,10 +193,10 @@ MonoBehaviour:
     fillSpawnPoints: 0
     x: 0
     skipBusySpawnPoints: 0
-    spawnPointsFrom: 0
+    spawnPointsFrom: 1
     _spawnPoints:
     - {fileID: 3046358728583350651}
-    spawnPointTag: 
+    spawnPointTag: WeaponMountPoint
     useChildrenObjects: 0
     rotationOfSpawns: 0
     parentOfSpawns: 0
@@ -254,9 +215,9 @@ MonoBehaviour:
       MaxSize: 10
       UsePool: 1
   projectileStartupDelay: 0
-  cooldownTime: 0.2
-  projectileClipCapacity: 1000
-  clipReloadTime: 1
+  cooldownTime: 0.33
+  projectileClipCapacity: 0
+  clipReloadTime: 0.6
   forceBursts: 0
   burstShotCountRange: {x: 1, y: 1}
   reloadDisplayToggle: []
@@ -268,12 +229,6 @@ MonoBehaviour:
   appliedPerksNames: []
   aimingByInput: 0
   AimComponent: {fileID: 0}
-  ActionsOnEnable:
-    actions:
-    - {fileID: 3285678183776671440}
-  ActionsOnDisable:
-    actions:
-    - {fileID: 7981926124408840667}
   reloadAnimProps:
     AnimationName: 
     HasAnimation: 0
@@ -292,6 +247,12 @@ MonoBehaviour:
   State: 0
   Targets:
   - {fileID: 1548769087254226112}
+--- !u!4 &8939791187431860214 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7663511867989263037, guid: 194d4f1e3d0c8894c9f478f4fe202fc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1606315881375638859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3193972596384462566
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -31,6 +31,7 @@ TagManager:
   - MagnetObjects
   - WeaponMountPoint
   - WeaponPoint
+  - PlayerClip
   layers:
   - Default
   - TransparentFX
@@ -47,7 +48,7 @@ TagManager:
   - FX
   - Allies
   - StopAllies
-  - 
+  - PlayerClip
   - 
   - 
   - 

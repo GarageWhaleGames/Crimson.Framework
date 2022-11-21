@@ -1,4 +1,5 @@
-﻿using Crimson.Core.Common;
+﻿using Assets.Crimson.Core.Common;
+using Crimson.Core.Common;
 using Sirenix.OdinInspector;
 using Unity.Entities;
 using UnityEngine;
@@ -6,22 +7,25 @@ using UnityEngine;
 namespace Crimson.Core.Components
 {
 	[HideMonoScript]
-	public class SphereAddForce : MonoBehaviour, IActorAbility
+	public class SphereAddForce : MonoBehaviour, IActorAbility, IActorAbilityTarget
 	{
-		public EntityManager _dstManager;
 		public Entity _entity;
-
+		public EntityManager _entityManager;
+		public ForceMode Mode = ForceMode.Force;
+		public Vector3 Offset;
 		public float Power = 25;
 		public float Radius = 5;
-		public ForceMode Mode = ForceMode.Force;
-
+		public float UpwardModifier = 3.0f;
+		public IActor AbilityOwnerActor { get; set; }
 		public IActor Actor { get; set; }
+		public IActor TargetActor { get; set; }
 
 		public void AddComponentData(ref Entity entity, IActor actor)
 		{
 			_entity = entity;
 			Actor = actor;
-			_dstManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+			AbilityOwnerActor = actor;
+			_entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 			if (!Actor.Abilities.Contains(this))
 			{
 				Actor.Abilities.Add(this);
@@ -30,32 +34,20 @@ namespace Crimson.Core.Components
 
 		public void Execute()
 		{
-			var targets = Physics.OverlapSphere(transform.position, Radius);
-			AddForceTo(targets);
+			AddForceTo(TargetActor);
 		}
 
-		private void AddForceTo(Collider[] targets)
+		private void AddForceTo(IActor target)
 		{
-			for (var i = 0; i < targets.Length; i++)
+			var data = new ExplosionForceData()
 			{
-				AddForceTo(targets[i]);
-			}
-		}
-
-		private void AddForceTo(Collider targetCollider)
-		{
-			if (targetCollider == null || targetCollider.attachedRigidbody == null)
-			{
-				return;
-			}
-
-			var target = targetCollider.GetComponent<Rigidbody>();
-			if (target == null)
-			{
-				return;
-			}
-
-			target.AddExplosionForce(Power, transform.position, Radius, 3.0f, Mode);
+				Force = Power,
+				ForceMode = (int)Mode,
+				Position = transform.position + Offset,
+				Radius = Radius,
+				UpwardModifier = UpwardModifier,
+			};
+			_entityManager.AddComponentData(target.ActorEntity, data);
 		}
 
 #if UNITY_EDITOR
@@ -63,7 +55,7 @@ namespace Crimson.Core.Components
 		private void OnDrawGizmosSelected()
 		{
 			Gizmos.color = Color.red;
-			Gizmos.DrawWireSphere(transform.position, Radius);
+			Gizmos.DrawWireSphere(transform.position + Offset, Radius);
 		}
 
 #endif

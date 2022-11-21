@@ -1,14 +1,13 @@
 ﻿using Crimson.Core.Common;
 using Crimson.Core.Components;
 using Sirenix.OdinInspector;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Assets.Crimson.Core.Common
 {
-	[Serializable, HideLabel]
+	[SerializeField]
 	public class ActionsList
 	{
 		[ValidateInput(nameof(MustBeAbility), "Ability MonoBehaviours must derive from IActorAbility!")]

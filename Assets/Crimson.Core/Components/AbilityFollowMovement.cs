@@ -71,6 +71,20 @@ namespace Crimson.Core.Components
 			}
 		}
 
+		private void Stop()
+		{
+			_dstManager.RemoveComponent<ActorFollowMovementData>(_entity);
+			_dstManager.RemoveComponent<ActorNoFollowTargetMovementData>(_entity);
+			if (followMovementType == FollowType.UseMovementComponent)
+			{
+				_dstManager.RemoveComponent<MoveByInputData>(_entity);
+			}
+			else
+			{
+				_dstManager.RemoveComponent<MoveDirectlyData>(_entity);
+			}
+		}
+
 		[Button]
 		public void Execute()
 		{

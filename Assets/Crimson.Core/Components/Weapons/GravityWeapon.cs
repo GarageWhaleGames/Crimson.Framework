@@ -33,10 +33,10 @@ namespace Assets.Crimson.Core.Components.Weapons
 		public Vector3 MagnetOffset = Vector3.forward;
 
 		[Header("ActionsOnEnable")]
-		public ActionsList ActionsOnEnable;
+		public ActionsList ActionsOnEnable = new ActionsList();
 
 		[Header("ActionsOnDisable")]
-		public ActionsList ActionsOnDisable;
+		public ActionsList ActionsOnDisable = new ActionsList();
 
 		private EntityManager _entityManager;
 		[SerializeField] private float _force = 10;
@@ -180,7 +180,10 @@ namespace Assets.Crimson.Core.Components.Weapons
 		private void TryGrabObject()
 		{
 			OnShot?.Invoke();
-			var ray = new Ray(transform.position, transform.forward);
+			//TODO: Need ecs and controller support
+			//FIXME:
+			var mousePosition = Input.mousePosition;
+			var ray = Camera.main.ScreenPointToRay(mousePosition);
 			var resultsCount = Physics.RaycastNonAlloc(ray, _raycastResults, _maxDistance);
 			if (resultsCount == 0)
 			{

@@ -20,9 +20,8 @@ namespace Assets.Crimson.Core.Components.Weapons
 		[ValidateInput(nameof(MustBeWeapon), "Perk MonoBehaviours must derive from IWeapon!")]
 		public List<MonoBehaviour> Weapons;
 
-		private readonly List<IWeapon> _weapons = new List<IWeapon>();
 		private readonly List<IThrowable> _throwables = new List<IThrowable>();
-
+		private readonly List<IWeapon> _weapons = new List<IWeapon>();
 		private IWeapon _gravityGun;
 
 		public IActor Actor { get; set; }
@@ -95,18 +94,48 @@ namespace Assets.Crimson.Core.Components.Weapons
 			return true;
 		}
 
-		private void SelectNextWeapon()
+		private void OnDestroy()
 		{
-			var currentIndex = _weapons.IndexOf(_slot._weapon);
-			var index = currentIndex == -1 ? 0 : (currentIndex + 1) % _weapons.Count;
-			_slot.Change(_weapons[index]);
+			if (_changeAction != null)
+			{
+				_changeAction.action.performed -= ChangeActionHandler;
+			}
+			if (_changeThrowableAction != null)
+			{
+				_changeThrowableAction.action.performed -= ChangeThrowableActionHandler;
+			}
+			if (_activateGravigunAction != null)
+			{
+				_activateGravigunAction.action.performed -= ToggleGravigunHandler;
+			}
+		}
+
+		private void OnValidate()
+		{
+			if (_throwableSlot == null)
+			{
+				_throwableSlot = GetComponentInChildren<ThrowableSlot>();
+			}
 		}
 
 		private void SelectNextThrowable()
 		{
 			var currentIndex = _throwables.IndexOf(_throwableSlot._weapon);
 			var index = currentIndex == -1 ? 0 : (currentIndex + 1) % _throwables.Count;
-			_throwableSlot.Change(_throwables[index]);
+			if (_throwables.Count > index)
+			{
+				_throwableSlot.Change(_throwables[index]);
+			}
+		}
+
+		private void SelectNextWeapon()
+		{
+			var currentIndex = _weapons.IndexOf(_slot._weapon);
+			var index = currentIndex == -1 ? 0 : (currentIndex + 1) % _weapons.Count;
+			if (_weapons.Count > index)
+			{
+				_slot.Change(_weapons[index]);
+			}
 		}
 
 		private void ToggleGravigunHandler(InputAction.CallbackContext obj)
@@ -117,14 +146,6 @@ namespace Assets.Crimson.Core.Components.Weapons
 			}
 
 			_slot.Change(_gravityGun);
-		}
-
-		private void OnValidate()
-		{
-			if (_throwableSlot == null)
-			{
-				_throwableSlot = GetComponentInChildren<ThrowableSlot>();
-			}
 		}
 	}
 }

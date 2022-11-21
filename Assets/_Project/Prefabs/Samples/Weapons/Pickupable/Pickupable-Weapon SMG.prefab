@@ -1,0 +1,158 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &4266261439655585067
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1887881515727212064, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: TargetWeapon
+      value: 
+      objectReference: {fileID: 1156078959934214729, guid: 59056dbde5eef314396bc559eacac89c,
+        type: 3}
+    - target: {fileID: 4391347112680581853, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: objectToSpawn
+      value: 
+      objectReference: {fileID: 2129211562036466362, guid: 53ac5e7d609657647a8331ef25206347,
+        type: 3}
+    - target: {fileID: 8213406076014876576, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_Name
+      value: Pickupable-Weapon PP
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 5f5644991280b3a458800689e8208f80, type: 3}
+--- !u!4 &5390579384345752196 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8213406076014876591, guid: 5f5644991280b3a458800689e8208f80,
+    type: 3}
+  m_PrefabInstance: {fileID: 4266261439655585067}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8323253516576580788
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 5390579384345752196}
+    m_Modifications:
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.4976286
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.50116354
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5023623
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.49883172
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8079601086913970540, guid: 48c18f6b4c73ff644af300e94a158af5,
+        type: 3}
+      propertyPath: m_Name
+      value: Plasma Gun Blaster
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 48c18f6b4c73ff644af300e94a158af5, type: 3}
