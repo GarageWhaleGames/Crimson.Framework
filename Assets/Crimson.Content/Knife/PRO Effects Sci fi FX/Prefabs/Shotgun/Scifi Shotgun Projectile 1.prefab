@@ -147,9 +147,9 @@ GameObject:
   - component: {fileID: 7759299112067143410}
   - component: {fileID: 9190048867407067892}
   - component: {fileID: 595841000726405029}
-  - component: {fileID: 5376577471990730104}
+  - component: {fileID: -8123114826632056796}
   m_Layer: 0
-  m_Name: Scifi Shotgun Projectile
+  m_Name: Scifi Shotgun Projectile 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -289,7 +289,7 @@ MonoBehaviour:
     destroyAfterAction: 1
     actions:
     - {fileID: 4735277096244204248}
-    - {fileID: 5376577471990730104}
+    - {fileID: -8123114826632056796}
   debugCollisions: 0
   ExistentCollisions: []
 --- !u!114 &9190048867407067892
@@ -350,7 +350,7 @@ MonoBehaviour:
     MovementAnimationName: 
     MovementAnimationSpeedFactorName: 
     MovementAnimationSpeedFactorMultiplier: 1
---- !u!114 &5376577471990730104
+--- !u!114 &-8123114826632056796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

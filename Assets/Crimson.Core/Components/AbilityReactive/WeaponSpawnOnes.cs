@@ -88,6 +88,12 @@ namespace Crimson.Core.Components.AbilityReactive
 
 		public bool suppressWeaponSpawn = false;
 
+		[ValidateInput(nameof(MustBeAbility), "Ability MonoBehaviours must derive from IActorAbility!")]
+		public MonoBehaviour[] PreShotAbilities;
+
+		[ValidateInput(nameof(MustBeAbility), "Ability MonoBehaviours must derive from IActorAbility!")]
+		public MonoBehaviour[] PostShotAbilities;
+
 		[HideInInspector] public List<string> appliedPerksNames = new List<string>();
 
 		[HideInInspector]
@@ -140,6 +146,8 @@ namespace Crimson.Core.Components.AbilityReactive
 		private bool _actorToUi;
 		private EntityManager _dstManager;
 		private bool isEnable;
+		private ActorAbilityList _preShotAbilities;
+		private ActorAbilityList _postShotAbilities;
 
 		public event Action OnShot;
 
@@ -225,6 +233,9 @@ namespace Crimson.Core.Components.AbilityReactive
 			{
 				Actor.Abilities.Add(this);
 			}
+
+			_preShotAbilities = new ActorAbilityList(PreShotAbilities);
+			_postShotAbilities = new ActorAbilityList(PostShotAbilities);
 		}
 
 		public void Execute()
@@ -247,12 +258,15 @@ namespace Crimson.Core.Components.AbilityReactive
 		private void Shot()
 		{
 			_dstManager.AddComponentData(Actor.Owner.ActorEntity, new WeaponAttackTag());
+
+			_preShotAbilities.Execute();
+			ClipData.Decrease();
 			Spawn();
+			_postShotAbilities.Execute();
 
 			CurrentEntityManager.AddComponentData(Actor.Owner.ActorEntity,
 				new ActorProjectileThrowAnimTag());
 
-			ClipData.Decrease();
 			OnShot?.Invoke();
 			if (CooldownTime.Equals(0))
 			{
@@ -343,6 +357,11 @@ namespace Crimson.Core.Components.AbilityReactive
 		private bool MustBeAimable(MonoBehaviour behaviour)
 		{
 			return behaviour is IActorAbility;
+		}
+
+		private bool MustBeAbility(MonoBehaviour[] a)
+		{
+			return (a is null) || (a.All(s => s is IActorAbility));
 		}
 	}
 }

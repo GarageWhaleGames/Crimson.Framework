@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 931415372725009825}
   - component: {fileID: 2823692007316417281}
+  - component: {fileID: 5263740572567750297}
   m_Layer: 0
   m_Name: Trail Renderer
   m_TagString: Untagged
@@ -77,7 +78,7 @@ TrailRenderer:
   m_Time: 0.1
   m_Parameters:
     serializedVersion: 3
-    widthMultiplier: 0.08
+    widthMultiplier: 0.005
     widthCurve:
       serializedVersion: 2
       m_Curve:
@@ -131,6 +132,26 @@ TrailRenderer:
   m_MinVertexDistance: 0
   m_Autodestruct: 0
   m_Emitting: 1
+--- !u!95 &5263740572567750297
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1950119381041386627}
+  m_Enabled: 0
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1e369b7e3bc60f54a94ce31afbb73e32, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4226249542960359317
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,14 +163,12 @@ GameObject:
   - component: {fileID: 4226249542960359338}
   - component: {fileID: 8211098690892589745}
   - component: {fileID: 6465844992092511608}
-  - component: {fileID: 5422980162152036943}
   - component: {fileID: 4735277096244204248}
-  - component: {fileID: 7759299112067143410}
-  - component: {fileID: 9190048867407067892}
-  - component: {fileID: 595841000726405029}
-  - component: {fileID: 5376577471990730104}
+  - component: {fileID: -2027639980299739392}
+  - component: {fileID: 5865105148947423953}
+  - component: {fileID: 5353339462270424675}
   m_Layer: 0
-  m_Name: Scifi Shotgun Projectile
+  m_Name: Scifi Shotgun Shot ver2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +182,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4226249542960359317}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.13, y: 1.511, z: 3.76}
+  m_LocalPosition: {x: -8.13, y: 1.511, z: 3.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -197,22 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b28c327207e74b30a8ea4c9513e0109a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifespan: 3
+  lifespan: 1
   startOnSpawn: 1
   actionOnDestroy: {fileID: 0}
---- !u!135 &5422980162152036943
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4226249542960359317}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &4735277096244204248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -227,11 +233,58 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentName: 
   ExecuteNow: 0
-  ExecuteOnAwake: 0
+  ExecuteOnAwake: 1
   SpawnData:
     spawnerDisabled: 0
     objectsToSpawn:
-    - {fileID: 6002720521190060909, guid: 3dc08754e9475704c9ece38533e8a1c1, type: 3}
+    - {fileID: 4226249542960359317, guid: bce7844a16083504cb40c67906bc686f, type: 3}
+    spawnPosition: 2
+    spawnPointsFillingMode: 0
+    fillSpawnPoints: 2
+    x: 10
+    skipBusySpawnPoints: 0
+    spawnPointsFrom: 0
+    _spawnPoints: []
+    spawnPointTag: 
+    useChildrenObjects: 0
+    rotationOfSpawns: 0
+    parentOfSpawns: 0
+    actorWithComponentName: 
+    parentTag: 
+    chooseParentStrategy: 0
+    copyComponentsFromSamples: []
+    copyComponentsOfType: 0
+    deleteExistingComponents: 0
+    runSpawnActionsOnObjects: 0
+    destroyAbilityAfterSpawn: 0
+    randomSeed: 0
+    poolSettings:
+      CollectionCheck: 0
+      InitSize: 0
+      MaxSize: 0
+      UsePool: 0
+  SpawnDelays:
+    Delay: 0
+    StartupDelay: 0
+--- !u!114 &-2027639980299739392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4226249542960359317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  componentName: 
+  ExecuteNow: 0
+  ExecuteOnAwake: 1
+  SpawnData:
+    spawnerDisabled: 0
+    objectsToSpawn:
+    - {fileID: 4547022814116657757, guid: 273142811286e5d4787405fc7377ebb2, type: 3}
     spawnPosition: 2
     spawnPointsFillingMode: 0
     fillSpawnPoints: 0
@@ -260,7 +313,7 @@ MonoBehaviour:
   SpawnDelays:
     Delay: 0
     StartupDelay: 0
---- !u!114 &7759299112067143410
+--- !u!114 &5865105148947423953
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -269,30 +322,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4226249542960359317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d055b42bf26644d89d2475d3cce69e44, type: 3}
+  m_Script: {fileID: 11500000, guid: d9680c88d6db91e4083821bb27c261cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  useCollider: {fileID: 5422980162152036943}
-  collisionActions:
-  - collisionLayerMask:
-      serializedVersion: 2
-      m_Bits: 32567
-    useTagFilter: 1
-    filterMode: 0
-    filterTags:
-    - Enemy
-    velocityFilter:
-      Use: 0
-      Mode: 0
-      Velocity: 0
-    executeOnCollisionWithSpawner: 0
-    destroyAfterAction: 1
-    actions:
-    - {fileID: 4735277096244204248}
-    - {fileID: 5376577471990730104}
-  debugCollisions: 0
-  ExistentCollisions: []
---- !u!114 &9190048867407067892
+  ExecuteOnAwake: 1
+--- !u!114 &5353339462270424675
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -301,69 +335,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 4226249542960359317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 155e9d255d7f4ab89786cf777c343ee2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4df8c18c717d3ef4290078f67757b96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveDirection: 3
-  forwardVector: {x: 0, y: 0, z: 0}
-  compensateSpawnerRotation: 1
-  OffsetDirection: {x: 0, y: 0, z: 0}
-  _useVariance: 1
-  _transformVariance:
-    PostionOffset: {x: 0, y: 0, z: 0}
-    RotationOffset: {x: 1, y: 5, z: 0}
-    Cycled: 0
-    MemoryKoef: 0
---- !u!114 &595841000726405029
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4226249542960359317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb68bfe9b20e4840be7f8b09537fb0fe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movementSpeed: 50
-  useDynamics: 0
-  movementStart:
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    timeScale: 1
-  movementEnd:
-    curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    timeScale: 1
-  workTime: 0
-  movementAnimationProperties:
-    HasMovementAnimation: 0
-    MovementAnimationName: 
-    MovementAnimationSpeedFactorName: 
-    MovementAnimationSpeedFactorMultiplier: 1
---- !u!114 &5376577471990730104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4226249542960359317}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cf7505beefdc468b98e39e54f7335d5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CriticalDamageChance: 0.1
-  CriticalDamageMultiplier: 1
-  Damage: 1
-  levelablePropertiesList: []
-  perkLevel: 1
+  _componentName: 
+  Duration: 0.5
+  ExecuteOnAwake: 1
+  Strength: 0.1

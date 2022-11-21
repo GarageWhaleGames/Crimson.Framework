@@ -51,30 +51,6 @@ namespace Assets.Crimson.Core.Systems.Effects
 					EntityManager.RemoveComponent<FadeInFXTag>(entity);
 				});
 
-			Entities.With(_damageEffectQuery).ForEach(
-				(Entity entity) =>
-				{
-					Entities.WithAll<AbilityCameraShake>()
-					.ForEach((AbilityCameraShake ability) =>
-					{
-						if (ability.Actor.Owner.ActorEntity == entity)
-						{
-							ability.Execute();
-						}
-					});
-
-					Entities.WithAll<AbilityVignetteCameraFX>()
-					.ForEach((AbilityVignetteCameraFX ability) =>
-					{
-						if (ability.Actor.Owner.ActorEntity == entity)
-						{
-							ability.Execute();
-						}
-					});
-
-					EntityManager.RemoveComponent<DamageFXTag>(entity);
-				});
-
 			Entities.With(_shakeEffectQuery).ForEach(
 				(Entity entity) =>
 				{

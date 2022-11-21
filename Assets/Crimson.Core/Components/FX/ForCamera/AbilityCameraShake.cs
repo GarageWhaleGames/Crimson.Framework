@@ -1,43 +1,42 @@
-﻿using DG.Tweening;
+﻿using Crimson.Core.Common;
+using DG.Tweening;
 using Sirenix.OdinInspector;
+using Unity.Entities;
 using UnityEngine;
 
 namespace Assets.Crimson.Core.Components.FX.ForCamera
 {
 	public class AbilityCameraShake : AbilityCameraFX
 	{
-		public Transform Target;
+		[TitleGroup("Shake settings")] public float Duration = 1;
+		public bool ExecuteOnAwake;
+		[TitleGroup("Shake settings")] public float Strength = 90;
+		private Transform _target;
 
-		public float Duration = 1;
-		public float Strength = 90;
+		public override void AddComponentData(ref Entity entity, IActor actor)
+		{
+			if (ExecuteOnAwake)
+			{
+				Execute();
+			}
+		}
 
 		public override void Execute()
 		{
+			_target = Camera.main.transform;
 			PositionShake();
-		}
-
-		[Button]
-		private void RotationShake()
-		{
-			Target.DOShakeRotation(Duration, Strength);
 		}
 
 		[Button]
 		private void PositionShake()
 		{
-			Target.DOShakePosition(Duration, Strength);
+			_target.DOShakePosition(Duration, Strength);
 		}
 
-#if UNITY_EDITOR
-
-		private void OnValidate()
+		[Button]
+		private void RotationShake()
 		{
-			if (Target == null)
-			{
-				Target = transform;
-			}
+			_target.DOShakeRotation(Duration, Strength);
 		}
-
-#endif
 	}
 }

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3077494288869751631
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8554880556586910772}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8554880556586910772
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3077494288869751631}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -1.26, y: -0.022, z: 0.102}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5344452518582272995}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &5956257807646811413
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -146,6 +177,35 @@ MonoBehaviour:
   State: 0
   Targets:
   - {fileID: 5880700991455437982}
+--- !u!114 &3004619680722403326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880700991455437982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e64d97204b5ff4f419df406a225d1d63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Abilities:
+  - {fileID: 5883804914797046431}
+--- !u!114 &5883804914797046431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5880700991455437982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b56a6b4f1c631348a3a699a1c65ac89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Direction: {x: 0, y: 0, z: -1}
+  Force: 3
+  ForceMode: 2
 --- !u!114 &7347931288159886798
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -176,7 +236,6 @@ MonoBehaviour:
   componentName: Shotgun
   _weaponType: 1
   primaryProjectile: 0
-  abilityOnShot: {fileID: 0}
   aimingAvailable: 0
   deactivateAimingOnCooldown: 0
   onClickAttackType: 0
@@ -202,15 +261,15 @@ MonoBehaviour:
   projectileSpawnData:
     spawnerDisabled: 0
     objectsToSpawn:
-    - {fileID: 4495573583751547140, guid: 06e53765657ad264596c995ee2048cda, type: 3}
+    - {fileID: 4226249542960359317, guid: 323a68dbc26999049b2be0e1267ce381, type: 3}
     spawnPosition: 0
     spawnPointsFillingMode: 0
-    fillSpawnPoints: 2
+    fillSpawnPoints: 0
     x: 10
     skipBusySpawnPoints: 0
-    spawnPointsFrom: 1
+    spawnPointsFrom: 0
     _spawnPoints:
-    - {fileID: 0}
+    - {fileID: 3077494288869751631}
     spawnPointTag: WeaponMountPoint
     useChildrenObjects: 0
     rotationOfSpawns: 0
@@ -242,6 +301,9 @@ MonoBehaviour:
     HasActorProjectileAnimation: 1
     ActorProjectileAnimationName: Throw
   suppressWeaponSpawn: 0
+  PreShotAbilities:
+  - {fileID: 3004619680722403326}
+  PostShotAbilities: []
   appliedPerksNames: []
   aimingByInput: 0
   AimComponent: {fileID: 0}
@@ -314,3 +376,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 48c18f6b4c73ff644af300e94a158af5, type: 3}
+--- !u!4 &5344452518582272995 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3353204916171623246, guid: 48c18f6b4c73ff644af300e94a158af5,
+    type: 3}
+  m_PrefabInstance: {fileID: 7251838995758909613}
+  m_PrefabAsset: {fileID: 0}
