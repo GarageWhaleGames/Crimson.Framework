@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9047748225973963558
+--- !u!1 &2654297967804618088
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9047748225973963559}
-  - component: {fileID: 9047748225973963577}
-  - component: {fileID: 9047748225973963576}
+  - component: {fileID: 2654297967804618091}
+  - component: {fileID: 2654297967804618090}
+  - component: {fileID: 2654297967804618085}
   m_Layer: 0
-  m_Name: SpawnPoint-MilitaryDrone
+  m_Name: MilitaryDrone-Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9047748225973963559
+--- !u!4 &2654297967804618091
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9047748225973963558}
+  m_GameObject: {fileID: 2654297967804618088}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.59, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9047748225973963577
+--- !u!114 &2654297967804618090
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9047748225973963558}
+  m_GameObject: {fileID: 2654297967804618088}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e47d41c27514e84ab0ce1cee5d70b15, type: 3}
@@ -47,13 +47,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentName: 
   ExecuteOnSpawn: []
---- !u!114 &9047748225973963576
+--- !u!114 &2654297967804618085
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9047748225973963558}
+  m_GameObject: {fileID: 2654297967804618088}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
@@ -66,14 +66,16 @@ MonoBehaviour:
     spawnerDisabled: 0
     objectsToSpawn:
     - {fileID: 5414941463881756465, guid: 6f0e5def70f82a04cab1de7c4ac05e8a, type: 3}
-    spawnPosition: 2
+    spawnPosition: 0
     spawnPointsFillingMode: 0
-    fillSpawnPoints: 0
-    x: 1
+    fillSpawnPoints: 1
+    x: 0
     skipBusySpawnPoints: 0
-    spawnPointsFrom: 1
-    _spawnPoints: []
-    spawnPointTag: Enemy
+    spawnPointsFrom: 0
+    _spawnPoints:
+    - {fileID: 0}
+    - {fileID: 0}
+    spawnPointTag: 
     useChildrenObjects: 0
     rotationOfSpawns: 0
     parentOfSpawns: 0
@@ -88,7 +90,7 @@ MonoBehaviour:
     - {fileID: 8373134546618953105, guid: 160816ecb3f7b4944b0b416a15dc361f, type: 3}
     copyComponentsOfType: 2
     deleteExistingComponents: 0
-    runSpawnActionsOnObjects: 0
+    runSpawnActionsOnObjects: 1
     destroyAbilityAfterSpawn: 0
     randomSeed: 0
     poolSettings:

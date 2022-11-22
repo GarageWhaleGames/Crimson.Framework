@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &9047748225973963558
+--- !u!1 &684433559033171766
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,23 +8,23 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 9047748225973963559}
-  - component: {fileID: 9047748225973963577}
-  - component: {fileID: 9047748225973963576}
+  - component: {fileID: 684433559033171767}
+  - component: {fileID: 684433559033171753}
+  - component: {fileID: 684433559033171752}
   m_Layer: 0
-  m_Name: SpawnPoint-Shooter
+  m_Name: RammingBeast-Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &9047748225973963559
+--- !u!4 &684433559033171767
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9047748225973963558}
+  m_GameObject: {fileID: 684433559033171766}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -19.59, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -33,13 +33,13 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9047748225973963577
+--- !u!114 &684433559033171753
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9047748225973963558}
+  m_GameObject: {fileID: 684433559033171766}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e47d41c27514e84ab0ce1cee5d70b15, type: 3}
@@ -47,13 +47,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentName: 
   ExecuteOnSpawn: []
---- !u!114 &9047748225973963576
+--- !u!114 &684433559033171752
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9047748225973963558}
+  m_GameObject: {fileID: 684433559033171766}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
@@ -65,7 +65,7 @@ MonoBehaviour:
   SpawnData:
     spawnerDisabled: 0
     objectsToSpawn:
-    - {fileID: 3366692113638420310, guid: 8392cbde7e98f3f42b90469de12f0d24, type: 3}
+    - {fileID: 6478996688528303728, guid: dabbbec433205cf4cb2529523529345e, type: 3}
     spawnPosition: 2
     spawnPointsFillingMode: 0
     fillSpawnPoints: 0
@@ -82,9 +82,10 @@ MonoBehaviour:
     chooseParentStrategy: 0
     copyComponentsFromSamples:
     - {fileID: 7670242131266225950, guid: e5133513f7273694ca88ddb7c2e2b446, type: 3}
-    - {fileID: 219696582898746723, guid: 9a6ae16d2d6efa44a8032b79f161ef75, type: 3}
+    - {fileID: 219696582898746723, guid: 43ec12199ee6ba94e91a17ce4149f85c, type: 3}
     - {fileID: 51177463365656585, guid: 4db74cacc47acce4b80671abad008723, type: 3}
-    - {fileID: 8373134546618953105, guid: 730d32d8d4def6e4ab79eeeea0fe52ef, type: 3}
+    - {fileID: 4978421317857125721, guid: 75633a7302c410b4dad08c8674f320ca, type: 3}
+    - {fileID: 7634552862115458412, guid: a7a9aeb4e9552c74a8ab88db1a9eae07, type: 3}
     copyComponentsOfType: 2
     deleteExistingComponents: 0
     runSpawnActionsOnObjects: 0

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &3706507198359825300
+--- !u!1 &2646986343670900401
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,38 +8,38 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3706507198359825303}
-  - component: {fileID: 3706507198359825302}
-  - component: {fileID: 3706507198359825305}
+  - component: {fileID: 2646986343670900400}
+  - component: {fileID: 2646986343670900398}
+  - component: {fileID: 2646986343670900399}
   m_Layer: 0
-  m_Name: SpawnPoint-DroneRemake
+  m_Name: SpawnPoint-Mantis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3706507198359825303
+--- !u!4 &2646986343670900400
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3706507198359825300}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_GameObject: {fileID: 2646986343670900401}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -10, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3706507198359825302
+--- !u!114 &2646986343670900398
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3706507198359825300}
+  m_GameObject: {fileID: 2646986343670900401}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e47d41c27514e84ab0ce1cee5d70b15, type: 3}
@@ -47,13 +47,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   componentName: 
   ExecuteOnSpawn: []
---- !u!114 &3706507198359825305
+--- !u!114 &2646986343670900399
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3706507198359825300}
+  m_GameObject: {fileID: 2646986343670900401}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f755fb37600a4c38b7d01a5e1da947d9, type: 3}
@@ -65,17 +65,15 @@ MonoBehaviour:
   SpawnData:
     spawnerDisabled: 0
     objectsToSpawn:
-    - {fileID: 5414941463881756465, guid: 6f0e5def70f82a04cab1de7c4ac05e8a, type: 3}
-    spawnPosition: 0
+    - {fileID: 8712186532609448836, guid: 95a7f0e27ca2b19468c420e2ae5f2b5b, type: 3}
+    spawnPosition: 2
     spawnPointsFillingMode: 0
-    fillSpawnPoints: 1
-    x: 0
+    fillSpawnPoints: 0
+    x: 1
     skipBusySpawnPoints: 0
-    spawnPointsFrom: 0
-    _spawnPoints:
-    - {fileID: 0}
-    - {fileID: 0}
-    spawnPointTag: 
+    spawnPointsFrom: 1
+    _spawnPoints: []
+    spawnPointTag: Enemy
     useChildrenObjects: 0
     rotationOfSpawns: 0
     parentOfSpawns: 0
@@ -84,13 +82,13 @@ MonoBehaviour:
     chooseParentStrategy: 0
     copyComponentsFromSamples:
     - {fileID: 7670242131266225950, guid: e5133513f7273694ca88ddb7c2e2b446, type: 3}
-    - {fileID: 51177463365656585, guid: 4db74cacc47acce4b80671abad008723, type: 3}
-    - {fileID: 219696582898746723, guid: ca4a1c1b0f17d3d4997509f2016b4090, type: 3}
-    - {fileID: 8373134546618953105, guid: c2ce8fce00547d544963ffefb0b24dca, type: 3}
-    - {fileID: 8373134546618953105, guid: 160816ecb3f7b4944b0b416a15dc361f, type: 3}
+    - {fileID: 219696582898746723, guid: 03bf0899534672e4cb3f5e2ecd02ed2d, type: 3}
+    - {fileID: 3289702619521376152, guid: 49999ce45e360f24080ff3b266d1d69e, type: 3}
+    - {fileID: 3289702619521376152, guid: 0d0212adb46157843b234b91c355a097, type: 3}
+    - {fileID: 758353118697322359, guid: 773e676a221ca6142b202d1349fcaaeb, type: 3}
     copyComponentsOfType: 2
     deleteExistingComponents: 0
-    runSpawnActionsOnObjects: 1
+    runSpawnActionsOnObjects: 0
     destroyAbilityAfterSpawn: 0
     randomSeed: 0
     poolSettings:
