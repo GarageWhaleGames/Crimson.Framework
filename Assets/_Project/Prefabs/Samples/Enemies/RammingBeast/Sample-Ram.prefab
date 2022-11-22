@@ -210,7 +210,7 @@ MonoBehaviour:
     spawnerDisabled: 0
     objectsToSpawn:
     - {fileID: 1169986545847713563, guid: 4d928036640a4ca4e98561e9275525c5, type: 3}
-    spawnPosition: 2
+    spawnPosition: 0
     spawnPointsFillingMode: 0
     fillSpawnPoints: 0
     x: 0
