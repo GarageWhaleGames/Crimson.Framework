@@ -1,0 +1,13 @@
+# Blender 3.4.1 MTL File: 'untitled.blend'
+# www.blender.org
+
+newmtl Material
+Ns 250.000000
+Ka 1.000000 1.000000 1.000000
+Ks 0.500000 0.500000 0.500000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Kd C:/Users/gorki/Documents/GitHub/Crimson.Framework/Assets/Sci-Fi Base/Textures/Props_Base1_a.tif
+map_refl C:/Users/gorki/Documents/GitHub/Crimson.Framework/Assets/Sci-Fi Base/Textures/Props_Base1_mask.tif
+map_Ke C:/Users/gorki/Documents/GitHub/Crimson.Framework/Assets/Sci-Fi Base/Textures/Props_Base1_e.tif
